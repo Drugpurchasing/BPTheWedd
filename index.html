@@ -16,17 +16,13 @@
         :root {
             --primary-color: #005c99;
             --secondary-color: #003366;
-            --light-bg: #e6f7ff; /* เปลี่ยนสีฟ้าอ่อนให้ดูสดใสขึ้น */
+            --light-bg: #e6f7ff; 
             --font-family: 'Pridi', serif;
         }
         body {
             font-family: var(--font-family);
             color: var(--secondary-color);
-            
-            /* === เปลี่ยนกลับไปใช้สีพื้นหลัง === */
             background-color: var(--light-bg); 
-            /* ============================== */
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -75,8 +71,7 @@
         </div>
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
-            <p><strong>09:00 น.</strong> - พิธีการต่างๆ</p>
-            <p><strong>11:00 น.</strong> - ร่วมทานอาหารแสนอร่อย</p>
+            <p><strong>18:00 น.</strong> - งานเลี้ยงฉลองมงคลสมรส</p>
         </div>
         <div class="info-section my-4 p-3">
             <h3 class="text-center">สถานที่</h3>
@@ -86,8 +81,8 @@
             </a>
         </div>
         <form id="weddingForm">
-            <h3 class="mt-4">บอกพวกเราหน่อยนะว่าสะดวกมางานไหม</h3>
-            <p class="text-muted">รบกวนตอบกลับภายในวันที่ 30 พฤศจิกรายน 2025 น้า</p>
+            <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
+            <p class="text-muted">กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
             <div class="mb-3">
                 <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
                     <input type="radio" id="attending" name="Status" value="Attending" required>
@@ -147,7 +142,7 @@
             start: new Date('2026-02-08T18:00:00+07:00'),
             end: new Date('2026-02-08T22:00:00+07:00')
         };
-        const scriptURL = 'ใส่_URL_GOOGLE_APPS_SCRIPT_ของคุณที่นี่';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
@@ -162,8 +157,11 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-            const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=LATITUDE,LONGITUDE{encodeURIComponent(eventDetails.location)}`;
+            
+            // ใช้ URL ที่ถูกต้องสำหรับ Google Maps Search
+            const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
+
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('google-calendar-link').href = googleUrl;
             const icalContent = [
