@@ -57,14 +57,6 @@
         .time-box span { display: block; }
         .time-box .number { font-size: 2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
         .time-box .label { font-size: 0.8em; color: var(--secondary-color); }
-
-        /* Dress Code Styles */
-        .color-palette { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-        .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        
-        /* Embedded Map Styles */
-        .map-container { overflow: hidden; position: relative; height: 300px; border-radius: 8px; }
-        .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
         .radio-buttons input[type="radio"] { display: none; }
         .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
@@ -104,23 +96,16 @@
         </div>
 
         <div class="info-section my-4 p-3 text-center">
-            <h3>ธีมการแต่งกาย</h3>
-            <p class="mb-0">มาร่วมเติมสีสันในวันพิเศษของเรา<br>ด้วยเสื้อผ้าสีสันสดใสที่คุณชื่นชอบ</p>
-            <div class="color-palette">
-                <div class="color-dot" style="background-color: #FFC0CB;"></div>
-                <div class="color-dot" style="background-color: #ADD8E6;"></div>
-                <div class="color-dot" style="background-color: #90EE90;"></div>
-                <div class="color-dot" style="background-color: #FFD700;"></div>
-                <div class="color-dot" style="background-color: #E6E6FA;"></div>
-            </div>
+            <h3>ธีมการแต่งกาย (Dress Code)</h3>
+            <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
         </div>
 
         <div class="info-section my-4 p-3">
             <h3 class="text-center">สถานที่</h3>
-            <p class="mb-3">ชายหาด รีสอร์ท, อ.หลังสวน, ชุมพร</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.975924716768!2d99.1912269758742!3d8.60156999142805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305580a0614f855b%3A0x897985474618e404!2sChaihaad%20Resort!5e0!3m2!1sen!2sth!4v1725898319525!5m2!1sen!2sth" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <p id="venue-text" class="mb-3 fs-5"></p>
+            <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+            </a>
         </div>
         
         <form id="weddingForm">
@@ -186,7 +171,6 @@
         };
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
 
-        // Countdown Timer Logic
         const countdownDate = eventDetails.start.getTime();
         const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -228,9 +212,12 @@
         }
 
         function setupLinks() {
+            // Setup Map Link
+            document.getElementById('venue-text').textContent = eventDetails.location;
             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
 
+            // Setup Calendar Links
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('google-link').href = googleUrl;
             
