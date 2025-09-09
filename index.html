@@ -1,43 +1,310 @@
-const sheetName = 'Sheet1'; // หรือชื่อชีตที่คุณตั้งไว้
-const scriptProp = PropertiesService.getScriptProperties();
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === CSS CODE === */
+        body {
+            font-family: 'Pridi', serif;
+            background-color: #f0f4f8; /* สีพื้นหลังขาวนวล */
+            color: #003366; /* สีน้ำเงินเข้ม */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
 
-function intialSetup() {
-  const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  scriptProp.setProperty('key', activeSpreadsheet.getId());
-}
+        .container {
+            background-color: #ffffff; /* สีขาว */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border: 1px solid #dbe2ef;
+        }
 
-function doPost(e) {
-  const lock = LockService.getScriptLock();
-  lock.tryLock(10000);
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #005c99;
+            padding-bottom: 20px;
+        }
 
-  try {
-    const doc = SpreadsheetApp.openById(scriptProp.getProperty('key'));
-    const sheet = doc.getSheetByName(sheetName);
+        .header h1 {
+            font-size: 2.5em;
+            color: #005c99; /* สีน้ำเงิน */
+            margin: 0;
+        }
 
-    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    const nextRow = sheet.getLastRow() + 1;
+        .header h2 {
+            font-size: 1.5em;
+            margin: 5px 0;
+            font-weight: 400;
+        }
 
-    const newRow = headers.map(function(header) {
-      // จัดการข้อมูล Timestamp และค่าว่าง
-      if (header === "Timestamp") {
-        return new Date();
-      } else {
-        return e.parameter[header] ? e.parameter[header] : ""; // ถ้าไม่มีค่าให้เป็นช่องว่าง
-      }
-    });
+        .names {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #003366;
+            margin: 15px 0 5px;
+        }
 
-    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
+        .date {
+            font-size: 1.1em;
+            background-color: #e6f0ff;
+            color: #005c99;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
-      .setMimeType(ContentService.MimeType.JSON);
+        h3 {
+            color: #003366;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
 
-  } catch (e) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
-      .setMimeType(ContentService.MimeType.JSON);
+        form p {
+            margin-bottom: 25px;
+            color: #555;
+        }
 
-  } finally {
-    lock.releaseLock();
-  }
-}
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: 'Pridi', serif;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #005c99;
+            box-shadow: 0 0 5px rgba(0, 92, 153, 0.3);
+            outline: none;
+        }
+
+        .status-group label {
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .radio-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .radio-buttons input[type="radio"] {
+            display: none;
+        }
+
+        .radio-label {
+            padding: 12px 20px;
+            border: 2px solid #005c99;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        input[type="radio"]:checked + .radio-label {
+            background-color: #005c99;
+            color: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #005c99;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            font-family: 'Pridi', serif;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #003366;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #thank-you-message {
+            padding: 20px;
+        }
+
+        #thank-you-message h2 {
+            color: #005c99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Save the Date</h1>
+            <h2>We're Getting Married!</h2>
+            <p class="names">Bride & Groom</p>
+            <p class="date">08 february 2026</p>
+        </div>
+
+        <form id="weddingForm">
+            <h3>ลงทะเบียนเข้าร่วมงาน</h3>
+            <p>กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
+
+            <div class="form-group status-group">
+                <label>คุณจะมาร่วมงานหรือไม่?</label>
+                <div class="radio-buttons">
+                    <input type="radio" id="attending" name="Status" value="Attending" required>
+                    <label for="attending" class="radio-label">ยินดีเข้าร่วมงาน</label>
+                    <input type="radio" id="not-attending" name="Status" value="Not Attending">
+                    <label for="not-attending" class="radio-label">ไม่สะดวกเข้าร่วม</label>
+                </div>
+            </div>
+
+            <div id="attending-fields" class="hidden">
+                <div class="form-group">
+                    <label for="FullName">ชื่อ-สกุล</label>
+                    <input type="text" id="FullName" name="FullName" placeholder="กรุณากรอกชื่อ-นามสกุล">
+                </div>
+                <div class="form-group">
+                    <label for="Nickname">ชื่อเล่น</label>
+                    <input type="text" id="Nickname" name="Nickname" placeholder="กรุณากรอกชื่อเล่น">
+                </div>
+                <div class="form-group">
+                    <label for="Guests">จำนวนผู้ติดตาม (ไม่รวมตัวท่าน)</label>
+                    <input type="number" id="Guests" name="Guests" min="0" max="5" value="0">
+                </div>
+            </div>
+
+            <div id="not-attending-fields" class="hidden">
+                <div class="form-group">
+                    <label for="Wishes">ฝากคำอวยพรถึงบ่าวสาว</label>
+                    <textarea id="Wishes" name="Wishes" rows="4" placeholder="เขียนคำอวยพร..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-button">ส่งข้อมูล</button>
+        </form>
+
+        <div id="thank-you-message" class="hidden">
+            <h2>ขอบคุณที่ตอบกลับ!</h2>
+            <p>เราได้รับข้อมูลของคุณเรียบร้อยแล้ว</p>
+        </div>
+    </div>
+
+    <script>
+        // === JAVASCRIPT CODE ===
+
+        // --- ส่วนที่ต้องแก้ไข ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec'; // << วาง URL ของเว็บแอปที่คัดลอกมาที่นี่
+
+        // --- โค้ดส่วนที่เหลือ ---
+        const form = document.getElementById('weddingForm');
+        const attendingRadio = document.getElementById('attending');
+        const notAttendingRadio = document.getElementById('not-attending');
+        const attendingFields = document.getElementById('attending-fields');
+        const notAttendingFields = document.getElementById('not-attending-fields');
+        const submitButton = document.getElementById('submit-button');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        // ตั้งค่าฟิลด์ที่จำเป็นตามสถานะ
+        function updateRequiredFields() {
+            const isAttending = attendingRadio.checked;
+            
+            document.getElementById('FullName').required = isAttending;
+            document.getElementById('Nickname').required = isAttending;
+            document.getElementById('Wishes').required = notAttendingRadio.checked;
+        }
+
+        // แสดง/ซ่อนฟิลด์ตามตัวเลือก
+        attendingRadio.addEventListener('change', () => {
+            if (attendingRadio.checked) {
+                attendingFields.classList.remove('hidden');
+                notAttendingFields.classList.add('hidden');
+                updateRequiredFields();
+            }
+        });
+
+        notAttendingRadio.addEventListener('change', () => {
+            if (notAttendingRadio.checked) {
+                notAttendingFields.classList.remove('hidden');
+                attendingFields.classList.add('hidden');
+                updateRequiredFields();
+            }
+        });
+
+        // จัดการการส่งฟอร์ม
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'กำลังส่ง...';
+
+            const formData = new FormData(form);
+            
+            // หากไม่มา ให้ลบข้อมูลส่วนที่ไม่เกี่ยวข้องออกก่อนส่ง
+            if (notAttendingRadio.checked) {
+                formData.delete('FullName');
+                formData.delete('Nickname');
+                formData.delete('Guests');
+            }
+            // หากมา ให้ลบข้อมูลคำอวยพรออกก่อนส่ง
+            if (attendingRadio.checked) {
+                formData.delete('Wishes');
+            }
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    if (response.ok) {
+                        form.classList.add('hidden');
+                        thankYouMessage.classList.remove('hidden');
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'ส่งข้อมูล';
+                });
+        });
+
+        // เรียกใช้ครั้งแรกเพื่อตั้งค่าฟิลด์
+        updateRequiredFields();
+    </script>
+</body>
+</html>
