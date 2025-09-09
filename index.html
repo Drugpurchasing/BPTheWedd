@@ -4,253 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <style>
-        /* === CSS CODE === */
-        body {
-            font-family: 'Pridi', serif;
-            background-color: #f0f4f8; /* สีพื้นหลังขาวนวล */
-            color: #003366; /* สีน้ำเงินเข้ม */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+        /* === CUSTOM CSS CODE === */
+        :root {
+            --primary-color: #005c99;
+            --secondary-color: #003366;
+            --light-bg: #f0f4f8;
+            --font-family: 'Pridi', serif;
         }
 
-        .container {
-            background-color: #ffffff; /* สีขาว */
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light-bg);
+            color: var(--secondary-color);
+        }
+
+        .card-container {
+            background-color: #ffffff;
             padding: 30px 40px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
             width: 100%;
-            max-width: 500px;
-            text-align: center;
+            max-width: 550px;
+            margin: 40px auto;
             border: 1px solid #dbe2ef;
         }
 
         .header {
-            margin-bottom: 30px;
-            border-bottom: 2px solid #005c99;
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px;
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            color: #005c99; /* สีน้ำเงิน */
-            margin: 0;
-        }
+        .header h1 { font-size: 2.5em; color: var(--primary-color); margin: 0; }
+        .header h2 { font-size: 1.5em; margin: 5px 0; font-weight: 400; }
+        .names { font-size: 1.8em; font-weight: 600; color: var(--secondary-color); margin: 15px 0 5px; }
+        .date { font-size: 1.1em; background-color: #e6f0ff; color: var(--primary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; }
+        
+        .wedding-image { max-width: 180px; height: auto; }
 
-        .header h2 {
-            font-size: 1.5em;
-            margin: 5px 0;
-            font-weight: 400;
-        }
+        .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
+        .info-section h3 { color: var(--primary-color); }
 
-        .names {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: #003366;
-            margin: 15px 0 5px;
-        }
+        .radio-buttons input[type="radio"] { display: none; }
+        .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+        input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
+        
+        .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; }
+        .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
 
-        .date {
-            font-size: 1.1em;
-            background-color: #e6f0ff;
-            color: #005c99;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        h3 {
-            color: #003366;
-            font-size: 1.6em;
-            margin-bottom: 10px;
-        }
-
-        form p {
-            margin-bottom: 25px;
-            color: #555;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-family: 'Pridi', serif;
-            font-size: 1em;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        input[type="text"]:focus,
-        input[type="number"]:focus,
-        textarea:focus {
-            border-color: #005c99;
-            box-shadow: 0 0 5px rgba(0, 92, 153, 0.3);
-            outline: none;
-        }
-
-        .status-group label {
-            text-align: center;
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .radio-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .radio-buttons input[type="radio"] {
-            display: none;
-        }
-
-        .radio-label {
-            padding: 12px 20px;
-            border: 2px solid #005c99;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        input[type="radio"]:checked + .radio-label {
-            background-color: #005c99;
-            color: #ffffff;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            background-color: #005c99;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
-            font-family: 'Pridi', serif;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        button:hover {
-            background-color: #003366;
-            transform: translateY(-2px);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        #thank-you-message {
-            padding: 20px;
-        }
-
-        #thank-you-message h2 {
-            color: #005c99;
-        }
+        .hidden { display: none; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
+<body class="d-flex align-items-center py-4">
+    <div class="card-container text-center">
+        <div class="header mb-4">
             <h1>Save the Date</h1>
             <h2>We're Getting Married!</h2>
             <p class="names">Bride & Groom</p>
             <p class="date">08 february 2026</p>
         </div>
 
+        <div class="my-4">
+            <img src="https://i.ibb.co/68B1zQ4/wedding-couple-minimalist.png" alt="Minimalist Bride and Groom" class="wedding-image">
+        </div>
+        
+        <div class="info-section my-4 p-3 text-start">
+            <h3 class="text-center">กำหนดการ</h3>
+            <p><strong>18:00 น.</strong> - งานเลี้ยงฉลองมงคลสมรส</p>
+        </div>
+
+        <div class="info-section my-4 p-3">
+            <h3 class="text-center">สถานที่</h3>
+            <p id="venue-text" class="mb-3 fs-5"></p>
+            <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+            </a>
+        </div>
+
         <form id="weddingForm">
-            <h3>ลงทะเบียนเข้าร่วมงาน</h3>
-            <p>กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
+            <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
+            <p class="text-muted">กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
 
-            <div class="form-group status-group">
-                <label>คุณจะมาร่วมงานหรือไม่?</label>
-                <div class="radio-buttons">
+            <div class="mb-3">
+                <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
                     <input type="radio" id="attending" name="Status" value="Attending" required>
-                    <label for="attending" class="radio-label">ยินดีเข้าร่วมงาน</label>
+                    <label for="attending" class="radio-label">ไปร่วมงานแน่นอน!</label>
                     <input type="radio" id="not-attending" name="Status" value="Not Attending">
-                    <label for="not-attending" class="radio-label">ไม่สะดวกเข้าร่วม</label>
+                    <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
                 </div>
             </div>
 
-            <div id="attending-fields" class="hidden">
-                <div class="form-group">
-                    <label for="FullName">ชื่อ-สกุล</label>
-                    <input type="text" id="FullName" name="FullName" placeholder="กรุณากรอกชื่อ-นามสกุล">
+            <div id="attending-fields" class="hidden text-start">
+                <div class="mb-3">
+                    <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
+                    <input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย">
                 </div>
-                <div class="form-group">
-                    <label for="Nickname">ชื่อเล่น</label>
-                    <input type="text" id="Nickname" name="Nickname" placeholder="กรุณากรอกชื่อเล่น">
+                <div class="mb-3">
+                    <label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label>
+                    <input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ">
                 </div>
-                <div class="form-group">
-                    <label for="Guests">จำนวนผู้ติดตาม (ไม่รวมตัวท่าน)</label>
-                    <input type="number" id="Guests" name="Guests" min="0" max="5" value="0">
-                </div>
-            </div>
-
-            <div id="not-attending-fields" class="hidden">
-                <div class="form-group">
-                    <label for="Wishes">ฝากคำอวยพรถึงบ่าวสาว</label>
-                    <textarea id="Wishes" name="Wishes" rows="4" placeholder="เขียนคำอวยพร..."></textarea>
+                <div class="mb-3">
+                    <label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label>
+                    <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
                 </div>
             </div>
 
-            <button type="submit" id="submit-button">ส่งข้อมูล</button>
+            <div id="not-attending-fields" class="hidden text-start">
+                <div class="mb-3">
+                    <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
+                    <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
         </form>
 
-        <div id="thank-you-message" class="hidden">
-            <h2>ขอบคุณที่ตอบกลับ!</h2>
-            <p>เราได้รับข้อมูลของคุณเรียบร้อยแล้ว</p>
+        <div id="confirmation-section" class="hidden">
+            <h2>ลงทะเบียนเรียบร้อย!</h2>
+            <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
+            <div class="mt-4 p-3 info-section">
+                <p class="fw-bold">บันทึกวันงานของเราลงในปฏิทินของคุณ</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a id="google-calendar-link" href="#" target="_blank" class="btn btn-action text-white flex-fill">
+                        <i class="bi bi-google"></i> Google Calendar
+                    </a>
+                    <a id="ical-link" href="#" class="btn btn-action text-white flex-fill">
+                        <i class="bi bi-calendar-plus-fill"></i> Outlook / iCal
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // === JAVASCRIPT CODE ===
+    document.addEventListener('DOMContentLoaded', function() {
 
-        // --- ส่วนที่ต้องแก้ไข ---
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec'; // << วาง URL ของเว็บแอปที่คัดลอกมาที่นี่
+        // --- ✨ กรุณาแก้ไขข้อมูลสำหรับปฏิทินและแผนที่ตรงนี้ ✨ ---
+        const eventDetails = {
+            title: "งานแต่งงาน Bride & Groom",
+            location: "Grand Hyatt Erawan Bangkok, 494 Ratchadamri Rd, Lumphini, Pathum Wan, Bangkok 10330",
+            description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
+            // ตั้งค่าเวลาเป็นเวลาท้องถิ่น (กรุงเทพ, GMT+7) | รูปแบบ: 'YYYY-MM-DDTHH:mm:ss+07:00'
+            start: new Date('2026-02-08T18:00:00+07:00'),
+            end: new Date('2026-02-08T22:00:00+07:00')
+        };
+        // --- สิ้นสุดส่วนที่ต้องแก้ไข ---
 
-        // --- โค้ดส่วนที่เหลือ ---
+
+        const scriptURL = 'ใส่_URL_GOOGLE_APPS_SCRIPT_ของคุณที่นี่';
+
+        // --- Setup Elements ---
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
         const attendingFields = document.getElementById('attending-fields');
         const notAttendingFields = document.getElementById('not-attending-fields');
         const submitButton = document.getElementById('submit-button');
-        const thankYouMessage = document.getElementById('thank-you-message');
+        const confirmationSection = document.getElementById('confirmation-section');
 
-        // ตั้งค่าฟิลด์ที่จำเป็นตามสถานะ
-        function updateRequiredFields() {
-            const isAttending = attendingRadio.checked;
-            
-            document.getElementById('FullName').required = isAttending;
-            document.getElementById('Nickname').required = isAttending;
-            document.getElementById('Wishes').required = notAttendingRadio.checked;
+        // --- Functions for Calendar & Maps ---
+        function toUtcFormat(date) {
+            return date.toISOString().replace(/-|:|\.\d{3}/g, '');
         }
 
-        // แสดง/ซ่อนฟิลด์ตามตัวเลือก
+        function setupLinks() {
+            // Map Link
+            document.getElementById('venue-text').textContent = eventDetails.location;
+            const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=LATITUDE,LONGITUDE{encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('gmaps-link').href = gmapsUrl;
+
+            // Google Calendar Link
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('google-calendar-link').href = googleUrl;
+
+            // iCal/Outlook Link
+            const icalContent = [
+                'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+                `URL:${document.location.href}`,
+                `DTSTART:${toUtcFormat(eventDetails.start)}`,
+                `DTEND:${toUtcFormat(eventDetails.end)}`,
+                `SUMMARY:${eventDetails.title}`,
+                `DESCRIPTION:${eventDetails.description}`,
+                `LOCATION:${eventDetails.location}`,
+                'END:VEVENT', 'END:VCALENDAR'
+            ].join('\n');
+            document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
+            document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
+        }
+
+        // --- Form Interaction Logic ---
+        function updateRequiredFields() {
+            const isAttending = attendingRadio.checked;
+            document.getElementById('FullName').required = isAttending;
+            document.getElementById('Nickname').required = isAttending;
+        }
+
         attendingRadio.addEventListener('change', () => {
             if (attendingRadio.checked) {
                 attendingFields.classList.remove('hidden');
@@ -267,44 +226,61 @@
             }
         });
 
-        // จัดการการส่งฟอร์ม
+        // --- Form Submission Logic ---
         form.addEventListener('submit', e => {
             e.preventDefault();
             submitButton.disabled = true;
             submitButton.textContent = 'กำลังส่ง...';
 
+            const isAttending = attendingRadio.checked;
             const formData = new FormData(form);
             
-            // หากไม่มา ให้ลบข้อมูลส่วนที่ไม่เกี่ยวข้องออกก่อนส่ง
             if (notAttendingRadio.checked) {
                 formData.delete('FullName');
                 formData.delete('Nickname');
                 formData.delete('Guests');
             }
-            // หากมา ให้ลบข้อมูลคำอวยพรออกก่อนส่ง
             if (attendingRadio.checked) {
                 formData.delete('Wishes');
             }
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
-                    if (response.ok) {
+                    if (!response.ok) throw new Error('Network response was not ok.');
+                    
+                    if (isAttending) {
                         form.classList.add('hidden');
-                        thankYouMessage.classList.remove('hidden');
+                        confirmationSection.classList.remove('hidden');
                     } else {
-                        throw new Error('Network response was not ok.');
+                        Swal.fire({
+                            title: 'ได้รับคำอวยพรแล้ว!',
+                            text: 'ขอบคุณสำหรับคำอวยพรดีๆ ที่ส่งมาให้เรานะครับ :)',
+                            icon: 'success',
+                            confirmButtonText: 'ตกลง'
+                        });
+                        form.reset();
+                        notAttendingFields.classList.add('hidden');
                     }
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+                    Swal.fire({
+                        title: 'เกิดข้อผิดพลาด!',
+                        text: 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                        icon: 'error',
+                        confirmButtonText: 'ตกลง'
+                    });
+                })
+                .finally(() => {
                     submitButton.disabled = false;
-                    submitButton.textContent = 'ส่งข้อมูล';
+                    submitButton.textContent = 'ส่งคำตอบ';
                 });
         });
 
-        // เรียกใช้ครั้งแรกเพื่อตั้งค่าฟิลด์
+        // --- Initial Setup ---
+        setupLinks();
         updateRequiredFields();
+    });
     </script>
 </body>
 </html>
