@@ -13,20 +13,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-        /* === CUSTOM CSS CODE === */
         :root {
             --primary-color: #005c99;
             --secondary-color: #003366;
             --light-bg: #f0f4f8;
             --font-family: 'Pridi', serif;
         }
-
         body {
             font-family: var(--font-family);
             background-color: var(--light-bg);
             color: var(--secondary-color);
         }
-
         .card-container {
             background-color: #ffffff;
             padding: 30px 40px;
@@ -37,29 +34,22 @@
             margin: 40px auto;
             border: 1px solid #dbe2ef;
         }
-
         .header {
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px;
         }
-
         .header h1 { font-size: 2.5em; color: var(--primary-color); margin: 0; }
         .header h2 { font-size: 1.5em; margin: 5px 0; font-weight: 400; }
         .names { font-size: 1.8em; font-weight: 600; color: var(--secondary-color); margin: 15px 0 5px; }
         .date { font-size: 1.1em; background-color: #e6f0ff; color: var(--primary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; }
-        
         .wedding-image { max-width: 180px; height: auto; }
-
         .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
         .info-section h3 { color: var(--primary-color); }
-
         .radio-buttons input[type="radio"] { display: none; }
         .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
         input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
-        
         .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; }
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
-
         .hidden { display: none; }
     </style>
 </head>
@@ -71,16 +61,13 @@
             <p class="names">Bride & Groom</p>
             <p class="date">08 february 2026</p>
         </div>
-
         <div class="my-4">
-            <img src="https://i.ibb.co/68B1zQ4/wedding-couple-minimalist.png" alt="Minimalist Bride and Groom" class="wedding-image">
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fhand-drawn-watercolor-minimal-style-cartoon-lover-couple-wedding-ceremony_141351501.htm&psig=AOvVaw2YIa7nE8wnbXkbsC3dOwnK&ust=1757520450954000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKjAjo-IzI8DFQAAAAAdAAAAABAE" alt="Minimalist Bride and Groom" class="wedding-image">
         </div>
-        
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
             <p><strong>18:00 น.</strong> - งานเลี้ยงฉลองมงคลสมรส</p>
         </div>
-
         <div class="info-section my-4 p-3">
             <h3 class="text-center">สถานที่</h3>
             <p id="venue-text" class="mb-3 fs-5"></p>
@@ -88,11 +75,9 @@
                 <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
             </a>
         </div>
-
         <form id="weddingForm">
             <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
             <p class="text-muted">กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
-
             <div class="mb-3">
                 <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
                     <input type="radio" id="attending" name="Status" value="Attending" required>
@@ -101,7 +86,6 @@
                     <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
                 </div>
             </div>
-
             <div id="attending-fields" class="hidden text-start">
                 <div class="mb-3">
                     <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
@@ -116,17 +100,14 @@
                     <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
                 </div>
             </div>
-
             <div id="not-attending-fields" class="hidden text-start">
                 <div class="mb-3">
                     <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
                     <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
                 </div>
             </div>
-
             <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
         </form>
-
         <div id="confirmation-section" class="hidden">
             <h2>ลงทะเบียนเรียบร้อย!</h2>
             <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
@@ -149,11 +130,10 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-
         // --- ✨ กรุณาแก้ไขข้อมูลสำหรับปฏิทินและแผนที่ตรงนี้ ✨ ---
         const eventDetails = {
             title: "งานแต่งงาน Bride & Groom",
-            location: "Grand Hyatt Erawan Bangkok, 494 Ratchadamri Rd, Lumphini, Pathum Wan, Bangkok 10330",
+            location: "ชายหาด รีสอร์ท, 23 หมู่ 2 ต.บางน้ำจืด, อ.หลังสวน, ชุมพร 86150",
             description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
             // ตั้งค่าเวลาเป็นเวลาท้องถิ่น (กรุงเทพ, GMT+7) | รูปแบบ: 'YYYY-MM-DDTHH:mm:ss+07:00'
             start: new Date('2026-02-08T18:00:00+07:00'),
@@ -161,10 +141,7 @@
         };
         // --- สิ้นสุดส่วนที่ต้องแก้ไข ---
 
-
-        const scriptURL = 'ใส่_URL_GOOGLE_APPS_SCRIPT_ของคุณที่นี่';
-
-        // --- Setup Elements ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
@@ -173,37 +150,26 @@
         const submitButton = document.getElementById('submit-button');
         const confirmationSection = document.getElementById('confirmation-section');
 
-        // --- Functions for Calendar & Maps ---
         function toUtcFormat(date) {
             return date.toISOString().replace(/-|:|\.\d{3}/g, '');
         }
 
         function setupLinks() {
-            // Map Link
             document.getElementById('venue-text').textContent = eventDetails.location;
             const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=LATITUDE,LONGITUDE{encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
-
-            // Google Calendar Link
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('google-calendar-link').href = googleUrl;
-
-            // iCal/Outlook Link
             const icalContent = [
                 'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
-                `URL:${document.location.href}`,
-                `DTSTART:${toUtcFormat(eventDetails.start)}`,
-                `DTEND:${toUtcFormat(eventDetails.end)}`,
-                `SUMMARY:${eventDetails.title}`,
-                `DESCRIPTION:${eventDetails.description}`,
-                `LOCATION:${eventDetails.location}`,
+                `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`,
+                `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`,
                 'END:VEVENT', 'END:VCALENDAR'
             ].join('\n');
             document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
             document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
         }
 
-        // --- Form Interaction Logic ---
         function updateRequiredFields() {
             const isAttending = attendingRadio.checked;
             document.getElementById('FullName').required = isAttending;
@@ -226,28 +192,21 @@
             }
         });
 
-        // --- Form Submission Logic ---
         form.addEventListener('submit', e => {
             e.preventDefault();
             submitButton.disabled = true;
             submitButton.textContent = 'กำลังส่ง...';
-
             const isAttending = attendingRadio.checked;
             const formData = new FormData(form);
-            
             if (notAttendingRadio.checked) {
-                formData.delete('FullName');
-                formData.delete('Nickname');
-                formData.delete('Guests');
+                formData.delete('FullName'); formData.delete('Nickname'); formData.delete('Guests');
             }
             if (attendingRadio.checked) {
                 formData.delete('Wishes');
             }
-
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok.');
-                    
                     if (isAttending) {
                         form.classList.add('hidden');
                         confirmationSection.classList.remove('hidden');
@@ -276,8 +235,6 @@
                     submitButton.textContent = 'ส่งคำตอบ';
                 });
         });
-
-        // --- Initial Setup ---
         setupLinks();
         updateRequiredFields();
     });
