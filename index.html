@@ -50,6 +50,22 @@
         .wedding-image { max-width: 180px; height: auto; }
         .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
         .info-section h3 { color: var(--primary-color); }
+        
+        /* Countdown Timer Styles */
+        #countdown { display: flex; justify-content: center; gap: 15px; text-align: center;}
+        .time-box { background-color: #e6f0ff; padding: 10px; border-radius: 8px; min-width: 70px; }
+        .time-box span { display: block; }
+        .time-box .number { font-size: 2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
+        .time-box .label { font-size: 0.8em; color: var(--secondary-color); }
+
+        /* Dress Code Styles */
+        .color-palette { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        /* Embedded Map Styles */
+        .map-container { overflow: hidden; position: relative; height: 300px; border-radius: 8px; }
+        .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
         .radio-buttons input[type="radio"] { display: none; }
         .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
         input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
@@ -57,18 +73,13 @@
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         .hidden { display: none; }
 
-        /* === CSS สำหรับปรับการแสดงผลบนมือถือ === */
         @media (max-width: 576px) {
-            .card-container {
-                padding: 25px 20px; /* ลดระยะขอบของการ์ด */
-            }
-            .header h1 {
-                font-size: 2.1em; /* ลดขนาดฟอนต์หัวข้อหลัก */
-            }
+            .card-container { padding: 25px 20px; }
+            .header h1 { font-size: 2.1em; }
         }
     </style>
 </head>
-<body class="d-flex align-items-center py-4">
+<body>
     <div class="card-container text-center">
         <div class="header mb-4">
             <h1>Save the Date</h1>
@@ -79,17 +90,39 @@
         <div class="my-4">
             <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="wedding-image">
         </div>
+
+        <div id="countdown" class="my-4">
+            <div class="time-box"><span id="days" class="number">0</span><span class="label">วัน</span></div>
+            <div class="time-box"><span id="hours" class="number">0</span><span class="label">ชั่วโมง</span></div>
+            <div class="time-box"><span id="minutes" class="number">0</span><span class="label">นาที</span></div>
+            <div class="time-box"><span id="seconds" class="number">0</span><span class="label">วินาที</span></div>
+        </div>
+
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
             <p><strong>18:00 น.</strong> - งานเลี้ยงฉลองมงคลสมรส</p>
         </div>
+
+        <div class="info-section my-4 p-3 text-center">
+            <h3>ธีมการแต่งกาย</h3>
+            <p class="mb-0">มาร่วมเติมสีสันในวันพิเศษของเรา<br>ด้วยเสื้อผ้าสีสันสดใสที่คุณชื่นชอบ</p>
+            <div class="color-palette">
+                <div class="color-dot" style="background-color: #FFC0CB;"></div>
+                <div class="color-dot" style="background-color: #ADD8E6;"></div>
+                <div class="color-dot" style="background-color: #90EE90;"></div>
+                <div class="color-dot" style="background-color: #FFD700;"></div>
+                <div class="color-dot" style="background-color: #E6E6FA;"></div>
+            </div>
+        </div>
+
         <div class="info-section my-4 p-3">
             <h3 class="text-center">สถานที่</h3>
-            <p id="venue-text" class="mb-3 fs-5"></p>
-            <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
-                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
-            </a>
+            <p class="mb-3">ชายหาด รีสอร์ท, อ.หลังสวน, ชุมพร</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.975924716768!2d99.1912269758742!3d8.60156999142805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x305580a0614f855b%3A0x897985474618e404!2sChaihaad%20Resort!5e0!3m2!1sen!2sth!4v1725898319525!5m2!1sen!2sth" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
+        
         <form id="weddingForm">
             <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
             <p class="text-muted">กรุณาตอบกลับภายในวันที่ 31 ธันวาคม 2025</p>
@@ -123,18 +156,17 @@
             </div>
             <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
         </form>
+
         <div id="confirmation-section" class="hidden">
             <h2>ลงทะเบียนเรียบร้อย!</h2>
             <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
             <div class="mt-4 p-3 info-section">
                 <p class="fw-bold">บันทึกวันงานของเราลงในปฏิทินของคุณ</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a id="google-calendar-link" href="#" target="_blank" class="btn btn-action text-white flex-fill">
-                        <i class="bi bi-google"></i> Google Calendar
-                    </a>
-                    <a id="ical-link" href="#" target="_blank" class="btn btn-action text-white flex-fill">
-                        <i class="bi bi-calendar-plus-fill"></i> Apple / Outlook / อื่นๆ
-                    </a>
+                <div class="d-grid gap-2">
+                    <a id="google-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-google"></i> Google Calendar</a>
+                    <a id="ical-link" href="#" class="btn btn-action text-white"><i class="bi bi-apple"></i> Apple Calendar</a>
+                    <a id="outlook365-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook 365</a>
+                    <a id="outlooklive-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook.com</a>
                 </div>
             </div>
         </div>
@@ -153,6 +185,30 @@
             end: new Date('2026-02-08T22:00:00+07:00')
         };
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
+
+        // Countdown Timer Logic
+        const countdownDate = eventDetails.start.getTime();
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "<div class='time-box' style='width:100%;'><h4>The Wedding Day is Here!</h4></div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }, 1000);
+        
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
@@ -164,18 +220,34 @@
         function toUtcFormat(date) {
             return date.toISOString().replace(/-|:|\.\d{3}/g, '');
         }
+        
+        function toOutlookFormat(date) {
+            const pad = (num) => (num < 10 ? '0' + num : num);
+            return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` +
+                   `T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+        }
 
         function setupLinks() {
-            document.getElementById('venue-text').textContent = eventDetails.location;
             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
 
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
-            document.getElementById('google-calendar-link').href = googleUrl;
+            document.getElementById('google-link').href = googleUrl;
             
-            // === เปลี่ยนมาใช้ลิงก์สากลสำหรับปฏิทินอื่นๆ ===
-            const universalCalendarLink = "https://www.google.com/calendar/event?action=TEMPLATE&tmeid=MzhkMzdkYjY2aGRjb3Fob2k4aXUxanBocWggZHJ1Z3B1cmNoYXNpbmdAbQ&tmsrc=drugpurchasing%40gmail.com";
-            document.getElementById('ical-link').href = universalCalendarLink;
+            const icalContent = [
+                'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+                `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`,
+                `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`,
+                'END:VEVENT', 'END:VCALENDAR'
+            ].join('\n');
+            document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
+            document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
+
+            const outlook365Url = `https://outlook.office.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('outlook365-link').href = outlook365Url;
+
+            const outlookLiveUrl = `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('outlooklive-link').href = outlookLiveUrl;
         }
 
         function updateRequiredFields() {
@@ -243,6 +315,7 @@
                     submitButton.textContent = 'ส่งคำตอบ';
                 });
         });
+        
         setupLinks();
         updateRequiredFields();
     });
