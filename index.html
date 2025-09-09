@@ -56,6 +56,16 @@
         .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; }
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         .hidden { display: none; }
+
+        /* === CSS สำหรับปรับการแสดงผลบนมือถือ === */
+        @media (max-width: 576px) {
+            .card-container {
+                padding: 25px 20px; /* ลดระยะขอบของการ์ด */
+            }
+            .header h1 {
+                font-size: 2.1em; /* ลดขนาดฟอนต์หัวข้อหลัก */
+            }
+        }
     </style>
 </head>
 <body class="d-flex align-items-center py-4">
@@ -67,7 +77,7 @@
             <p class="date">08 february 2026</p>
         </div>
         <div class="my-4">
-            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Minimalist Bride and Groom" class="wedding-image">
+            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="wedding-image">
         </div>
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
@@ -122,8 +132,8 @@
                     <a id="google-calendar-link" href="#" target="_blank" class="btn btn-action text-white flex-fill">
                         <i class="bi bi-google"></i> Google Calendar
                     </a>
-                    <a id="ical-link" href="#" class="btn btn-action text-white flex-fill">
-                        <i class="bi bi-calendar-plus-fill"></i> Outlook / iCal
+                    <a id="ical-link" href="#" target="_blank" class="btn btn-action text-white flex-fill">
+                        <i class="bi bi-calendar-plus-fill"></i> Apple / Outlook / อื่นๆ
                     </a>
                 </div>
             </div>
@@ -157,21 +167,15 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-            
-            // ใช้ URL ที่ถูกต้องสำหรับ Google Maps Search
             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
 
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('google-calendar-link').href = googleUrl;
-            const icalContent = [
-                'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
-                `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`,
-                `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`,
-                'END:VEVENT', 'END:VCALENDAR'
-            ].join('\n');
-            document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
-            document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
+            
+            // === เปลี่ยนมาใช้ลิงก์สากลสำหรับปฏิทินอื่นๆ ===
+            const universalCalendarLink = "https://www.google.com/calendar/event?action=TEMPLATE&tmeid=MzhkMzdkYjY2aGRjb3Fob2k4aXUxanBocWggZHJ1Z3B1cmNoYXNpbmdAbQ&tmsrc=drugpurchasing%40gmail.com";
+            document.getElementById('ical-link').href = universalCalendarLink;
         }
 
         function updateRequiredFields() {
