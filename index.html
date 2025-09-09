@@ -21,8 +21,22 @@
         }
         body {
             font-family: var(--font-family);
-            background-color: var(--light-bg);
             color: var(--secondary-color);
+            
+            /* === เพิ่มโค้ด Background Image ตรงนี้ === */
+            background-image: url('https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9691.PNG?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* ทำให้ภาพพื้นหลังนิ่ง */
+            background-color: #f0f4f8; /* สีรองรับถ้าภาพโหลดไม่ได้ */
+            /* ======================================= */
+
+            display: flex; /* เพื่อให้ card-container อยู่ตรงกลางแนวตั้ง */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* ความสูงเต็มจอ */
+            margin: 0;
+            padding: 20px; /* เพิ่ม padding เผื่อขอบ */
         }
         .card-container {
             background-color: #ffffff;
@@ -31,7 +45,7 @@
             box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
             width: 100%;
             max-width: 550px;
-            margin: 40px auto;
+            /* margin: 40px auto; ถูกแทนด้วย flexbox ใน body */
             border: 1px solid #dbe2ef;
         }
         .header {
@@ -62,7 +76,7 @@
             <p class="date">08 february 2026</p>
         </div>
         <div class="my-4">
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fhand-drawn-watercolor-minimal-style-cartoon-lover-couple-wedding-ceremony_141351501.htm&psig=AOvVaw2YIa7nE8wnbXkbsC3dOwnK&ust=1757520450954000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKjAjo-IzI8DFQAAAAAdAAAAABAE" alt="Minimalist Bride and Groom" class="wedding-image">
+            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Minimalist Bride and Groom" class="wedding-image">
         </div>
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
@@ -130,18 +144,14 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- ✨ กรุณาแก้ไขข้อมูลสำหรับปฏิทินและแผนที่ตรงนี้ ✨ ---
         const eventDetails = {
             title: "งานแต่งงาน Bride & Groom",
             location: "ชายหาด รีสอร์ท, 23 หมู่ 2 ต.บางน้ำจืด, อ.หลังสวน, ชุมพร 86150",
             description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
-            // ตั้งค่าเวลาเป็นเวลาท้องถิ่น (กรุงเทพ, GMT+7) | รูปแบบ: 'YYYY-MM-DDTHH:mm:ss+07:00'
             start: new Date('2026-02-08T18:00:00+07:00'),
             end: new Date('2026-02-08T22:00:00+07:00')
         };
-        // --- สิ้นสุดส่วนที่ต้องแก้ไข ---
-
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
+        const scriptURL = 'ใส่_URL_GOOGLE_APPS_SCRIPT_ของคุณที่นี่';
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
