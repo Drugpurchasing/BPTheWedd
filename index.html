@@ -21,6 +21,13 @@
             margin: 15px auto 5px;
             display: block;
         }
+        .MPB-image {
+            max-width: 100%; /* ทำให้รูปภาพไม่เกินความกว้างของ card */
+            height: auto;
+            width: 200px; /* กำหนดความกว้างที่แน่นอน เพื่อควบคุมขนาด */
+            margin: 10px auto 30px;
+            display: block;
+        }
         :root {
             --primary-color: #005c99;
             --secondary-color: #003366;
@@ -54,7 +61,7 @@
         .header h1 { font-size: 2.5em; color: var(--primary-color); margin: 0; }
         .header h2 { font-size: 1.5em; margin: 5px 0; font-weight: 400; }
         .names { font-size: 1.8em; font-weight: 600; color: var(--secondary-color); margin: 15px 0 5px; }
-        .date { font-size: 1.1em; background-color: #e6f0ff; color: var(--primary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; }
+        .date { font-size: 1.5em; background-color: #e6f0ff; color: var(--primary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; }
         .wedding-image { max-width: 180px; height: auto; }
         .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
         .info-section h3 { color: var(--primary-color); }
@@ -107,10 +114,11 @@
 <body>
     <div class="card-container text-center">
         <div class="header mb-4">
-            <h1>Save the Date</h1>
-            <h2>We're Getting Married!</h2>
-            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image"> 
-            <p class="date">08 february 2026</p>
+            <h1>ขอเชิญร่วมงานมงคลสมรส</h1>
+            
+            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image">
+            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Dose.png?raw=true" alt="Maprang & Bung" class="MPB-image">  
+            <p class="date">8 กุมภาพันธ์ 2569</p>
         </div>
         <div class="my-4">
             <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="wedding-image">
@@ -151,7 +159,7 @@
         </div>
 
         <div class="info-section my-4 p-3">
-            <h3 class="text-center">สถานที่</h3>
+            <h3 class="text-center">สถานที่จัดงาน</h3>
             <p id="venue-text" class="mb-3 fs-5"></p>
             <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
                 <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
