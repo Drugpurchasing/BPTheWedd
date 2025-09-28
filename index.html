@@ -65,18 +65,29 @@
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         .hidden { display: none; }
 
-        /* Custom style for icons in schedule */
+        /* Custom style for schedule items with custom images */
         .schedule-item {
             display: flex;
             align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
             margin-bottom: 8px; /* เพิ่มระยะห่างด้านล่าง */
         }
-        .schedule-item i {
-            font-size: 1.2em; /* ขนาดไอคอน */
-            color: var(--primary-color); /* สีไอคอน */
-            margin-right: 10px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
-            min-width: 25px; /* กำหนดความกว้างขั้นต่ำเผื่อไอคอนขนาดต่างกัน */
-            text-align: center;
+        .schedule-icon-container {
+            width: 30px; /* กำหนดความกว้างของกรอบรูป */
+            height: 30px; /* กำหนดความสูงของกรอบรูป */
+            border-radius: 50%; /* ทำให้เป็นวงกลม */
+            overflow: hidden; /* ซ่อนส่วนเกินของรูป */
+            margin-right: 10px; /* ระยะห่างระหว่างรูปกับข้อความ */
+            flex-shrink: 0; /* ป้องกันรูปถูกย่อ */
+            display: flex; /* เพื่อจัดรูปภาพภายในกรอบ */
+            justify-content: center; /* จัดกึ่งกลางรูปภาพในแนวนอน */
+            align-items: center; /* จัดกึ่งกลางรูปภาพในแนวตั้ง */
+            background-color: #dbe2ef; /* สีพื้นหลังกรอบ (ถ้าไม่รูปรอโหลด) */
+            border: 1px solid var(--primary-color); /* กรอบรอบรูป */
+        }
+        .schedule-icon-container img {
+            width: 100%; /* ทำให้รูปภาพเต็มความกว้างของกรอบ */
+            height: 100%; /* ทำให้รูปภาพเต็มความสูงของกรอบ */
+            object-fit: cover; /* ครอบคลุมพื้นที่โดยไม่บิดเบือนอัตราส่วน */
         }
 
         @media (max-width: 576px) {
@@ -107,13 +118,22 @@
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
             <div class="schedule-item">
-                <i class="bi bi-person-fill"></i> <p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p>
+                <div class="schedule-icon-container">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk?raw=true" alt="Monk Ceremony">
+                </div>
+                <p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p>
             </div>
             <div class="schedule-item">
-                <i class="bi bi-heart-fill"></i> <p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p>
+                <div class="schedule-icon-container">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark?raw=true" alt="Khan Mak Procession">
+                </div>
+                <p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p>
             </div>
             <div class="schedule-item">
-                <i class="bi bi-cup-hot-fill"></i> <p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p>
+                <div class="schedule-icon-container">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat?raw=true" alt="Meal">
+                </div>
+                <p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p>
             </div>
         </div>
 
@@ -236,7 +256,6 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-            // แก้ไขตรงนี้: การ encodeURIComponent ควรใช้กับค่า location โดยตรง
             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
             
