@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
+    <title>MP&B Wedding Invitation</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +65,20 @@
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         .hidden { display: none; }
 
+        /* Custom style for icons in schedule */
+        .schedule-item {
+            display: flex;
+            align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+            margin-bottom: 8px; /* เพิ่มระยะห่างด้านล่าง */
+        }
+        .schedule-item i {
+            font-size: 1.2em; /* ขนาดไอคอน */
+            color: var(--primary-color); /* สีไอคอน */
+            margin-right: 10px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+            min-width: 25px; /* กำหนดความกว้างขั้นต่ำเผื่อไอคอนขนาดต่างกัน */
+            text-align: center;
+        }
+
         @media (max-width: 576px) {
             .card-container { padding: 25px 20px; }
             .header h1 { font-size: 2.1em; }
@@ -76,7 +90,7 @@
         <div class="header mb-4">
             <h1>Save the Date</h1>
             <h2>We're Getting Married!</h2>
-            <p class="names">Bride & Groom</p>
+            <p class="names">Maprang & Bung</p>
             <p class="date">08 february 2026</p>
         </div>
         <div class="my-4">
@@ -92,7 +106,15 @@
 
         <div class="info-section my-4 p-3 text-start">
             <h3 class="text-center">กำหนดการ</h3>
-            <p><strong>18:00 น.</strong> - งานเลี้ยงฉลองมงคลสมรส</p>
+            <div class="schedule-item">
+                <i class="bi bi-person-fill"></i> <p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p>
+            </div>
+            <div class="schedule-item">
+                <i class="bi bi-heart-fill"></i> <p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p>
+            </div>
+            <div class="schedule-item">
+                <i class="bi bi-cup-hot-fill"></i> <p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p>
+            </div>
         </div>
 
         <div class="info-section my-4 p-3 text-center">
@@ -119,7 +141,8 @@
                     <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
                 </div>
             </div>
-            <div id="attending-fields" class="hidden text-start">
+
+            <div id="guest-details" class="hidden text-start">
                 <div class="mb-3">
                     <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
                     <input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย">
@@ -128,17 +151,22 @@
                     <label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label>
                     <input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ">
                 </div>
+            </div>
+
+            <div id="attending-fields" class="hidden text-start">
                 <div class="mb-3">
                     <label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label>
                     <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
                 </div>
             </div>
+
             <div id="not-attending-fields" class="hidden text-start">
                 <div class="mb-3">
                     <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
                     <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
                 </div>
             </div>
+
             <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
         </form>
 
@@ -163,11 +191,11 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const eventDetails = {
-            title: "งานแต่งงาน Bride & Groom",
+            title: "งานแต่งงาน Maprang & Bung",
             location: "ชายหาด รีสอร์ท, 23 หมู่ 2 ต.บางน้ำจืด, อ.หลังสวน, ชุมพร 86150",
             description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
-            start: new Date('2026-02-08T18:00:00+07:00'),
-            end: new Date('2026-02-08T22:00:00+07:00')
+            start: new Date('2026-02-08T06:00:00+07:00'), // แก้ไขเวลาเริ่มต้นเป็น 06:00 น.
+            end: new Date('2026-02-08T12:00:00+07:00')   // แก้ไขเวลาสิ้นสุดเป็น 12:00 น.
         };
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
 
@@ -175,18 +203,15 @@
         const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
-
             if (distance < 0) {
                 clearInterval(countdownInterval);
                 document.getElementById('countdown').innerHTML = "<div class='time-box' style='width:100%;'><h4>The Wedding Day is Here!</h4></div>";
                 return;
             }
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             document.getElementById('days').innerText = days;
             document.getElementById('hours').innerText = hours;
             document.getElementById('minutes').innerText = minutes;
@@ -196,15 +221,13 @@
         const form = document.getElementById('weddingForm');
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
+        const guestDetails = document.getElementById('guest-details');
         const attendingFields = document.getElementById('attending-fields');
         const notAttendingFields = document.getElementById('not-attending-fields');
         const submitButton = document.getElementById('submit-button');
         const confirmationSection = document.getElementById('confirmation-section');
 
-        function toUtcFormat(date) {
-            return date.toISOString().replace(/-|:|\.\d{3}/g, '');
-        }
-        
+        function toUtcFormat(date) { return date.toISOString().replace(/-|:|\.\d{3}/g, ''); }
         function toOutlookFormat(date) {
             const pad = (num) => (num < 10 ? '0' + num : num);
             return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` +
@@ -212,39 +235,31 @@
         }
 
         function setupLinks() {
-            // Setup Map Link
             document.getElementById('venue-text').textContent = eventDetails.location;
+            // แก้ไขตรงนี้: การ encodeURIComponent ควรใช้กับค่า location โดยตรง
             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
-
-            // Setup Calendar Links
+            
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('google-link').href = googleUrl;
-            
-            const icalContent = [
-                'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
-                `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`,
-                `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`,
-                'END:VEVENT', 'END:VCALENDAR'
-            ].join('\n');
+            const icalContent = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT', `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`, `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`, 'END:VEVENT', 'END:VCALENDAR'].join('\n');
             document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
             document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
-
             const outlook365Url = `https://outlook.office.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('outlook365-link').href = outlook365Url;
-
             const outlookLiveUrl = `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('outlooklive-link').href = outlookLiveUrl;
         }
 
         function updateRequiredFields() {
-            const isAttending = attendingRadio.checked;
-            document.getElementById('FullName').required = isAttending;
-            document.getElementById('Nickname').required = isAttending;
+            const anyRadioChecked = attendingRadio.checked || notAttendingRadio.checked;
+            document.getElementById('FullName').required = anyRadioChecked;
+            document.getElementById('Nickname').required = anyRadioChecked;
         }
 
         attendingRadio.addEventListener('change', () => {
             if (attendingRadio.checked) {
+                guestDetails.classList.remove('hidden');
                 attendingFields.classList.remove('hidden');
                 notAttendingFields.classList.add('hidden');
                 updateRequiredFields();
@@ -253,6 +268,7 @@
 
         notAttendingRadio.addEventListener('change', () => {
             if (notAttendingRadio.checked) {
+                guestDetails.classList.remove('hidden');
                 notAttendingFields.classList.remove('hidden');
                 attendingFields.classList.add('hidden');
                 updateRequiredFields();
@@ -263,18 +279,20 @@
             e.preventDefault();
             submitButton.disabled = true;
             submitButton.textContent = 'กำลังส่ง...';
-            const isAttending = attendingRadio.checked;
+            
             const formData = new FormData(form);
             if (notAttendingRadio.checked) {
-                formData.delete('FullName'); formData.delete('Nickname'); formData.delete('Guests');
+                formData.delete('Guests');
             }
             if (attendingRadio.checked) {
                 formData.delete('Wishes');
             }
+            
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok.');
-                    if (isAttending) {
+                    
+                    if (attendingRadio.checked) {
                         form.classList.add('hidden');
                         confirmationSection.classList.remove('hidden');
                     } else {
@@ -285,6 +303,7 @@
                             confirmButtonText: 'ตกลง'
                         });
                         form.reset();
+                        guestDetails.classList.add('hidden');
                         notAttendingFields.classList.add('hidden');
                     }
                 })
