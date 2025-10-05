@@ -226,17 +226,24 @@
             gap: 10px; /* Smaller gap for mobile */
             margin-top: 30px;
         }
+        
+        /* --- !!! KEY CSS FOR SMOOTH ANIMATION !!! --- */
         .gallery-grid img {
-            width: 100%; height: 100%;
+            width: 100%; 
+            height: 100%;
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, opacity 0.5s ease-in-out;
-            opacity: 1;
+            /* This line makes the fade and hover effects smooth */
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease; 
         }
+
         .gallery-grid img.fade-out {
-            opacity: 0;
+            /* This class is added by JavaScript to trigger the fade-out effect */
+            opacity: 0; 
         }
+        /* --- END OF KEY CSS --- */
+
         .gallery-grid img:hover { transform: scale(1.05); }
         .gallery-grid .portrait { grid-row: span 2; }
         
@@ -361,30 +368,30 @@
                     
                      <div class="my-4 text-start">
                           <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">
-                               กำหนดการ<br><span style="font-size: 0.7em; font-weight: 400;">(Schedule)</span>
+                                กำหนดการ<br><span style="font-size: 0.7em; font-weight: 400;">(Schedule)</span>
                           </h3>
                           <div class="timeline">
-                               <div class="timeline-item">
-                                   <div class="timeline-content">
-                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
-                                       <h3>06:06 น.</h3>
-                                       <p>พิธีสงฆ์</p>
-                                   </div>
-                               </div>
-                               <div class="timeline-item">
-                                   <div class="timeline-content">
-                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
-                                       <h3>07:39 น.</h3>
-                                       <p>พิธีแห่ขันหมาก</p>
-                                   </div>
-                               </div>
-                               <div class="timeline-item">
-                                   <div class="timeline-content">
-                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
-                                       <h3>11:00 น.</h3>
-                                       <p>รับประทานอาหาร</p>
-                                   </div>
-                               </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
+                                        <h3>06:06 น.</h3>
+                                        <p>พิธีสงฆ์</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
+                                        <h3>07:39 น.</h3>
+                                        <p>พิธีแห่ขันหมาก</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
+                                        <h3>11:00 น.</h3>
+                                        <p>รับประทานอาหาร</p>
+                                    </div>
+                                </div>
                           </div>
                      </div>
 
@@ -395,11 +402,11 @@
 
                      <div class="info-section my-4 p-3" data-aos="fade-up" data-aos-delay="300">
                           <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">
-                               สถานที่จัดงาน<br><span style="font-size: 0.7em; font-weight: 400;">(Venue)</span>
+                                สถานที่จัดงาน<br><span style="font-size: 0.7em; font-weight: 400;">(Venue)</span>
                           </h3>
                           <p id="venue-text" class="mb-3 fs-5"></p>
                           <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
-                               <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+                                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
                           </a>
                      </div>
                  </div>
@@ -552,7 +559,7 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-             const gmapsUrl = `http://google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
+             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
             
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
@@ -654,7 +661,6 @@
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery14.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery15.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery16.jpg?raw=true', orientation: 'portrait' },
-
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery17.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery18.jpg?raw=true', orientation: 'landscape' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery19.jpg?raw=true', orientation: 'portrait' },
@@ -663,7 +669,7 @@
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery22.jpg?raw=true', orientation: 'landscape' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery23.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery24.jpg?raw=true', orientation: 'portrait' },
-            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery25.jpg?raw=true', orientation: 'portrait' },
+            
         ];
 
         const galleryImages = document.querySelectorAll('.gallery-grid img');
@@ -673,8 +679,10 @@
             galleryImages.forEach((imgElement, i) => {
                 const imageData = imageDataSource[(currentImageIndex + i) % imageDataSource.length];
                 
+                // Add fade-out class to trigger animation
                 imgElement.classList.add('fade-out');
 
+                // Wait for the fade-out animation to complete before changing the image
                 setTimeout(() => {
                     imgElement.src = imageData.src;
                     
@@ -684,14 +692,15 @@
                         imgElement.classList.remove('portrait');
                     }
                     
+                    // Remove fade-out class to trigger fade-in animation
                     imgElement.classList.remove('fade-out');
-                }, 500); // This delay should match the CSS transition duration
+                }, 500); // This delay (500ms) MUST match the CSS transition duration (0.5s)
             });
 
             currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
         }
 
-        setInterval(updateGallery, 5000); // MODIFIED: Changed from 15000 to 10000
+        setInterval(updateGallery, 5000); // Change images every 5 seconds
 
         setupLinks();
         updateRequiredFields();
