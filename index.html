@@ -43,7 +43,7 @@
         }
 
         .section-title {
-            font-size: 2em; /* Smaller base font size for mobile */
+            font-size: 1.8em; /* Adjusted for mobile */
             color: var(--primary-color);
             margin-bottom: 30px;
             font-weight: 600;
@@ -51,7 +51,7 @@
         
         .card-container {
             background-color: #ffffff;
-            padding: 25px 20px; /* Mobile padding */
+            padding: 20px 15px; /* Adjusted for mobile */
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
             width: 100%;
@@ -62,10 +62,9 @@
         /* --- Hero Section (Top Banner) --- */
         .hero-section {
             background-image: url('https://github.com/Drugpurchasing/BPTheWedd/blob/main/head.jpg?raw=true');
-            background-size: contain; /* MODIFIED: Changed from 'cover' to 'contain' */
-            background-repeat: no-repeat; /* ADDED: To prevent tiling */
-            background-position: center;
-            height: 100vh;
+            background-size: cover; /* Changed back to cover */
+            background-position: left center; /* ADDED: Shifted to the left */
+            min-height: 100vh; /* Ensures it takes full viewport height */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -77,18 +76,18 @@
             background-color: #000; /* Optional: adds a black background for letterboxing */
         }
         .hero-section h1 {
-            font-size: 3em; /* Mobile first font size */
+            font-size: 2.8em; /* Adjusted for mobile */
             font-weight: 600;
             margin: 0;
         }
         .hero-section h2 {
-            font-size: 1.5em; /* Mobile first font size */
+            font-size: 1.4em; /* Adjusted for mobile */
             font-weight: 400;
             margin-bottom: 5px;
             margin-top: 10px;
         }
         .hero-section .date {
-            font-size: 1.5em; /* Adjusted for mobile */
+            font-size: 1.4em; /* Adjusted for mobile */
             background-color: rgba(0, 92, 153, 0.8);
             color: white;
             padding: 10px 20px;
@@ -212,7 +211,8 @@
             border: 2px solid var(--primary-color);
         }
         .timeline-content h3 {
-            font-size: 1.2em; margin-bottom: 5px; color: var(--primary-color);
+            font-size: 1.1em; /* Adjusted for mobile */
+            margin-bottom: 5px; color: var(--primary-color);
         }
         .timeline-content p {
             margin-bottom: 0;
@@ -242,12 +242,16 @@
         
         /* --- Form Styles --- */
         .radio-buttons input[type="radio"] { display: none; }
-        .radio-label { padding: 10px 15px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; font-size: 0.9em; }
+        .radio-label { padding: 10px 15px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; font-size: 0.85em; /* Adjusted for mobile */ }
         input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
         
         .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; padding: 10px 20px; font-weight: 600;}
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         .hidden { display: none; }
+        #weddingForm h3 {
+            font-size: 2em; /* Adjusted for mobile */
+            color: var(--primary-color);
+        }
 
         /* --- Tablet & Desktop Styles --- */
         @media (min-width: 768px) {
@@ -298,6 +302,9 @@
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 grid-auto-rows: 250px;
                 gap: 15px;
+            }
+            #weddingForm h3 {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -403,7 +410,7 @@
         <div class="container">
             <div class="card-container" data-aos="fade-up">
                 <form id="weddingForm">
-                    <h3 class="mt-4" style="font-size: 2.2rem; color: var(--primary-color);">RSVP</h3>
+                    <h3 class="mt-4" style="font-size: 2em; color: var(--primary-color);">RSVP</h3>
                     <p class="mb-4">Will you be joining us?</p>
                     <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
                     <div class="mb-3">
@@ -545,7 +552,7 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
+             const gmapsUrl = `http://google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
             
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
@@ -674,7 +681,7 @@
             currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
         }
 
-        setInterval(updateGallery, 15000); // MODIFIED: Changed from 30000 to 15000
+        setInterval(updateGallery, 10000); // MODIFIED: Changed from 15000 to 10000
 
         setupLinks();
         updateRequiredFields();
