@@ -62,7 +62,8 @@
         /* --- Hero Section (Top Banner) --- */
         .hero-section {
             background-image: url('https://github.com/Drugpurchasing/BPTheWedd/blob/main/head.jpg?raw=true');
-            background-size: cover;
+            background-size: contain; /* MODIFIED: Changed from 'cover' to 'contain' */
+            background-repeat: no-repeat; /* ADDED: To prevent tiling */
             background-position: center;
             height: 100vh;
             display: flex;
@@ -73,6 +74,7 @@
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             padding-top: 10vh;
             box-sizing: border-box;
+            background-color: #000; /* Optional: adds a black background for letterboxing */
         }
         .hero-section h1 {
             font-size: 3em; /* Mobile first font size */
@@ -351,47 +353,47 @@
                  <div class="card-container text-center" data-aos="fade-up">
                     
                      <div class="my-4 text-start">
-                         <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">
-                             กำหนดการ<br><span style="font-size: 0.7em; font-weight: 400;">(Schedule)</span>
-                         </h3>
-                         <div class="timeline">
-                             <div class="timeline-item">
-                                 <div class="timeline-content">
-                                     <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
-                                     <h3>06:06 น.</h3>
-                                     <p>พิธีสงฆ์</p>
-                                 </div>
-                             </div>
-                             <div class="timeline-item">
-                                 <div class="timeline-content">
-                                     <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
-                                     <h3>07:39 น.</h3>
-                                     <p>พิธีแห่ขันหมาก</p>
-                                 </div>
-                             </div>
-                             <div class="timeline-item">
-                                 <div class="timeline-content">
-                                     <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
-                                     <h3>11:00 น.</h3>
-                                     <p>รับประทานอาหาร</p>
-                                 </div>
-                             </div>
-                         </div>
+                          <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">
+                               กำหนดการ<br><span style="font-size: 0.7em; font-weight: 400;">(Schedule)</span>
+                          </h3>
+                          <div class="timeline">
+                               <div class="timeline-item">
+                                   <div class="timeline-content">
+                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
+                                       <h3>06:06 น.</h3>
+                                       <p>พิธีสงฆ์</p>
+                                   </div>
+                               </div>
+                               <div class="timeline-item">
+                                   <div class="timeline-content">
+                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
+                                       <h3>07:39 น.</h3>
+                                       <p>พิธีแห่ขันหมาก</p>
+                                   </div>
+                               </div>
+                               <div class="timeline-item">
+                                   <div class="timeline-content">
+                                       <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
+                                       <h3>11:00 น.</h3>
+                                       <p>รับประทานอาหาร</p>
+                                   </div>
+                               </div>
+                          </div>
                      </div>
 
                      <div class="info-section my-4 p-3 text-center" data-aos="fade-up" data-aos-delay="200">
-                         <h3 class="fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">ธีมการแต่งกาย (Dress Code)</h3>
-                         <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
+                          <h3 class="fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">ธีมการแต่งกาย (Dress Code)</h3>
+                          <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
                      </div>
 
                      <div class="info-section my-4 p-3" data-aos="fade-up" data-aos-delay="300">
-                         <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">
-                             สถานที่จัดงาน<br><span style="font-size: 0.7em; font-weight: 400;">(Venue)</span>
-                         </h3>
-                         <p id="venue-text" class="mb-3 fs-5"></p>
-                         <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
-                             <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
-                         </a>
+                          <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">
+                               สถานที่จัดงาน<br><span style="font-size: 0.7em; font-weight: 400;">(Venue)</span>
+                          </h3>
+                          <p id="venue-text" class="mb-3 fs-5"></p>
+                          <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                               <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+                          </a>
                      </div>
                  </div>
         </div>
@@ -672,7 +674,7 @@
             currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
         }
 
-        setInterval(updateGallery, 5000);
+        setInterval(updateGallery, 15000); // MODIFIED: Changed from 30000 to 15000
 
         setupLinks();
         updateRequiredFields();
