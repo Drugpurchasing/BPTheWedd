@@ -30,11 +30,11 @@
             background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* ป้องกัน scrollbar แนวนอนที่เกิดจาก Animation */
+            overflow-x: hidden;
         }
         
         html {
-            scroll-behavior: smooth; /* ทำให้การเลื่อนหน้าเว็บนุ่มนวล */
+            scroll-behavior: smooth;
         }
 
         .section {
@@ -68,10 +68,12 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             color: white;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            padding-top: 10vh;
+            box-sizing: border-box;
         }
         .hero-section h1 {
             font-size: 4.5em;
@@ -81,6 +83,8 @@
         .hero-section h2 {
             font-size: 2em;
             font-weight: 400;
+            margin-bottom: 5px;
+            margin-top: 10px;
         }
         .hero-section .date {
             font-size: 1.8em;
@@ -88,25 +92,57 @@
             color: white;
             padding: 10px 25px;
             border-radius: 30px;
-            margin-top: 20px;
+            margin-top: 25px;
             display: inline-block;
+            min-height: 65px;
         }
         
         /* --- Image Styles --- */
         .names-image {
-            max-width: 100%;
-            height: auto;
-            width: 350px;
-            margin-top: 15px;
-        }
-        .MPB-image {
-            max-width: 100%;
-            height: auto;
-            width: 200px;
-            margin: 10px auto 30px;
-            display: block;
+            max-width: 100%; height: auto; width: 280px;
+            margin-top: 10px; margin-bottom: 5px;
         }
         
+        /* --- Bride & Groom Section --- */
+        .couple-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .couple-image {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+            border: 4px solid white;
+        }
+        .person-details {
+            text-align: center;
+        }
+        .person-details .role {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .person-details .name {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+        .person-details .nickname {
+            font-size: 1.1em;
+            color: #555;
+        }
+        .groom { text-align: left; }
+        .bride { text-align: right; }
+        @media (max-width: 768px) {
+            .bride, .groom { text-align: center; width: 100%;}
+            .bride { margin-bottom: 20px; }
+            .couple-section { flex-direction: column-reverse; }
+        }
+
         /* --- Countdown Timer --- */
         #countdown { display: flex; justify-content: center; gap: 15px; text-align: center;}
         .time-box { background-color: #e6f0ff; padding: 10px; border-radius: 8px; min-width: 80px; }
@@ -114,54 +150,82 @@
         .time-box .number { font-size: 2.2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
         .time-box .label { font-size: 0.9em; color: var(--secondary-color); }
         
-        /* --- Schedule Section --- */
-        .info-section { 
-            background-color: #f8f9fa; 
-            border: 1px solid #dee2e6; 
-            border-radius: 8px; 
-            padding: 25px;
+        /* --- Timeline Section --- */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 0;
         }
-        .schedule-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 1.1em;
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50px;
+            margin-left: -1.5px;
         }
-        .schedule-icon-container {
-            width: 40px; height: 40px;
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            text-align: left;
+            padding-left: 100px;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px; height: 25px;
+            right: auto; left: 38px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 22px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #dbe2ef;
-            border: 1.5px solid var(--primary-color);
+            z-index: 1;
         }
-        .schedule-icon-container img {
-            width: 100%; height: 100%;
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-icon {
+            position: absolute;
+            left: -28px; top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            border-radius: 50%;
             object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+        .timeline-content h3 {
+            font-size: 1.3em; margin-bottom: 5px; color: var(--primary-color);
+        }
+        .timeline-content p {
+            margin-bottom: 0;
         }
 
         /* --- Gallery Section --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 250px;
             gap: 15px;
             margin-top: 30px;
         }
         .gallery-grid img {
-            width: 100%;
-            height: 250px;
+            width: 100%; height: 100%;
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-        }
+        .gallery-grid img:hover { transform: scale(1.05); }
+        .gallery-grid .portrait { grid-row: span 2; }
         
         /* --- Form Styles --- */
         .radio-buttons input[type="radio"] { display: none; }
@@ -177,15 +241,20 @@
             .hero-section h2 { font-size: 1.5em; }
             .section-title { font-size: 2em; }
             .card-container { padding: 25px 20px; }
+            .gallery-grid { grid-auto-rows: 200px; }
+            .timeline::after { left: 35px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 15px; }
+            .timeline-item::after { left: 23px; }
         }
     </style>
 </head>
 <body>
 
     <div class="hero-section">
-        <h2 data-aos="fade-down">We're Getting Married</h2>
+        <h1 data-aos="fade-down">Save the Date</h1>
+        <h2 data-aos="fade-down" data-aos-delay="100">the wedding of</h2>
         <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image" data-aos="fade-up" data-aos-delay="200">
-        <p class="date" data-aos="fade-up" data-aos-delay="400">8 กุมภาพันธ์ 2569</p>
+        <p id="typing-date" class="date" data-aos="fade-up" data-aos-delay="400"></p>
     </div>
 
     <div class="section">
@@ -201,22 +270,51 @@
     </div>
     
     <div class="section" style="background-color: var(--light-bg);">
+        <div class="container" data-aos="fade-up">
+            <div class="couple-section">
+                <div class="person-details bride">
+                    <p class="role">BRIDE</p>
+                    <p class="name">ภญ. อาภาภัทร ศิริวาริน</p>
+                    <p class="nickname">(มะปราง)</p>
+                </div>
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="couple-image">
+                <div class="person-details groom">
+                    <p class="role">GROOM</p>
+                    <p class="name">ภก. ชานนท์ จารุพักตรานนท์</p>
+                    <p class="nickname">(บุ้ง)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
         <div class="container">
-             <div class="card-container text-center" data-aos="fade-right">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Dose.png?raw=true" alt="Maprang & Bung" class="MPB-image"> 
-                <div class="info-section my-4 p-3 text-start" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">กำหนดการ</h3>
-                    <div class="schedule-item">
-                        <div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" alt="Monk Ceremony"></div>
-                        <p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" alt="Khan Mak Procession"></div>
-                        <p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" alt="Meal"></div>
-                        <p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p>
+             <div class="card-container text-center" data-aos="fade-up">
+                
+                <div class="my-4 text-start">
+                    <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">กำหนดการ</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
+                                <h3>06:06 น.</h3>
+                                <p>พิธีสงฆ์</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
+                                <h3>07:39 น.</h3>
+                                <p>พิธีแห่ขันหมาก</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
+                                <h3>11:00 น.</h3>
+                                <p>รับประทานอาหาร</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -236,22 +334,26 @@
         </div>
     </div>
 
-    <div class="section">
+    <div class="section" style="background-color: var(--light-bg);">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
             <div class="gallery-grid">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" class="portrait" data-aos="zoom-in" data-aos-delay="100">
                 <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true" alt="Gallery Image 2" data-aos="zoom-in" data-aos-delay="200">
                 <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true" alt="Gallery Image 3" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true" alt="Gallery Image 4" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true" alt="Gallery Image 5" class="portrait" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true" alt="Gallery Image 6" data-aos="zoom-in" data-aos-delay="600">
             </div>
         </div>
     </div>
 
-    <div class="section" style="background-color: var(--light-bg);">
+    <div class="section">
         <div class="container">
-            <div class="card-container" data-aos="fade-left">
+            <div class="card-container" data-aos="fade-up">
                 <form id="weddingForm">
-                    <h3 class="mt-4" style="font-size: 1.8rem;">Will you be joining us?</h3>
+                    <h3 class="mt-4" style="font-size: 2.2rem; color: var(--primary-color);">RSVP</h3>
+                    <p class="mb-4">Will you be joining us?</p>
                     <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
                     <div class="mb-3">
                         <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
@@ -310,15 +412,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <script>
+      // Initialize AOS
       AOS.init({
-          duration: 1000, // กำหนดระยะเวลาของ Animation (1000ms = 1 วินาที)
-          once: true, // กำหนดให้ Animation แสดงผลแค่ครั้งเดียว
+          duration: 1000,
+          once: true,
+      });
+
+      // Initialize Typing Animation
+      document.addEventListener('DOMContentLoaded', function() {
+        new TypeIt("#typing-date", {
+            strings: "8 กุมภาพันธ์ 2569",
+            speed: 150,
+            waitUntilVisible: true,
+            cursor: false,
+            lifeLike: true,
+        }).go();
       });
     </script>
 
     <script>
-    // โค้ด JavaScript เดิมทั้งหมดของคุณจะอยู่ที่นี่
+    // Main Invitation Logic
     document.addEventListener('DOMContentLoaded', function() {
         const eventDetails = {
             title: "งานแต่งงาน Maprang & Bung",
@@ -406,12 +522,8 @@
             submitButton.textContent = 'กำลังส่ง...';
             
             const formData = new FormData(form);
-            if (notAttendingRadio.checked) {
-                formData.delete('Guests');
-            }
-            if (attendingRadio.checked) {
-                formData.delete('Wishes');
-            }
+            if (notAttendingRadio.checked) { formData.delete('Guests'); }
+            if (attendingRadio.checked) { formData.delete('Wishes'); }
             
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
