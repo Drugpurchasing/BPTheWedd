@@ -231,7 +231,11 @@
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        .gallery-grid img.fade-out {
+            opacity: 0;
         }
         .gallery-grid img:hover { transform: scale(1.05); }
         .gallery-grid .portrait { grid-row: span 2; }
@@ -282,7 +286,7 @@
     <div class="section" style="background-color: var(--light-bg);">
         <div class="container" data-aos="fade-up">
             <div class="invitation-text">
-                <p class="mb-1">Request the honor of your presence to celebrate the marriage of</p>
+                <p class="mb-1"><strong>Request the honor of your presence to celebrate the marriage of</strong></p>
                 <p>มีความยินดีเรียนเชิญท่านเพื่อเป็นเกียรติ <br>เนื่องในพิธีมงคลสมรส ระหว่าง</p>
             </div>
 
@@ -355,23 +359,6 @@
         </div>
     </div>
 
-    <div class="section" style="background-color: var(--light-bg);">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
-            <div class="gallery-grid">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" class="portrait" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true" alt="Gallery Image 2" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true" alt="Gallery Image 3" data-aos="zoom-in" data-aos-delay="300">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true" alt="Gallery Image 4" data-aos="zoom-in" data-aos-delay="400">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true" alt="Gallery Image 5" data-aos="zoom-in" data-aos-delay="500">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true" alt="Gallery Image 6" data-aos="zoom-in" data-aos-delay="600">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true" alt="Gallery Image 7" data-aos="zoom-in" class="portrait" data-aos-delay="700">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery8.jpg?raw=true" alt="Gallery Image 8" data-aos="zoom-in" class="portrait" data-aos-delay="800">
-                
-            </div>
-        </div>
-    </div>
-
     <div class="section">
         <div class="container">
             <div class="card-container" data-aos="fade-up">
@@ -431,6 +418,22 @@
             </div>
         </div>
     </div>
+
+    <div class="section" style="background-color: var(--light-bg);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" class="portrait" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true" alt="Gallery Image 2" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true" alt="Gallery Image 3" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true" alt="Gallery Image 4" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true" alt="Gallery Image 5" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true" alt="Gallery Image 6" data-aos="zoom-in" data-aos-delay="600">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true" alt="Gallery Image 7" class="portrait" data-aos="zoom-in" data-aos-delay="700">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery8.jpg?raw=true" alt="Gallery Image 8" class="portrait" data-aos="zoom-in" data-aos-delay="800">
+            </div>
+        </div>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -485,6 +488,7 @@
         }, 1000);
         
         const form = document.getElementById('weddingForm');
+        // (The rest of the form and link logic remains the same)
         const attendingRadio = document.getElementById('attending');
         const notAttendingRadio = document.getElementById('not-attending');
         const guestDetails = document.getElementById('guest-details');
@@ -582,7 +586,68 @@
                     submitButton.textContent = 'ส่งคำตอบ';
                 });
         });
-        
+
+        // --- NEW DYNAMIC GALLERY SCRIPT WITH ORIENTATION ---
+
+        // Database of images with their source and orientation
+        const imageDataSource = [
+            // Set 1 (8 images)
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery8.jpg?raw=true', orientation: 'portrait' },
+            // Set 2 (add more images for the next loop)
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/head.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true', orientation: 'landscape' }, // Example of reusing an image
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true', orientation: 'portrait' }
+            // Add more sets of 8 images here
+        ];
+
+        const galleryImages = document.querySelectorAll('.gallery-grid img');
+        let currentImageIndex = 0;
+
+        function updateGallery() {
+            galleryImages.forEach((imgElement, i) => {
+                // Get the data for the next image, looping around the data source if needed
+                const imageData = imageDataSource[(currentImageIndex + i) % imageDataSource.length];
+                
+                // Add a fade-out effect for a smooth transition
+                imgElement.classList.add('fade-out');
+
+                // After the fade-out is complete (500ms), update the image and its class
+                setTimeout(() => {
+                    // Set the new image source
+                    imgElement.src = imageData.src;
+                    
+                    // Add or remove the .portrait class based on the image's data
+                    if (imageData.orientation === 'portrait') {
+                        imgElement.classList.add('portrait');
+                    } else {
+                        imgElement.classList.remove('portrait');
+                    }
+                    
+                    // Remove the fade-out class to make the new image visible
+                    imgElement.classList.remove('fade-out');
+                }, 500); // This delay should match the CSS transition duration
+            });
+
+            // Advance the index to the next batch of 8 images for the next cycle
+            currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
+        }
+
+        // Run the update function every 5 seconds (5000 milliseconds)
+        setInterval(updateGallery, 5000);
+        // --- END OF DYNAMIC GALLERY SCRIPT ---
+
         setupLinks();
         updateRequiredFields();
     });
