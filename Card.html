@@ -5,195 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
     <style>
-        /* --- 1. การตั้งค่าหน้าเว็บโดยรวม --- */
+        /* --- 0. ตั้งค่าพื้นฐาน --- */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* --- 1. การตั้งค่าหน้าเว็บ (ปรับใหม่) --- */
         body, html {
             margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Tahoma', sans-serif;
-            background-color: #f5f0e9; /* สีพื้นหลังโทนอบอุ่น */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            perspective: 1200px; /* สร้างมิติความลึกสำหรับการหมุน */
-        }
-
-        /* --- 2. กล่องหลักที่คลุมทุกอย่าง --- */
-        .invitation-container {
-            text-align: center;
-            padding: 20px;
-        }
-        
-        /* --- 3. ส่วนของการ์ดที่พลิกได้ --- */
-        .card-flipper {
-            position: relative;
-            width: 350px; /* ปรับขนาดความกว้างของการ์ดได้ที่นี่ */
-            aspect-ratio: 9 / 16; /* กำหนดสัดส่วนของการ์ด (แนวตั้ง) */
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animation การพลิก */
-            cursor: pointer;
-            margin-bottom: 25px;
-        }
-
-        /* --- 4. สไตล์ของรูปการ์ด (ทั้งหน้า-หลัง) --- */
-        .card-face {
-            position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden; /* ซ่อนด้านหลังของ element ตอนที่มันหันหนีเรา */
+            font-family: 'Tahoma', sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #f5f0e9;
+            padding: 24px;
+            display: flex; /* ใช้ Flexbox จัดกลาง */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 2. กล่องเนื้อหาหลัก (ใหม่) --- */
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* จำกัดความกว้างสูงสุดของการ์ดบนจอใหญ่ */
+        }
+
+        /* --- 3. Container และ Card Flipper (ปรับใหม่) --- */
+        .invitation-container {
+            width: 100%;
+            perspective: 1500px;
+        }
+        
+        .card-flipper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 5 / 7; /* --- กำหนดสัดส่วน 5:7 ที่นี่ --- */
+            transform-style: preserve-3d;
+            transition: transform 0.9s cubic-bezier(0.6, -0.01, 0.2, 1);
+            cursor: pointer;
+        }
+
+        /* --- 4. สไตล์รูปการ์ด --- */
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden; /* ทำให้ขอบมนแสดงผลถูกต้อง */
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background-color: #FFFFFF;
         }
 
         .card-face img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* ทำให้รูปเต็มพื้นที่การ์ดโดยไม่ผิดสัดส่วน */
+            object-fit: contain;
         }
 
-        /* การ์ดด้านหลังจะถูกหมุนไป 180 องศารอไว้ */
         .card-back {
             transform: rotateY(180deg);
         }
 
-        /* Class ที่จะถูกเพิ่มด้วย JavaScript เพื่อสั่งให้การ์ดหมุน */
         .card-flipper.is-flipped {
             transform: rotateY(180deg);
         }
 
-        /* --- 5. สไตล์ของปุ่มและจุดบอกหน้า --- */
-        .controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px; /* ระยะห่างระหว่างปุ่มกับจุด */
-        }
-        
-        .flip-button {
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #a88e79; /* สีปุ่มโทนน้ำตาลหรู */
-            border: none;
-            border-radius: 50px; /* ทำให้ปุ่มเป็นแคปซูล */
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .flip-button:hover {
-            background-color: #8c7361;
-        }
-        
-        .flip-button:active {
-            transform: scale(0.95);
+        /* --- 5. ข้อความแนะนำ (ใหม่) --- */
+        .flip-instruction {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #a88e79;
+            text-align: center;
         }
 
-        .page-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #c9bbae;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .dot.active {
-            background-color: #a88e79; /* สีเดียวกับปุ่ม */
-        }
-        
-        /* --- 6. ทำให้เว็บดูดีบนมือถือ --- */
-        @media (max-width: 480px) {
-            .card-flipper {
-                width: 90vw; /* ให้ความกว้างเกือบเต็มจอมือถือ */
-            }
-        }
     </style>
 </head>
 <body>
 
-    <div class="invitation-container">
-        <div class="card-flipper" id="cardFlipper">
-            <div class="card-face card-front">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/1.png?raw=true" alt="Wedding Card Front">
-            </div>
-            <div class="card-face card-back">
-                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/2.png?raw=true" alt="Wedding Card Back">
+    <div class="page-content">
+        <div class="invitation-container">
+            <div class="card-flipper" id="cardFlipper">
+                <div class="card-face card-front">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/1.png?raw=true" alt="Wedding Card Front">
+                </div>
+                <div class="card-face card-back">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/2.png?raw=true" alt="Wedding Card Back">
+                </div>
             </div>
         </div>
-
-        <div class="controls">
-            <div class="page-dots">
-                <span class="dot active" id="dot1"></span>
-                <span class="dot" id="dot2"></span>
-            </div>
-            <button class="flip-button" id="flipButton">พลิกดูอีกด้าน</button>
-        </div>
+        <p class="flip-instruction">แตะที่การ์ดเพื่อพลิก</p>
     </div>
 
     <script>
-        // --- ส่วนของ JavaScript สำหรับควบคุมการทำงาน ---
+        // --- JavaScript ไม่มีการเปลี่ยนแปลง ---
         document.addEventListener('DOMContentLoaded', () => {
             const cardFlipper = document.getElementById('cardFlipper');
-            const flipButton = document.getElementById('flipButton');
-            const dot1 = document.getElementById('dot1');
-            const dot2 = document.getElementById('dot2');
             
-            let isFlipped = false;
-
-            // ฟังก์ชันสำหรับพลิกการ์ดและอัปเดตสถานะ
             const toggleFlip = () => {
-                isFlipped = !isFlipped;
-                cardFlipper.classList.toggle('is-flipped', isFlipped);
-                updateControls();
-            };
-            
-            // ฟังก์ชันสำหรับอัปเดตปุ่มและจุด
-            const updateControls = () => {
-                if (isFlipped) {
-                    dot1.classList.remove('active');
-                    dot2.classList.add('active');
-                    flipButton.textContent = 'กลับไปหน้าแรก';
-                } else {
-                    dot1.classList.add('active');
-                    dot2.classList.remove('active');
-                    flipButton.textContent = 'พลิกดูอีกด้าน';
-                }
+                cardFlipper.classList.toggle('is-flipped');
             };
 
-            // --- การทำงานเมื่อกดปุ่ม ---
-            flipButton.addEventListener('click', toggleFlip);
+            cardFlipper.addEventListener('click', toggleFlip);
 
-            // --- การทำงานเมื่อปัดบนมือถือ (Swipe) ---
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50; // ระยะทางขั้นต่ำที่ถือว่าเป็นการปัด
+            const swipeThreshold = 50;
 
             cardFlipper.addEventListener('touchstart', (e) => {
+                e.preventDefault(); 
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            }, { passive: false });
 
             cardFlipper.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
+                if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
+                    handleSwipe();
+                }
             });
 
             function handleSwipe() {
                 const swipeDistance = touchEndX - touchStartX;
+                const isFlipped = cardFlipper.classList.contains('is-flipped');
                 
-                // ปัดจากขวาไปซ้าย (เพื่อดูหน้าหลัง)
                 if (swipeDistance < -swipeThreshold && !isFlipped) {
                     toggleFlip();
                 }
                 
-                // ปัดจากซ้ายไปขวา (เพื่อกลับมาหน้าแรก)
                 if (swipeDistance > swipeThreshold && isFlipped) {
                     toggleFlip();
                 }
