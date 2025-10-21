@@ -11,9 +11,15 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <style>
+<<<<<<< HEAD
         /* [--- Global & Variable Setup ---] */
+=======
+        /* --- Original Color Scheme & Fonts --- */
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
         :root {
             --primary-color: #005c99;
             --secondary-color: #003366;
@@ -21,6 +27,7 @@
             --font-family: 'Pridi', serif;
         }
 
+<<<<<<< HEAD
         html, body {
             margin: 0;
             padding: 0;
@@ -128,14 +135,42 @@
             position: relative;
         }
 
+=======
+        /* --- General Body and Layout Styles (Mobile First) --- */
+        body {
+            font-family: var(--font-family);
+            color: var(--secondary-color);
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            padding: 40px 15px; /* Reduced padding for mobile */
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.8em; /* Adjusted for mobile */
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
         .card-container {
             background-color: #ffffff;
-            padding: 30px 40px;
+            padding: 20px 15px; /* Adjusted for mobile */
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
             width: 100%;
-            max-width: 550px;
             border: 1px solid #dbe2ef;
+<<<<<<< HEAD
             max-height: 90vh; /* Prevent content from overflowing viewport */
             overflow-y: auto; /* Allow scrolling within card if content is too long */
         }
@@ -171,11 +206,112 @@
         .wedding-image { max-width: 180px; height: auto; }
 
         #countdown { display: flex; justify-content: center; gap: 15px; text-align: center; }
+=======
+            margin: 20px auto;
+        }
+
+        /* --- Hero Section (Top Banner) --- */
+        .hero-section {
+            background-image: url('https://github.com/Drugpurchasing/BPTheWedd/blob/main/head.jpg?raw=true');
+            background-size: cover; /* Changed back to cover */
+            background-position: 55% center; /* ADDED: Shifted to the left */
+            min-height: 100vh; /* Ensures it takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            padding-top: 10vh;
+            box-sizing: border-box;
+            background-color: #000; /* Optional: adds a black background for letterboxing */
+        }
+        .hero-section h1 {
+            font-size: 2.8em; /* Adjusted for mobile */
+            font-weight: 600;
+            margin: 0;
+        }
+        .hero-section h2 {
+            font-size: 1.4em; /* Adjusted for mobile */
+            font-weight: 400;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+        .hero-section .date {
+            font-size: 1.4em; /* Adjusted for mobile */
+            background-color: rgba(0, 92, 153, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-top: 25px;
+            display: inline-block;
+            min-height: 55px; /* Adjusted */
+        }
+        
+        /* --- Image Styles --- */
+        .names-image {
+            max-width: 100%; height: auto; width: 250px; /* Slightly smaller for mobile */
+            margin-top: 10px; margin-bottom: 5px;
+        }
+        
+        /* --- Bride & Groom Section --- */
+        .invitation-text {
+            font-size: 1.1em; /* Adjusted for mobile */
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .couple-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .couple-image {
+            width: 90%; /* Responsive by default */
+            max-width: 300px; /* Capped for larger mobile screens */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
+            border: 5px solid white;
+            margin-bottom: 20px;
+        }
+        .couple-names {
+            display: flex;
+            flex-direction: column; /* Stacked on mobile by default */
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+        .person-details {
+            text-align: center;
+            width: 100%;
+        }
+        .person-details .role {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .person-details .name {
+            font-size: 1.4em;
+            margin-bottom: 2px;
+        }
+        .person-details .nickname {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* --- Countdown Timer --- */
+        #countdown { display: flex; justify-content: center; gap: 10px; text-align: center; flex-wrap: wrap; }
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
         .time-box { background-color: #e6f0ff; padding: 10px; border-radius: 8px; min-width: 70px; }
         .time-box span { display: block; }
         .time-box .number { font-size: 2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
         .time-box .label { font-size: 0.8em; color: var(--secondary-color); }
         
+<<<<<<< HEAD
         .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
         .info-section h3 { color: var(--primary-color); }
         
@@ -183,10 +319,102 @@
         .schedule-icon-container { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; margin-right: 10px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; background-color: #dbe2ef; border: 1px solid var(--primary-color); }
         .schedule-icon-container img { width: 100%; height: 100%; object-fit: cover; }
 
+=======
+        /* --- Timeline Section --- */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 35px; /* Position for mobile */
+            margin-left: -1.5px;
+        }
+        .timeline-item {
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px 10px 70px; /* Mobile padding */
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px; height: 25px;
+            right: auto; left: 23px; /* Mobile position */
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-content {
+            padding: 15px 20px; /* Mobile padding */
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-icon {
+            position: absolute;
+            left: -28px; top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+        .timeline-content h3 {
+            font-size: 1.1em; /* Adjusted for mobile */
+            margin-bottom: 5px; color: var(--primary-color);
+        }
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-auto-rows: 200px; /* Base row height for mobile */
+            gap: 10px; /* Smaller gap for mobile */
+            margin-top: 30px;
+        }
+        
+        /* --- !!! KEY CSS FOR SMOOTH ANIMATION !!! --- */
+        .gallery-grid img {
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            /* This line makes the fade and hover effects smooth */
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease; 
+        }
+
+        .gallery-grid img.fade-out {
+            /* This class is added by JavaScript to trigger the fade-out effect */
+            opacity: 0; 
+        }
+        /* --- END OF KEY CSS --- */
+
+        .gallery-grid img:hover { transform: scale(1.05); }
+        .gallery-grid .portrait { grid-row: span 2; }
+        
+        /* --- Form Styles --- */
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
         .radio-buttons input[type="radio"] { display: none; }
-        .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+        .radio-label { padding: 10px 15px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; font-size: 0.85em; /* Adjusted for mobile */ }
         input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
         
+<<<<<<< HEAD
         .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; }
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
         
@@ -197,10 +425,75 @@
             .header h1 { font-size: 2.1em; }
             .envelope { width: 280px; height: 180px; }
             .envelope-flap::before { border-left-width: 140px; border-right-width: 140px; border-top-width: 90px; }
+=======
+        .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; padding: 10px 20px; font-weight: 600;}
+        .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
+        .hidden { display: none; }
+        #weddingForm h3 {
+            font-size: 2em; /* Adjusted for mobile */
+            color: var(--primary-color);
+        }
+
+        /* --- Tablet & Desktop Styles --- */
+        @media (min-width: 768px) {
+            .section {
+                padding: 60px 20px;
+            }
+            .section-title {
+                font-size: 2.5em;
+            }
+            .card-container {
+                padding: 30px 40px;
+                max-width: 650px;
+                margin: 40px auto;
+            }
+            .hero-section h1 {
+                font-size: 4.5em;
+            }
+            .hero-section h2 {
+                font-size: 2em;
+            }
+             .hero-section .date {
+                font-size: 1.8em;
+                padding: 10px 25px;
+                min-height: 65px;
+            }
+            .couple-names {
+                flex-direction: row; /* Side-by-side on larger screens */
+                justify-content: space-around;
+                max-width: 600px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+             .person-details {
+                flex: 1;
+                min-width: 250px;
+            }
+            .timeline::after {
+                left: 50px;
+            }
+            .timeline-item {
+                padding-left: 100px;
+                padding-right: 40px;
+            }
+            .timeline-item::after {
+                left: 38px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                grid-auto-rows: 250px;
+                gap: 15px;
+            }
+            #weddingForm h3 {
+                font-size: 2.2rem;
+            }
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
         }
     </style>
 </head>
+
 <body>
+<<<<<<< HEAD
 
     <div id="envelope-container">
         <div class="envelope">
@@ -273,6 +566,109 @@
             <div id="form-container" class="card-container text-center">
                 <form id="weddingForm">
                     <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
+=======
+    <div class="hero-section">
+        <h1 data-aos="fade-down">Save the Date</h1>
+        <h2 data-aos="fade-down" data-aos-delay="100">the wedding of</h2>
+        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image" data-aos="fade-up" data-aos-delay="200">
+        <p id="typing-date" class="date" data-aos="fade-up" data-aos-delay="400"></p>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Counting down to our big day!</h2>
+            <div id="countdown" class="my-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="time-box"><span id="days" class="number">0</span><span class="label">วัน</span></div>
+                <div class="time-box"><span id="hours" class="number">0</span><span class="label">ชั่วโมง</span></div>
+                <div class="time-box"><span id="minutes" class="number">0</span><span class="label">นาที</span></div>
+                <div class="time-box"><span id="seconds" class="number">0</span><span class="label">วินาที</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section" style="background-color: var(--light-bg);">
+        <div class="container" data-aos="fade-up">
+            <div class="invitation-text">
+                <p class="mb-1"><strong>Request the honor of your presence to celebrate the marriage of</strong></p>
+                <p>มีความยินดีเรียนเชิญท่านเพื่อเป็นเกียรติ <br>เนื่องในพิธีมงคลสมรส ระหว่าง</p>
+            </div>
+
+            <div class="couple-section">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="couple-image">
+                <div class="couple-names">
+                    <div class="person-details bride">
+                        <p class="role">BRIDE</p>
+                        <p class="name">ภญ. อาภาภัทร ศิริวาริน</p>
+                        <p class="nickname">(มะปราง)</p>
+                    </div>
+                    <div class="person-details groom">
+                        <p class="role">GROOM</p>
+                        <p class="name">ภก. ชานนท์ จารุพักตรานนท์</p>
+                        <p class="nickname">(บุ้ง)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+                 <div class="card-container text-center" data-aos="fade-up">
+                    
+                     <div class="my-4 text-start">
+                          <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">
+                                กำหนดการ<br><span style="font-size: 0.7em; font-weight: 400;">(Schedule)</span>
+                          </h3>
+                          <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
+                                        <h3>06:06 น.</h3>
+                                        <p>พิธีสงฆ์</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
+                                        <h3>07:39 น.</h3>
+                                        <p>พิธีแห่ขันหมาก</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
+                                        <h3>11:00 น.</h3>
+                                        <p>รับประทานอาหาร</p>
+                                    </div>
+                                </div>
+                          </div>
+                     </div>
+
+                     <div class="info-section my-4 p-3 text-center" data-aos="fade-up" data-aos-delay="200">
+                          <h3 class="fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">ธีมการแต่งกาย (Dress Code)</h3>
+                          <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
+                     </div>
+
+                     <div class="info-section my-4 p-3" data-aos="fade-up" data-aos-delay="300">
+                          <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">
+                                สถานที่จัดงาน<br><span style="font-size: 0.7em; font-weight: 400;">(Venue)</span>
+                          </h3>
+                          <p id="venue-text" class="mb-3 fs-5"></p>
+                          <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+                          </a>
+                     </div>
+                 </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="card-container" data-aos="fade-up">
+                <form id="weddingForm">
+                    <h3 class="mt-4" style="font-size: 2em; color: var(--primary-color);">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
+                    <p class="mb-4">Will you be joining us?</p>
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
                     <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
                     <div class="mb-3">
                         <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
@@ -282,6 +678,7 @@
                             <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div id="guest-details" class="hidden text-start">
                         <div class="mb-3"><label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label><input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย"></div>
                         <div class="mb-3"><label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label><input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ"></div>
@@ -295,6 +692,36 @@
                     <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
                 </form>
 
+=======
+
+                    <div id="guest-details" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
+                            <input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label>
+                            <input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ">
+                        </div>
+                    </div>
+
+                    <div id="attending-fields" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label>
+                            <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
+                        </div>
+                    </div>
+
+                    <div id="not-attending-fields" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
+                            <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
+                </form>
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
                 <div id="confirmation-section" class="hidden">
                     <h2>ลงทะเบียนเรียบร้อย!</h2>
                     <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
@@ -309,13 +736,58 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </section>
     </main>
 
+=======
+        </div>
+    </div>
+
+    <div class="section" style="background-color: var(--light-bg);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" class="portrait" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true" alt="Gallery Image 2" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true" alt="Gallery Image 3" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true" alt="Gallery Image 4" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true" alt="Gallery Image 5" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true" alt="Gallery Image 6" data-aos="zoom-in" data-aos-delay="600">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true" alt="Gallery Image 7" class="portrait" data-aos="zoom-in" data-aos-delay="700">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery8.jpg?raw=true" alt="Gallery Image 8" class="portrait" data-aos="zoom-in" data-aos-delay="800">
+            </div>
+        </div>
+    </div>
+    
+>>>>>>> 1101fd4c5285e3e783b21a0ecde50fe6478d7a1b
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <script>
+      // Initialize AOS
+      AOS.init({
+          duration: 1000,
+          once: true,
+      });
+
+      // Initialize Typing Animation
+      document.addEventListener('DOMContentLoaded', function() {
+        new TypeIt("#typing-date", {
+            strings: "8 กุมภาพันธ์ 2569",
+            speed: 150,
+            waitUntilVisible: true,
+            cursor: false,
+            lifeLike: true,
+        }).go();
+      });
+    </script>
+
+    <script>
+    // Main Invitation Logic
     document.addEventListener('DOMContentLoaded', function() {
         // [--- ANIMATION CONTROL ---]
         const envelopeContainer = document.getElementById('envelope-container');
@@ -362,14 +834,10 @@
                 document.getElementById('countdown').innerHTML = "<div class='time-box' style='width:100%;'><h4>The Wedding Day is Here!</h4></div>";
                 return;
             }
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById('days').innerText = days;
-            document.getElementById('hours').innerText = hours;
-            document.getElementById('minutes').innerText = minutes;
-            document.getElementById('seconds').innerText = seconds;
+            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
         
         const form = document.getElementById('weddingForm');
@@ -391,7 +859,7 @@
 
         function setupLinks() {
             document.getElementById('venue-text').textContent = eventDetails.location;
-            const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
+             const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
             document.getElementById('gmaps-link').href = gmapsUrl;
             
             const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
@@ -435,12 +903,8 @@
             submitButton.textContent = 'กำลังส่ง...';
             
             const formData = new FormData(form);
-            if (notAttendingRadio.checked) {
-                formData.delete('Guests');
-            }
-            if (attendingRadio.checked) {
-                formData.delete('Wishes');
-            }
+            if (notAttendingRadio.checked) { formData.delete('Guests'); }
+            if (attendingRadio.checked) { formData.delete('Wishes'); }
             
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
@@ -476,7 +940,69 @@
                     submitButton.textContent = 'ส่งคำตอบ';
                 });
         });
-        
+
+        // --- DYNAMIC GALLERY SCRIPT WITH ORIENTATION ---
+
+        const imageDataSource = [
+            // Set 1 (8 images)
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery7.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery8.jpg?raw=true', orientation: 'portrait' },
+            // Set 2 (add more images for the next loop)
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery9.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery10.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery11.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery12.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery13.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery14.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery15.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery16.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery17.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery18.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery19.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery20.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery21.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery22.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery23.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery24.jpg?raw=true', orientation: 'portrait' },
+            
+        ];
+
+        const galleryImages = document.querySelectorAll('.gallery-grid img');
+        let currentImageIndex = 0;
+
+        function updateGallery() {
+            galleryImages.forEach((imgElement, i) => {
+                const imageData = imageDataSource[(currentImageIndex + i) % imageDataSource.length];
+                
+                // Add fade-out class to trigger animation
+                imgElement.classList.add('fade-out');
+
+                // Wait for the fade-out animation to complete before changing the image
+                setTimeout(() => {
+                    imgElement.src = imageData.src;
+                    
+                    if (imageData.orientation === 'portrait') {
+                        imgElement.classList.add('portrait');
+                    } else {
+                        imgElement.classList.remove('portrait');
+                    }
+                    
+                    // Remove fade-out class to trigger fade-in animation
+                    imgElement.classList.remove('fade-out');
+                }, 500); // This delay (500ms) MUST match the CSS transition duration (0.5s)
+            });
+
+            currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
+        }
+
+        setInterval(updateGallery, 5000); // Change images every 5 seconds
+
         setupLinks();
         updateRequiredFields();
     });
