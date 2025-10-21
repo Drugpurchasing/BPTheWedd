@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP&B Wedding Invitation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        /* --- Original Color Scheme & Fonts --- */
+        :root {
+            --primary-color: #005c99;
+            --secondary-color: #003366;
+            --light-bg: #e6f7ff; 
+            --font-family: 'Pridi', serif;
+        }
+
+        /* --- General Body and Layout Styles --- */
+        body {
+            font-family: var(--font-family);
+            color: var(--secondary-color);
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .card-container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
+            width: 100%;
+            max-width: 650px;
+            border: 1px solid #dbe2ef;
+            margin: 40px auto;
+        }
+
+        /* --- Hero Section (Top Banner) --- */
+        .hero-section {
+            background-image: url('https://github.com/Drugpurchasing/BPTheWedd/blob/main/head.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            padding-top: 10vh;
+            box-sizing: border-box;
+        }
+        .hero-section h1 {
+            font-size: 4.5em;
+            font-weight: 600;
+            margin: 0;
+        }
+        .hero-section h2 {
+            font-size: 2em;
+            font-weight: 400;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+        .hero-section .date {
+            font-size: 1.8em;
+            background-color: rgba(0, 92, 153, 0.8);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-top: 25px;
+            display: inline-block;
+            min-height: 65px;
+        }
+        
+        /* --- Image Styles --- */
+        .names-image {
+            max-width: 100%; height: auto; width: 280px;
+            margin-top: 10px; margin-bottom: 5px;
+        }
+        
+        /* --- Bride & Groom Section --- */
+        .couple-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .couple-image {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+            border: 4px solid white;
+        }
+        .person-details {
+            text-align: center;
+        }
+        .person-details .role {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .person-details .name {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+        .person-details .nickname {
+            font-size: 1.1em;
+            color: #555;
+        }
+        .groom { text-align: left; }
+        .bride { text-align: right; }
+        @media (max-width: 768px) {
+            .bride, .groom { text-align: center; width: 100%;}
+            .bride { margin-bottom: 20px; }
+            .couple-section { flex-direction: column-reverse; }
+        }
+
+        /* --- Countdown Timer --- */
+        #countdown { display: flex; justify-content: center; gap: 15px; text-align: center;}
+        .time-box { background-color: #e6f0ff; padding: 10px; border-radius: 8px; min-width: 80px; }
+        .time-box span { display: block; }
+        .time-box .number { font-size: 2.2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
+        .time-box .label { font-size: 0.9em; color: var(--secondary-color); }
+        
+        /* --- Timeline Section --- */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50px;
+            margin-left: -1.5px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            text-align: left;
+            padding-left: 100px;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px; height: 25px;
+            right: auto; left: 38px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-icon {
+            position: absolute;
+            left: -28px; top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+        .timeline-content h3 {
+            font-size: 1.3em; margin-bottom: 5px; color: var(--primary-color);
+        }
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .gallery-grid img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover { transform: scale(1.05); }
+        .gallery-grid .portrait { grid-row: span 2; }
+        
+        /* --- Form Styles --- */
+        .radio-buttons input[type="radio"] { display: none; }
+        .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+        input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
+        
+        .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; padding: 10px 20px; font-weight: 600;}
+        .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
+        .hidden { display: none; }
+
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 3em; }
+            .hero-section h2 { font-size: 1.5em; }
+            .section-title { font-size: 2em; }
+            .card-container { padding: 25px 20px; }
+            .gallery-grid { grid-auto-rows: 200px; }
+            .timeline::after { left: 35px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 15px; }
+            .timeline-item::after { left: 23px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <h1 data-aos="fade-down">Save the Date</h1>
+        <h2 data-aos="fade-down" data-aos-delay="100">the wedding of</h2>
+        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image" data-aos="fade-up" data-aos-delay="200">
+        <p id="typing-date" class="date" data-aos="fade-up" data-aos-delay="400"></p>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Counting down to our big day!</h2>
+            <div id="countdown" class="my-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="time-box"><span id="days" class="number">0</span><span class="label">วัน</span></div>
+                <div class="time-box"><span id="hours" class="number">0</span><span class="label">ชั่วโมง</span></div>
+                <div class="time-box"><span id="minutes" class="number">0</span><span class="label">นาที</span></div>
+                <div class="time-box"><span id="seconds" class="number">0</span><span class="label">วินาที</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section" style="background-color: var(--light-bg);">
+        <div class="container" data-aos="fade-up">
+            <div class="couple-section">
+                <div class="person-details bride">
+                    <p class="role">BRIDE</p>
+                    <p class="name">ภญ. อาภาภัทร ศิริวาริน</p>
+                    <p class="nickname">(มะปราง)</p>
+                </div>
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="couple-image">
+                <div class="person-details groom">
+                    <p class="role">GROOM</p>
+                    <p class="name">ภก. ชานนท์ จารุพักตรานนท์</p>
+                    <p class="nickname">(บุ้ง)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+             <div class="card-container text-center" data-aos="fade-up">
+                
+                <div class="my-4 text-start">
+                    <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">กำหนดการ</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" class="timeline-icon" alt="Monk Ceremony">
+                                <h3>06:06 น.</h3>
+                                <p>พิธีสงฆ์</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" class="timeline-icon" alt="Khan Mak Procession">
+                                <h3>07:39 น.</h3>
+                                <p>พิธีแห่ขันหมาก</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" class="timeline-icon" alt="Meal">
+                                <h3>11:00 น.</h3>
+                                <p>รับประทานอาหาร</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section my-4 p-3 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">ธีมการแต่งกาย (Dress Code)</h3>
+                    <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
+                </div>
+
+                <div class="info-section my-4 p-3" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-center fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">สถานที่จัดงาน</h3>
+                    <p id="venue-text" class="mb-3 fs-5"></p>
+                    <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                        <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background-color: var(--light-bg);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true" alt="Gallery Image 1" class="portrait" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true" alt="Gallery Image 2" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery3.jpg?raw=true" alt="Gallery Image 3" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery4.jpg?raw=true" alt="Gallery Image 4" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery5.jpg?raw=true" alt="Gallery Image 5" class="portrait" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery6.jpg?raw=true" alt="Gallery Image 6" data-aos="zoom-in" data-aos-delay="600">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="card-container" data-aos="fade-up">
+                <form id="weddingForm">
+                    <h3 class="mt-4" style="font-size: 2.2rem; color: var(--primary-color);">RSVP</h3>
+                    <p class="mb-4">Will you be joining us?</p>
+                    <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
+                    <div class="mb-3">
+                        <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
+                            <input type="radio" id="attending" name="Status" value="Attending" required>
+                            <label for="attending" class="radio-label">ไปร่วมงานแน่นอน!</label>
+                            <input type="radio" id="not-attending" name="Status" value="Not Attending">
+                            <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
+                        </div>
+                    </div>
+
+                    <div id="guest-details" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
+                            <input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label>
+                            <input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ">
+                        </div>
+                    </div>
+
+                    <div id="attending-fields" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label>
+                            <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
+                        </div>
+                    </div>
+
+                    <div id="not-attending-fields" class="hidden text-start">
+                        <div class="mb-3">
+                            <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
+                            <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
+                </form>
+                <div id="confirmation-section" class="hidden">
+                    <h2>ลงทะเบียนเรียบร้อย!</h2>
+                    <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
+                    <div class="mt-4 p-3 info-section">
+                        <p class="fw-bold">บันทึกวันงานของเราลงในปฏิทินของคุณ</p>
+                        <div class="d-grid gap-2">
+                            <a id="google-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-google"></i> Google Calendar</a>
+                            <a id="ical-link" href="#" class="btn btn-action text-white"><i class="bi bi-apple"></i> Apple Calendar</a>
+                            <a id="outlook365-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook 365</a>
+                            <a id="outlooklive-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+    <script>
+      // Initialize AOS
+      AOS.init({
+          duration: 1000,
+          once: true,
+      });
+
+      // Initialize Typing Animation
+      document.addEventListener('DOMContentLoaded', function() {
+        new TypeIt("#typing-date", {
+            strings: "8 กุมภาพันธ์ 2569",
+            speed: 150,
+            waitUntilVisible: true,
+            cursor: false,
+            lifeLike: true,
+        }).go();
+      });
+    </script>
+
+    <script>
+    // Main Invitation Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const eventDetails = {
+            title: "งานแต่งงาน Maprang & Bung",
+            location: "ชายหาด รีสอร์ท, 23 หมู่ 2 ต.บางน้ำจืด, อ.หลังสวน, ชุมพร 86150",
+            description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
+            start: new Date('2026-02-08T06:00:00+07:00'),
+            end: new Date('2026-02-08T12:00:00+07:00')
+        };
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
+
+        const countdownDate = eventDetails.start.getTime();
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "<div class='time-box' style='width:100%;'><h4>The Wedding Day is Here!</h4></div>";
+                return;
+            }
+            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+        }, 1000);
+        
+        const form = document.getElementById('weddingForm');
+        const attendingRadio = document.getElementById('attending');
+        const notAttendingRadio = document.getElementById('not-attending');
+        const guestDetails = document.getElementById('guest-details');
+        const attendingFields = document.getElementById('attending-fields');
+        const notAttendingFields = document.getElementById('not-attending-fields');
+        const submitButton = document.getElementById('submit-button');
+        const confirmationSection = document.getElementById('confirmation-section');
+
+        function toUtcFormat(date) { return date.toISOString().replace(/-|:|\.\d{3}/g, ''); }
+        function toOutlookFormat(date) {
+            const pad = (num) => (num < 10 ? '0' + num : num);
+            return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` +
+                   `T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+        }
+
+        function setupLinks() {
+            document.getElementById('venue-text').textContent = eventDetails.location;
+            const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('gmaps-link').href = gmapsUrl;
+            
+            const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${toUtcFormat(eventDetails.start)}/${toUtcFormat(eventDetails.end)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('google-link').href = googleUrl;
+            const icalContent = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT', `URL:${document.location.href}`, `DTSTART:${toUtcFormat(eventDetails.start)}`, `DTEND:${toUtcFormat(eventDetails.end)}`, `SUMMARY:${eventDetails.title}`, `DESCRIPTION:${eventDetails.description}`, `LOCATION:${eventDetails.location}`, 'END:VEVENT', 'END:VCALENDAR'].join('\n');
+            document.getElementById('ical-link').href = `data:text/calendar;charset=utf8,${encodeURIComponent(icalContent)}`;
+            document.getElementById('ical-link').setAttribute('download', 'wedding-invitation.ics');
+            const outlook365Url = `https://outlook.office.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('outlook365-link').href = outlook365Url;
+            const outlookLiveUrl = `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${encodeURIComponent(toOutlookFormat(eventDetails.start))}&enddt=${encodeURIComponent(toOutlookFormat(eventDetails.end))}&subject=${encodeURIComponent(eventDetails.title)}&body=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+            document.getElementById('outlooklive-link').href = outlookLiveUrl;
+        }
+
+        function updateRequiredFields() {
+            const anyRadioChecked = attendingRadio.checked || notAttendingRadio.checked;
+            document.getElementById('FullName').required = anyRadioChecked;
+            document.getElementById('Nickname').required = anyRadioChecked;
+        }
+
+        attendingRadio.addEventListener('change', () => {
+            if (attendingRadio.checked) {
+                guestDetails.classList.remove('hidden');
+                attendingFields.classList.remove('hidden');
+                notAttendingFields.classList.add('hidden');
+                updateRequiredFields();
+            }
+        });
+
+        notAttendingRadio.addEventListener('change', () => {
+            if (notAttendingRadio.checked) {
+                guestDetails.classList.remove('hidden');
+                notAttendingFields.classList.remove('hidden');
+                attendingFields.classList.add('hidden');
+                updateRequiredFields();
+            }
+        });
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'กำลังส่ง...';
+            
+            const formData = new FormData(form);
+            if (notAttendingRadio.checked) { formData.delete('Guests'); }
+            if (attendingRadio.checked) { formData.delete('Wishes'); }
+            
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok.');
+                    
+                    if (attendingRadio.checked) {
+                        form.classList.add('hidden');
+                        confirmationSection.classList.remove('hidden');
+                    } else {
+                        Swal.fire({
+                            title: 'ได้รับคำอวยพรแล้ว!',
+                            text: 'ขอบคุณสำหรับคำอวยพรดีๆ ที่ส่งมาให้เรานะครับ :)',
+                            icon: 'success',
+                            confirmButtonText: 'ตกลง'
+                        });
+                        form.reset();
+                        guestDetails.classList.add('hidden');
+                        notAttendingFields.classList.add('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    Swal.fire({
+                        title: 'เกิดข้อผิดพลาด!',
+                        text: 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                        icon: 'error',
+                        confirmButtonText: 'ตกลง'
+                    });
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'ส่งคำตอบ';
+                });
+        });
+        
+        setupLinks();
+        updateRequiredFields();
+    });
+    </script>
+</body>
+</html>
