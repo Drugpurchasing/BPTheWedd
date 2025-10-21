@@ -13,38 +13,121 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-
-        .names-image {
-            max-width: 100%; /* ทำให้รูปภาพไม่เกินความกว้างของ card */
-            height: auto;
-            width: 300px; /* กำหนดความกว้างที่แน่นอน เพื่อควบคุมขนาด */
-            margin: 15px auto 5px;
-            display: block;
-        }
-        .MPB-image {
-            max-width: 100%; /* ทำให้รูปภาพไม่เกินความกว้างของ card */
-            height: auto;
-            width: 200px; /* กำหนดความกว้างที่แน่นอน เพื่อควบคุมขนาด */
-            margin: 10px auto 30px;
-            display: block;
-        }
+        /* [--- Global & Variable Setup ---] */
         :root {
             --primary-color: #005c99;
             --secondary-color: #003366;
             --light-bg: #e6f7ff; 
             --font-family: 'Pridi', serif;
         }
-        body {
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Hide scrollbars until animation is done */
             font-family: var(--font-family);
             color: var(--secondary-color);
             background-color: var(--light-bg); 
+        }
+
+        /* [--- Envelope Animation ---] */
+        #envelope-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            z-index: 100;
+            background-color: var(--light-bg);
+            transition: opacity 0.5s ease-in-out;
         }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 200px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 51, 102, 0.2);
+            cursor: pointer;
+        }
+        .envelope-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #dbe2ef;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: #fff;
+            transform-origin: top;
+            transition: transform 0.7s ease-in-out;
+            z-index: 20;
+            border-left: 1px solid #dbe2ef;
+            border-right: 1px solid #dbe2ef;
+        }
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 100px solid var(--primary-color);
+        }
+
+        #scroll-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            z-index: 15;
+            transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+            opacity: 0;
+        }
+
+        /* Animation States */
+        #envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        #envelope-container.open #scroll-container {
+            transform: translate(-50%, -60%);
+            opacity: 1;
+        }
+
+        /* [--- Scroll Snap Container ---] */
+        #scroll-container.visible {
+            position: static;
+            transform: none;
+            opacity: 1;
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+        }
+
         .card-container {
             background-color: #ffffff;
             padding: 30px 40px;
@@ -53,188 +136,223 @@
             width: 100%;
             max-width: 550px;
             border: 1px solid #dbe2ef;
+            max-height: 90vh; /* Prevent content from overflowing viewport */
+            overflow-y: auto; /* Allow scrolling within card if content is too long */
         }
-        .header {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 20px;
+        
+        /* Scroll down arrow */
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            animation: bounce 2s infinite;
         }
+        .scroll-down i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -15px); }
+            60% { transform: translate(-50%, -5px); }
+        }
+
+        /* [--- Original & Modified Component Styles ---] */
+        .header { border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; }
         .header h1 { font-size: 2.5em; color: var(--primary-color); margin: 0; }
         .header h2 { font-size: 1.5em; margin: 5px 0; font-weight: 400; }
-        .names { font-size: 1.8em; font-weight: 600; color: var(--secondary-color); margin: 15px 0 5px; }
+        .names-image { max-width: 100%; height: auto; width: 300px; margin: 15px auto 5px; display: block; }
+        .MPB-image { max-width: 100%; height: auto; width: 200px; margin: 10px auto 30px; display: block; }
         .date { font-size: 1.5em; background-color: #e6f0ff; color: var(--primary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; }
         .wedding-image { max-width: 180px; height: auto; }
-        .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
-        .info-section h3 { color: var(--primary-color); }
-        
-        /* Countdown Timer Styles */
-        #countdown { display: flex; justify-content: center; gap: 15px; text-align: center;}
+
+        #countdown { display: flex; justify-content: center; gap: 15px; text-align: center; }
         .time-box { background-color: #e6f0ff; padding: 10px; border-radius: 8px; min-width: 70px; }
         .time-box span { display: block; }
         .time-box .number { font-size: 2em; font-weight: 600; color: var(--primary-color); line-height: 1; }
         .time-box .label { font-size: 0.8em; color: var(--secondary-color); }
         
+        .info-section { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; }
+        .info-section h3 { color: var(--primary-color); }
+        
+        .schedule-item { display: flex; align-items: center; margin-bottom: 8px; }
+        .schedule-icon-container { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; margin-right: 10px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; background-color: #dbe2ef; border: 1px solid var(--primary-color); }
+        .schedule-icon-container img { width: 100%; height: 100%; object-fit: cover; }
+
         .radio-buttons input[type="radio"] { display: none; }
         .radio-label { padding: 12px 20px; border: 2px solid var(--primary-color); border-radius: 25px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
         input[type="radio"]:checked + .radio-label { background-color: var(--primary-color); color: #ffffff; }
+        
         .btn-submit, .btn-action { background-color: var(--primary-color); border-color: var(--primary-color); transition: background-color 0.3s, transform 0.2s; }
         .btn-submit:hover, .btn-action:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); transform: translateY(-2px); }
-        .hidden { display: none; }
-
-        /* Custom style for schedule items with custom images */
-        .schedule-item {
-            display: flex;
-            align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
-            margin-bottom: 8px; /* เพิ่มระยะห่างด้านล่าง */
-        }
-        .schedule-icon-container {
-            width: 30px; /* กำหนดความกว้างของกรอบรูป */
-            height: 30px; /* กำหนดความสูงของกรอบรูป */
-            border-radius: 50%; /* ทำให้เป็นวงกลม */
-            overflow: hidden; /* ซ่อนส่วนเกินของรูป */
-            margin-right: 10px; /* ระยะห่างระหว่างรูปกับข้อความ */
-            flex-shrink: 0; /* ป้องกันรูปถูกย่อ */
-            display: flex; /* เพื่อจัดรูปภาพภายในกรอบ */
-            justify-content: center; /* จัดกึ่งกลางรูปภาพในแนวนอน */
-            align-items: center; /* จัดกึ่งกลางรูปภาพในแนวตั้ง */
-            background-color: #dbe2ef; /* สีพื้นหลังกรอบ (ถ้าไม่รูปรอโหลด) */
-            border: 1px solid var(--primary-color); /* กรอบรอบรูป */
-        }
-        .schedule-icon-container img {
-            width: 100%; /* ทำให้รูปภาพเต็มความกว้างของกรอบ */
-            height: 100%; /* ทำให้รูปภาพเต็มความสูงของกรอบ */
-            object-fit: cover; /* ครอบคลุมพื้นที่โดยไม่บิดเบือนอัตราส่วน */
-        }
+        
+        .hidden { display: none !important; }
 
         @media (max-width: 576px) {
             .card-container { padding: 25px 20px; }
             .header h1 { font-size: 2.1em; }
+            .envelope { width: 280px; height: 180px; }
+            .envelope-flap::before { border-left-width: 140px; border-right-width: 140px; border-top-width: 90px; }
         }
     </style>
 </head>
 <body>
-    <div class="card-container text-center">
-        <div class="header mb-4">
-            <h1>Save the date</h1>
-            <h2>the wedding of</h2>
-            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image">
-            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Dose.png?raw=true" alt="Maprang & Bung" class="MPB-image">  
-            <p class="date">8 กุมภาพันธ์ 2569</p>
-        </div>
-        <div class="my-4">
-            <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="wedding-image">
-        </div>
 
-        <div id="countdown" class="my-4">
-            <div class="time-box"><span id="days" class="number">0</span><span class="label">วัน</span></div>
-            <div class="time-box"><span id="hours" class="number">0</span><span class="label">ชั่วโมง</span></div>
-            <div class="time-box"><span id="minutes" class="number">0</span><span class="label">นาที</span></div>
-            <div class="time-box"><span id="seconds" class="number">0</span><span class="label">วินาที</span></div>
-        </div>
-
-        <div class="info-section my-4 p-3 text-start">
-            <h3 class="text-center">กำหนดการ</h3>
-            <div class="schedule-item">
-                <div class="schedule-icon-container">
-                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" alt="Monk Ceremony">
+    <div id="envelope-container">
+        <div class="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body"></div>
+            <div id="scroll-container">
                 </div>
-                <p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p>
-            </div>
-            <div class="schedule-item">
-                <div class="schedule-icon-container">
-                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" alt="Khan Mak Procession">
-                </div>
-                <p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p>
-            </div>
-            <div class="schedule-item">
-                <div class="schedule-icon-container">
-                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" alt="Meal">
-                </div>
-                <p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p>
-            </div>
-        </div>
-
-        <div class="info-section my-4 p-3 text-center">
-            <h3>ธีมการแต่งกาย (Dress Code)</h3>
-            <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
-        </div>
-
-        <div class="info-section my-4 p-3">
-            <h3 class="text-center">สถานที่จัดงาน</h3>
-            <p id="venue-text" class="mb-3 fs-5"></p>
-            <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
-                <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
-            </a>
-        </div>
-        
-        <form id="weddingForm">
-            <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
-            <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
-            <div class="mb-3">
-                <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
-                    <input type="radio" id="attending" name="Status" value="Attending" required>
-                    <label for="attending" class="radio-label">ไปร่วมงานแน่นอน!</label>
-                    <input type="radio" id="not-attending" name="Status" value="Not Attending">
-                    <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
-                </div>
-            </div>
-
-            <div id="guest-details" class="hidden text-start">
-                <div class="mb-3">
-                    <label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label>
-                    <input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย">
-                </div>
-                <div class="mb-3">
-                    <label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label>
-                    <input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ">
-                </div>
-            </div>
-
-            <div id="attending-fields" class="hidden text-start">
-                <div class="mb-3">
-                    <label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label>
-                    <input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0">
-                </div>
-            </div>
-
-            <div id="not-attending-fields" class="hidden text-start">
-                <div class="mb-3">
-                    <label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label>
-                    <textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea>
-                </div>
-            </div>
-
-            <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
-        </form>
-
-        <div id="confirmation-section" class="hidden">
-            <h2>ลงทะเบียนเรียบร้อย!</h2>
-            <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
-            <div class="mt-4 p-3 info-section">
-                <p class="fw-bold">บันทึกวันงานของเราลงในปฏิทินของคุณ</p>
-                <div class="d-grid gap-2">
-                    <a id="google-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-google"></i> Google Calendar</a>
-                    <a id="ical-link" href="#" class="btn btn-action text-white"><i class="bi bi-apple"></i> Apple Calendar</a>
-                    <a id="outlook365-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook 365</a>
-                    <a id="outlooklive-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook.com</a>
-                </div>
-            </div>
         </div>
     </div>
+
+
+    <main id="main-content" class="hidden">
+        <section class="page">
+            <div class="card-container text-center">
+                <div class="header">
+                    <h1>Save the date</h1>
+                    <h2>the wedding of</h2>
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/MPB.png?raw=true" alt="Maprang & Bung" class="names-image">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Dose.png?raw=true" alt="Maprang & Bung" class="MPB-image">  
+                    <p class="date">8 กุมภาพันธ์ 2569</p>
+                </div>
+            </div>
+             <div class="scroll-down">
+                <i class="bi bi-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card-container text-center">
+                 <div class="my-4">
+                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/IMG_9690.PNG?raw=true" alt="Bride and Groom" class="wedding-image">
+                </div>
+                <div id="countdown" class="my-4">
+                    <div class="time-box"><span id="days" class="number">0</span><span class="label">วัน</span></div>
+                    <div class="time-box"><span id="hours" class="number">0</span><span class="label">ชั่วโมง</span></div>
+                    <div class="time-box"><span id="minutes" class="number">0</span><span class="label">นาที</span></div>
+                    <div class="time-box"><span id="seconds" class="number">0</span><span class="label">วินาที</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card-container text-center">
+                <div class="info-section my-4 p-3 text-start">
+                    <h3 class="text-center">กำหนดการ</h3>
+                    <div class="schedule-item"><div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Monk.jpg?raw=true" alt="Monk Ceremony"></div><p class="mb-0"><strong>06:06 น.</strong> - พิธีสงฆ์</p></div>
+                    <div class="schedule-item"><div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Mark.png?raw=true" alt="Khan Mak Procession"></div><p class="mb-0"><strong>07:39 น.</strong> - พิธีแห่ขันหมาก</p></div>
+                    <div class="schedule-item"><div class="schedule-icon-container"><img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/Eat.png?raw=true" alt="Meal"></div><p class="mb-0"><strong>11:00 น.</strong> - รับประทานอาหาร</p></div>
+                </div>
+                <div class="info-section my-4 p-3 text-center">
+                    <h3>ธีมการแต่งกาย (Dress Code)</h3>
+                    <p class="mb-0" style="font-size: 1.1em;">Any color that suits you<br><strong>สวยที่สุดในสีที่เป็นคุณ</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div class="card-container text-center">
+                <div class="info-section my-4 p-3">
+                    <h3 class="text-center">สถานที่จัดงาน</h3>
+                    <p id="venue-text" class="mb-3 fs-5"></p>
+                    <a id="gmaps-link" href="#" target="_blank" class="btn btn-action text-white">
+                        <i class="bi bi-geo-alt-fill"></i> นำทางด้วย Google Maps
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page">
+            <div id="form-container" class="card-container text-center">
+                <form id="weddingForm">
+                    <h3 class="mt-4">จะมาหรือไม่มา บอกเราหน่อยนะ</h3>
+                    <p class="text-muted">กรุณาตอบกลับภายในวันที่ 15 มกราคม 2026</p>
+                    <div class="mb-3">
+                        <div class="radio-buttons d-flex justify-content-center flex-wrap gap-2">
+                            <input type="radio" id="attending" name="Status" value="Attending" required>
+                            <label for="attending" class="radio-label">ไปร่วมงานแน่นอน!</label>
+                            <input type="radio" id="not-attending" name="Status" value="Not Attending">
+                            <label for="not-attending" class="radio-label">ไม่สะดวกไป (ฝากคำอวยพรแทนนะ)</label>
+                        </div>
+                    </div>
+                    <div id="guest-details" class="hidden text-start">
+                        <div class="mb-3"><label for="FullName" class="form-label fw-bold">ชื่อ-สกุล</label><input type="text" id="FullName" name="FullName" class="form-control" placeholder="บอกชื่อ-นามสกุลของคุณหน่อย"></div>
+                        <div class="mb-3"><label for="Nickname" class="form-label fw-bold">ชื่อเล่น</label><input type="text" id="Nickname" name="Nickname" class="form-control" placeholder="เราอยากรู้จักชื่อเล่นของคุณ"></div>
+                    </div>
+                    <div id="attending-fields" class="hidden text-start">
+                        <div class="mb-3"><label for="Guests" class="form-label fw-bold">มีเพื่อนมาด้วยไหม? (ไม่รวมตัวท่าน)</label><input type="number" id="Guests" name="Guests" class="form-control" min="0" max="5" value="0"></div>
+                    </div>
+                    <div id="not-attending-fields" class="hidden text-start">
+                        <div class="mb-3"><label for="Wishes" class="form-label fw-bold">ฝากคำอวยพรถึงบ่าวสาว</label><textarea id="Wishes" name="Wishes" class="form-control" rows="4" placeholder="ถึงจะไม่ได้มา แต่คำอวยพรจากคุณมีความหมายกับเรามากนะ :)"></textarea></div>
+                    </div>
+                    <button type="submit" id="submit-button" class="btn btn-primary btn-submit w-100 p-2 fs-5 fw-bold mt-3">ส่งคำตอบ</button>
+                </form>
+
+                <div id="confirmation-section" class="hidden">
+                    <h2>ลงทะเบียนเรียบร้อย!</h2>
+                    <p class="lead">ขอบคุณที่ตอบกลับ แล้วพบกันในวันงานนะครับ :)</p>
+                    <div class="mt-4 p-3 info-section">
+                        <p class="fw-bold">บันทึกวันงานของเราลงในปฏิทินของคุณ</p>
+                        <div class="d-grid gap-2">
+                            <a id="google-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-google"></i> Google Calendar</a>
+                            <a id="ical-link" href="#" class="btn btn-action text-white"><i class="bi bi-apple"></i> Apple Calendar</a>
+                            <a id="outlook365-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook 365</a>
+                            <a id="outlooklive-link" href="#" target="_blank" class="btn btn-action text-white"><i class="bi bi-microsoft"></i> Outlook.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // [--- ANIMATION CONTROL ---]
+        const envelopeContainer = document.getElementById('envelope-container');
+        const scrollContainer = document.getElementById('scroll-container');
+        const mainContent = document.getElementById('main-content');
+        
+        // Move content into the scroll container for initial animation
+        scrollContainer.appendChild(mainContent); 
+
+        setTimeout(() => {
+            envelopeContainer.classList.add('open');
+        }, 1000); // Start opening animation after 1 second
+
+        setTimeout(() => {
+            // After animation, hide envelope and set up the real scrollable body
+            envelopeContainer.style.display = 'none';
+            document.body.appendChild(mainContent); // Move content back to body
+            scrollContainer.remove(); // Clean up the temporary container
+            mainContent.classList.remove('hidden');
+            mainContent.classList.add('visible'); // Use this as the scroll container now
+            document.body.style.overflow = 'hidden'; // Body itself doesn't scroll
+            mainContent.style.height = '100vh';
+            mainContent.style.overflowY = 'scroll';
+            mainContent.style.scrollSnapType = 'y mandatory';
+        }, 2000); // Duration should be > animation duration
+
+
+        // [--- ORIGINAL SCRIPT LOGIC ---]
         const eventDetails = {
             title: "งานแต่งงาน Maprang & Bung",
             location: "ชายหาด รีสอร์ท, 23 หมู่ 2 ต.บางน้ำจืด, อ.หลังสวน, ชุมพร 86150",
             description: "ขอเชิญร่วมเป็นเกียรติในงานเลี้ยงฉลองมงคลสมรสของเรา",
-            start: new Date('2026-02-08T06:00:00+07:00'), // แก้ไขเวลาเริ่มต้นเป็น 06:00 น.
-            end: new Date('2026-02-08T12:00:00+07:00')   // แก้ไขเวลาสิ้นสุดเป็น 12:00 น.
+            start: new Date('2026-02-08T06:00:00+07:00'),
+            end: new Date('2026-02-08T12:00:00+07:00')
         };
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxWd9opI-wb52ieHsMKTzoSVsPTylyh37dVMpNCZtr9XaMxFcyOnfcsjBih_kwnQr0n/exec';
-
+        
         const countdownDate = eventDetails.start.getTime();
         const countdownInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -262,6 +380,7 @@
         const notAttendingFields = document.getElementById('not-attending-fields');
         const submitButton = document.getElementById('submit-button');
         const confirmationSection = document.getElementById('confirmation-section');
+        const formContainer = document.getElementById('form-container');
 
         function toUtcFormat(date) { return date.toISOString().replace(/-|:|\.\d{3}/g, ''); }
         function toOutlookFormat(date) {
@@ -330,6 +449,7 @@
                     if (attendingRadio.checked) {
                         form.classList.add('hidden');
                         confirmationSection.classList.remove('hidden');
+                        formContainer.scrollIntoView({ behavior: 'smooth' });
                     } else {
                         Swal.fire({
                             title: 'ได้รับคำอวยพรแล้ว!',
