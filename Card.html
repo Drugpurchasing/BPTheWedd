@@ -5,52 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
     <style>
-        /* --- CSS ไม่มีการเปลี่ยนแปลง --- */
-        html { box-sizing: border-box; }
-        *, *::before, *::after { box-sizing: inherit; }
-        body, html { margin: 0; width: 100%; height: 100%; font-family: 'Tahoma', sans-serif; overflow: hidden; }
-        body { background-color: #f5f0e9; padding: 24px; display: flex; justify-content: center; align-items: center; }
-        .page-content { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; }
-        .invitation-container { width: 100%; perspective: 1500px; }
-        .card-flipper { position: relative; width: 100%; aspect-ratio: 5 / 7; transform-style: preserve-3d; transition: transform 0.9s cubic-bezier(0.6, -0.01, 0.2, 1); cursor: pointer; }
-        .card-face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2); overflow: hidden; background-color: #FFFFFF; }
-        .card-face img { width: 100%; height: 100%; object-fit: contain; }
-        .card-back { transform: rotateY(180deg); }
-        .card-flipper.is-flipped { transform: rotateY(180deg); }
-        .flip-instruction { margin-top: 15px; font-size: 14px; color: #a88e79; text-align: center; }
+        /* --- 0. ตั้งค่าพื้นฐาน --- */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* --- 1. การตั้งค่าหน้าเว็บ --- */
+        body, html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Tahoma', sans-serif;
+            overflow: hidden; /* ซ่อน scrollbar */
+        }
+
+        body {
+            background-color: #f5f0e9; /* สีพื้นหลังโทนอบอุ่น */
+            padding: 24px; /* ขอบรอบนอกของหน้าเว็บ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 2. กล่องเนื้อหาหลัก (ควบคุมขนาดสูงสุด) --- */
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* จำกัดความกว้างสูงสุดของการ์ดบนจอใหญ่ */
+            height: 100%; /* ทำให้ page-content มีความสูงเต็มที่ */
+            justify-content: center; /* จัดให้การ์ดและข้อความอยู่กึ่งกลางในแนวตั้ง */
+        }
+
+        /* --- 3. ซองการ์ด (ใหม่: สำหรับ Animation) --- */
+        .card-envelope {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 5 / 7; /* กำหนดสัดส่วน 5:7 ที่นี่ */
+            overflow: hidden; /* ซ่อนส่วนของการ์ดที่เลื่อนออกจากซอง */
+            border-radius: 15px; /* ทำให้ซองมีขอบมนเหมือนการ์ด */
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2); /* เงาของซอง */
+        }
+        
+        /* --- 4. Container และ Card Flipper (ปรับตำแหน่งเริ่มต้น) --- */
+        .invitation-container {
+            position: absolute; /* ทำให้ลอยอยู่เหนือซอง */
+            width: 100%;
+            height: 100%;
+            transform: translateY(100%); /* เริ่มต้นซ่อนอยู่ด้านล่าง */
+            opacity: 0; /* เริ่มต้นซ่อนไว้ */
+            transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease-out; /* แอนิเมชั่นเลื่อนขึ้นและเฟดอิน */
+            perspective: 1500px;
+        }
+
+        .invitation-container.animate-in {
+            transform: translateY(0); /* เลื่อนขึ้นมาอยู่ตรงกลาง */
+            opacity: 1; /* แสดงผล */
+        }
+
+        .card-flipper {
+            position: relative;
+            width: 100%;
+            height: 100%; /* ทำให้ flipper สูงเต็ม container */
+            transform-style: preserve-3d;
+            transition: transform 0.9s cubic-bezier(0.6, -0.01, 0.2, 1);
+            cursor: pointer;
+        }
+
+        /* --- 5. สไตล์รูปการ์ด (ปรับปรุง: เอาขอบขาวออก) --- */
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            /* box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2); /* เงาตอนนี้ถูกกำหนดที่ card-envelope แทน */ */
+            overflow: hidden;
+            background-color: transparent; /* --- ทำให้พื้นหลังเป็นโปร่งใส --- */
+        }
+
+        .card-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* --- ทำให้รูปภาพเต็มพื้นที่การ์ด ไม่มีขอบขาว --- */
+            display: block; /* ลบช่องว่างด้านล่างรูปภาพที่อาจเกิดขึ้นได้ */
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .card-flipper.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* --- 6. ข้อความแนะนำ --- */
+        .flip-instruction {
+            margin-top: 20px; /* เพิ่มระยะห่างจากด้านล่างของการ์ด */
+            font-size: 14px;
+            color: #a88e79;
+            text-align: center;
+            opacity: 0; /* เริ่มต้นซ่อนไว้ */
+            transition: opacity 0.5s ease-in 1.5s; /* เฟดอินหลังจาก animation การ์ดเสร็จ */
+        }
+        .flip-instruction.show {
+            opacity: 1;
+        }
+
+        /* สำหรับอุปกรณ์ที่มีความสูงน้อย (เช่น มือถือแนวนอน) */
+        @media (max-height: 600px) {
+            body {
+                padding: 15px; /* ลด padding เพื่อให้มีพื้นที่มากขึ้น */
+            }
+            .page-content {
+                justify-content: flex-start; /* เริ่มจากด้านบน */
+                padding-top: 15px;
+            }
+            .flip-instruction {
+                margin-top: 10px; /* ลดระยะห่าง */
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="page-content">
-        <div class="invitation-container">
-            <div class="card-flipper" id="cardFlipper">
-                <div class="card-face card-front">
-                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/1.png?raw=true" alt="Wedding Card Front">
-                </div>
-                <div class="card-face card-back">
-                    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/2.png?raw=true" alt="Wedding Card Back">
+        <div class="card-envelope">
+            <div class="invitation-container" id="invitationContainer">
+                <div class="card-flipper" id="cardFlipper">
+                    <div class="card-face card-front">
+                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/1.png?raw=true" alt="Wedding Card Front">
+                    </div>
+                    <div class="card-face card-back">
+                        <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/2.png?raw=true" alt="Wedding Card Back">
+                    </div>
                 </div>
             </div>
         </div>
-        <p class="flip-instruction">แตะที่การ์ดเพื่อพลิก</p>
+        <p class="flip-instruction" id="flipInstruction">แตะที่การ์ดเพื่อพลิก</p>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const invitationContainer = document.getElementById('invitationContainer');
             const cardFlipper = document.getElementById('cardFlipper');
+            const flipInstruction = document.getElementById('flipInstruction');
             
+            // --- 1. แอนิเมชั่นการ์ดออกจากซอง ---
+            // เพิ่ม class 'animate-in' หลังจากโหลดหน้าเว็บเสร็จ
+            setTimeout(() => {
+                invitationContainer.classList.add('animate-in');
+                // แสดงข้อความ 'แตะเพื่อพลิก' หลังจาก animation เสร็จ
+                flipInstruction.classList.add('show');
+            }, 100); // หน่วงเวลาเล็กน้อยเพื่อให้ CSS เริ่มต้นทำงาน
+
+            // --- 2. ฟังก์ชันพลิกการ์ด ---
             const toggleFlip = () => {
                 cardFlipper.classList.toggle('is-flipped');
             };
 
-            // --- สำหรับการคลิกบน Desktop ---
+            // --- 3. การทำงานเมื่อคลิก/แตะที่การ์ด ---
             cardFlipper.addEventListener('click', toggleFlip);
 
-            // --- สำหรับการแตะและปัดบน Mobile ---
+            // --- 4. การทำงานเมื่อปัดบนมือถือ (Swipe) ---
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 30; // ลดระยะปัดลงเล็กน้อยเพื่อให้ตอบสนองไวขึ้น
+            const swipeThreshold = 30;
 
             cardFlipper.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -72,8 +198,7 @@
                         toggleFlip();
                     }
                 }
-                // ถ้าไม่ใช่การปัด จะถูกจัดการโดย Event 'click' ที่เราตั้งไว้ด้านบน
-                // ซึ่งจะทำงานกับการแตะ (Tap) บนมือถือโดยอัตโนมัติ
+                // ถ้าเป็นการแตะ (Tap) โดยไม่มีการปัด ระบบจะใช้ event 'click' ที่เราตั้งไว้ด้านบน
             });
         });
     </script>
