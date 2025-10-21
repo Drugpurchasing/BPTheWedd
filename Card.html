@@ -5,91 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
     <style>
-        /* --- 0. ตั้งค่าพื้นฐาน --- */
-        html {
-            box-sizing: border-box;
-        }
-        *, *::before, *::after {
-            box-sizing: inherit;
-        }
-
-        /* --- 1. การตั้งค่าหน้าเว็บ (ปรับใหม่) --- */
-        body, html {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Tahoma', sans-serif;
-            overflow: hidden;
-        }
-
-        body {
-            background-color: #f5f0e9;
-            padding: 24px;
-            display: flex; /* ใช้ Flexbox จัดกลาง */
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* --- 2. กล่องเนื้อหาหลัก (ใหม่) --- */
-        .page-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 400px; /* จำกัดความกว้างสูงสุดของการ์ดบนจอใหญ่ */
-        }
-
-        /* --- 3. Container และ Card Flipper (ปรับใหม่) --- */
-        .invitation-container {
-            width: 100%;
-            perspective: 1500px;
-        }
-        
-        .card-flipper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 5 / 7; /* --- กำหนดสัดส่วน 5:7 ที่นี่ --- */
-            transform-style: preserve-3d;
-            transition: transform 0.9s cubic-bezier(0.6, -0.01, 0.2, 1);
-            cursor: pointer;
-        }
-
-        /* --- 4. สไตล์รูปการ์ด --- */
-        .card-face {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            background-color: #FFFFFF;
-        }
-
-        .card-face img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .card-back {
-            transform: rotateY(180deg);
-        }
-
-        .card-flipper.is-flipped {
-            transform: rotateY(180deg);
-        }
-
-        /* --- 5. ข้อความแนะนำ (ใหม่) --- */
-        .flip-instruction {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #a88e79;
-            text-align: center;
-        }
-
+        /* --- CSS ไม่มีการเปลี่ยนแปลง --- */
+        html { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: inherit; }
+        body, html { margin: 0; width: 100%; height: 100%; font-family: 'Tahoma', sans-serif; overflow: hidden; }
+        body { background-color: #f5f0e9; padding: 24px; display: flex; justify-content: center; align-items: center; }
+        .page-content { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; }
+        .invitation-container { width: 100%; perspective: 1500px; }
+        .card-flipper { position: relative; width: 100%; aspect-ratio: 5 / 7; transform-style: preserve-3d; transition: transform 0.9s cubic-bezier(0.6, -0.01, 0.2, 1); cursor: pointer; }
+        .card-face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2); overflow: hidden; background-color: #FFFFFF; }
+        .card-face img { width: 100%; height: 100%; object-fit: contain; }
+        .card-back { transform: rotateY(180deg); }
+        .card-flipper.is-flipped { transform: rotateY(180deg); }
+        .flip-instruction { margin-top: 15px; font-size: 14px; color: #a88e79; text-align: center; }
     </style>
 </head>
 <body>
@@ -109,7 +37,6 @@
     </div>
 
     <script>
-        // --- JavaScript ไม่มีการเปลี่ยนแปลง ---
         document.addEventListener('DOMContentLoaded', () => {
             const cardFlipper = document.getElementById('cardFlipper');
             
@@ -117,36 +44,37 @@
                 cardFlipper.classList.toggle('is-flipped');
             };
 
+            // --- สำหรับการคลิกบน Desktop ---
             cardFlipper.addEventListener('click', toggleFlip);
 
+            // --- สำหรับการแตะและปัดบน Mobile ---
             let touchStartX = 0;
             let touchEndX = 0;
-            const swipeThreshold = 50;
+            const swipeThreshold = 30; // ลดระยะปัดลงเล็กน้อยเพื่อให้ตอบสนองไวขึ้น
 
             cardFlipper.addEventListener('touchstart', (e) => {
-                e.preventDefault(); 
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: false });
+            }, { passive: true });
 
             cardFlipper.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
-                if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
-                    handleSwipe();
-                }
-            });
-
-            function handleSwipe() {
                 const swipeDistance = touchEndX - touchStartX;
-                const isFlipped = cardFlipper.classList.contains('is-flipped');
-                
-                if (swipeDistance < -swipeThreshold && !isFlipped) {
-                    toggleFlip();
+
+                // ตรวจสอบว่าเป็นการปัด (Swipe) หรือไม่
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    const isFlipped = cardFlipper.classList.contains('is-flipped');
+                    // ปัดซ้ายเพื่อเปิด
+                    if (swipeDistance < -swipeThreshold && !isFlipped) {
+                        toggleFlip();
+                    }
+                    // ปัดขวาเพื่อกลับ
+                    if (swipeDistance > swipeThreshold && isFlipped) {
+                        toggleFlip();
+                    }
                 }
-                
-                if (swipeDistance > swipeThreshold && isFlipped) {
-                    toggleFlip();
-                }
-            }
+                // ถ้าไม่ใช่การปัด จะถูกจัดการโดย Event 'click' ที่เราตั้งไว้ด้านบน
+                // ซึ่งจะทำงานกับการแตะ (Tap) บนมือถือโดยอัตโนมัติ
+            });
         });
     </script>
 </body>
