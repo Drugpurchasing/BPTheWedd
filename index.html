@@ -647,6 +647,7 @@
         });
 
         // --- DYNAMIC GALLERY SCRIPT WITH ORIENTATION ---
+        // --- DYNAMIC GALLERY SCRIPT WITH ORIENTATION (RANDOMIZED) ---
         const imageDataSource = [
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true', orientation: 'landscape' },
@@ -689,15 +690,28 @@
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery39.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery40.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery41.jpg?raw=true', orientation: 'portrait' },
-
         ];
 
         const galleryImages = document.querySelectorAll('.gallery-grid img');
-        let currentImageIndex = 0;
+
+        // ฟังก์ชันสำหรับสุ่มลำดับข้อมูลใน Array (Fisher-Yates Shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
         function updateGallery() {
+            // สร้าง Copy ของข้อมูลต้นฉบับเพื่อนำมาสุ่ม โดยไม่กระทบตัวแปรหลัก
+            let shuffledData = shuffleArray([...imageDataSource]);
+            
+            // เลือกมาแค่ 8 รูปแรกจากการสุ่ม (หรือเท่ากับจำนวนรูปที่มีใน HTML)
+            let selectedImages = shuffledData.slice(0, galleryImages.length);
+
             galleryImages.forEach((imgElement, i) => {
-                const imageData = imageDataSource[(currentImageIndex + i) % imageDataSource.length];
+                const imageData = selectedImages[i];
                 
                 imgElement.classList.add('fade-out');
 
@@ -711,13 +725,11 @@
                     }
                     
                     imgElement.classList.remove('fade-out');
-                }, 500); // Must match the CSS transition duration (0.5s)
+                }, 500); 
             });
-
-            currentImageIndex = (currentImageIndex + galleryImages.length) % imageDataSource.length;
         }
 
-        setInterval(updateGallery, 5000); // Change images every 5 seconds
+        setInterval(updateGallery, 5000); // เปลี่ยนรูปชุดใหม่ทุก 5 วินาที // Change images every 5 seconds
 
         // Initial setup calls
         setupLinks();
