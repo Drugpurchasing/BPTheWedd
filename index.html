@@ -648,6 +648,7 @@
 
         // --- DYNAMIC GALLERY SCRIPT WITH ORIENTATION ---
         // --- DYNAMIC GALLERY SCRIPT WITH ORIENTATION (RANDOMIZED) ---
+        // --- DYNAMIC GALLERY SCRIPT (SEQUENTIAL) ---
         const imageDataSource = [
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery1.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery2.jpg?raw=true', orientation: 'landscape' },
@@ -690,28 +691,36 @@
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery39.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery40.jpg?raw=true', orientation: 'portrait' },
             { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery41.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery42.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery43.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery44.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery45.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery46.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery47.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery48.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery49.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery50.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery51.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery52.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery53.jpg?raw=true', orientation: 'landscape' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery54.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery55.jpg?raw=true', orientation: 'portrait' },
+            { src: 'https://github.com/Drugpurchasing/BPTheWedd/blob/main/gallery56.jpg?raw=true', orientation: 'portrait' },
         ];
 
         const galleryImages = document.querySelectorAll('.gallery-grid img');
-
-        // ฟังก์ชันสำหรับสุ่มลำดับข้อมูลใน Array (Fisher-Yates Shuffle)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
+        
+        // ตัวแปรสำหรับจำลำดับภาพปัจจุบัน (เริ่มต้นที่ 0)
+        let currentIndex = 0;
 
         function updateGallery() {
-            // สร้าง Copy ของข้อมูลต้นฉบับเพื่อนำมาสุ่ม โดยไม่กระทบตัวแปรหลัก
-            let shuffledData = shuffleArray([...imageDataSource]);
-            
-            // เลือกมาแค่ 8 รูปแรกจากการสุ่ม (หรือเท่ากับจำนวนรูปที่มีใน HTML)
-            let selectedImages = shuffledData.slice(0, galleryImages.length);
+            const batchSize = galleryImages.length; // จำนวนรูปที่แสดง (8 รูป)
+            const totalImages = imageDataSource.length;
 
             galleryImages.forEach((imgElement, i) => {
-                const imageData = selectedImages[i];
+                // คำนวณ index ของข้อมูล โดยใช้ Modulo (%) เพื่อให้วนกลับไปเริ่มใหม่เมื่อถึงรูปสุดท้าย
+                const dataIndex = (currentIndex + i) % totalImages;
+                const imageData = imageDataSource[dataIndex];
                 
                 imgElement.classList.add('fade-out');
 
@@ -727,9 +736,16 @@
                     imgElement.classList.remove('fade-out');
                 }, 500); 
             });
+
+            // อัปเดต currentIndex ให้ขยับไปชุดถัดไป (ทีละ 8 รูป)
+            currentIndex = (currentIndex + batchSize) % totalImages;
         }
 
-        setInterval(updateGallery, 5000); // เปลี่ยนรูปชุดใหม่ทุก 5 วินาที // Change images every 5 seconds
+        // เริ่มต้นเรียกฟังก์ชันทันทีเพื่อโหลดรูปชุดแรก (รูปที่ 1-8)
+        updateGallery();
+
+        // เปลี่ยนรูปชุดใหม่ทุก 5 วินาที
+        setInterval(updateGallery, 5000);
 
         // Initial setup calls
         setupLinks();
