@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>เชิญร่วมงานเลี้ยงขอบคุณมงคลสมรสของ อภภ. และชน.</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,11 +11,20 @@
 
     <style>
         :root {
-            --primary-color: #0077b6; /* สีฟ้าเข้ม */
-            --secondary-color: #90e0ef; /* สีฟ้าอ่อน */
-            --bg-color: #f0f8ff; /* สีพื้นหลังขาวอมฟ้า */
+            --primary-color: #0077b6;
+            --secondary-color: #90e0ef;
+            --bg-color: #f0f8ff;
             --text-color: #333;
             --white: #ffffff;
+            --accent-color: #ffb703;
+            --container-padding-mobile: 20px;
+            --container-padding-desktop: 40px;
+        }
+
+        /* Reset พื้นฐาน */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* ลบสีเทาเวลาแตะบนมือถือ */
         }
 
         body { 
@@ -24,199 +33,214 @@
             background-image: linear-gradient(135deg, #f0f8ff 0%, #e1f5fe 100%);
             color: var(--text-color);
             margin: 0;
-            padding: 30px 15px; /* เพิ่ม padding บนล่าง เพื่อป้องกันการติดขอบจอเกินไป */
+            /* ปรับ padding รอบนอกให้น้อยลงสำหรับมือถือ */
+            padding: 15px 10px; 
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* จัดกึ่งกลางแนวตั้ง */
             min-height: 100vh;
-            box-sizing: border-box; /* สำคัญมาก ช่วยเรื่องการคำนวณขนาด */
         }
 
         .container { 
             width: 100%;
             max-width: 480px; 
             background: var(--white); 
-            padding: 40px 30px; 
+            /* ใช้ตัวแปรควบคุม Padding */
+            padding: 30px var(--container-padding-mobile); 
             border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0, 119, 182, 0.15); 
+            box-shadow: 0 4px 20px rgba(0, 119, 182, 0.1); 
             text-align: center;
-            box-sizing: border-box;
-            /* ลบ transition ออกชั่วคราวเพื่อลดปัญหาการกระตุกของ layout */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* ปรับปรุงสไตล์หัวข้อให้รองรับข้อความยาวๆ */
+        /* --- รูปภาพส่วนหัว (Responsive เต็มจอ) --- */
+        .header-img {
+            /* คำนวณความกว้าง: 100% + (Padding ซ้ายขวา * 2) */
+            width: calc(100% + (var(--container-padding-mobile) * 2));
+            height: auto;
+            /* ดึงภาพกลับขึ้นไปและออกด้านข้าง */
+            margin: -30px calc(var(--container-padding-mobile) * -1) 20px calc(var(--container-padding-mobile) * -1);
+            border: none;
+            display: block;
+            object-fit: cover;
+        }
+
         h1.main-title { 
             color: var(--primary-color); 
-            margin: 0 0 25px 0; 
+            margin: 0 0 15px 0; 
             font-weight: 600;
             letter-spacing: 0.5px;
-            font-size: 1.4rem; /* ลดขนาดฟอนต์ลงเล็กน้อยเพื่อให้พอดี */
-            line-height: 1.5;
-            word-wrap: break-word;
+            font-size: 1.25rem; /* ปรับขนาดให้พอดีมือถือ */
+            line-height: 1.4;
+        }
+
+        /* --- กล่องสถานที่ --- */
+        .location-box {
+            background-color: #f8fbff;
+            border: 1px dashed var(--primary-color);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+
+        .location-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+            margin: 0 0 8px 0;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 8px 16px; /* เพิ่มพื้นที่สัมผัส */
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--primary-color);
+            transition: all 0.2s;
+        }
+
+        .map-link:active {
+            background-color: var(--secondary-color);
+            transform: scale(0.98);
         }
 
         .divider {
             height: 4px;
-            width: 60px;
+            width: 50px;
             background-color: var(--secondary-color);
-            margin: 0 auto 35px auto;
+            margin: 0 auto 30px auto;
             border-radius: 2px;
         }
 
-        .form-group { 
-            margin-bottom: 25px; /* เพิ่มระยะห่างระหว่างแต่ละช่อง */
-            text-align: left; 
-            width: 100%;
-        }
-
-        label { 
-            display: block; 
-            margin-bottom: 10px; 
-            font-weight: 500; 
-            color: var(--primary-color);
-            font-size: 1rem;
-        }
-
-        input[type="text"], textarea { 
+        /* --- Form Styles --- */
+        .form-group { margin-bottom: 20px; text-align: left; width: 100%; }
+        label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--primary-color); font-size: 1rem; }
+        
+        /* ป้องกัน iOS Zoom ด้วย font-size 16px */
+        input[type="text"], textarea, select { 
             width: 100%; 
             padding: 12px 15px; 
             border: 2px solid #e0e0e0; 
             border-radius: 12px; 
-            box-sizing: border-box; /* สำคัญ */
-            font-family: 'Prompt', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            font-family: 'Prompt', sans-serif; 
+            font-size: 16px; /* สำคัญมากสำหรับ Mobile */
             background: #fafafa;
-        }
-
-        input[type="text"]:focus, textarea:focus { 
-            outline: none; 
-            border-color: var(--primary-color); 
-            background: #fff;
-        }
-
-        /* --- Styling Radio Buttons (แก้ไขเรื่องการทับกัน) --- */
-        .radio-wrapper {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .radio-option {
-            flex: 1; /* ขยายให้เต็มพื้นที่ */
-            position: relative;
-            display: flex; /* เพิ่ม flex เพื่อให้จัดการความสูงได้ดีขึ้น */
-        }
-
-        .radio-option input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            margin: 0;
-        }
-
-        .radio-tile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 15px 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%; /* ให้กว้างเต็ม parent */
-            box-sizing: border-box;
-            /* นำ height: 100% ออก เพื่อให้ความสูงยืดตามเนื้อหา ป้องกันการทับกัน */
-        }
-
-        .radio-tile span {
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-align: center;
-            /* ป้องกันข้อความยาวเกินแล้วล้น */
-            white-space: nowrap; 
-            overflow: hidden;
-            text-overflow: ellipsis;
-             max-width: 100%;
-        }
-
-        /* Checked State */
-        .radio-option input:checked + .radio-tile {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
-            /* นำ transform ออกเพื่อลดปัญหา layout ขยับ */
-        }
-        /* ------------------------------------------ */
-
-        /* Conditional Section */
-        #conditional-message {
-            display: none;
-            margin-top: 25px;
-            /* ใช้ animation แบบง่ายๆ เพื่อประสิทธิภาพที่ดีขึ้น */
-            transition: opacity 0.3s ease;
-        }
-
-        button { 
-            background-color: var(--primary-color); 
-            color: white; 
-            border: none; 
-            padding: 15px; 
-            border-radius: 12px; 
-            cursor: pointer; 
-            width: 100%; 
-            font-size: 1.1rem; 
-            font-weight: 600;
-            font-family: 'Prompt', sans-serif;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background 0.3s;
-        }
-
-        button:hover { 
-            background-color: #023e8a; 
-        }
-
-        #statusMessage { 
-            margin-top: 25px; 
-            font-weight: 500;
-            min-height: 1.2em; /* จองพื้นที่ไว้กัน layout กระโดด */
+            appearance: none; /* ลบ style เดิมของ OS */
+            -webkit-appearance: none;
         }
         
-        .loading { 
-            opacity: 0.7; 
-            pointer-events: none; 
+        input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--primary-color); background: #fff; }
+
+        .radio-wrapper { display: flex; gap: 10px; justify-content: center; width: 100%; }
+        .radio-option { flex: 1; position: relative; display: flex; }
+        .radio-option input { position: absolute; opacity: 0; cursor: pointer; width: 100%; height: 100%; z-index: 2; margin: 0; }
+        
+        .radio-tile {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-color: #fff; border: 2px solid #e0e0e0; border-radius: 12px;
+            padding: 15px 5px; cursor: pointer; transition: all 0.2s ease; width: 100%; 
+        }
+        /* สถานะ Active (กดค้าง) */
+        .radio-option input:active + .radio-tile { transform: scale(0.98); background-color: #f0f8ff; }
+        .radio-tile span { font-weight: 500; font-size: 0.95rem; }
+        
+        .radio-option input:checked + .radio-tile { 
+            background-color: var(--primary-color); 
+            border-color: var(--primary-color); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3); 
         }
 
-        /* Responsive ปรับขนาดฟอนต์หัวข้อเมื่อจอเล็ก */
-        @media (max-width: 400px) {
-            h1.main-title {
-                font-size: 1.2rem;
+        #conditional-message { display: none; margin-top: 20px; transition: opacity 0.3s ease; }
+
+        button#submitBtn { 
+            background-color: var(--primary-color); color: white; border: none; padding: 15px; 
+            border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.1rem; 
+            font-weight: 600; font-family: 'Prompt', sans-serif; margin-top: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            touch-action: manipulation; /* ป้องกัน Double tap zoom */
+        }
+        button#submitBtn:active { transform: scale(0.98); background-color: #023e8a; }
+
+        #statusMessage { margin-top: 20px; font-weight: 500; min-height: 1.2em; }
+        .loading { opacity: 0.7; pointer-events: none; }
+
+        /* --- Gallery Buttons (Mobile Optimized) --- */
+        .gallery-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-direction: row; /* เรียงแนวนอน */
+            gap: 10px; 
+        }
+        
+        .gallery-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background-color: #fff;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 10px; /* เพิ่มความสูงปุ่ม */
+            border: 1px solid #ddd;
+            border-radius: 12px; /* โค้งมนเข้ากับธีม */
+            flex: 1; /* ขยายเต็มพื้นที่เท่ากัน */
+            transition: all 0.2s;
+        }
+
+        .gallery-btn:active {
+            background-color: #f0f8ff;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- Desktop / Tablet Overrides --- */
+        @media (min-width: 481px) {
+            body { padding: 30px; }
+            .container { 
+                padding: 40px var(--container-padding-desktop); 
             }
-            .container {
-                padding: 30px 20px;
+            .header-img {
+                width: calc(100% + (var(--container-padding-desktop) * 2));
+                margin: -40px calc(var(--container-padding-desktop) * -1) 25px calc(var(--container-padding-desktop) * -1);
             }
-             .radio-wrapper {
-                flex-direction: column; /* จอเล็กมากให้เรียงลงมา */
-                gap: 10px;
+            h1.main-title { font-size: 1.4rem; }
+            .gallery-btn:hover {
+                transform: translateY(-2px);
+                border-color: var(--primary-color);
+                color: var(--primary-color);
             }
-            .radio-tile {
-                padding: 12px;
-            }
+            button#submitBtn:hover { background-color: #023e8a; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="https://github.com/Drugpurchasing/BPTheWedd/blob/main/cartoon.png?raw=true" alt="Wedding Logo" class="header-img">
+
     <h1 class="main-title">เชิญร่วมงานเลี้ยงขอบคุณมงคลสมรสของ อภภ. และชน. ประจำปี 2569 ครั้งแรกและครั้งเดียว</h1>
+
+    <div class="location-box">
+        <p class="location-name">📍 สถานที่: ครัวเรือนไทย</p>
+        <a href="https://share.google/kQVwaym8ibyNe1pvb" target="_blank" class="map-link">
+            🗺️ เปิดแผนที่นำทาง
+        </a>
+    </div>
+
     <div class="divider"></div>
 
     <form id="rsvpForm">
@@ -252,13 +276,21 @@
         <button type="submit" id="submitBtn">ยืนยันข้อมูล</button>
     </form>
     <p id="statusMessage"></p>
+
+    <div class="gallery-section">
+        <a href="https://bpthewedd.pages.dev/Card" target="_blank" class="gallery-btn">
+            💌 ชมการ์ด
+        </a>
+        <a href="https://bpthewedd.pages.dev/" target="_blank" class="gallery-btn">
+            ✨ ชมสิ่งสวยงาม
+        </a>
+    </div>
 </div>
 
 <script>
-    // --- ตั้งค่า URL ของ Google Apps Script ที่นี่ ---
-    const SCRIPT_URL = 'YOUR_WEB_APP_URL'; // <<<< *** อย่าลืมเปลี่ยนตรงนี้ ***
+    // --- ตั้งค่า URL ของ Google Apps Script ---
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSNXz9TK-y7IL6ECJOG_C77Ibz1RY5f5Ewv5p2aAewN1Ic4soxQI77d2ZXgUjU57DT/exec'; 
 
-    // 1. Logic การแสดง/ซ่อน ช่องข้อความ
     const radioJoin = document.getElementById('join');
     const radioNotJoin = document.getElementById('not_join');
     const conditionalMsg = document.getElementById('conditional-message');
@@ -266,43 +298,31 @@
 
     function toggleMessageField() {
         if (radioNotJoin.checked) {
-            // แสดง
             conditionalMsg.style.display = 'block';
-            // ใช้ timeout เล็กน้อยเพื่อให้ display block ทำงานก่อนเริ่ม transition
-            setTimeout(() => {
-                 conditionalMsg.style.opacity = '1';
-            }, 10);
+            setTimeout(() => { conditionalMsg.style.opacity = '1'; }, 10);
         } else {
-            // ซ่อน
             conditionalMsg.style.opacity = '0';
-            // รอให้ transition จบก่อนค่อยซ่อน display
             setTimeout(() => {
-                 if (radioJoin.checked) { // เช็คอีกทีว่ายังเลือก join อยู่ไหม
+                 if (radioJoin.checked) {
                     conditionalMsg.style.display = 'none';
                     messageInput.value = ''; 
                  }
-            }, 300); // เวลาเดียวกับ transition ใน CSS
+            }, 300);
         }
     }
 
-    // เพิ่ม Event Listener ให้กับ Radio buttons
     radioJoin.addEventListener('change', toggleMessageField);
     radioNotJoin.addEventListener('change', toggleMessageField);
-
-    // ตั้งค่าเริ่มต้นให้ซ่อนอย่างสมบูรณ์
     conditionalMsg.style.opacity = '0';
 
-
-    // 2. ดึงรายชื่อแขก (เหมือนเดิม)
+    // ดึงรายชื่อแขก
     window.addEventListener('DOMContentLoaded', () => {
         fetch(`${SCRIPT_URL}?action=getGuests`)
             .then(response => response.json())
             .then(data => {
                 const dataList = document.getElementById('guestList');
-                // เคลียร์ของเก่าก่อน (เผื่อไว้)
                 dataList.innerHTML = '';
                 data.forEach(name => {
-                    // ป้องกันชื่อว่าง
                     if (name && name.trim() !== '') {
                         const option = document.createElement('option');
                         option.value = name;
@@ -310,13 +330,10 @@
                     }
                 });
             })
-            .catch(error => {
-                console.error('Error fetching guests:', error);
-                // อาจจะแสดงแจ้งเตือนเล็กน้อยถ้าดึงรายชื่อไม่ได้ (Optional)
-            });
+            .catch(error => console.error('Error fetching guests:', error));
     });
 
-    // 3. จัดการการกดส่งฟอร์ม (เหมือนเดิม)
+    // Form Submit
     const form = document.getElementById('rsvpForm');
     const submitBtn = document.getElementById('submitBtn');
     const statusMsg = document.getElementById('statusMessage');
@@ -325,9 +342,9 @@
         e.preventDefault();
         
         submitBtn.textContent = 'กำลังบันทึก...';
-        submitBtn.disabled = true; // ปิดปุ่มกันกดซ้ำ
+        submitBtn.disabled = true; 
         form.classList.add('loading');
-        statusMsg.style.display = 'none'; // ซ่อนข้อความเก่า
+        statusMsg.style.display = 'none'; 
 
         const formData = new FormData(form);
 
@@ -342,7 +359,6 @@
                 statusMsg.style.display = 'block';
                 statusMsg.style.color = '#0077b6';
                 form.reset();
-                // รีเซ็ตสถานะการแสดงผลปุ่ม radio และช่องข้อความ
                 conditionalMsg.style.opacity = '0';
                 setTimeout(() => { conditionalMsg.style.display = 'none'; }, 300);
             } else {
@@ -357,7 +373,7 @@
         })
         .finally(() => {
             submitBtn.textContent = 'ยืนยันข้อมูล';
-            submitBtn.disabled = false; // เปิดปุ่มใช้งานปกติ
+            submitBtn.disabled = false;
             form.classList.remove('loading');
         });
     });
