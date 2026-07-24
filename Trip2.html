@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0d6e6e" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>DN·HA·BN 29Jul–3Aug · Couple trip</title>
+<title>DNยทHAยทBN 29Julโ€“3Aug ยท Couple trip</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
@@ -82,7 +82,7 @@
     border: 1px solid rgba(255,255,255,.22); padding: 6px 10px; border-radius: 999px;
   }
 
-  /* BOTTOM NAV — primary mobile UI */
+  /* BOTTOM NAV โ€” primary mobile UI */
   .bnav {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
     display: grid; grid-template-columns: repeat(6, 1fr);
@@ -182,8 +182,8 @@
   .day-sum .chev {
     font-size: 11px; font-weight: 700; color: var(--coral); margin-top: 6px;
   }
-  details.day[open] .day-sum .chev::after { content: " · tap to close"; }
-  details.day:not([open]) .day-sum .chev::after { content: " · tap to open full plan"; }
+  details.day[open] .day-sum .chev::after { content: " ยท tap to close"; }
+  details.day:not([open]) .day-sum .chev::after { content: " ยท tap to open full plan"; }
 
   .day-body { padding: 4px 12px 16px; border-top: 1px solid var(--line); }
   .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 12px; }
@@ -279,7 +279,7 @@
     .sticky-note { top: calc(52px + env(safe-area-inset-top, 0px)); }
   }
 
-  /* Desktop polish only — mobile first */
+  /* Desktop polish only โ€” mobile first */
   @media (min-width: 768px) {
     body { font-size: 16px; }
     .wrap { padding: 0 20px; }
@@ -289,7 +289,7 @@
     .day-thumb { min-height: 120px; }
   }
 
-  /* ── MODE TOGGLE (browse ↔ present) ── */
+  /* โ”€โ”€ MODE TOGGLE (browse โ” present) โ”€โ”€ */
   .mode-bar {
     position: sticky; top: 0; z-index: 50;
     display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -339,7 +339,7 @@
     background: #fff; color: var(--sea-d); box-shadow: none;
   }
 
-  /* ── PRESENTATION DECK ── */
+  /* โ”€โ”€ PRESENTATION DECK โ”€โ”€ */
   .deck {
     display: none;
     position: fixed; inset: 0; z-index: 110;
@@ -417,6 +417,64 @@
       linear-gradient(180deg, rgba(20,40,30,.2) 0%, rgba(12,50,45,.55) 40%, rgba(8,30,28,.94) 100%);
   }
 
+  /* presentation day timeline */
+  .slide.day-slide { justify-content: flex-end; }
+  .slide.day-slide .slide-in {
+    padding: 72px 22px calc(120px + var(--safe-b));
+    max-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .slide.cover.day-slide .slide-in { text-align: center; }
+  .slide.cover.day-slide .trip-arc { text-align: left; }
+  .slide.day-slide h2 { font-size: clamp(1.4rem, 5.5vw, 2rem); margin-bottom: 6px; }
+  .slide.day-slide .lead { font-size: 14px; margin-bottom: 12px; max-width: 42ch; }
+  .ptl {
+    display: flex; flex-direction: column; gap: 0;
+    border-left: 2px solid rgba(143,212,200,.45);
+    margin: 4px 0 8px 6px; padding: 0;
+  }
+  .ptl-row {
+    display: grid; grid-template-columns: 72px 1fr; gap: 10px;
+    padding: 0 0 12px 14px; position: relative;
+  }
+  .ptl-row:last-child { padding-bottom: 2px; }
+  .ptl-row::before {
+    content: ""; position: absolute; left: -6px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #8fd4c8; border: 2px solid rgba(8,30,28,.9);
+    box-shadow: 0 0 0 2px rgba(143,212,200,.35);
+  }
+  .ptl-row.food::before { background: #e07a45; box-shadow: 0 0 0 2px rgba(224,122,69,.35); }
+  .ptl-row.sleep::before { background: #9aa8b0; box-shadow: 0 0 0 2px rgba(154,168,176,.3); }
+  .ptl-row.star::before { background: #f0d78c; box-shadow: 0 0 0 2px rgba(240,215,140,.4); }
+  .ptl-t {
+    font-size: 11px; font-weight: 800; color: #8fd4c8;
+    font-variant-numeric: tabular-nums; letter-spacing: .02em;
+    padding-top: 2px; line-height: 1.3;
+  }
+  .ptl-a { font-size: 13.5px; font-weight: 600; line-height: 1.35; color: rgba(255,255,255,.95); }
+  .ptl-a small { display: block; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.65); margin-top: 2px; }
+  .trip-arc {
+    display: flex; flex-direction: column; gap: 6px; margin-top: 4px;
+  }
+  .trip-arc .arc-day {
+    display: grid; grid-template-columns: 52px 1fr; gap: 10px; align-items: start;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px; padding: 10px 12px; text-align: left;
+  }
+  .trip-arc .arc-n {
+    font-size: 11px; font-weight: 800; letter-spacing: .04em;
+    color: #f0d78c; text-transform: uppercase; padding-top: 2px;
+  }
+  .trip-arc .arc-body { font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+  .trip-arc .arc-body small { display: block; font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.62); margin-top: 2px; }
+  .sleep-chip {
+    display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700;
+    color: #cfe8e4; background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.16); padding: 7px 11px; border-radius: 999px;
+  }
+
   /* deck controls */
   .deck-ui {
     position: absolute; left: 0; right: 0; bottom: 0; z-index: 5;
@@ -471,23 +529,23 @@
   <span class="mode-label">View</span>
   <div class="mode-seg">
     <button type="button" id="modeBrowse" aria-pressed="true">Browse</button>
-    <button type="button" id="modePresent" aria-pressed="false">Present 🎞</button>
+    <button type="button" id="modePresent" aria-pressed="false">Present ๐</button>
   </div>
 </div>
 
-<div class="sticky-note">Couple trip · 2 pax · 29 Jul – 3 Aug 2026 · open each day ↓</div>
+<div class="sticky-note">Couple trip ยท 2 pax ยท 29 Jul โ€“ 3 Aug 2026 ยท open each day โ“</div>
 
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-in">
-    <div class="eyebrow">You + wife · mobile trip guide</div>
-    <h1>Da Nang · Hoi An · Ba Na</h1>
-    <p class="lead">Wake ~7:30–8:00 (Ba Na day a bit earlier). Food bar: <b>4.5★+</b> with <b>100+</b> reviews. Cable car ticket already bought. Last day = souvenir shopping.</p>
+    <div class="eyebrow">You + wife ยท mobile trip guide</div>
+    <h1>Da Nang ยท Hoi An ยท Ba Na</h1>
+    <p class="lead">Wake ~7:30โ€“8:00 (Ba Na day a bit earlier). Food bar: <b>4.5โ…+</b> with <b>100+</b> reviews. Cable car ticket already bought. Last day = souvenir shopping.</p>
     <div class="chips">
       <span class="chip">2 people</span>
       <span class="chip">EK370 29 Jul 21:50</span>
       <span class="chip">EK371 3 Aug 23:30</span>
-      <span class="chip">🐉 Fire Sun 2 Aug 21:00</span>
+      <span class="chip">๐ Fire Sun 2 Aug 21:00</span>
     </div>
   </div>
 </header>
@@ -501,64 +559,64 @@
     <div class="card">
       <table class="cal">
         <tr><th>Date</th><th>Do</th><th>Sleep</th></tr>
-        <tr><td><b>29 Jul</b><br>Wed</td><td>Land 21:50 · rest</td><td>Airport Homestay Đà Nẵng</td></tr>
-        <tr><td><b>30 Jul</b><br>Thu</td><td>Ba Na before noon · overnight</td><td>Mercure Ba Na</td></tr>
-        <tr><td><b>31 Jul</b><br>Fri</td><td>Hotel BF · Hoi An night</td><td>Royal Riverside HA</td></tr>
-        <tr><td><b>1 Aug</b><br>Sat</td><td>Basket + Safari → <b>Da Nang</b></td><td><b>Bluesun Beach</b></td></tr>
-        <tr class="today"><td><b>2 Aug</b><br>Sun</td><td>Marble + beach + 🐉 fire</td><td>Bluesun Beach</td></tr>
-        <tr><td><b>3 Aug</b><br>Mon</td><td><b>Souvenir shopping</b> · fly 23:30</td><td>Plane → home 4 Aug 01:10</td></tr>
+        <tr><td><b>29 Jul</b><br>Wed</td><td>Land 21:50 ยท rest</td><td>Airport Homestay ฤร  Nแบตng</td></tr>
+        <tr><td><b>30 Jul</b><br>Thu</td><td>Ba Na before noon ยท overnight</td><td>Mercure Ba Na</td></tr>
+        <tr><td><b>31 Jul</b><br>Fri</td><td>Hotel BF ยท Hoi An night</td><td>Royal Riverside HA</td></tr>
+        <tr><td><b>1 Aug</b><br>Sat</td><td>Basket + Safari โ’ <b>Da Nang</b></td><td><b>Bluesun Beach</b></td></tr>
+        <tr class="today"><td><b>2 Aug</b><br>Sun</td><td>Marble + beach + ๐ fire</td><td>Bluesun Beach</td></tr>
+        <tr><td><b>3 Aug</b><br>Mon</td><td><b>Souvenir shopping</b> ยท fly 23:30</td><td>Plane โ’ home 4 Aug 01:10</td></tr>
       </table>
     </div>
 
     <div class="card sea">
       <span class="tag">Pace rules</span>
       <ul style="margin-left:18px;font-size:14px">
-        <li>Wake <b>7:30–8:00</b> most days</li>
-        <li>Ba Na day: wake ~<b>7:15</b> so you’re up the mountain before noon (you already have cable tickets)</li>
-        <li>2 people → prefer <b>Grab Car</b> for luggage &amp; rain</li>
-        <li>Dinner Ba Na: buffet or à la carte — both OK</li>
-        <li>Nights 4–5: <b>Bluesun Danang Beach</b> (not Hoi An)</li>
+        <li>Wake <b>7:30โ€“8:00</b> most days</li>
+        <li>Ba Na day: wake ~<b>7:15</b> so youโ€re up the mountain before noon (you already have cable tickets)</li>
+        <li>2 people โ’ prefer <b>Grab Car</b> for luggage &amp; rain</li>
+        <li>Dinner Ba Na: buffet or ร  la carte โ€” both OK</li>
+        <li>Nights 4โ€“5: <b>Bluesun Danang Beach</b> (not Hoi An)</li>
       </ul>
     </div>
 
     <div class="card gold" id="hotels">
-      <span class="tag g">🏨 Hotels · tap for Google Maps</span>
-      <p class="meta">Save these · open when Grab needs a pin. Also repeated on the day you go there.</p>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">📍 Night 1 · Airport Homestay Đà Nẵng</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Night 2 · Mercure French Village Ba Na</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">📍 Night 3 · Royal Riverside Hoi An</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">📍 Nights 4–5 · Bluesun Danang Beach</a>
+      <span class="tag g">๐จ Hotels ยท tap for Google Maps</span>
+      <p class="meta">Save these ยท open when Grab needs a pin. Also repeated on the day you go there.</p>
+      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">๐“ Night 1 ยท Airport Homestay ฤร  Nแบตng</a>
+      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">๐“ Night 2 ยท Mercure French Village Ba Na</a>
+      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐“ Night 3 ยท Royal Riverside Hoi An</a>
+      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">๐“ Nights 4โ€“5 ยท Bluesun Danang Beach</a>
     </div>
 
     <div class="card coral">
       <span class="tag c">Must-eat list</span>
-      <p class="meta">Only places we flag meet the spirit of <b>4.5★+ · 100+ reviews</b>. Always re-check Google Maps the same day (ratings move).</p>
+      <p class="meta">Only places we flag meet the spirit of <b>4.5โ…+ ยท 100+ reviews</b>. Always re-check Google Maps the same day (ratings move).</p>
       <div class="food-item">
-        <h3>🍜 Phở</h3>
-        <p><b>Phở Nhà</b> / high-rated “Phở” near your pin — open Maps, filter 4.5★+, 100+ reviews, recent photos.</p>
-        <p class="stars">Target ≥4.5 · 100+ reviews</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+4.5+Da+Nang">Search Phở 4.5★ DN</a>
+        <h3>๐ Phแป</h3>
+        <p><b>Phแป Nhร </b> / high-rated โ€Phแปโ€ near your pin โ€” open Maps, filter 4.5โ…+, 100+ reviews, recent photos.</p>
+        <p class="stars">Target โฅ4.5 ยท 100+ reviews</p>
+        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+4.5+Da+Nang">Search Phแป 4.5โ… DN</a>
       </div>
       <div class="food-item">
-        <h3>🍢 Nem nướng (Nam nueng)</h3>
-        <p>Grilled pork skewers + rice paper. Search “nem nướng Đà Nẵng” — pick 4.5★+ with 100+ reviews near you.</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">Search Nem nướng</a>
+        <h3>๐ข Nem nฦฐแปng (Nam nueng)</h3>
+        <p>Grilled pork skewers + rice paper. Search โ€nem nฦฐแปng ฤร  Nแบตngโ€ โ€” pick 4.5โ…+ with 100+ reviews near you.</p>
+        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">Search Nem nฦฐแปng</a>
       </div>
       <div class="food-item">
-        <h3>🐟 Gỏi cá trích (Nam Ô herring salad)</h3>
-        <p>Da Nang specialty. Best known zone: <b>Nam Ô</b> / city spots serving “gỏi cá trích / gỏi cá Nam Ô”. Verify ★ and review count before sitting.</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Nam+O+Da+Nang">Search Gỏi cá trích</a>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang+4.5">Search Gỏi cá Nam Ô</a>
+        <h3>๐ Gแปi cรก trรญch (Nam ร” herring salad)</h3>
+        <p>Da Nang specialty. Best known zone: <b>Nam ร”</b> / city spots serving โ€gแปi cรก trรญch / gแปi cรก Nam ร”โ€. Verify โ… and review count before sitting.</p>
+        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Nam+O+Da+Nang">Search Gแปi cรก trรญch</a>
+        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang+4.5">Search Gแปi cรก Nam ร”</a>
       </div>
       <div class="food-item">
-        <h3>☕ Egg coffee · Salt coffee</h3>
-        <p><b>Cà phê trứng</b> (egg) + <b>cà phê muối</b> (salt). Many beach cafés serve both. Pick 4.5★+ drink spots with food photos you like.</p>
+        <h3>โ• Egg coffee ยท Salt coffee</h3>
+        <p><b>Cร  phรช trแปฉng</b> (egg) + <b>cร  phรช muแป‘i</b> (salt). Many beach cafรฉs serve both. Pick 4.5โ…+ drink spots with food photos you like.</p>
         <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+Da+Nang">Egg coffee</a>
         <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+muoi+Da+Nang">Salt coffee</a>
       </div>
       <div class="food-item">
-        <h3>Also strong (still check 4.5★ / 100+)</h3>
-        <p><b>Mì Quảng</b>, <b>bánh xèo</b>, Hoi An <b>cao lầu + white rose</b>, beach seafood. Use Maps sort by rating + review volume.</p>
+        <h3>Also strong (still check 4.5โ… / 100+)</h3>
+        <p><b>Mรฌ Quแบฃng</b>, <b>bรกnh xรจo</b>, Hoi An <b>cao lแบงu + white rose</b>, beach seafood. Use Maps sort by rating + review volume.</p>
       </div>
     </div>
   </section>
@@ -566,16 +624,16 @@
   <!-- DAYS -->
   <section id="days">
     <h2>Day-by-day (tap to open)</h2>
-    <p class="sub">Mobile timeline · maps open in Google Maps app</p>
+    <p class="sub">Mobile timeline ยท maps open in Google Maps app</p>
 
     <!-- DAY 1 -->
     <details class="day" id="d1">
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Wed 29 Jul · Day 1</div>
+          <div class="dlabel">Wed 29 Jul ยท Day 1</div>
           <h3>Land &amp; sleep</h3>
-          <p>EK370 · 21:50 · Airport Homestay Đà Nẵng</p>
+          <p>EK370 ยท 21:50 ยท Airport Homestay ฤร  Nแบตng</p>
           <div class="chev"></div>
         </div>
       </summary>
@@ -589,21 +647,21 @@
           <div class="time">21:50</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Land DAD → Airport Homestay Đà Nẵng</h4>
-            <p>Immigration → bags → SIM if needed → Grab to hotel pin below.</p>
-            <div class="how"><b>Grab Car (2 pax):</b> set destination <b>Airport Homestay Đà Nẵng</b>. ~15–25 min. ~80–180k VND.</div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+International+Airport">📍 DAD Airport</a>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">🏨 Grab pin · Airport Homestay Đà Nẵng</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Da+Nang+International+Airport&destination=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">🧭 DAD → Airport Homestay Đà Nẵng</a>
+            <h4>Land DAD โ’ Airport Homestay ฤร  Nแบตng</h4>
+            <p>Immigration โ’ bags โ’ SIM if needed โ’ Grab to hotel pin below.</p>
+            <div class="how"><b>Grab Car (2 pax):</b> set destination <b>Airport Homestay ฤร  Nแบตng</b>. ~15โ€“25 min. ~80โ€“180k VND.</div>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+International+Airport">๐“ DAD Airport</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">๐จ Grab pin ยท Airport Homestay ฤร  Nแบตng</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Da+Nang+International+Airport&destination=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">๐งญ DAD โ’ Airport Homestay ฤร  Nแบตng</a>
           </div>
         </div>
         <div class="slot">
-          <div class="time">22:30–23:30</div>
+          <div class="time">22:30โ€“23:30</div>
           <div class="dotcol"><div class="dot s"></div></div>
           <div class="slot-body">
-            <h4>Check-in · shower · sleep</h4>
-            <p>No city trip. If starving: nearest convenience store / open phở only.</p>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">🏨 Hotel map · Airport Homestay Đà Nẵng</a>
+            <h4>Check-in ยท shower ยท sleep</h4>
+            <p>No city trip. If starving: nearest convenience store / open phแป only.</p>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">๐จ Hotel map ยท Airport Homestay ฤร  Nแบตng</a>
             <p class="note">Set alarm <b>7:15</b> for Ba Na day (only early-ish day).</p>
           </div>
         </div>
@@ -615,9 +673,9 @@
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Thu 30 Jul · Day 2</div>
+          <div class="dlabel">Thu 30 Jul ยท Day 2</div>
           <h3>Ba Na before noon</h3>
-          <p>Walk BF · Grab · tickets ready · Mercure</p>
+          <p>Walk BF ยท Grab ยท tickets ready ยท Mercure</p>
           <div class="chev"></div>
         </div>
       </summary>
@@ -626,130 +684,130 @@
           <span class="pill w">Wake ~7:15</span>
           <span class="pill">On mountain before 12:00</span>
           <span class="pill f">Dinner buffet OK</span>
-          <span class="pill ok">Cable ticket owned ✓</span>
+          <span class="pill ok">Cable ticket owned โ“</span>
         </div>
 
         <div class="slot">
           <div class="time">07:15</div>
           <div class="dotcol"><div class="dot"></div></div>
           <div class="slot-body">
-            <h4>Wake · pack day bag</h4>
+            <h4>Wake ยท pack day bag</h4>
             <p>Jacket, rain layer, passport/ID (ticket check), power bank, meds. Overnight bag for Mercure.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">07:40–08:30</div>
+          <div class="time">07:40โ€“08:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Breakfast · walking distance only</h4>
-            <p>Walk only near <b>Airport Homestay Đà Nẵng</b>. Search Maps: “bánh mì” / “cà phê” / “phở” → open now, <b>4.5★+</b>, prefer 100+ reviews.</p>
+            <h4>Breakfast ยท walking distance only</h4>
+            <p>Walk only near <b>Airport Homestay ฤร  Nแบตng</b>. Search Maps: โ€bรกnh mรฌโ€ / โ€cร  phรชโ€ / โ€phแปโ€ โ’ open now, <b>4.5โ…+</b>, prefer 100+ reviews.</p>
             <div class="callout food">
-              <b>Order ideas:</b> bánh mì + iced coffee, or a small phở if a high-rated shop is next door. Keep it light for cable car.
+              <b>Order ideas:</b> bรกnh mรฌ + iced coffee, or a small phแป if a high-rated shop is next door. Keep it light for cable car.
             </div>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">🏨 Hotel map · start walk from here</a>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=banh+mi+near+Airport+Homestay+Da+Nang">📍 Bánh mì near hotel</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=coffee+near+Airport+Homestay+Da+Nang">📍 Coffee near hotel</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">๐จ Hotel map ยท start walk from here</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=banh+mi+near+Airport+Homestay+Da+Nang">๐“ Bรกnh mรฌ near hotel</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=coffee+near+Airport+Homestay+Da+Nang">๐“ Coffee near hotel</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">08:40–09:00</div>
+          <div class="time">08:40โ€“09:00</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Grab Car → Ba Na cable stations</h4>
+            <h4>Grab Car โ’ Ba Na cable stations</h4>
             <div class="how">
-              <b>For 2 pax + bags:</b> Grab Car to <b>Sun World Ba Na Hills – Hoi An Station (Hội An 1)</b> — best start for Golden Bridge first.<br><br>
-              <b>Time:</b> ~45–70 min from airport area.<br>
-              <b>Cost:</b> ~350–500k VND per car (not per person).<br>
-              <b>Alt drop-off:</b> If Mercure told you to use hotel luggage counter, they may say <b>Thác Tóc Tiên (Toc Tien) Station</b> — follow hotel WhatsApp. Still fine.
+              <b>For 2 pax + bags:</b> Grab Car to <b>Sun World Ba Na Hills โ€“ Hoi An Station (Hแปi An 1)</b> โ€” best start for Golden Bridge first.<br><br>
+              <b>Time:</b> ~45โ€“70 min from airport area.<br>
+              <b>Cost:</b> ~350โ€“500k VND per car (not per person).<br>
+              <b>Alt drop-off:</b> If Mercure told you to use hotel luggage counter, they may say <b>Thรกc Tรณc Tiรชn (Toc Tien) Station</b> โ€” follow hotel WhatsApp. Still fine.
             </div>
-            <span class="cost">Grab Car ~350–500k / car</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ba+Na+Hills+Hoi+An+Station+cable+car">📍 Hoi An Station (recommended up)</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thac+Toc+Tien+Station+Ba+Na+Hills">📍 Toc Tien Station (hotel luggage alt)</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng&destination=Ba+Na+Hills+Hoi+An+Station">🧭 Route: Airport Homestay → Hoi An Station</a>
+            <span class="cost">Grab Car ~350โ€“500k / car</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ba+Na+Hills+Hoi+An+Station+cable+car">๐“ Hoi An Station (recommended up)</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thac+Toc+Tien+Station+Ba+Na+Hills">๐“ Toc Tien Station (hotel luggage alt)</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng&destination=Ba+Na+Hills+Hoi+An+Station">๐งญ Route: Airport Homestay โ’ Hoi An Station</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">09:45–10:30</div>
+          <div class="time">09:45โ€“10:30</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>Ticket gate · your pre-bought cable ticket</h4>
-            <p>Scan / show QR or paper at entrance. Ask staff: “Golden Bridge — Marseille?” They point to the correct queue. Collect a paper map if offered (or use Sun World app).</p>
-            <div class="callout tip"><b>Mercure overnight:</b> ask “Hotel guest luggage / Mercure?” — bags sometimes transferred on hotel procedure so you don’t haul suitcases on every cable line.</div>
+            <h4>Ticket gate ยท your pre-bought cable ticket</h4>
+            <p>Scan / show QR or paper at entrance. Ask staff: โ€Golden Bridge โ€” Marseille?โ€ They point to the correct queue. Collect a paper map if offered (or use Sun World app).</p>
+            <div class="callout tip"><b>Mercure overnight:</b> ask โ€Hotel guest luggage / Mercure?โ€ โ€” bags sometimes transferred on hotel procedure so you donโ€t haul suitcases on every cable line.</div>
           </div>
         </div>
 
         <!-- CABLE PATH + CHEAT SHEET (all in Day 2) -->
         <div class="cable">
-          <h4>🚠 Cable path + cheat-sheet (you + wife)</h4>
-          <div class="step"><div class="n">1</div><div><b>UP — Golden Bridge line</b><br>Board base: <b>Hội An Station (Hoi An 1)</b><br>Ride ~15–20 min → get off <b>Marseille Station</b><br>Walk → <b>Golden Bridge (Cầu Vàng)</b></div></div>
-          <div class="arr">↓ on the mountain · before noon ✓</div>
-          <div class="step"><div class="n">2</div><div><b>Golden Bridge zone</b><br>Hands bridge photos, viewpoints, Debay Wine Cellar if open. 45–90 min enough.</div></div>
-          <div class="arr">↓ toward French Village / Mercure</div>
-          <div class="step"><div class="n">3</div><div><b>Bridge → French Village cable</b><br>Board <b>Bordeaux Station</b> (bridge zone)<br>Get off <b>Louvre Station</b><br>Solar Castle / Union Square → paths to French Village &amp; Fantasy Park</div></div>
-          <div class="arr">↓ follow “French Village / Mercure” signs</div>
-          <div class="step"><div class="n">4</div><div><b>French Village + Mercure check-in</b><br>Hotel inside French Village. Check-in when ready (often after 14:00; bags may be held). Village + Fantasy Park (rain backup).<br><a style="color:#8fd4c8;font-weight:700" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">🏨 Open Mercure on Maps</a></div></div>
-          <div class="arr">↓ Fri morning leave mountain</div>
-          <div class="step"><div class="n">5</div><div><b>DOWN — long scenic line</b><br>Board <b>L’Indochine Station</b> (French Village)<br>Get off <b>Thác Tóc Tiên / Toc Tien Station</b> (base)<br>Then Grab → Hoi An</div></div>
+          <h4>๐  Cable path + cheat-sheet (you + wife)</h4>
+          <div class="step"><div class="n">1</div><div><b>UP โ€” Golden Bridge line</b><br>Board base: <b>Hแปi An Station (Hoi An 1)</b><br>Ride ~15โ€“20 min โ’ get off <b>Marseille Station</b><br>Walk โ’ <b>Golden Bridge (Cแบงu Vร ng)</b></div></div>
+          <div class="arr">โ“ on the mountain ยท before noon โ“</div>
+          <div class="step"><div class="n">2</div><div><b>Golden Bridge zone</b><br>Hands bridge photos, viewpoints, Debay Wine Cellar if open. 45โ€“90 min enough.</div></div>
+          <div class="arr">โ“ toward French Village / Mercure</div>
+          <div class="step"><div class="n">3</div><div><b>Bridge โ’ French Village cable</b><br>Board <b>Bordeaux Station</b> (bridge zone)<br>Get off <b>Louvre Station</b><br>Solar Castle / Union Square โ’ paths to French Village &amp; Fantasy Park</div></div>
+          <div class="arr">โ“ follow โ€French Village / Mercureโ€ signs</div>
+          <div class="step"><div class="n">4</div><div><b>French Village + Mercure check-in</b><br>Hotel inside French Village. Check-in when ready (often after 14:00; bags may be held). Village + Fantasy Park (rain backup).<br><a style="color:#8fd4c8;font-weight:700" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">๐จ Open Mercure on Maps</a></div></div>
+          <div class="arr">โ“ Fri morning leave mountain</div>
+          <div class="step"><div class="n">5</div><div><b>DOWN โ€” long scenic line</b><br>Board <b>Lโ€Indochine Station</b> (French Village)<br>Get off <b>Thรกc Tรณc Tiรชn / Toc Tien Station</b> (base)<br>Then Grab โ’ Hoi An</div></div>
           <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(143,212,200,.25)">
-            <div style="font-size:11px;font-weight:800;color:#8fd4c8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Quick station table · show staff bold names</div>
+            <div style="font-size:11px;font-weight:800;color:#8fd4c8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Quick station table ยท show staff bold names</div>
             <table class="cal" style="font-size:12px;color:#e8f2ef">
               <tr style="color:#8fd4c8"><th style="color:#8fd4c8;border-color:rgba(143,212,200,.2)">Goal</th><th style="color:#8fd4c8;border-color:rgba(143,212,200,.2)">Board</th><th style="color:#8fd4c8;border-color:rgba(143,212,200,.2)">Get off</th></tr>
-              <tr><td style="border-color:rgba(143,212,200,.15)">Up → Golden Bridge</td><td style="border-color:rgba(143,212,200,.15)"><b>Hội An (Hoi An 1)</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Marseille</b></td></tr>
-              <tr><td style="border-color:rgba(143,212,200,.15)">Bridge → French Village</td><td style="border-color:rgba(143,212,200,.15)"><b>Bordeaux</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Louvre</b></td></tr>
-              <tr><td style="border-color:rgba(143,212,200,.15)">Down from Mercure</td><td style="border-color:rgba(143,212,200,.15)"><b>L’Indochine</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Toc Tien</b></td></tr>
-              <tr><td style="border-color:rgba(143,212,200,.15)">Luggage alt up</td><td style="border-color:rgba(143,212,200,.15)"><b>Toc Tien</b></td><td style="border-color:rgba(143,212,200,.15)"><b>L’Indochine</b></td></tr>
+              <tr><td style="border-color:rgba(143,212,200,.15)">Up โ’ Golden Bridge</td><td style="border-color:rgba(143,212,200,.15)"><b>Hแปi An (Hoi An 1)</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Marseille</b></td></tr>
+              <tr><td style="border-color:rgba(143,212,200,.15)">Bridge โ’ French Village</td><td style="border-color:rgba(143,212,200,.15)"><b>Bordeaux</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Louvre</b></td></tr>
+              <tr><td style="border-color:rgba(143,212,200,.15)">Down from Mercure</td><td style="border-color:rgba(143,212,200,.15)"><b>Lโ€Indochine</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Toc Tien</b></td></tr>
+              <tr><td style="border-color:rgba(143,212,200,.15)">Luggage alt up</td><td style="border-color:rgba(143,212,200,.15)"><b>Toc Tien</b></td><td style="border-color:rgba(143,212,200,.15)"><b>Lโ€Indochine</b></td></tr>
             </table>
-            <p style="margin-top:10px;opacity:.85;font-size:12px">Tickets already bought. Park ~08:00–22:00. Lost? Show staff: “Marseille / Golden Bridge” or “French Village / Mercure”. Other bases (Suối Mơ, Champa, Hoi An 2) not needed if you follow 1→3→5.</p>
+            <p style="margin-top:10px;opacity:.85;font-size:12px">Tickets already bought. Park ~08:00โ€“22:00. Lost? Show staff: โ€Marseille / Golden Bridgeโ€ or โ€French Village / Mercureโ€. Other bases (Suแป‘i Mฦก, Champa, Hoi An 2) not needed if you follow 1โ’3โ’5.</p>
           </div>
         </div>
 
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Golden+Bridge+Ba+Na+Hills">📍 Golden Bridge</a>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=French+Village+Ba+Na+Hills">📍 French Village</a>
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Golden+Bridge+Ba+Na+Hills">๐“ Golden Bridge</a>
+        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=French+Village+Ba+Na+Hills">๐“ French Village</a>
         <a class="btn ghost" target="_blank" href="https://sunworld.vn/en/banahills">Official Ba Na site</a>
 
         <div class="slot">
-          <div class="time">11:00–13:00</div>
+          <div class="time">11:00โ€“13:00</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
             <h4>Golden Bridge first (cool + fewer people than mid-afternoon)</h4>
-            <p>You aimed to be here before noon — perfect. Jacket ready; mountain is cooler / can be foggy in wet season.</p>
+            <p>You aimed to be here before noon โ€” perfect. Jacket ready; mountain is cooler / can be foggy in wet season.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">13:00–14:00</div>
+          <div class="time">13:00โ€“14:00</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Simple lunch (not the “best meal” of the trip)</h4>
-            <p>Park food is tourist-priced. Pick a clean à la carte spot near Marseille/French Village. Save special dinner for tonight.</p>
+            <h4>Simple lunch (not the โ€best mealโ€ of the trip)</h4>
+            <p>Park food is tourist-priced. Pick a clean ร  la carte spot near Marseille/French Village. Save special dinner for tonight.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">14:00–17:30</div>
+          <div class="time">14:00โ€“17:30</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>French Village · Fantasy Park · go to Mercure</h4>
+            <h4>French Village ยท Fantasy Park ยท go to Mercure</h4>
             <p>Indoor Fantasy Park = rain backup. Alpine coaster if open. Then check-in / shower / rest at Mercure.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">🏨 Go to Mercure · Google Maps</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">๐จ Go to Mercure ยท Google Maps</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">18:30–20:30</div>
+          <div class="time">18:30โ€“20:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Dinner on mountain · buffet OK</h4>
+            <h4>Dinner on mountain ยท buffet OK</h4>
             <div class="callout food">
-              Easy option for couples after a long day: <b>hotel / La Crique buffet</b> (Mercure dinner buffet — convenient).<br>
+              Easy option for couples after a long day: <b>hotel / La Crique buffet</b> (Mercure dinner buffet โ€” convenient).<br>
               Want a menu instead?<br>
-              • <b>L’Étable</b> — French + Vietnamese plates<br>
-              • <b>Maison du Roi</b> — Asian / Vietnamese on village street<br>
-              • <b>La Côte d’Azur</b> — Mediterranean<br>
-              Ask reception what’s open tonight and pick whatever you’re in the mood for.
+              โ€ข <b>Lโ€รtable</b> โ€” French + Vietnamese plates<br>
+              โ€ข <b>Maison du Roi</b> โ€” Asian / Vietnamese on village street<br>
+              โ€ข <b>La Cรดte dโ€Azur</b> โ€” Mediterranean<br>
+              Ask reception whatโ€s open tonight and pick whatever youโ€re in the mood for.
             </div>
           </div>
         </div>
@@ -759,9 +817,9 @@
           <div class="dotcol"><div class="dot s"></div></div>
           <div class="slot-body">
             <h4>Sleep Mercure</h4>
-            <p>Tomorrow: hotel breakfast included · slow morning · cable down · Hoi An.</p>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">🏨 Mercure map</a>
-            <p class="note">Alarm ~7:45–8:00 (normal again).</p>
+            <p>Tomorrow: hotel breakfast included ยท slow morning ยท cable down ยท Hoi An.</p>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">๐จ Mercure map</a>
+            <p class="note">Alarm ~7:45โ€“8:00 (normal again).</p>
           </div>
         </div>
       </div>
@@ -772,109 +830,109 @@
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Fri 31 Jul · Day 3</div>
-          <h3>Hotel BF · Hoi An night</h3>
-          <p>Mercure breakfast · Old Town + market</p>
+          <div class="dlabel">Fri 31 Jul ยท Day 3</div>
+          <h3>Hotel BF ยท Hoi An night</h3>
+          <p>Mercure breakfast ยท Old Town + market</p>
           <div class="chev"></div>
         </div>
       </summary>
       <div class="day-body">
         <div class="pill-row">
-          <span class="pill">Wake 7:45–8:00</span>
+          <span class="pill">Wake 7:45โ€“8:00</span>
           <span class="pill f">Breakfast = hotel</span>
           <span class="pill">Royal Riverside night</span>
         </div>
 
         <div class="slot">
-          <div class="time">08:00–09:15</div>
+          <div class="time">08:00โ€“09:15</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
             <h4>Breakfast offered by hotel (Mercure)</h4>
-            <p>Use the included breakfast — La Crique / hotel BF hall as directed at reception. No need to hunt food. Eat well; long transfer later.</p>
+            <p>Use the included breakfast โ€” La Crique / hotel BF hall as directed at reception. No need to hunt food. Eat well; long transfer later.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">09:15–10:15</div>
+          <div class="time">09:15โ€“10:15</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
             <h4>Optional: Golden Bridge redo if foggy yesterday</h4>
-            <p>Only if weather is clear and you care. Else skip → pack → cable down.</p>
+            <p>Only if weather is clear and you care. Else skip โ’ pack โ’ cable down.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">10:15–11:15</div>
+          <div class="time">10:15โ€“11:15</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Cable DOWN · L’Indochine → Toc Tien</h4>
+            <h4>Cable DOWN ยท Lโ€Indochine โ’ Toc Tien</h4>
             <div class="how">
-              <b>Station:</b> <b>L’Indochine Station</b> (French Village)<br>
-              <b>To:</b> <b>Thác Tóc Tiên / Toc Tien Station</b> (base)<br>
+              <b>Station:</b> <b>Lโ€Indochine Station</b> (French Village)<br>
+              <b>To:</b> <b>Thรกc Tรณc Tiรชn / Toc Tien Station</b> (base)<br>
               Collect luggage per Mercure instructions. Then Grab Car.
             </div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=L+Indochine+Station+Ba+Na+Hills">📍 L’Indochine Station</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=L+Indochine+Station+Ba+Na+Hills">๐“ Lโ€Indochine Station</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">11:20–13:30</div>
+          <div class="time">11:20โ€“13:30</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Grab Car: Ba Na base → go to Royal Riverside</h4>
+            <h4>Grab Car: Ba Na base โ’ go to Royal Riverside</h4>
             <div class="how">
-              <b>2 pax + bags:</b> one Grab Car door-to-door. Paste hotel pin below. ~1.5–2.5 hrs. ~600–900k+ VND / car.<br>
-              Bus only if no big bags — not worth it for a couple with suitcases today.
+              <b>2 pax + bags:</b> one Grab Car door-to-door. Paste hotel pin below. ~1.5โ€“2.5 hrs. ~600โ€“900k+ VND / car.<br>
+              Bus only if no big bags โ€” not worth it for a couple with suitcases today.
             </div>
-            <span class="cost">Grab Car ~600–900k+</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">🏨 Grab pin · Royal Riverside</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Thac+Toc+Tien+Station+Ba+Na&destination=Royal+Riverside+Hoi+An+Hotel+%26+Spa">🧭 Toc Tien → Royal Riverside</a>
+            <span class="cost">Grab Car ~600โ€“900k+</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐จ Grab pin ยท Royal Riverside</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Thac+Toc+Tien+Station+Ba+Na&destination=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐งญ Toc Tien โ’ Royal Riverside</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">13:30–15:30</div>
+          <div class="time">13:30โ€“15:30</div>
           <div class="dotcol"><div class="dot"></div></div>
           <div class="slot-body">
-            <h4>Check-in Royal Riverside · rest / pool</h4>
+            <h4>Check-in Royal Riverside ยท rest / pool</h4>
             <p>Heat peak. Nap. Old Town after 16:30 is nicer.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">🏨 Hotel map · Royal Riverside</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐จ Hotel map ยท Royal Riverside</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">16:30–18:30</div>
+          <div class="time">16:30โ€“18:30</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
             <h4>Hoi An Ancient Town walk</h4>
-            <p>Japanese Covered Bridge · yellow walls · river. Historic house ticket ~120k if you want museums.</p>
-            <div class="how"><b>How:</b> Grab or hotel bike to Old Town edge → walk only (cars limited inside).</div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hoi+An+Ancient+Town">📍 Old Town</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Japanese+Covered+Bridge+Hoi+An">📍 Japanese Bridge</a>
+            <p>Japanese Covered Bridge ยท yellow walls ยท river. Historic house ticket ~120k if you want museums.</p>
+            <div class="how"><b>How:</b> Grab or hotel bike to Old Town edge โ’ walk only (cars limited inside).</div>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hoi+An+Ancient+Town">๐“ Old Town</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Japanese+Covered+Bridge+Hoi+An">๐“ Japanese Bridge</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">18:30–20:00</div>
+          <div class="time">18:30โ€“20:00</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Dinner · 4.5★+ · 100+ reviews</h4>
+            <h4>Dinner ยท 4.5โ…+ ยท 100+ reviews</h4>
             <div class="callout food">
-              Open Maps in Old Town → sort by rating. Confirm <b>≥4.5</b> and <b>100+</b> reviews before sitting.<br>
-              <b>Strong candidates to verify:</b> Morning Glory, Firefly, The Soul, Grandma Kitchen — only go if they still meet your bar tonight.<br>
-              <b>Order:</b> cao lầu, white rose dumplings, wonton, mì Quảng.
+              Open Maps in Old Town โ’ sort by rating. Confirm <b>โฅ4.5</b> and <b>100+</b> reviews before sitting.<br>
+              <b>Strong candidates to verify:</b> Morning Glory, Firefly, The Soul, Grandma Kitchen โ€” only go if they still meet your bar tonight.<br>
+              <b>Order:</b> cao lแบงu, white rose dumplings, wonton, mรฌ Quแบฃng.
             </div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=restaurants+Hoi+An+Ancient+Town+4.5">📍 HA restaurants 4.5★</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=restaurants+Hoi+An+Ancient+Town+4.5">๐“ HA restaurants 4.5โ…</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">20:00–22:00</div>
+          <div class="time">20:00โ€“22:00</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
             <h4>Night Market + lanterns</h4>
-            <p>Nguyen Hoang night market · river lights. Optional short river boat (not the same as Cam Thanh basket boat).</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hoi+An+Night+Market">📍 Night Market</a>
+            <p>Nguyen Hoang night market ยท river lights. Optional short river boat (not the same as Cam Thanh basket boat).</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hoi+An+Night+Market">๐“ Night Market</a>
           </div>
         </div>
 
@@ -882,11 +940,11 @@
           <div class="time">22:15</div>
           <div class="dotcol"><div class="dot s"></div></div>
           <div class="slot-body">
-            <h4>Grab → go back to Royal Riverside · sleep</h4>
-            <span class="cost">Grab ~40–90k</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">🏨 Grab pin · back to hotel</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hoi+An+Night+Market&destination=Royal+Riverside+Hoi+An+Hotel+%26+Spa">🧭 Night Market → hotel</a>
-            <p class="note">Alarm 7:30–8:00. Tomorrow you leave Hoi An for <b>Bluesun Da Nang</b> (not another Hoi An night).</p>
+            <h4>Grab โ’ go back to Royal Riverside ยท sleep</h4>
+            <span class="cost">Grab ~40โ€“90k</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐จ Grab pin ยท back to hotel</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hoi+An+Night+Market&destination=Royal+Riverside+Hoi+An+Hotel+%26+Spa">๐งญ Night Market โ’ hotel</a>
+            <p class="note">Alarm 7:30โ€“8:00. Tomorrow you leave Hoi An for <b>Bluesun Da Nang</b> (not another Hoi An night).</p>
           </div>
         </div>
       </div>
@@ -897,112 +955,112 @@
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Sat 1 Aug · Day 4</div>
-          <h3>Boat · Safari · Bluesun DN</h3>
-          <p>Check out HA → Da Nang beach hotel</p>
+          <div class="dlabel">Sat 1 Aug ยท Day 4</div>
+          <h3>Boat ยท Safari ยท Bluesun DN</h3>
+          <p>Check out HA โ’ Da Nang beach hotel</p>
           <div class="chev"></div>
         </div>
       </summary>
       <div class="day-body">
         <div class="pill-row">
-          <span class="pill">Wake 7:30–8:00</span>
+          <span class="pill">Wake 7:30โ€“8:00</span>
           <span class="pill">Bluesun Da Nang check-in</span>
-          <span class="pill w">Weekend · prebook Safari if possible</span>
+          <span class="pill w">Weekend ยท prebook Safari if possible</span>
         </div>
 
         <div class="callout tip">
-          <b>Hotel note:</b> Night 4 &amp; 5 = <b>Bluesun Danang Beach Hotel</b> (Da Nang). You leave Hoi An today after activities — do not rebook Hoi An.
+          <b>Hotel note:</b> Night 4 &amp; 5 = <b>Bluesun Danang Beach Hotel</b> (Da Nang). You leave Hoi An today after activities โ€” do not rebook Hoi An.
         </div>
 
         <div class="slot">
-          <div class="time">07:45–08:30</div>
+          <div class="time">07:45โ€“08:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Breakfast (hotel or nearby 4.5★)</h4>
-            <p>If Royal Riverside BF is good, use it. Else Maps 4.5★ near hotel.</p>
+            <h4>Breakfast (hotel or nearby 4.5โ…)</h4>
+            <p>If Royal Riverside BF is good, use it. Else Maps 4.5โ… near hotel.</p>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">08:45–09:15</div>
+          <div class="time">08:45โ€“09:15</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Grab → Cam Thanh basket boat</h4>
-            <div class="how"><b>2 pax:</b> Grab Car with bags in trunk if you’ll go Safari after (or leave bags at Hoi An hotel luggage room and collect after Safari — simpler for boats). ~10–20 min.</div>
-            <span class="cost">Grab ~40–80k</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bay+Mau+Coconut+Forest+Cam+Thanh">📍 Bay Mau / Cam Thanh</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Royal+Riverside+Hoi+An+Hotel+%26+Spa&destination=Bay+Mau+Coconut+Forest">🧭 Hotel → Cam Thanh</a>
+            <h4>Grab โ’ Cam Thanh basket boat</h4>
+            <div class="how"><b>2 pax:</b> Grab Car with bags in trunk if youโ€ll go Safari after (or leave bags at Hoi An hotel luggage room and collect after Safari โ€” simpler for boats). ~10โ€“20 min.</div>
+            <span class="cost">Grab ~40โ€“80k</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bay+Mau+Coconut+Forest+Cam+Thanh">๐“ Bay Mau / Cam Thanh</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Royal+Riverside+Hoi+An+Hotel+%26+Spa&destination=Bay+Mau+Coconut+Forest">๐งญ Hotel โ’ Cam Thanh</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">09:15–10:30</div>
+          <div class="time">09:15โ€“10:30</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>Basket boat (thúng chai) ~45–60 min</h4>
-            <p>Fair price often ~80–150k/person. Avoid 300k+ touts. Spinning optional — say no if wife prefers calm.</p>
-            <span class="cost">~80–150k / person fair</span>
+            <h4>Basket boat (thรบng chai) ~45โ€“60 min</h4>
+            <p>Fair price often ~80โ€“150k/person. Avoid 300k+ touts. Spinning optional โ€” say no if wife prefers calm.</p>
+            <span class="cost">~80โ€“150k / person fair</span>
             <div class="callout food">
-              If the boat place has a restaurant with <b>4.5★+</b> and 100+ reviews (e.g. well-reviewed basket-boat cafés), light lunch there.
+              If the boat place has a restaurant with <b>4.5โ…+</b> and 100+ reviews (e.g. well-reviewed basket-boat cafรฉs), light lunch there.
             </div>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">10:45–11:30</div>
+          <div class="time">10:45โ€“11:30</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Grab → VinWonders Nam Hoi An (River Safari)</h4>
-            <span class="cost">Grab ~150–300k</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders+Nam+Hoi+An">📍 VinWonders</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bay+Mau+Coconut+Forest&destination=VinWonders+Nam+Hoi+An">🧭 Cam Thanh → Safari</a>
+            <h4>Grab โ’ VinWonders Nam Hoi An (River Safari)</h4>
+            <span class="cost">Grab ~150โ€“300k</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders+Nam+Hoi+An">๐“ VinWonders</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bay+Mau+Coconut+Forest&destination=VinWonders+Nam+Hoi+An">๐งญ Cam Thanh โ’ Safari</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">11:30–15:30</div>
+          <div class="time">11:30โ€“15:30</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
             <h4>Vinpearl River Safari</h4>
-            <p>Park ~09:00–19:00. Safari boats ~09:30–17:00 — do boat early. Adult ticket often ~450–650k (you may already have).</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vinpearl+River+Safari+Nam+Hoi+An">📍 River Safari</a>
+            <p>Park ~09:00โ€“19:00. Safari boats ~09:30โ€“17:00 โ€” do boat early. Adult ticket often ~450โ€“650k (you may already have).</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vinpearl+River+Safari+Nam+Hoi+An">๐“ River Safari</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">15:30–17:00</div>
+          <div class="time">15:30โ€“17:00</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Grab → go to Bluesun Danang Beach</h4>
-            <div class="how"><b>Direct Grab Car</b> with luggage · paste hotel pin · ~45–75 min · ~250–450k. Da Nang base for 2 nights.</div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">🏨 Grab pin · Bluesun</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=VinWonders+Nam+Hoi+An&destination=Bluesun+Danang+Beach+Hotel">🧭 Safari → Bluesun</a>
+            <h4>Grab โ’ go to Bluesun Danang Beach</h4>
+            <div class="how"><b>Direct Grab Car</b> with luggage ยท paste hotel pin ยท ~45โ€“75 min ยท ~250โ€“450k. Da Nang base for 2 nights.</div>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">๐จ Grab pin ยท Bluesun</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=VinWonders+Nam+Hoi+An&destination=Bluesun+Danang+Beach+Hotel">๐งญ Safari โ’ Bluesun</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">17:00–18:00</div>
+          <div class="time">17:00โ€“18:00</div>
           <div class="dotcol"><div class="dot"></div></div>
           <div class="slot-body">
-            <h4>Check-in Bluesun · beach toes</h4>
+            <h4>Check-in Bluesun ยท beach toes</h4>
             <p><b>Tonight:</b> reconfirm free airport car for Mon 3 Aug 20:30 at reception.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">🏨 Hotel map · Bluesun</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">๐จ Hotel map ยท Bluesun</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">18:30–20:30</div>
+          <div class="time">18:30โ€“20:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Dinner · try your hit list if energy allows</h4>
+            <h4>Dinner ยท try your hit list if energy allows</h4>
             <div class="callout food">
               <b>Priority foods:</b><br>
-              • <b>Gỏi cá trích / Nam Ô</b> — search Maps, only sit if ≥4.5★ &amp; 100+ reviews<br>
-              • Or seafood on My Khe with same rating bar<br>
-              • <b>Salt coffee or egg coffee</b> after dinner / dessert café
+              โ€ข <b>Gแปi cรก trรญch / Nam ร”</b> โ€” search Maps, only sit if โฅ4.5โ… &amp; 100+ reviews<br>
+              โ€ข Or seafood on My Khe with same rating bar<br>
+              โ€ข <b>Salt coffee or egg coffee</b> after dinner / dessert cafรฉ
             </div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Da+Nang">📍 Gỏi cá trích</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+muoi+My+Khe">📍 Salt coffee My Khe</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Da+Nang">๐“ Gแปi cรก trรญch</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+muoi+My+Khe">๐“ Salt coffee My Khe</a>
           </div>
         </div>
       </div>
@@ -1013,85 +1071,85 @@
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Sun 2 Aug · Day 5</div>
-          <h3>Marble · beach · 🐉 fire</h3>
+          <div class="dlabel">Sun 2 Aug ยท Day 5</div>
+          <h3>Marble ยท beach ยท ๐ fire</h3>
           <p>Dragon Bridge fire 21:00 locked</p>
           <div class="chev"></div>
         </div>
       </summary>
       <div class="day-body">
         <div class="pill-row">
-          <span class="pill">Wake 7:30–8:00</span>
-          <span class="pill w">🐉 FIRE 21:00</span>
-          <span class="pill f">Phở / nem nướng / gỏi cá</span>
+          <span class="pill">Wake 7:30โ€“8:00</span>
+          <span class="pill w">๐ FIRE 21:00</span>
+          <span class="pill f">Phแป / nem nฦฐแปng / gแปi cรก</span>
         </div>
 
         <div class="slot">
-          <div class="time">08:00–09:00</div>
+          <div class="time">08:00โ€“09:00</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Breakfast = Phở mission</h4>
-            <p>Search “phở” near Bluesun / central DN. Only enter if <b>4.5★+</b> and <b>100+</b> reviews (or very strong local volume).</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+near+My+Khe+Beach+Da+Nang">📍 Phở near My Khe</a>
+            <h4>Breakfast = Phแป mission</h4>
+            <p>Search โ€phแปโ€ near Bluesun / central DN. Only enter if <b>4.5โ…+</b> and <b>100+</b> reviews (or very strong local volume).</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+near+My+Khe+Beach+Da+Nang">๐“ Phแป near My Khe</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">09:15–11:45</div>
+          <div class="time">09:15โ€“11:45</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>Marble Mountain (Thủy Sơn)</h4>
-            <div class="how"><b>Grab:</b> 15–25 min from Bluesun · ~40–80k. Open ~07:00–17:30 daily. Entry ~40k + optional elevator. Shoes with grip.</div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Marble+Mountains+Da+Nang">🧭 Bluesun → Marble Mt</a>
+            <h4>Marble Mountain (Thแปงy Sฦกn)</h4>
+            <div class="how"><b>Grab:</b> 15โ€“25 min from Bluesun ยท ~40โ€“80k. Open ~07:00โ€“17:30 daily. Entry ~40k + optional elevator. Shoes with grip.</div>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Marble+Mountains+Da+Nang">๐งญ Bluesun โ’ Marble Mt</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">12:15–13:30</div>
+          <div class="time">12:15โ€“13:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Lunch · Nem nướng OR Gỏi cá trích</h4>
+            <h4>Lunch ยท Nem nฦฐแปng OR Gแปi cรก trรญch</h4>
             <div class="callout food">
-              Pick one “new thing” lunch:<br>
-              • <b>Nem nướng</b> (nam nueng) — grilled pork + wrap<br>
-              • <b>Gỏi cá trích</b> — if not done last night<br>
-              Always verify ★ ≥ 4.5 and reviews ≥ 100 on Google before ordering.
+              Pick one โ€new thingโ€ lunch:<br>
+              โ€ข <b>Nem nฦฐแปng</b> (nam nueng) โ€” grilled pork + wrap<br>
+              โ€ข <b>Gแปi cรก trรญch</b> โ€” if not done last night<br>
+              Always verify โ… โฅ 4.5 and reviews โฅ 100 on Google before ordering.
             </div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">📍 Nem nướng</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang">📍 Gỏi cá Nam Ô</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">๐“ Nem nฦฐแปng</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang">๐“ Gแปi cรก Nam ร”</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">14:00–17:30</div>
+          <div class="time">14:00โ€“17:30</div>
           <div class="dotcol"><div class="dot"></div></div>
           <div class="slot-body">
-            <h4>My Khe Beach · couple time</h4>
-            <p>Swim, umbrella, photos. Café: egg coffee or salt coffee with 4.5★+ rating.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=My+Khe+Beach">📍 My Khe</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+Da+Nang">📍 Egg coffee</a>
+            <h4>My Khe Beach ยท couple time</h4>
+            <p>Swim, umbrella, photos. Cafรฉ: egg coffee or salt coffee with 4.5โ…+ rating.</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=My+Khe+Beach">๐“ My Khe</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+Da+Nang">๐“ Egg coffee</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">18:00–20:15</div>
+          <div class="time">18:00โ€“20:15</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
             <h4>Dinner near Dragon Bridge / Han River</h4>
-            <p>Book or queue early (Sunday). Maps 4.5★+ · 100+ reviews near Bach Dang / bridge.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=restaurants+near+Dragon+Bridge+Da+Nang">📍 Restaurants near Dragon Bridge</a>
+            <p>Book or queue early (Sunday). Maps 4.5โ…+ ยท 100+ reviews near Bach Dang / bridge.</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=restaurants+near+Dragon+Bridge+Da+Nang">๐“ Restaurants near Dragon Bridge</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">20:30–21:20</div>
+          <div class="time">20:30โ€“21:20</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>🐉 Dragon Bridge FIRE · Sun 2 Aug 21:00</h4>
-            <p><b>Locked night.</b> Free. ~10–15 min. Stand on riverside by 20:30. West Bach Dang or east bank both work.</p>
+            <h4>๐ Dragon Bridge FIRE ยท Sun 2 Aug 21:00</h4>
+            <p><b>Locked night.</b> Free. ~10โ€“15 min. Stand on riverside by 20:30. West Bach Dang or east bank both work.</p>
             <div class="callout warn">Mon 3 Aug has no regular fire show. Tonight is the one.</div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Dragon+Bridge+Da+Nang">📍 Dragon Bridge</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bach+Dang+Street+Da+Nang">📍 Bach Dang view</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Dragon+Bridge+Da+Nang">๐“ Dragon Bridge</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bach+Dang+Street+Da+Nang">๐“ Bach Dang view</a>
           </div>
         </div>
 
@@ -1099,11 +1157,11 @@
           <div class="time">21:40</div>
           <div class="dotcol"><div class="dot s"></div></div>
           <div class="slot-body">
-            <h4>Grab → go back to Bluesun · sleep</h4>
-            <span class="cost">Grab ~50–100k</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">🏨 Grab pin · back to Bluesun</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Dragon+Bridge+Da+Nang&destination=Bluesun+Danang+Beach+Hotel">🧭 Dragon Bridge → Bluesun</a>
-            <p class="note">Tomorrow: souvenir shopping day · flight night.</p>
+            <h4>Grab โ’ go back to Bluesun ยท sleep</h4>
+            <span class="cost">Grab ~50โ€“100k</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">๐จ Grab pin ยท back to Bluesun</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Dragon+Bridge+Da+Nang&destination=Bluesun+Danang+Beach+Hotel">๐งญ Dragon Bridge โ’ Bluesun</a>
+            <p class="note">Tomorrow: souvenir shopping day ยท flight night.</p>
           </div>
         </div>
       </div>
@@ -1114,91 +1172,91 @@
       <summary>
         <div class="day-thumb" style="background-image:url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=400&q=70')"></div>
         <div class="day-sum">
-          <div class="dlabel">Mon 3 Aug · Day 6</div>
+          <div class="dlabel">Mon 3 Aug ยท Day 6</div>
           <h3>Souvenir shopping spree</h3>
-          <p>Markets · gifts · car 20:30 · EK371</p>
+          <p>Markets ยท gifts ยท car 20:30 ยท EK371</p>
           <div class="chev"></div>
         </div>
       </summary>
       <div class="day-body">
         <div class="pill-row">
-          <span class="pill">Wake 7:45–8:00</span>
+          <span class="pill">Wake 7:45โ€“8:00</span>
           <span class="pill f">Shopping day</span>
-          <span class="pill w">Lobby 20:20 · car 20:30</span>
+          <span class="pill w">Lobby 20:20 ยท car 20:30</span>
         </div>
 
         <div class="callout tip">
-          <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car → airport.
+          <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car โ’ airport.
         </div>
 
         <div class="slot">
-          <div class="time">08:00–09:00</div>
+          <div class="time">08:00โ€“09:00</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Breakfast · finish any missed food</h4>
-            <p>If you still need <b>phở</b>, <b>nem nướng</b>, or <b>egg/salt coffee</b> — do it this morning near shopping zone.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+Da+Nang+4.5">📍 Phở 4.5★</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+OR+ca+phe+muoi+Da+Nang">📍 Egg / salt coffee</a>
+            <h4>Breakfast ยท finish any missed food</h4>
+            <p>If you still need <b>phแป</b>, <b>nem nฦฐแปng</b>, or <b>egg/salt coffee</b> โ€” do it this morning near shopping zone.</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+Da+Nang+4.5">๐“ Phแป 4.5โ…</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+OR+ca+phe+muoi+Da+Nang">๐“ Egg / salt coffee</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">09:15–12:00</div>
+          <div class="time">09:15โ€“12:00</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>🛒 Shopping block A · Han Market</h4>
+            <h4>๐’ Shopping block A ยท Han Market</h4>
             <p>Best one-stop for souvenirs: coffee, tea, silk scarves, lacquer, conical hats, snacks, magnets, AO dai shops nearby.</p>
             <div class="how">
-              <b>How:</b> Grab from Bluesun ~15–25 min.<br>
+              <b>How:</b> Grab from Bluesun ~15โ€“25 min.<br>
               <b>Haggle:</b> smile, start ~60% of ask, walk away once.<br>
               <b>Couple tip:</b> one holds cash, one compares quality. Buy coffee/cashews last (heavy).
             </div>
-            <span class="cost">Grab ~50–100k</span>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Han+Market+Da+Nang">📍 Han Market (Chợ Hàn)</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Han+Market+Da+Nang">🧭 Bluesun → Han Market</a>
+            <span class="cost">Grab ~50โ€“100k</span>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Han+Market+Da+Nang">๐“ Han Market (Chแปฃ Hร n)</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Han+Market+Da+Nang">๐งญ Bluesun โ’ Han Market</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">12:00–13:30</div>
+          <div class="time">12:00โ€“13:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
-            <h4>Lunch near market · 4.5★+ only</h4>
-            <p>Maps around Han Market / Hai Chau. Good day for <b>mì Quảng</b> or <b>bánh xèo</b> if not done yet.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=mi+quang+near+Han+Market+Da+Nang">📍 Mì Quảng near Han Market</a>
+            <h4>Lunch near market ยท 4.5โ…+ only</h4>
+            <p>Maps around Han Market / Hai Chau. Good day for <b>mรฌ Quแบฃng</b> or <b>bรกnh xรจo</b> if not done yet.</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=mi+quang+near+Han+Market+Da+Nang">๐“ Mรฌ Quแบฃng near Han Market</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">13:45–16:00</div>
+          <div class="time">13:45โ€“16:00</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>🛒 Shopping block B · more gifts</h4>
+            <h4>๐’ Shopping block B ยท more gifts</h4>
             <div class="how">
-              <b>Option 1:</b> <b>Con Market (Chợ Cồn)</b> — more local, good for snacks &amp; household-style gifts.<br>
+              <b>Option 1:</b> <b>Con Market (Chแปฃ Cแป“n)</b> โ€” more local, good for snacks &amp; household-style gifts.<br>
               <b>Option 2:</b> Beach road shops near My Khe / hotel (easier with bags later).<br>
-              <b>Option 3:</b> Vincom / modern mall if you want AC + fixed prices (less “local”, easier packing).<br>
+              <b>Option 3:</b> Vincom / modern mall if you want AC + fixed prices (less โ€localโ€, easier packing).<br>
               <b>What to buy:</b> Trung Nguyen / local coffee, coconut candy, silk, lacquer bowls, fridge magnets, light clothes, pepper/salt from central VN.
             </div>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Con+Market+Da+Nang">📍 Con Market</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=souvenir+shop+My+Khe+Da+Nang">📍 My Khe souvenirs</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vincom+Plaza+Da+Nang">📍 Vincom (AC mall)</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Con+Market+Da+Nang">๐“ Con Market</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=souvenir+shop+My+Khe+Da+Nang">๐“ My Khe souvenirs</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vincom+Plaza+Da+Nang">๐“ Vincom (AC mall)</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">16:00–18:00</div>
+          <div class="time">16:00โ€“18:00</div>
           <div class="dotcol"><div class="dot"></div></div>
           <div class="slot-body">
-            <h4>Back to Bluesun · pack · reconfirm car</h4>
+            <h4>Back to Bluesun ยท pack ยท reconfirm car</h4>
             <p>Weigh bags if needed. Liquids in checked bag. Confirm 20:30 airport car still OK.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">🏨 Grab pin · back to Bluesun</a>
-            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Han+Market+Da+Nang&destination=Bluesun+Danang+Beach+Hotel">🧭 Han Market → Bluesun</a>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">๐จ Grab pin ยท back to Bluesun</a>
+            <a class="btn ghost" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Han+Market+Da+Nang&destination=Bluesun+Danang+Beach+Hotel">๐งญ Han Market โ’ Bluesun</a>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">18:15–19:30</div>
+          <div class="time">18:15โ€“19:30</div>
           <div class="dotcol"><div class="dot f"></div></div>
           <div class="slot-body">
             <h4>Early easy dinner near hotel</h4>
@@ -1211,8 +1269,8 @@
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
             <h4>Lobby ready</h4>
-            <p>Free car <b>20:30</b> → DAD <b>21:00</b>. Backup: Grab Car same minute.</p>
-            <a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Da+Nang+International+Airport">🧭 Bluesun → DAD</a>
+            <p>Free car <b>20:30</b> โ’ DAD <b>21:00</b>. Backup: Grab Car same minute.</p>
+            <a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Da+Nang+International+Airport">๐งญ Bluesun โ’ DAD</a>
           </div>
         </div>
 
@@ -1220,7 +1278,7 @@
           <div class="time">23:30</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>EK371 departs · land 4 Aug 01:10</h4>
+            <h4>EK371 departs ยท land 4 Aug 01:10</h4>
             <p>Souvenir haul complete. Safe flight.</p>
           </div>
         </div>
@@ -1231,17 +1289,17 @@
   <!-- FOOD TRACKER -->
   <section id="food">
     <h2>Food checklist (2 pax)</h2>
-    <p class="sub">Tick mentally · only 4.5★+ with 100+ reviews</p>
+    <p class="sub">Tick mentally ยท only 4.5โ…+ with 100+ reviews</p>
     <div class="card coral">
-      <div class="food-item"><b>□ Phở</b> — Day 5 morning ideal</div>
-      <div class="food-item"><b>□ Nem nướng</b> (nam nueng) — Day 5 lunch ideal</div>
-      <div class="food-item"><b>□ Gỏi cá trích / Nam Ô</b> — Day 4 dinner or Day 5</div>
-      <div class="food-item"><b>□ Egg coffee (cà phê trứng)</b></div>
-      <div class="food-item"><b>□ Salt coffee (cà phê muối)</b></div>
-      <div class="food-item"><b>□ Hoi An: cao lầu + white rose</b> — Fri 31 Jul</div>
-      <div class="food-item"><b>□ Mì Quảng or bánh xèo</b> — bonus</div>
-      <div class="food-item"><b>□ Beach seafood</b> — My Khe night</div>
-      <p class="note">Method every time: Google Maps → place → check rating ≥4.5 → reviews ≥100 → recent photos of food → go. If not, walk 2 minutes and try next pin.</p>
+      <div class="food-item"><b>โ–ก Phแป</b> โ€” Day 5 morning ideal</div>
+      <div class="food-item"><b>โ–ก Nem nฦฐแปng</b> (nam nueng) โ€” Day 5 lunch ideal</div>
+      <div class="food-item"><b>โ–ก Gแปi cรก trรญch / Nam ร”</b> โ€” Day 4 dinner or Day 5</div>
+      <div class="food-item"><b>โ–ก Egg coffee (cร  phรช trแปฉng)</b></div>
+      <div class="food-item"><b>โ–ก Salt coffee (cร  phรช muแป‘i)</b></div>
+      <div class="food-item"><b>โ–ก Hoi An: cao lแบงu + white rose</b> โ€” Fri 31 Jul</div>
+      <div class="food-item"><b>โ–ก Mรฌ Quแบฃng or bรกnh xรจo</b> โ€” bonus</div>
+      <div class="food-item"><b>โ–ก Beach seafood</b> โ€” My Khe night</div>
+      <p class="note">Method every time: Google Maps โ’ place โ’ check rating โฅ4.5 โ’ reviews โฅ100 โ’ recent photos of food โ’ go. If not, walk 2 minutes and try next pin.</p>
     </div>
   </section>
 
@@ -1250,11 +1308,11 @@
     <h2>If plans break</h2>
     <div class="card">
       <p style="font-size:14px;margin-bottom:8px"><b>Ba Na fog:</b> Fantasy Park indoors + village; photos next morning before down.</p>
-      <p style="font-size:14px;margin-bottom:8px"><b>Restaurant &lt;4.5 or &lt;100 reviews:</b> skip · Maps next door.</p>
-      <p style="font-size:14px;margin-bottom:8px"><b>Gỏi cá trích sold out / closed:</b> other seafood salad / grilled fish same rating bar.</p>
+      <p style="font-size:14px;margin-bottom:8px"><b>Restaurant &lt;4.5 or &lt;100 reviews:</b> skip ยท Maps next door.</p>
+      <p style="font-size:14px;margin-bottom:8px"><b>Gแปi cรก trรญch sold out / closed:</b> other seafood salad / grilled fish same rating bar.</p>
       <p style="font-size:14px;margin-bottom:8px"><b>Safari weather:</b> longer Cam Thanh + early Bluesun beach.</p>
       <p style="font-size:14px;margin-bottom:8px"><b>Fire show cancelled Sun:</b> still visit lit bridge; Mon has no show.</p>
-      <p style="font-size:14px"><b>Free car fails Mon:</b> Grab Car 20:30 hotel → DAD.</p>
+      <p style="font-size:14px"><b>Free car fails Mon:</b> Grab Car 20:30 hotel โ’ DAD.</p>
     </div>
   </section>
 
@@ -1262,189 +1320,207 @@
     <div class="card gold">
       <h3>Couple final briefing</h3>
       <ul style="margin:8px 0 0 18px;font-size:14px">
-        <li>2 adults · share Grab Cars · split map duty</li>
+        <li>2 adults ยท share Grab Cars ยท split map duty</li>
         <li>Ba Na cable detail is inside <b>Day 2</b> (path + station table)</li>
-        <li>Dinner mountain: buffet or à la carte — both fine</li>
+        <li>Dinner mountain: buffet or ร  la carte โ€” both fine</li>
         <li>Day 3 BF: hotel</li>
-        <li>Nights 4–5: Bluesun <b>Da Nang</b></li>
-        <li>🐉 Sun 2 Aug 21:00</li>
+        <li>Nights 4โ€“5: Bluesun <b>Da Nang</b></li>
+        <li>๐ Sun 2 Aug 21:00</li>
         <li>Mon 3 Aug: Han Market shopping spree</li>
-        <li>Airport: 20:30 car · 21:00 DAD · 23:30 EK371 · home 4 Aug 01:10</li>
+        <li>Airport: 20:30 car ยท 21:00 DAD ยท 23:30 EK371 ยท home 4 Aug 01:10</li>
       </ul>
     </div>
     <p class="note" style="text-align:center;padding:16px 8px 8px">
-      29 Jul – 3 Aug 2026 · Mobile-first guide · Add to Home Screen for full-screen use<br>
-      iPhone: Share → Add to Home Screen · Android: Menu → Install / Add to Home
+      29 Jul โ€“ 3 Aug 2026 ยท Mobile-first guide ยท Add to Home Screen for full-screen use<br>
+      iPhone: Share โ’ Add to Home Screen ยท Android: Menu โ’ Install / Add to Home
     </p>
   </section>
 </main>
 
 <!-- BOTTOM NAV -->
 <nav class="bnav" aria-label="Primary">
-  <a href="#home"><span class="ic">🏠</span>Home</a>
-  <a href="#hotels"><span class="ic">🏨</span>Hotels</a>
-  <a href="#d2"><span class="ic">🚠</span>BaNa</a>
-  <a href="#d3"><span class="ic">🏮</span>HoiAn</a>
-  <a href="#d5"><span class="ic">🐉</span>Fire</a>
-  <a href="#d6"><span class="ic">🛍</span>Shop</a>
+  <a href="#home"><span class="ic">๐ </span>Home</a>
+  <a href="#hotels"><span class="ic">๐จ</span>Hotels</a>
+  <a href="#d2"><span class="ic">๐ </span>BaNa</a>
+  <a href="#d3"><span class="ic">๐ฎ</span>HoiAn</a>
+  <a href="#d5"><span class="ic">๐</span>Fire</a>
+  <a href="#d6"><span class="ic">๐</span>Shop</a>
 </nav>
 
-<!-- PRESENTATION DECK (key moments only) -->
-<div class="deck" id="deck" hidden aria-hidden="true" role="region" aria-label="Trip presentation">
+<!-- PRESENTATION DECK — day-by-day timeline -->
+<div class="deck" id="deck" hidden aria-hidden="true" role="region" aria-label="Trip day timeline presentation">
   <div class="deck-stage" id="deckStage">
 
-    <article class="slide cover is-active" data-i="0">
+    <!-- 0 · OVERVIEW TIMELINE -->
+    <article class="slide cover day-slide is-active" data-i="0">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
         <div class="heart-row">✦ · ✦ · ✦</div>
-        <span class="slide-kicker">For us · July → August 2026</span>
+        <span class="slide-kicker">Couple trip · 29 Jul – 3 Aug 2026</span>
         <h2>Da Nang · Hoi An · Ba Na</h2>
-        <p class="lead">A short couple trip — mountain cable cars, lantern nights, beach sun, and one dragon that breathes fire.</p>
-        <ul class="slide-points">
-          <li><em>29 Jul – 3 Aug</em> · 6 days · just us</li>
-        </ul>
+        <p class="lead">Six-day timeline — swipe through each day.</p>
+        <div class="trip-arc">
+          <div class="arc-day"><span class="arc-n">Day 1</span><span class="arc-body">Wed 29 Jul · Land &amp; sleep<small>EK370 21:50 · Airport Homestay</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 2</span><span class="arc-body">Thu 30 Jul · Ba Na before noon<small>Cable · Golden Bridge · Mercure</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 3</span><span class="arc-body">Fri 31 Jul · Hoi An night<small>Cable down · Old Town · Royal Riverside</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 4</span><span class="arc-body">Sat 1 Aug · Boat · Safari · beach<small>Cam Thanh · VinWonders · Bluesun</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 5</span><span class="arc-body">Sun 2 Aug · Marble · fire 🐉<small>My Khe · Dragon Bridge 21:00</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 6</span><span class="arc-body">Mon 3 Aug · Shop &amp; fly<small>Han Market · EK371 23:30</small></span></div>
+        </div>
       </div>
     </article>
 
-    <article class="slide" data-i="1">
-      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80')"></div>
-      <div class="slide-in">
-        <span class="slide-kicker">The arc</span>
-        <h2>Where we’re going</h2>
-        <p class="lead">One route, six nights of story — mountain, old town, beach, then home.</p>
-        <ul class="slide-points">
-          <li><em>Ba Na Hills</em> — up before noon · Mercure night</li>
-          <li><em>Hoi An</em> — lantern streets · Royal Riverside</li>
-          <li><em>Da Nang beach</em> — Bluesun · Dragon fire · shopping</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="slide" data-i="2">
+    <!-- 1 · DAY 1 -->
+    <article class="slide day-slide" data-i="1">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Wed 29 Jul · Day 1</span>
-        <h2>We land soft</h2>
-        <p class="lead">Late flight in. No city run. Just bags, shower, sleep — tomorrow the mountain waits.</p>
-        <ul class="slide-points">
-          <li><em>EK370</em> lands 21:50 · DAD</li>
-          <li>Airport Homestay Đà Nẵng · rest</li>
-          <li>Alarm set for Ba Na morning</li>
-        </ul>
+        <span class="slide-kicker">Wed 29 Jul · Day 1 of 6</span>
+        <h2>Land &amp; sleep</h2>
+        <p class="lead">Late arrival only — rest for Ba Na tomorrow.</p>
+        <div class="ptl">
+          <div class="ptl-row"><span class="ptl-t">21:50</span><span class="ptl-a">Land DAD · EK370<small>Immigration → bags → SIM if needed</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">~22:15</span><span class="ptl-a">Grab Car → hotel<small>Airport Homestay Đà Nẵng · ~15–25 min</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">22:30–23:30</span><span class="ptl-a">Check-in · shower · sleep<small>No city trip. Alarm 7:15 for Ba Na day.</small></span></div>
+        </div>
+        <span class="sleep-chip">🏨 Airport Homestay Đà Nẵng</span>
       </div>
     </article>
 
-    <article class="slide" data-i="3">
+    <!-- 2 · DAY 2 -->
+    <article class="slide day-slide" data-i="2">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Thu 30 Jul · Day 2</span>
-        <h2>Above the clouds</h2>
-        <p class="lead">Ba Na before noon. Cable tickets already ours. Golden Bridge photos, French Village, sleep in the sky.</p>
-        <ul class="slide-points">
-          <li>Wake ~7:15 · mountain before 12:00</li>
-          <li>Cable car ready ✓ · Mercure French Village</li>
-          <li>Dinner on the mountain — buffet or à la carte</li>
-        </ul>
+        <span class="slide-kicker">Thu 30 Jul · Day 2 of 6</span>
+        <h2>Ba Na before noon</h2>
+        <p class="lead">Wake early · cable tickets ready · sleep on the mountain.</p>
+        <div class="ptl">
+          <div class="ptl-row"><span class="ptl-t">07:15</span><span class="ptl-a">Wake · pack day bag<small>Jacket, ID, power bank · overnight bag for Mercure</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">07:40–08:30</span><span class="ptl-a">Breakfast · walk near hotel<small>Bánh mì / coffee / phở · 4.5★+ · keep it light</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">08:40–09:00</span><span class="ptl-a">Grab Car → Ba Na cable<small>Hội An Station (Hoi An 1) · ~45–70 min</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">09:45–10:30</span><span class="ptl-a">Ticket gate · cable UP<small>Hội An → Marseille · Golden Bridge first</small></span></div>
+          <div class="ptl-row star"><span class="ptl-t">11:00–13:00</span><span class="ptl-a">Golden Bridge zone<small>Photos · viewpoints · before the crowds</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">13:00–14:00</span><span class="ptl-a">Simple lunch on mountain<small>Save the special dinner for tonight</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">14:00–17:30</span><span class="ptl-a">French Village · Fantasy Park<small>Cable Bordeaux → Louvre · Mercure check-in</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">18:30–20:30</span><span class="ptl-a">Dinner · buffet OK<small>La Crique buffet or village à la carte</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">21:30</span><span class="ptl-a">Sleep Mercure<small>French Village · mountain night</small></span></div>
+        </div>
+        <span class="sleep-chip">🏨 Mercure French Village Ba Na</span>
       </div>
     </article>
 
-    <article class="slide" data-i="4">
+    <!-- 3 · DAY 3 -->
+    <article class="slide day-slide" data-i="3">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Fri 31 Jul · Day 3</span>
-        <h2>Lanterns &amp; slow streets</h2>
-        <p class="lead">Hotel breakfast, cable down, then Hoi An at night — yellow walls, river light, cao lầu and white rose.</p>
-        <ul class="slide-points">
-          <li>Mercure breakfast · cable to base</li>
-          <li>Old Town + night market</li>
-          <li>Sleep · Royal Riverside Hoi An</li>
-        </ul>
+        <span class="slide-kicker">Fri 31 Jul · Day 3 of 6</span>
+        <h2>Hotel BF · Hoi An night</h2>
+        <p class="lead">Down the mountain, then lantern streets after dark.</p>
+        <div class="ptl">
+          <div class="ptl-row food"><span class="ptl-t">08:00–09:15</span><span class="ptl-a">Breakfast at Mercure<small>Hotel BF · eat well before transfer</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">09:15–10:15</span><span class="ptl-a">Optional Golden Bridge redo<small>Only if foggy yesterday · else skip</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">10:15–11:15</span><span class="ptl-a">Cable DOWN<small>L’Indochine → Toc Tien base</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">11:30–13:00</span><span class="ptl-a">Grab → Royal Riverside Hoi An<small>Check-in · rest / pool</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">15:30–18:00</span><span class="ptl-a">Hoi An Ancient Town walk<small>Yellow walls · river · photos</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">18:00–19:30</span><span class="ptl-a">Dinner · 4.5★+ only<small>Cao lầu · white rose · high-rated pick</small></span></div>
+          <div class="ptl-row star"><span class="ptl-t">19:30–21:30</span><span class="ptl-a">Night Market + lanterns<small>Hoai river · souvenir strolls</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">~22:00</span><span class="ptl-a">Grab → hotel · sleep<small>Tomorrow leave Hoi An for Da Nang beach</small></span></div>
+        </div>
+        <span class="sleep-chip">🏨 Royal Riverside Hoi An</span>
       </div>
     </article>
 
-    <article class="slide" data-i="5">
+    <!-- 4 · DAY 4 -->
+    <article class="slide day-slide" data-i="4">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Sat 1 Aug · Day 4</span>
-        <h2>Boat, wild, beach</h2>
-        <p class="lead">Basket boat + coconut forest, then Safari — and check-in at Bluesun on Da Nang beach. Hoi An chapter closes.</p>
-        <ul class="slide-points">
-          <li>Cam Thanh basket boat</li>
-          <li>Safari (prebook if we can)</li>
-          <li>Nights 4–5 · Bluesun Danang Beach</li>
-        </ul>
+        <span class="slide-kicker">Sat 1 Aug · Day 4 of 6</span>
+        <h2>Boat · Safari · Bluesun</h2>
+        <p class="lead">Basket boat + wild park, then check-in at Da Nang beach.</p>
+        <div class="ptl">
+          <div class="ptl-row food"><span class="ptl-t">08:00–09:00</span><span class="ptl-a">Breakfast<small>Hotel or nearby 4.5★ · check out bags</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">09:15–10:00</span><span class="ptl-a">Grab → Cam Thanh<small>Basket boat zone</small></span></div>
+          <div class="ptl-row star"><span class="ptl-t">10:00–11:15</span><span class="ptl-a">Basket boat (thúng chai)<small>~45–60 min · coconut forest spin</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">11:30–12:15</span><span class="ptl-a">Grab → VinWonders Nam Hoi An<small>River Safari · prebook if possible</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">12:15–15:30</span><span class="ptl-a">Vinpearl River Safari<small>Animals + park time</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">15:45–17:00</span><span class="ptl-a">Grab → Bluesun Danang Beach<small>Leave Hoi An chapter behind</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">17:00–18:30</span><span class="ptl-a">Check-in · beach toes<small>My Khe area · shower · rest</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">18:30–20:30</span><span class="ptl-a">Dinner · hit-list if energy<small>Gỏi cá / seafood · 4.5★+ only</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">Night</span><span class="ptl-a">Sleep Bluesun<small>Nights 4 &amp; 5 here</small></span></div>
+        </div>
+        <span class="sleep-chip">🏨 Bluesun Danang Beach</span>
       </div>
     </article>
 
-    <article class="slide" data-i="6">
+    <!-- 5 · DAY 5 -->
+    <article class="slide day-slide" data-i="5">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Sun 2 Aug · Day 5</span>
-        <h2>Marble, sea &amp; 🐉 fire</h2>
-        <p class="lead">Caves in the morning, My Khe sand in the afternoon, and at 21:00 the Dragon Bridge breathes fire — locked in.</p>
-        <ul class="slide-points">
-          <li>Phở mission · Marble Mountain</li>
-          <li>Beach time · dinner near the river</li>
-          <li><em>21:00</em> Dragon Bridge fire show</li>
-        </ul>
+        <span class="slide-kicker">Sun 2 Aug · Day 5 of 6</span>
+        <h2>Marble · beach · 🐉 fire</h2>
+        <p class="lead">Caves, sand, and the locked-in fire show at 21:00.</p>
+        <div class="ptl">
+          <div class="ptl-row food"><span class="ptl-t">08:00–09:00</span><span class="ptl-a">Breakfast = Phở mission<small>Near My Khe · 4.5★+ · 100+ reviews</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">09:15–11:45</span><span class="ptl-a">Marble Mountain (Thủy Sơn)<small>Caves · viewpoints · grip shoes</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">12:15–13:30</span><span class="ptl-a">Lunch · Nem nướng or Gỏi cá<small>One “new thing” plate · rating bar</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">14:00–17:30</span><span class="ptl-a">My Khe Beach · couple time<small>Swim · shade · slow afternoon</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">18:00–20:00</span><span class="ptl-a">Dinner near Dragon Bridge<small>Han River · eat before the show</small></span></div>
+          <div class="ptl-row star"><span class="ptl-t">21:00</span><span class="ptl-a">🐉 Dragon Bridge FIRE<small>Sun only · locked · best riverside view</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">~21:45</span><span class="ptl-a">Grab → Bluesun · sleep<small>Tomorrow is shopping + night flight</small></span></div>
+        </div>
+        <span class="sleep-chip">🏨 Bluesun Danang Beach</span>
       </div>
     </article>
 
-    <article class="slide" data-i="7">
+    <!-- 6 · DAY 6 -->
+    <article class="slide day-slide" data-i="6">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
-        <span class="slide-kicker">Mon 3 Aug · Day 6</span>
-        <h2>Gifts, then home</h2>
-        <p class="lead">Souvenir day — Han Market, coffee, one last beach if we want. Bags ready. Night flight back together.</p>
-        <ul class="slide-points">
-          <li>Shopping spree · no long new trips after 17:00</li>
-          <li>Lobby 20:20 · car 20:30 · DAD</li>
-          <li><em>EK371</em> 23:30 · home 4 Aug 01:10</li>
-        </ul>
+        <span class="slide-kicker">Mon 3 Aug · Day 6 of 6</span>
+        <h2>Souvenir shopping · fly home</h2>
+        <p class="lead">Shop first, no long new trips after 17:00, night flight together.</p>
+        <div class="ptl">
+          <div class="ptl-row food"><span class="ptl-t">08:00–09:00</span><span class="ptl-a">Breakfast · finish missed food<small>Last coffee / bánh if you want</small></span></div>
+          <div class="ptl-row star"><span class="ptl-t">09:15–12:00</span><span class="ptl-a">🛒 Shopping A · Han Market<small>Gifts · coffee · dried fruit · clothes</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">12:00–13:15</span><span class="ptl-a">Lunch near market<small>4.5★+ only</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">13:30–16:30</span><span class="ptl-a">🛒 Shopping B · more gifts<small>Con Market / Lotte if needed</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">17:00–19:00</span><span class="ptl-a">Back to Bluesun · pack<small>Bags ready by 19:30 · reconfirm car</small></span></div>
+          <div class="ptl-row food"><span class="ptl-t">19:00–20:00</span><span class="ptl-a">Early easy dinner near hotel<small>Keep it light · no rushing later</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">20:20</span><span class="ptl-a">Lobby ready<small>Car 20:30 · free hotel car or Grab</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">21:00</span><span class="ptl-a">DAD Airport<small>Check-in · security · lounge if time</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">23:30</span><span class="ptl-a">EK371 departs<small>Land home 4 Aug 01:10</small></span></div>
+        </div>
+        <span class="sleep-chip">✈ Home · 4 Aug 01:10</span>
       </div>
     </article>
 
-    <article class="slide" data-i="8">
-      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1400&q=80')"></div>
-      <div class="slide-in">
-        <span class="slide-kicker">Our plate list</span>
-        <h2>What we’ll taste</h2>
-        <p class="lead">Only places that feel right — aim 4.5★+ with real reviews. No settling for “fine.”</p>
-        <ul class="slide-points">
-          <li>Phở · Nem nướng · Gỏi cá trích</li>
-          <li>Egg coffee + salt coffee</li>
-          <li>Hoi An cao lầu · white rose · beach seafood</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="slide finale" data-i="9">
+    <!-- 7 · FINALE -->
+    <article class="slide finale day-slide" data-i="7">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1400&q=80')"></div>
       <div class="slide-in">
         <div class="heart-row">♡</div>
-        <span class="slide-kicker">Ready when you are</span>
-        <h2>This one’s for us</h2>
-        <p class="lead">Two people. One Grab. Six days of mountain, lanterns, fire, and food. Switch to Browse anytime for the full day-by-day plan.</p>
-        <ul class="slide-points">
-          <li>29 Jul – 3 Aug 2026 · Da Nang · Hoi An · Ba Na</li>
-          <li>Tap <em>Browse</em> for maps, times &amp; hotels</li>
-        </ul>
+        <span class="slide-kicker">That’s our timeline</span>
+        <h2>Six days · one story</h2>
+        <p class="lead">Mountain → lanterns → beach → fire → home. Tap Browse anytime for maps, hotels, and full details.</p>
+        <div class="trip-arc">
+          <div class="arc-day"><span class="arc-n">Path</span><span class="arc-body">Ba Na → Hoi An → Da Nang beach<small>Grab Car for 2 · wake 7:30–8:00 most days</small></span></div>
+          <div class="arc-day"><span class="arc-n">Food</span><span class="arc-body">Only 4.5★+ with real reviews<small>Phở · nem nướng · gỏi cá · egg &amp; salt coffee</small></span></div>
+          <div class="arc-day"><span class="arc-n">Lock</span><span class="arc-body">🐉 Fire Sun 2 Aug 21:00 · cable tickets ready<small>EK370 in · EK371 out</small></span></div>
+        </div>
       </div>
     </article>
 
   </div>
 
   <div class="deck-ui">
-    <div class="deck-dots" id="deckDots" role="tablist" aria-label="Slides"></div>
+    <div class="deck-dots" id="deckDots" role="tablist" aria-label="Day slides"></div>
     <div class="deck-nav">
       <button type="button" id="deckPrev" aria-label="Previous slide">← Prev</button>
-      <span class="deck-counter" id="deckCounter" aria-live="polite">1 / 10</span>
+      <span class="deck-counter" id="deckCounter" aria-live="polite">1 / 8</span>
       <button type="button" id="deckNext" aria-label="Next slide">Next →</button>
     </div>
-    <p class="deck-hint">← → keys · swipe · Esc = Browse</p>
+    <p class="deck-hint">← → keys · swipe · Esc = Browse · each day = full timeline</p>
   </div>
 </div>
-
 <script>
   function openHash() {
     if (document.body.classList.contains('presenting')) return;
