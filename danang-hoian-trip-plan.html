@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Nang · Ba Na Hills · Hoi An — 5 Nights Trip Plan (v2)</title>
+<style>
+  :root{
+    --bg:#faf5ec;
+    --card:#fffdf7;
+    --ink:#333f3c;
+    --ink-soft:#5c6b66;
+    --accent:#b8552f;
+    --accent-deep:#94401f;
+    --accent-soft:#f6e5d9;
+    --teal:#3d6157;
+    --teal-soft:#e4efe9;
+    --muted:#8d8272;
+    --line:#e7dccb;
+    --chip:#f1ebdd;
+    --warn:#fdf1e4;
+    --shadow:0 2px 10px rgba(90,70,50,.08),0 1px 3px rgba(90,70,50,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;font-size:16px;-webkit-text-size-adjust:100%}
+  h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--ink);line-height:1.25}
+  a{color:var(--accent)}
+  img{max-width:100%;display:block}
+  .wrap{max-width:980px;margin:0 auto;padding:0 14px}
+
+  /* ---------- NAV (thumb-sized pill bar) ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,245,236,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:8px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav .wrap::-webkit-scrollbar{display:none}
+  nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--accent-deep);white-space:nowrap;margin-right:4px;font-size:14px}
+  nav a{white-space:nowrap;text-decoration:none;color:var(--ink-soft);font-size:14px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;min-height:44px;background:var(--card)}
+  nav a:hover{background:var(--accent-soft);color:var(--accent-deep)}
+  nav a.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  nav a.nav-sec{color:var(--teal)}
+
+  /* ---------- TODAY BANNER + TOOLS ---------- */
+  .today{display:flex;gap:10px;align-items:flex-start;background:var(--teal-soft);border:1px solid #9dc3b2;border-left:5px solid var(--teal);border-radius:14px;padding:12px 16px;margin:16px 0 4px;font-size:14.5px;color:var(--teal)}
+  .today b{font-family:Georgia,serif}
+  .tools{display:flex;gap:10px;margin:12px 0 4px}
+  .tools button{flex:1;min-height:44px;background:var(--card);border:1px solid var(--line);border-radius:999px;color:var(--accent-deep);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+  .tools button:hover{background:var(--accent-soft)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;border-bottom:1px solid var(--line)}
+  .hero-img{position:relative;height:min(52vw,430px);overflow:hidden}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,245,236,.05) 40%,rgba(250,245,236,.92) 92%,var(--bg) 100%)}
+  .hero-card{position:relative;margin-top:-80px;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px 20px}
+  .hero-card .kicker{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .hero-card h1{font-size:clamp(26px,7vw,40px);margin-bottom:10px}
+  .hero-card .sub{color:var(--ink-soft);font-size:16px;margin-bottom:18px}
+  .hero-facts{display:flex;flex-direction:column;gap:10px}
+  .fact{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--ink)}
+  .fact b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;font-weight:700}
+  .hero-warn{margin-top:16px;background:var(--warn);border:1px solid #ecc9a3;border-left:5px solid var(--accent);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--accent-deep)}
+
+  /* ---------- SECTIONS + COLLAPSIBLE PANELS ---------- */
+  section{padding:14px 0 0;scroll-margin-top:64px}
+  .sec-head{margin-bottom:16px}
+  .sec-head .kicker{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:700}
+  .sec-head h2{font-size:clamp(20px,5.5vw,30px);margin:4px 0 6px}
+  .sec-head p{color:var(--ink-soft);max-width:70ch}
+  .hotel-line{display:inline-block;margin-top:8px;background:var(--teal-soft);color:var(--teal);border:1px solid #cfe0d6;border-radius:999px;padding:5px 14px;font-size:13.5px;font-weight:600}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;padding:0}
+  .panel-head{display:flex;width:100%;align-items:center;gap:10px;min-height:56px;padding:12px 14px;background:var(--card);border:none;cursor:pointer;text-align:left;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .panel-head .ph-text{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .panel-head .ph-text b{font-family:Georgia,serif;font-size:16px;color:var(--ink)}
+  .panel-head .ph-text span{font-size:13px;color:var(--muted)}
+  .chev{width:30px;height:30px;flex:none;border-radius:50%;background:var(--accent-soft);position:relative}
+  .chev::after{content:"";position:absolute;left:10px;top:11px;width:8px;height:8px;border-right:2.5px solid var(--accent-deep);border-bottom:2.5px solid var(--accent-deep);transform:rotate(45deg);transition:transform .3s,top .3s}
+  .panel.open .chev::after{transform:rotate(225deg);top:14px}
+  .panel-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .pb-inner{overflow:hidden;min-height:0;padding:0 14px 16px}
+  .panel.open .panel-body{grid-template-rows:1fr}
+
+  .day-hero{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0 22px}
+  .day-hero figure{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .day-hero img{width:100%;height:200px;object-fit:cover}
+  .day-hero figcaption{font-size:12px;color:var(--muted);padding:7px 12px;background:var(--card)}
+
+  /* ---------- TIMELINE (narrow rail, time above card) ---------- */
+  .tl{position:relative;margin-left:2px;padding-left:22px;border-left:2px solid var(--line)}
+  .tl-item{position:relative;padding:0 0 18px 2px}
+  .tl-item::before{content:"";position:absolute;left:-30px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--accent)}
+  .tl-item.transport::before{border-color:var(--teal);background:var(--teal-soft)}
+  .tl-time{font-family:Georgia,serif;font-weight:700;color:var(--accent-deep);font-size:14.5px;letter-spacing:.02em}
+  .tl-card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 15px;margin-top:6px}
+  .tl-card h4{font-size:16px;margin-bottom:5px}
+  .tl-card p{font-size:14.5px;color:var(--ink-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
+  .chip{display:inline-flex;align-items:center;min-height:32px;font-size:12.5px;border-radius:999px;padding:3px 11px;font-weight:600}
+  .chip.cost{background:var(--chip);color:#6d5b3f;border:1px solid var(--line)}
+  .chip.trans{background:var(--teal-soft);color:var(--teal);border:1px solid #cfe0d6}
+  .chip.note{background:var(--accent-soft);color:var(--accent-deep);border:1px solid #ecc9a3}
+  .chip.pass{background:var(--teal-soft);color:var(--teal);border:1px solid #9dc3b2}
+  .chip.below{background:var(--warn);color:var(--accent-deep);border:1px solid #e0a06a}
+  .mapbtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1 1 150px;font-size:13px;text-decoration:none;color:var(--accent-deep);border:1px solid var(--accent);border-radius:12px;padding:6px 14px;font-weight:700;background:transparent;-webkit-tap-highlight-color:transparent}
+  .mapbtn:hover{background:var(--accent);color:#fff}
+  .sub-list{margin-top:8px;padding-left:18px;font-size:14px;color:var(--ink-soft)}
+  .sub-list li{margin-bottom:4px}
+
+  /* ---------- CALLOUTS ---------- */
+  .callout{background:var(--warn);border:1px solid #ecc9a3;border-left:5px solid var(--accent);border-radius:14px;padding:14px 16px;margin:14px 0}
+  .callout h4{color:var(--accent-deep);font-size:15.5px;margin-bottom:5px}
+  .callout p{font-size:14px;color:#6b4a33}
+  .callout.teal{background:var(--teal-soft);border-color:#cfe0d6;border-left-color:var(--teal)}
+  .callout.teal h4{color:var(--teal)}
+  .callout.teal p{color:#41615a}
+
+  /* ---------- FOOD / CARDS ---------- */
+  .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:15px 16px}
+  .card h4{font-size:15.5px;margin-bottom:4px}
+  .card .meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .card p{font-size:13.5px;color:var(--ink-soft)}
+  .card .chips{margin-top:9px}
+  .city-head{font-family:Georgia,serif;font-size:18px;color:var(--teal);margin:20px 0 4px;border-bottom:2px solid var(--line);padding-bottom:6px}
+  .food-strip{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0 4px}
+  .food-strip figure{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .food-strip img{width:100%;height:180px;object-fit:cover}
+  .food-strip figcaption{font-size:12px;color:var(--muted);padding:7px 12px;background:var(--card)}
+  ol.alt-list{list-style:none;counter-reset:alt}
+  .alt-card{counter-increment:alt;position:relative;padding-left:52px}
+  .alt-card::before{content:counter(alt);position:absolute;left:14px;top:15px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;border:1px solid #ecc9a3}
+
+  /* ---------- HOTEL MESSAGES ---------- */
+  .msg-block{position:relative;background:#fbf3e7;border:1px solid var(--line);border-radius:14px;padding:16px;padding-top:56px;margin:12px 0 6px}
+  .msg-block pre{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;color:#4c4438;line-height:1.6}
+  .copy-btn{position:absolute;top:10px;right:10px;min-height:44px;min-width:88px;background:var(--accent);color:#fff;border:none;border-radius:999px;padding:6px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+  .copy-btn:hover{background:var(--accent-deep)}
+  .copy-btn.copied{background:var(--teal)}
+  .msg-note{font-size:13px;color:var(--muted);margin:4px 0 18px}
+
+  /* ---------- TABLES ---------- */
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px;margin-top:8px}
+  table{width:100%;min-width:560px;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  th,td{padding:10px 12px;text-align:left;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--teal-soft);color:var(--teal);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  tr:last-child td{border-bottom:none}
+  td.num{white-space:nowrap;font-weight:600;color:var(--ink)}
+  tr.total td{background:var(--accent-soft);font-weight:700;color:var(--accent-deep)}
+  tr.hl td{background:#fdf8ef}
+
+  .tips li{margin-bottom:10px;font-size:14.5px;color:var(--ink-soft)}
+  .tips{padding-left:20px;margin-top:8px}
+  .tips b{color:var(--ink)}
+
+  footer{margin-top:44px;border-top:1px solid var(--line);padding:24px 0 36px;text-align:center;font-size:13px;color:var(--muted)}
+  footer .offline-hint{margin-top:8px;color:var(--teal);font-weight:600}
+
+  /* ---------- TABLET & DESKTOP (progressive enhancement) ---------- */
+  @media (min-width:640px){
+    .wrap{padding:0 20px}
+    .hero-card{padding:30px 32px;margin-top:-110px}
+    .hero-facts{flex-direction:row;flex-wrap:wrap}
+    .fact{flex:1 1 200px}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+    .food-strip{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+    .day-hero{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .tl{margin-left:8px;padding-left:30px}
+    .tl-item::before{left:-38px;top:8px;width:13px;height:13px}
+    .tl-card{padding:14px 18px}
+    .mapbtn{flex:0 0 auto;border-radius:999px}
+    .tools{max-width:340px}
+    th,td{padding:11px 15px;font-size:14px}
+    .pb-inner{padding:0 20px 20px}
+    section{scroll-margin-top:70px}
+  }
+  @media print{
+    nav,.tools,.today{display:none}
+    html{scroll-padding-top:0}
+    body{background:#fff}
+    .tl-card,.card,.hero-card,table,.panel{box-shadow:none}
+    .panel-body{display:block}
+    .pb-inner{overflow:visible}
+    .panel-head .chev{display:none}
+    .day-hero img{max-height:180px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">VN · 5 Nights · 2 pax</span>
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#day3">Day 3</a>
+    <a href="#day4">Day 4</a>
+    <a href="#day5">Day 5</a>
+    <a href="#day6">Day 6</a>
+    <a href="#food" class="nav-sec">Food Guide</a>
+    <a href="#alternatives" class="nav-sec">Alternatives</a>
+    <a href="#messages" class="nav-sec">Hotel Messages</a>
+    <a href="#budget" class="nav-sec">Budget</a>
+    <a href="#tips" class="nav-sec">Travel Tips</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Golden_Bridge_at_Ba_Na_Hills_20250718.jpg/1920px-Golden_Bridge_at_Ba_Na_Hills_20250718.jpg"
+         alt="Golden Bridge at Ba Na Hills held by giant stone hands" loading="eager"
+         onerror="this.parentNode.style.display='none'">
+  </div>
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="kicker">Vietnam · Central Coast · Trip Itinerary v2</div>
+      <h1>Da Nang · Ba Na Hills · Hoi An — 5 Nights</h1>
+      <p class="sub">For two travelers (a couple) — per-boat / per-car prices cover BOTH of you. Light adventure + amazing food (Google ≥4.5★/100+ reviews where possible), cost-optimized, no early alarms except one very worth-it sunrise.</p>
+      <div class="hero-facts">
+        <div class="fact"><b>Flights (Emirates)</b>EK370 arrives DAD 21:50 (Day 1, Wed 29 Jul) · EK371 departs DAD 23:30 (Day 6, Mon 3 Aug), landing in Bangkok Tue 4 Aug 2026 ~01:10</div>
+        <div class="fact"><b>Confirmed dates</b>Wed 29 Jul – Mon 3 Aug 2026 · Day 1 = Wednesday → Day 6 = Monday; Da Nang nights fall on Sat 1 Aug + Sun 2 Aug → fire show fits Day 5</div>
+        <div class="fact"><b>Wake-up rhythm &amp; breakfasts</b>07:30–08:00 daily EXCEPT the Ba Na morning (06:00 Golden Bridge — the whole point of sleeping up there) and Day 6 (sleep in). Breakfasts: Day 3 Mercure (included) · Days 5–6 BlueSun (provided, buffet ~06:30–10:00)</div>
+        <div class="fact"><b>Hotels</b>N1 Airport Homestay · N2 Mercure French Village Ba Na Hills · N3 Royal Riverside Hoi An · N4–N5 BlueSun Danang Beach Hotel</div>
+      </div>
+      <div class="hero-warn">
+        ⚠️ <b>Flight-day constraint:</b> Emirates serves Da Nang (DAD) <b>only Mon / Wed / Fri / Sun</b> — with 5 nights, Day 1 must be a Wed, Fri, or Sun. The plan can be day-shifted, but always keep a Fri/Sat/Sun night in Da Nang. On Day 6 the airport car leaves the hotel at <b>20:15</b>, arriving DAD by 21:00 (2.5 h before the 23:30 departure).
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<div id="today-banner" class="today" hidden></div>
+<div class="tools">
+  <button type="button" id="expand-all">Expand all</button>
+  <button type="button" id="collapse-all">Collapse all</button>
+</div>
+
+<!-- ============ DAY 1 ============ -->
+<section id="day1">
+  <div class="sec-head">
+    <div class="kicker">Day 1 · Wednesday 29 Jul</div>
+    <h2>Arrival in Da Nang</h2>
+    <span class="hotel-line">🛏 Tonight: Airport Homestay (Thi Sach St, 510 m from DAD) — 24h check-in</span>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">21:50</div>
+      <div class="tl-card">
+        <h4>Land at Da Nang Airport (DAD), Terminal 2</h4>
+        <p>Immigration + bags takes 30–50 min. eSIM recommended, or use the SIM counters in arrivals; ATM at the exit.</p>
+        <div class="chips">
+          <span class="chip cost">Free</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+International+Airport+Terminal+2">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">22:45</div>
+      <div class="tl-card">
+        <h4>Grab Lane 1 outside arrivals → Airport Homestay</h4>
+        <p>Only 510 m from the terminal — a walkable 10 minutes, or a 2-minute Grab.</p>
+        <div class="chips">
+          <span class="chip trans">Grab 2 min · 50–70k (or 10-min walk)</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+Da+Nang+Thi+Sach">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">23:00</div>
+      <div class="tl-card">
+        <h4>Late check-in, sleep</h4>
+        <p>24h reception — send Message 1 (below) after booking so they keep the room and explain late entry. Then straight to bed.</p>
+        <div class="chips"><span class="chip cost">Free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAY 2 ============ -->
+<section id="day2">
+  <div class="sec-head">
+    <div class="kicker">Day 2 · Thursday 30 Jul</div>
+    <h2>Da Nang → Ba Na Hills, up BEFORE NOON</h2>
+    <span class="hotel-line">🛏 Tonight: Mercure Danang French Village Bana Hills</span>
+  </div>
+  <div class="day-hero">
+    <figure><img loading="lazy" alt="Ba Na Hills French Village" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Ba_Na_Hills_French_Village.jpg/1920px-Ba_Na_Hills_French_Village.jpg"><figcaption>Ba Na Hills French Village — your hotel is inside it</figcaption></figure>
+    <figure><img loading="lazy" alt="Fantasy Park castle at Ba Na Hills in morning mist" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Fantasy_Park_castle_Ba_Na_Hills_golden_morning_mist_close_up_Da_Nang_Vietnam.jpg/1920px-Fantasy_Park_castle_Ba_Na_Hills_golden_morning_mist_close_up_Da_Nang_Vietnam.jpg"><figcaption>Fantasy Park castle, Ba Na Hills</figcaption></figure>
+  </div>
+  <div class="callout teal">
+    <h4>🎟 Tickets already purchased — nothing to buy at the foot</h4>
+    <p>Say <b>"Mercure check-in at Toc Tien station"</b> to the driver (NOT the main gate), stop at the Mercure downhill desk for Golden Hours registration + porters, then Line 3 direct to the French Village — full step-by-step is inline at 10:00 below.</p>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">07:30–08:00</div>
+      <div class="tl-card"><h4>Wake up</h4></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">08:00–08:45</div>
+      <div class="tl-card">
+        <h4>Breakfast, walking distance from the homestay</h4>
+        <p><b>Bun Cha Ca Ba Lu</b> (319 Hung Vuong; opens ~06:00; fish-cake noodle soup; ~10–15 min walk) or <b>Mi Quang Ba Mua – Duy Tan branch</b> (near the airport; 06:00–21:30). <em>Honest note: nothing within a 10-min walk passes the strict 4.5★ filter — these are the best-available local airport-area favorites.</em></p>
+        <div class="chips">
+          <span class="chip cost">Ba Lu 25–40k</span>
+          <span class="chip cost">Ba Mua 30–70k</span>
+          <span class="chip below">⚠️ below 4.5 rule — best available nearby</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bun+Cha+Ca+Ba+Lu+319+Hung+Vuong+Da+Nang">📍 Ba Lu</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mi+Quang+Ba+Mua+Duy+Tan+Da+Nang">📍 Ba Mua (Duy Tan)</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">09:00</div>
+      <div class="tl-card">
+        <h4>Check out, Grab → Ba Na Hills Thac Toc Tien Station</h4>
+        <p>~37 km, ~1 h. Say "Mercure check-in at Toc Tien station" — NOT the main gate.</p>
+        <div class="chips">
+          <span class="chip trans">Grab ~1 h · 400–550k/car</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ba+Na+Hills+Thac+Toc+Tien+cable+car+station">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00–10:45</div>
+      <div class="tl-card">
+        <h4>Arrive &amp; go up — cable car, step by step ✓ before noon</h4>
+        <ul class="sub-list">
+          <li>Tell the driver <b>"Mercure check-in, Thac Toc Tien (Toc Tien Waterfall) Station"</b> — NOT the main gate.</li>
+          <li>Inside the station: stop at the <b>Mercure downhill Front Desk</b> (8:00–17:00) even though you have tickets — it registers you as in-house guests (REQUIRED for tomorrow's 06:00 Golden Hours + private lane) and porters take your luggage.</li>
+          <li>Scan your pre-bought tickets → board <b>Line 3: Thac Toc Tien → L'Indochine — DIRECT to the French Village, no transfer, 15–20 min</b> (glass-bottom cabins sometimes available).</li>
+          <li>L'Indochine station is beside the village → 5–10 min walk to the Mercure lobby.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip cost">Cable car ticket already purchased ✓</span>
+          <span class="chip trans">L3 foot→village direct</span>
+          <span class="chip trans">L4 foot→Golden Bridge level</span>
+          <span class="chip trans">L5 bridge level→village top</span>
+          <span class="chip trans">L2 Debay→Morin connector</span>
+          <span class="chip trans">L1/L6/L7 other lines</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ba+Na+Hills+Thac+Toc+Tien+cable+car+station">📍 Thac Toc Tien Station</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Mercure</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00–13:00</div>
+      <div class="tl-card">
+        <h4>Explore the French Village + lunch à la carte</h4>
+        <p>Brasserie (Italian), Doumer, Morin (Vietnamese) or Kavkaz — 200–350k per dish. These close 15:00–17:00, so lunch is their moment. Budget fallback: Beer Plaza food-court skewers.</p>
+        <div class="chips">
+          <span class="chip cost">À la carte 200–350k per dish</span>
+          <span class="chip cost">Beer Plaza skewers from 50k</span>
+          <span class="chip note">Brasserie/Kavkaz/Rosa close ~16:00 · Maison du Roi 16:30 — lunch only</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ba+Na+Hills+French+Village">📍 French Village</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Beer+Plaza+Ba+Na+Hills">📍 Beer Plaza</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-card"><h4>Room check-in, short rest</h4></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15:00–17:30</div>
+      <div class="tl-card">
+        <h4>Fantasy Park (indoor) + Alpine Coaster happy hour</h4>
+        <p>Indoor rides and games, then the Alpine Coaster happy hour 16:30–17:30 — the adventure pick of the day.</p>
+        <div class="chips">
+          <span class="chip cost">Alpine Coaster 70k/ride</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fantasy+Park+Ba+Na+Hills">📍 Fantasy Park</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">18:50</div>
+      <div class="tl-card">
+        <h4>3D mapping light show, Square du Dôme</h4>
+        <p>Also runs 19:50.</p>
+        <div class="chips">
+          <span class="chip cost">Free</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Square+du+Dome+Ba+Na+Hills">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19:30</div>
+      <div class="tl-card">
+        <h4>Dinner on the mountain — 5 options</h4>
+        <ul class="sub-list">
+          <li><b>(a) Beer Plaza dinner buffet + After Glow cabaret show</b> — 90+ Asian-European dishes + free Sun KraftBeer voucher; show 18:30–19:00 inside; 17:30–21:00 — <b>BEST VALUE</b>, liveliest (confirm the show runs that night at check-in).</li>
+          <li><b>(b) La Côte d'Azur</b> (Hôtel de Nice) — quieter international hotel buffet, till ~21:00.</li>
+          <li><b>(c) La Crique</b> (Mercure ground floor) — premium international buffet with Vietnamese stations + free-flow drinks; 18:00–21:00 — the SPLURGE; ask about the Mercure-guest/Accor discount (~30%).</li>
+          <li><b>(d) Kungfu Noodles</b> — budget Chinese noodles/rice, till 20:30.</li>
+          <li><b>(e) Village street stalls</b> (banh mi ~70k, charcoal skewers ~150k) + <b>Bar La Taverne</b> rooftop cocktails after (from ~17:00 till late).</li>
+        </ul>
+        <div class="chips">
+          <span class="chip cost">(a) 450k/adult</span>
+          <span class="chip cost">(b) 380k/adult</span>
+          <span class="chip cost">(c) ~700k · 998k w/ lobster</span>
+          <span class="chip cost">(d) 155–220k</span>
+          <span class="chip note">Maison du Roi closes 16:30 · Brasserie/Kavkaz/Rosa ~16:00 — lunch only</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Beer+Plaza+Ba+Na+Hills">📍 Beer Plaza</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+C%C3%B4te+d%27Azur+Ba+Na+Hills">📍 La Côte d'Azur</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+Crique+Ba+Na+Hills">📍 La Crique</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kungfu+Noodles+Ba+Na+Hills">📍 Kungfu Noodles</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bar+La+Taverne+Ba+Na+Hills">📍 La Taverne</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-card">
+        <h4>Night stroll — empty, lamplit French Village</h4>
+        <p>The signature perk of sleeping on the mountain: the day crowds are gone and the village is all yours.</p>
+        <div class="chips">
+          <span class="chip cost">Free</span>
+          <span class="chip note">Pack a light jacket — summit evenings 15–22°C</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAY 3 ============ -->
+<section id="day3">
+  <div class="sec-head">
+    <div class="kicker">Day 3 · Friday 31 Jul</div>
+    <h2>Golden Bridge sunrise → Hoi An Old Town + Night Market</h2>
+    <span class="hotel-line">🛏 Tonight: Royal Riverside Hoi An (40 Nguyen Du)</span>
+  </div>
+  <div class="day-hero">
+    <figure><img loading="lazy" alt="Lantern-lit street in Hoi An at night" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Lanterns_in_Hoi_An_3.jpg/1920px-Lanterns_in_Hoi_An_3.jpg"><figcaption>Lantern street, Hoi An at night</figcaption></figure>
+    <figure><img loading="lazy" alt="Lantern shop at Hoi An night market" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/f/f8/The_Lantern_Shop_%28229655269%29.jpeg"><figcaption>Lantern shop at the night market</figcaption></figure>
+    <figure><img loading="lazy" alt="Lantern boats on the Thu Bon river at night" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Hoi_An_-_HoiAn1441.jpg/1920px-Hoi_An_-_HoiAn1441.jpg"><figcaption>Lantern boats on the Hoai / Thu Bon river</figcaption></figure>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">05:45</div>
+      <div class="tl-card">
+        <h4>Golden Bridge morning (Mercure guests only) — step by step</h4>
+        <p>Walk from your Mercure building to <b>Louvre Station</b> (by Eclipse Plaza, 5–10 min) → guests-only <b>Line 5: Louvre → Bordeaux</b> at 06:00 / 06:30 / 07:00 (confirm at the front desk tonight) → at Bordeaux, stairs/escalator DOWN to Marseille level (~2–5 min) → Golden Bridge entrance 06:05–07:15, nearly empty — the best photos of the trip → return Bordeaux → Louvre.</p>
+        <div class="chips">
+          <span class="chip cost">Free · guest perk</span>
+          <span class="chip trans">L5 Louvre→Bordeaux, 5 min</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Golden+Bridge+Ba+Na+Hills">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">07:30–08:30</div>
+      <div class="tl-card">
+        <h4>Hotel breakfast (included) at La Crique</h4>
+        <p>Served 06:30–09:30.</p>
+        <div class="chips"><span class="chip cost">Included</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">08:30–10:15</div>
+      <div class="tl-card">
+        <h4>Checkout-day sightseeing: gardens loop on one hill</h4>
+        <p>Take <b>Line 5 Louvre → Bordeaux</b> again, walk down past bridge level to <b>Le Jardin d'Amour</b> gardens → <b>Debay Wine Cellar</b> (extra ticket, incl. 1 drink) → <b>Linh Ung Pagoda + 27 m Buddha</b> — all walkable on one hill, no cable car between them. Return to the top via funicular + <b>Line 2 Debay→Morin</b>, or back via Line 5. Then descend <b>Line 3: L'Indochine → Thac Toc Tien</b> (direct to the foot, 15–20 min).</p>
+        <div class="callout" style="margin:10px 0 0">
+          <h4>⚠️ Descend Line 3 — NOT via Marseille / Line 4</h4>
+          <p>Your bags are at the hilltop hotel — always return to the top first.</p>
+        </div>
+        <div class="chips">
+          <span class="chip cost">Wine cellar 100–300k (incl. 1 drink)</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Le+Jardin+d%27Amour+Ba+Na+Hills">📍 Gardens</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Debay+Wine+Cellar+Ba+Na+Hills">📍 Wine Cellar</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Linh+Ung+Pagoda+Ba+Na+Hills">📍 Pagoda</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">10:30 / 11:15</div>
+      <div class="tl-card">
+        <h4>Check out by 10:30 → Line 3 down → Grab/private car to Hoi An</h4>
+        <p>~65 km, 1 h 20. No public bus on this leg — pre-book the car; it waits in the Thac Toc Tien station parking area.</p>
+        <div class="chips"><span class="chip trans">Private car 1 h 20 · 700–900k/car</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:45</div>
+      <div class="tl-card">
+        <h4>Arrive Royal Riverside Hoi An, drop bags</h4>
+        <p>40 Nguyen Du, on the Thu Bon river bank, ~10-min walk to the old town core.</p>
+        <div class="chips">
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:00</div>
+      <div class="tl-card">
+        <h4>Lunch: Miss Ly Cafeteria or Bale Well</h4>
+        <p><b>Miss Ly</b> (22 Nguyen Hue; cao lau, pork-stuffed squid; ~09:00–21:00) or <b>Bale Well</b> (45/51 Tran Hung Dao; DIY banh xeo + skewer set — fun for two).</p>
+        <div class="chips">
+          <span class="chip pass">✅ Miss Ly 4.5★/~2,000</span>
+          <span class="chip pass">✅ Bale Well 4.5★</span>
+          <span class="chip cost">Miss Ly 60–160k</span>
+          <span class="chip cost">Bale Well set 100–150k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Miss+Ly+Cafeteria+Hoi+An">📍 Miss Ly</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bale+Well+Hoi+An">📍 Bale Well</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-card"><h4>Check in, rest through the heat</h4></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15:15</div>
+      <div class="tl-card">
+        <h4>Old Town ticket + 5 sights</h4>
+        <p>Ticket 120k/pp (5 sights): Japanese Covered Bridge, Fujian Assembly Hall, Phung Hung House, Tan Ky House, and folk performances.</p>
+        <div class="chips">
+          <span class="chip cost">Ticket 120k/pp</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Japanese+Covered+Bridge+Hoi+An">📍 Jap. Bridge</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fujian+Assembly+Hall+Hoi+An">📍 Fujian Hall</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Phung+Hung+Old+House+Hoi+An">📍 Phung Hung</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tan+Ky+Old+House+Hoi+An">📍 Tan Ky</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17:00</div>
+      <div class="tl-card">
+        <h4>Café: Memories Rooftop Brunch &amp; Cafe</h4>
+        <p>30 Nguyen Thai Hoc (06:30–22:00) — egg/coconut coffee on the rooftop at golden hour. <em>Optional note: Faifo Coffee has THE iconic rooftop view but sits at 4.1★ — fails your rule, your call.</em></p>
+        <div class="chips">
+          <span class="chip pass">✅ 4.7★/1,089 (traveler-verified)</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Memories+Rooftop+Brunch+Cafe+Hoi+An">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17:45</div>
+      <div class="tl-card">
+        <h4>Cross An Hoi Bridge → Hoi An Night Market</h4>
+        <p>Nguyen Hoang St, 17:00–23:00. Snack on banh trang nuong ("Vietnamese pizza") and che.</p>
+        <div class="chips">
+          <span class="chip cost">Banh trang nuong 15–25k · che 15–20k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hoi+An+Night+Market+Nguyen+Hoang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">18:45</div>
+      <div class="tl-card">
+        <h4>Lantern boat on the Hoai River</h4>
+        <p>150k/boat for BOTH of you, 20 min; kiosk on Bach Dang quay — buy at the booth, ignore hawkers. Dusk is the magic window.</p>
+        <div class="chips">
+          <span class="chip cost">150k/boat (both of you)</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bach+Dang+quay+Hoi+An">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19:30</div>
+      <div class="tl-card">
+        <h4>DINNER (your only Hoi An evening): Morning Glory Signature</h4>
+        <p>41 Nguyen Phuc Chu, riverbank — reserve a balcony table facing the Japanese Bridge. Order cao lau, chicken rice, mango sticky rice. Hours 11:00–14:00 &amp; 17:30–23:00. Backup: <b>HOME Hoi An</b> (elevated Vietnamese, book ahead; not riverside).</p>
+        <div class="chips">
+          <span class="chip pass">✅ Morning Glory Signature 4.6★/~1,800</span>
+          <span class="chip pass">✅ HOME Hoi An 5.0★/3,200</span>
+          <span class="chip cost">~500k for two with drinks</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Morning+Glory+Signature+41+Nguyen+Phuc+Chu+Hoi+An">📍 Morning Glory Signature</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=HOME+Hoi+An+restaurant">📍 HOME Hoi An</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:15</div>
+      <div class="tl-card">
+        <h4>Lantern-street walk back (10 min to the hotel)</h4>
+        <p>Banh mi backup for any hungry moment: <b>Madam Khanh</b> (25–35k; closes 19:00 — go before 18:30) or <b>Phi Banh Mi</b> (till 20:00).</p>
+        <div class="chips">
+          <span class="chip cost">Free</span>
+          <span class="chip pass">✅ Madam Khanh 4.6★/8,600</span>
+          <span class="chip pass">✅ Phi Banh Mi 4.7★/2,500</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Madam+Khanh+Banh+Mi+Hoi+An">📍 Madam Khanh</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Phi+Banh+Mi+Hoi+An">📍 Phi Banh Mi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAY 4 ============ -->
+<section id="day4">
+  <div class="sec-head">
+    <div class="kicker">Day 4 · Saturday 1 Aug</div>
+    <h2>Basket boat + River Safari → evening move to DA NANG</h2>
+    <span class="hotel-line">🛏 Tonight: BlueSun Danang Beach Hotel (230 Vo Nguyen Giap) — NOT Hoi An</span>
+  </div>
+  <div class="day-hero">
+    <figure><img loading="lazy" alt="Round coracle basket boats" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Da-Nang_Vietnam_Coracles-02.jpg/1920px-Da-Nang_Vietnam_Coracles-02.jpg"><figcaption>Coracle "basket boats" — spin through the coconut forest</figcaption></figure>
+    <figure><img loading="lazy" alt="VinWonders / Vinpearl Nam Hoi An castle and spinning coaster" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Vinpearl_Nam_Hoi_An_%2849357445853%29.jpg/1920px-Vinpearl_Nam_Hoi_An_%2849357445853%29.jpg"><figcaption>VinWonders Nam Hoi An</figcaption></figure>
+  </div>
+  <div class="callout teal">
+    <h4>🏨 Tonight you sleep in DA NANG</h4>
+    <p>Day 4 ends with a Hoi An → Da Nang transfer at 16:30. Nights 4–5 are both at BlueSun on the My Khe beachfront.</p>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">07:30–08:00</div>
+      <div class="tl-card">
+        <h4>Wake up; hotel breakfast</h4>
+        <p>Royal Riverside's breakfast is well reviewed — confirm it is included in your rate.</p>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">09:00</div>
+      <div class="tl-card">
+        <h4>Grab → Cam Thanh coconut village</h4>
+        <div class="chips">
+          <span class="chip trans">Grab 15 min · 70–90k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Cam+Thanh+coconut+village+Hoi+An">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">09:15–10:30</div>
+      <div class="tl-card">
+        <h4>Basket boat, Bay Mau coconut forest</h4>
+        <p>Operators: Hanh Coconut / Lang Dua Xanh (boats 08:00–17:30). Spinning-show tip 50–100k optional — opt out if you get motion sickness.</p>
+        <div class="chips">
+          <span class="chip cost">Village fee ~30k/pp + boat ~280k/boat (for two)</span>
+          <span class="chip note">Spinning-show tip 50–100k optional</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bay+Mau+coconut+forest+Hoi+An">📍 Bay Mau</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hanh+Coconut+basket+boat+Hoi+An">📍 Hanh Coconut</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Lang+Dua+Xanh+basket+boat+Hoi+An">📍 Lang Dua Xanh</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">10:45</div>
+      <div class="tl-card">
+        <h4>Grab → VinWonders Nam Hoi An</h4>
+        <div class="chips">
+          <span class="chip trans">Grab ~30 min · 150–200k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=VinWonders+Nam+Hoi+An">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:15–15:30</div>
+      <div class="tl-card">
+        <h4>VinWonders + River Safari</h4>
+        <p>Ticket 650k/pp; Sat 09:00–19:00. Promo code <b>WONDERHOIAN5</b> = 5% off online.</p>
+        <ul class="sub-list">
+          <li><b>River Safari boat first</b> (station 09:30–16:30) — tigers, lions, giraffes, rhinos. VIP boat upgrade 150k/pp.</li>
+          <li>Happy Zoo capybaras + Parrot House.</li>
+          <li>Lunch inside the park.</li>
+          <li>Rides / water park — bring swimwear. <b>14:15</b> Wild Wings bird show.</li>
+        </ul>
+        <div class="chips"><span class="chip cost">Ticket 650k/pp</span></div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">15:45</div>
+      <div class="tl-card">
+        <h4>Pre-booked Grab → back to Royal Riverside, collect bags</h4>
+        <div class="chips"><span class="chip trans">Grab ~30 min · 200–280k</span></div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">16:30</div>
+      <div class="tl-card">
+        <h4>Grab: Hoi An → BlueSun Danang Beach Hotel</h4>
+        <p>28–30 km, 45–60 min. Bus alt: LK-02 "Route 2", ~60 min — only if traveling light.</p>
+        <div class="chips">
+          <span class="chip trans">Grab 45–60 min · 350–450k/car</span>
+          <span class="chip note">Alt: LK-02 bus 30–31k/pp</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=BlueSun+Danang+Beach+Hotel">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17:30</div>
+      <div class="tl-card"><h4>Check in BlueSun, freshen up</h4></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19:00</div>
+      <div class="tl-card">
+        <h4>Dinner — top pick: Bếp Cuốn Đà Nẵng</h4>
+        <p>31–33 Tran Bach Dang — Michelin Selected 2025+2026, just 5–8 min by Grab (or 10–12 min walk) from BlueSun. Order the banh xeo seafood pancake, fresh shrimp rolls and crispy pork kumquat. Open 10:30–22:00, last order 21:00 — <b>BOOK AHEAD for Saturday 19:00</b>.</p>
+        <p style="margin-top:8px">Backups: <b>MỘC Quán Seafood</b> (26 To Hien Thanh; Michelin; lobster garlic butter, roe crab; 10:30–22:30) or <b>Golden Meat House Korean BBQ</b> (100 Tran Bach Dang; 3–5 min walk; communal grill platters — "try something new").</p>
+        <div class="chips">
+          <span class="chip pass">✅✅ Bếp Cuốn 4.9★/~17,000</span>
+          <span class="chip cost">100–200k/pp</span>
+          <span class="chip pass">✅ MỘC Quán 4.6★/2,000+ · 300–600k/pp</span>
+          <span class="chip pass">✅ Golden Meat House ~4.8★/~5,200 · 250–400k/pp</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bep+Cuon+Da+Nang+Tran+Bach+Dang">📍 Bếp Cuốn</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=MOC+Quan+Seafood+Da+Nang">📍 MỘC Quán</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Golden+Meat+House+Korean+BBQ+Da+Nang">📍 Golden Meat House</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">22:00</div>
+      <div class="tl-card">
+        <h4>Beach promenade walk outside the hotel</h4>
+        <div class="chips"><span class="chip cost">Free</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAY 5 ============ -->
+<section id="day5">
+  <div class="sec-head">
+    <div class="kicker">Day 5 · Sunday 2 Aug</div>
+    <h2>Full Da Nang day + DRAGON BRIDGE FIRE SHOW</h2>
+    <span class="hotel-line">🛏 Tonight: BlueSun Danang Beach Hotel</span>
+  </div>
+  <div class="day-hero">
+    <figure><img loading="lazy" alt="My Khe Beach coastline, Da Nang" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/My_Khe_Beach_Danang_Coastline.jpg/1920px-My_Khe_Beach_Danang_Coastline.jpg"><figcaption>My Khe Beach — calm, warm August sea</figcaption></figure>
+    <figure><img loading="lazy" alt="Sunlight inside Huyen Khong Cave, Marble Mountains" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sunlight_Huyen_Khong_Cave.jpg/1920px-Sunlight_Huyen_Khong_Cave.jpg"><figcaption>Huyen Khong Cave — first stop this morning</figcaption></figure>
+    <figure><img loading="lazy" alt="Dragon Bridge illuminated at night" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dragon_Bridge%2C_Da_Nang_at_night_-_20230819.jpg/1920px-Dragon_Bridge%2C_Da_Nang_at_night_-_20230819.jpg"><figcaption>Dragon Bridge at night (fire show: Sun 21:00)</figcaption></figure>
+    <figure><img loading="lazy" alt="Fresh seafood at Han Market, Da Nang" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG/1920px-Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG"><figcaption>Fresh seafood — agree the per-kg price first</figcaption></figure>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">07:30–08:00</div>
+      <div class="tl-card"><h4>Wake up; 08:15 BlueSun breakfast</h4><p>Provided by the hotel — buffet ~06:30–10:00.</p></div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">09:00</div>
+      <div class="tl-card">
+        <h4>Grab → Marble Mountains</h4>
+        <div class="chips">
+          <span class="chip trans">Grab 15 min · 100–140k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Marble+Mountains+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">09:15–11:45</div>
+      <div class="tl-card">
+        <h4>Marble Mountains</h4>
+        <p>Take the elevator up, walk down; Huyen Khong Cave first. Grippy shoes, shoulders/knees covered, bring water. Am Phu Cave skippable.</p>
+        <div class="callout" style="margin:10px 0 0">
+          <h4>🔥 Heat note</h4>
+          <p>It's later than ideal — if the day is scorching, swap to: beach morning + Marble at 15:00 (last entry ~17:00, closes 17:30).</p>
+        </div>
+        <div class="chips">
+          <span class="chip cost">Entry 40k + elevator 15k/way</span>
+          <span class="chip cost">Am Phu +20k (skippable)</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Huyen+Khong+Cave+Marble+Mountains">📍 Huyen Khong</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Am+Phu+Cave+Marble+Mountains">📍 Am Phu</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:15</div>
+      <div class="tl-card">
+        <h4>Lunch: Bun Cha Ca 109 or Bao An Macrobiotic</h4>
+        <p><b>Bun Cha Ca 109</b> (109 Nguyen Chi Thanh; fish-cake noodle soup; 06:00–22:00) — Michelin Bib Gourmand 2024+2025, but ⚠️ Google star unverified/~4.3. OR <b>Bao An Macrobiotic</b> (Son Tra; excellent vegan mi quang) — passes your rule.</p>
+        <div class="chips">
+          <span class="chip below">⚠️ Bun Cha Ca 109 — Michelin, ~4.3</span>
+          <span class="chip pass">✅ Bao An 4.7★/1,150</span>
+          <span class="chip cost">Bun cha ca 25–50k</span>
+          <span class="chip cost">Bao An mi quang 35–45k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bun+Cha+Ca+109+Nguyen+Chi+Thanh+Da+Nang">📍 Bun Cha Ca 109</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bao+An+Macrobiotic+Da+Nang">📍 Bao An</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:30</div>
+      <div class="tl-card"><h4>Back to BlueSun, rest</h4></div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">15:00</div>
+      <div class="tl-card">
+        <h4>Grab → Linh Ung Pagoda / Lady Buddha, Son Tra</h4>
+        <p>10 km. The 67 m Buddha and coastline views; grounds ~06:30–sunset; modest dress.</p>
+        <div class="chips">
+          <span class="chip trans">Grab ~25 min · 150–200k</span>
+          <span class="chip cost">Free entry</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Linh+Ung+Pagoda+Son+Tra+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">16:45 / 17:15–18:30</div>
+      <div class="tl-card">
+        <h4>Grab back → My Khe Beach swim</h4>
+        <p>Calm warm sea. Check lifeguard flags — jellyfish season, mostly harmless.</p>
+        <div class="chips">
+          <span class="chip cost">Free</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=My+Khe+Beach+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19:15</div>
+      <div class="tl-card">
+        <h4>Dinner seafood — primary: Bé Ni 2 · alternative: Nam Danh</h4>
+        <p><b>Bé Ni 2</b> (228 Vo Nguyen Giap) — ON the beach strip near your hotel, <b>open 24/7</b>, Michelin Selected. Charcoal-grilled shrimp, live-tank picks, quail-egg starters.</p>
+        <p style="margin-top:8px"><b>Alternative: Nam Danh Seafood</b> (139/59/38 Tran Quang Khai; 10:30–20:30) — a Michelin Selected local legend: grilled oysters, tamarind crab, sweet snails. ⚠️ Google 4.1 — below your rule, but cheaper and beloved by locals; your call. (Be Man has recurring price complaints — skip.)</p>
+        <p style="margin-top:8px"><b>RULE either way:</b> agree the per-kg price + watch the weighing before cooking.</p>
+        <div class="chips">
+          <span class="chip pass">✅✅ Bé Ni 2 4.8★/~10,600 · 150–400k/pp</span>
+          <span class="chip below">⚠️ Nam Danh 4.1★ · 100–300k/pp</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Be+Ni+2+seafood+Da+Nang">📍 Bé Ni 2</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nam+Danh+Seafood+Da+Nang">📍 Nam Danh</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">20:30</div>
+      <div class="tl-card">
+        <h4>Grab/walk → Dragon Bridge, east side</h4>
+        <p>Tran Hung Dao St viewing spot — stand upwind of the dragon head, arrive ~30 min early.</p>
+        <div class="chips">
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dragon+Bridge+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:00–21:15</div>
+      <div class="tl-card">
+        <h4>🔥 DRAGON BRIDGE FIRE &amp; WATER SHOW</h4>
+        <p>Fri/Sat/Sun only — today is Sunday ✓.</p>
+        <div class="chips"><span class="chip cost">Free</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:20–22:15</div>
+      <div class="tl-card">
+        <h4>Son Tra Night Market</h4>
+        <p>200 m from the bridge — snacks and souvenirs, till ~23:00.</p>
+        <div class="chips">
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Son+Tra+Night+Market+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">22:30</div>
+      <div class="tl-card">
+        <h4>Grab back to BlueSun</h4>
+        <div class="chips">
+          <span class="chip trans">Grab ~10 min · 60–90k</span>
+          <span class="chip note">Late bonus: Han River Bridge swing rotation ~23:00 Sat/Sun</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Han+River+Bridge+Da+Nang">📍 Han River Bridge</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAY 6 ============ -->
+<section id="day6">
+  <div class="sec-head">
+    <div class="kicker">Day 6 · Monday 3 Aug</div>
+    <h2>Sleep in + Souvenir Shopping Spree → departure</h2>
+    <span class="hotel-line">✈️ Tonight: EK371 departs DAD 23:30 — airport car leaves 20:15</span>
+  </div>
+  <div class="day-hero">
+    <figure><img loading="lazy" alt="Fresh produce and dried goods at a Da Nang market" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG/1920px-Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG"><figcaption>Market day — Con Market + Han Market + Lotte Mart</figcaption></figure>
+    <figure><img loading="lazy" alt="Vietnamese egg coffee" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Egg_Coffee_at_Cafe_Gi%E1%BA%A3ng%2C_H%C3%A0_N%E1%BB%99i%2C_Vietnam.jpg/1920px-Egg_Coffee_at_Cafe_Gi%E1%BA%A3ng%2C_H%C3%A0_N%E1%BB%99i%2C_Vietnam.jpg"><figcaption>Coffee break: salt coffee at Wonderlust</figcaption></figure>
+  </div>
+  <div class="callout teal">
+    <h4>😴 No alarm today</h4>
+    <p>The one sleep-in of the trip. Only hard points: BlueSun breakfast cutoff (~10:00), Con Market food court closes 15:00, airport car 20:15.</p>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-time">~09:00–09:30</div>
+      <div class="tl-card"><h4>Late wake-up — relax, no alarm</h4></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">09:30</div>
+      <div class="tl-card">
+        <h4>BlueSun breakfast (provided)</h4>
+        <p>Buffet ~06:30–10:00 — don't miss the cutoff; confirm the end time at check-in.</p>
+        <div class="chips"><span class="chip cost">Included</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:30–11:45</div>
+      <div class="tl-card">
+        <h4>Last beach relax / pack</h4>
+        <p>Leave EMPTY SPACE in your luggage for the souvenir haul.</p>
+        <div class="chips"><span class="chip cost">Free</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:00</div>
+      <div class="tl-card"><h4>Check out, bags at the BlueSun lobby</h4></div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">12:30</div>
+      <div class="tl-card">
+        <h4>Grab → Con Market (Cho Con)</h4>
+        <p>Hung Vuong corner Ong Ich Khiem, ~5 km.</p>
+        <div class="chips">
+          <span class="chip trans">Grab ~15 min · 60–80k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Con+Market+Cho+Con+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:00–14:15</div>
+      <div class="tl-card">
+        <h4>Lunch at the Con Market food court</h4>
+        <p><b>Indoor court closes 15:00!</b> Mi quang, banh beo, banh xeo — the cheapest local lunch of the trip. Then browse the dried-goods stalls: local prices, ~10–20% below Han Market.</p>
+        <div class="chips">
+          <span class="chip cost">Dishes 15–50k</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">14:15</div>
+      <div class="tl-card">
+        <h4>Grab → Han Market (Cho Han)</h4>
+        <p>119 Tran Phu, 2 km.</p>
+        <div class="chips">
+          <span class="chip trans">Grab ~10 min · 30–40k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Han+Market+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">14:30–15:45</div>
+      <div class="tl-card">
+        <h4>Han Market shopping (till 19:00)</h4>
+        <p>Ground floor: coffee (ask for <b>phin grind</b>; 120–250k/kg), dried mango (50–200k/pack), macadamia, cashews, Cam Le sesame cake. Upper floor: ao dai (~150k), clothing. <b>BARGAIN:</b> start ~30% below asking, settle 20–30% off; skip fixed-price "gia niem yet" stalls.</p>
+        <div class="chips">
+          <span class="chip cost">Coffee 120–250k/kg · ao dai ~150k</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15:45–16:30</div>
+      <div class="tl-card">
+        <h4>Coffee break: Wonderlust — SALT COFFEE is the must-try</h4>
+        <p>96 Tran Phu — same street, 3-min walk from Han Market (07:30–23:00). Salt coffee + coconut coffee. Alt: Da Nang Souvenirs &amp; Café, Bach Dang riverside — curated local gifts.</p>
+        <div class="chips">
+          <span class="chip pass">✅ Wonderlust 4.5★/1,485</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wonderlust+Da+Nang+Tran+Phu">📍 Wonderlust</a>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+Souvenirs+Cafe+Bach+Dang">📍 DN Souvenirs &amp; Café</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">16:30</div>
+      <div class="tl-card">
+        <h4>Grab → Lotte Mart, 6 Nai Nam</h4>
+        <p>City side, ~2 km. <b>Note:</b> the 478 Vo Nguyen Giap listing is unverified — use the 6 Nai Nam branch.</p>
+        <div class="chips">
+          <span class="chip trans">Grab ~10 min · ~35k</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Lotte+Mart+6+Nai+Nam+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">16:40–17:30</div>
+      <div class="tl-card">
+        <h4>Lotte Mart — packaged, flight-safe souvenirs (till 22:00)</h4>
+        <p>Trung Nguyen G7 (~55–80k/box), Legend coffee, dried mango/jackfruit packs (90–150k), macadamia (~300–350k/kg), banh trang, Marou chocolate, sealed mini fish-sauce travel packs. Fixed prices, no bargaining needed.</p>
+        <div class="chips">
+          <span class="chip cost">G7 ~55–80k/box · dried fruit 90–150k</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">17:30</div>
+      <div class="tl-card">
+        <h4>Grab → back to BlueSun (~5 km, arrive ~17:45–18:00)</h4>
+        <div class="chips"><span class="chip trans">Grab ~15 min · 60–80k</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">18:00–19:30</div>
+      <div class="tl-card">
+        <h4>Lobby rest / optional light bite at Bé Ni 2</h4>
+        <p>24/7, 2 min from the hotel — rice dishes, grilled shrimp.</p>
+        <div class="chips">
+          <span class="chip pass">✅✅ 4.8★/~10,600</span>
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Be+Ni+2+seafood+Da+Nang">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19:45</div>
+      <div class="tl-card"><h4>Collect bags, freshen up in the lobby</h4></div>
+    </div>
+    <div class="tl-item transport">
+      <div class="tl-time">20:15</div>
+      <div class="tl-card">
+        <h4>Hotel airport car</h4>
+        <p>Send Message 2 (below) — ask the hotel to confirm complimentary vs ~300k. Fallback: Grab 100–150k, request by 19:50.</p>
+        <div class="chips">
+          <span class="chip trans">Hotel car · confirm price / Grab 100–150k</span>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">20:40</div>
+      <div class="tl-card">
+        <h4>Arrive DAD Terminal 2 (target 21:00 ✓)</h4>
+        <div class="chips">
+          <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+International+Airport+Terminal+2">📍 Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">23:30</div>
+      <div class="tl-card">
+        <h4>✈️ EK371 departs Da Nang 23:30 (Mon 3 Aug)</h4>
+        <p>Landing in Bangkok Tue 4 Aug 2026 ~01:10. End of trip — chuyến đi tuyệt vời!</p>
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <h4>🧳 Shopping cautions — what can fly</h4>
+    <p>Fish sauce = <b>checked luggage only, factory-sealed</b> · no fresh durian/jackfruit (cabin/hotel ban — buy dried) · no fresh fruit (customs) · liquids &gt;100 ml never in carry-on · coffee beans/powder are fine.</p>
+  </div>
+</section>
+
+
+<!-- ============ FOOD GUIDE ============ -->
+<section id="food">
+  <div class="sec-head">
+    <div class="kicker">Eat Well</div>
+    <h2>Food Guide — rated by YOUR rule</h2>
+    <p>Your rule: recommended places must be <b>Google ≥4.5★ with ≥100 reviews</b>. Everything below is labeled <span class="chip pass">✅ passes your rule</span> or <span class="chip below">⚠️ famous but below 4.5 — you decide</span>, with rating/review counts shown.</p>
+  </div>
+  <div class="food-strip">
+    <figure><img loading="lazy" alt="Bowl of cao lau noodles, Hoi An" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cao_l%E1%BA%A7u_H%E1%BB%99i_An_%282024%29.jpg/1920px-Cao_l%E1%BA%A7u_H%E1%BB%99i_An_%282024%29.jpg"><figcaption>Cao lau — Hoi An's signature noodle</figcaption></figure>
+    <figure><img loading="lazy" alt="Banh mi baguette sandwich" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg/1920px-Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg"><figcaption>Banh mi — Madam Khanh or Phi Banh Mi, both ✅</figcaption></figure>
+    <figure><img loading="lazy" alt="Yellow old-town street in Hoi An by day" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg/1920px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg"><figcaption>Hoi An Ancient Town by day</figcaption></figure>
+    <figure><img loading="lazy" alt="Lanterns glowing at dusk in Hoi An" onerror="this.parentNode.style.display='none'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lanterns_in_Hoi_An_5.jpg/1920px-Lanterns_in_Hoi_An_5.jpg"><figcaption>Lantern glow, Hoi An</figcaption></figure>
+  </div>
+
+  <h3 class="city-head">✅ Passes your ≥4.5★ &amp; 100+ review rule — Hoi An</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>Miss Ly Cafeteria</h4>
+      <div class="meta">22 Nguyen Hue · ~09:00–21:00</div>
+      <p>Order: cao lau, pork-stuffed squid. Day 3 lunch pick.</p>
+      <div class="chips"><span class="chip pass">✅ 4.5★/~2,000</span><span class="chip cost">60–160k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Miss+Ly+Cafeteria+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Morning Glory Signature</h4>
+      <div class="meta">41 Nguyen Phuc Chu (riverbank) · 11:00–14:00 &amp; 17:30–23:00 · reserve a balcony table</div>
+      <p>Order: cao lau, chicken rice, mango sticky rice — your one big Hoi An dinner.</p>
+      <div class="chips"><span class="chip pass">✅ 4.6★/~1,800</span><span class="chip cost">~500k for two with drinks</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Morning+Glory+Signature+41+Nguyen+Phuc+Chu+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>HOME Hoi An</h4>
+      <div class="meta">Hoi An · book ahead · not riverside</div>
+      <p>Order: elevated Vietnamese — the Morning Glory backup (and the highest-rated table in town).</p>
+      <div class="chips"><span class="chip pass">✅ 5.0★/3,200</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=HOME+Hoi+An+restaurant">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Bale Well</h4>
+      <div class="meta">45/51 Tran Hung Dao (alley)</div>
+      <p>Order: the DIY banh xeo + skewer set — roll your own, fun for two.</p>
+      <div class="chips"><span class="chip pass">✅ 4.5★</span><span class="chip cost">100–150k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bale+Well+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Memories Rooftop Brunch &amp; Cafe</h4>
+      <div class="meta">30 Nguyen Thai Hoc · 06:30–22:00</div>
+      <p>Order: egg coffee or coconut coffee on the rooftop at golden hour.</p>
+      <div class="chips"><span class="chip pass">✅ 4.7★/1,089 (traveler-verified)</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Memories+Rooftop+Brunch+Cafe+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Madam Khanh — The Banh Mi Queen</h4>
+      <div class="meta">Hoi An · closes 19:00 — go before 18:30</div>
+      <p>Order: banh mi. The legendary queue-worthy sandwich.</p>
+      <div class="chips"><span class="chip pass">✅ 4.6★/8,600</span><span class="chip cost">25–35k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Madam+Khanh+Banh+Mi+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Phi Banh Mi</h4>
+      <div class="meta">88 Thai Phien, Hoi An · till 20:00</div>
+      <p>Order: banh mi — slightly higher-rated, later hours than Madam Khanh.</p>
+      <div class="chips"><span class="chip pass">✅ 4.7★/2,500</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Phi+Banh+Mi+Hoi+An">📍 Map</a></div>
+    </div>
+  </div>
+
+  <h3 class="city-head">✅ Passes your rule — Da Nang</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>Bé Ni 2</h4>
+      <div class="meta">228 Vo Nguyen Giap (on the beach strip) · open 24/7 · Michelin Selected</div>
+      <p>Order: charcoal-grilled shrimp, live-tank picks, quail-egg starters. Day 5 dinner + Day 6 optional light bite.</p>
+      <div class="chips"><span class="chip pass">✅✅ 4.8★/~10,600</span><span class="chip cost">150–400k/pp</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Be+Ni+2+seafood+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Bao An Macrobiotic</h4>
+      <div class="meta">Son Tra, Da Nang</div>
+      <p>Order: excellent vegan mi quang — the rule-passing Day 5 lunch.</p>
+      <div class="chips"><span class="chip pass">✅ 4.7★/1,150</span><span class="chip cost">35–45k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bao+An+Macrobiotic+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Wonderlust</h4>
+      <div class="meta">96 Tran Phu · 07:30–23:00</div>
+      <p>Order: <b>salt coffee</b> (the must-try) + coconut coffee. Day 6 shopping-break stop, 3-min walk from Han Market.</p>
+      <div class="chips"><span class="chip pass">✅ 4.5★/1,485</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wonderlust+Da+Nang+Tran+Phu">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Bếp Cuốn Đà Nẵng</h4>
+      <div class="meta">31–33 Tran Bach Dang · 10:30–22:00 (last order 21:00) · Michelin Selected 2025+2026 · BOOK AHEAD for Saturday</div>
+      <p>Order: banh xeo seafood pancake, fresh shrimp rolls, crispy pork kumquat — Day 4 dinner top pick, 5–8 min Grab from BlueSun.</p>
+      <div class="chips"><span class="chip pass">✅✅ 4.9★/~17,000</span><span class="chip cost">100–200k/pp</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bep+Cuon+Da+Nang+Tran+Bach+Dang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>MỘC Quán Seafood</h4>
+      <div class="meta">26 To Hien Thanh · 10:30–22:30 · Michelin</div>
+      <p>Order: lobster garlic butter, roe crab — the Day 4 seafood backup.</p>
+      <div class="chips"><span class="chip pass">✅ 4.6★/2,000+</span><span class="chip cost">300–600k/pp</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=MOC+Quan+Seafood+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Golden Meat House Korean BBQ</h4>
+      <div class="meta">100 Tran Bach Dang · 3–5 min walk from BlueSun</div>
+      <p>Order: communal grill platters — the "try something new" Day 4 backup.</p>
+      <div class="chips"><span class="chip pass">✅ ~4.8★/~5,200</span><span class="chip cost">250–400k/pp</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Golden+Meat+House+Korean+BBQ+Da+Nang">📍 Map</a></div>
+    </div>
+  </div>
+
+  <h3 class="city-head">⚠️ Famous but below 4.5 — you decide</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>Bun Cha Ca 109</h4>
+      <div class="meta">109 Nguyen Chi Thanh · 06:00–22:00 · Michelin Bib Gourmand 2024+2025</div>
+      <p>Order: fish-cake noodle soup. Day 5 lunch option (Bao An ✅ is the alternative).</p>
+      <div class="chips"><span class="chip below">⚠️ ~4.3 / star unverified — Michelin loves it</span><span class="chip cost">25–50k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bun+Cha+Ca+109+Nguyen+Chi+Thanh+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Bun Cha Ca Ba Lu</h4>
+      <div class="meta">319 Hung Vuong · opens ~06:00</div>
+      <p>Order: fish-cake noodle soup — genuine airport-area favorite, Day 2 breakfast.</p>
+      <div class="chips"><span class="chip below">⚠️ below rule — best available near the homestay</span><span class="chip cost">25–40k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bun+Cha+Ca+Ba+Lu+319+Hung+Vuong+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Mi Quang Ba Mua — Duy Tan branch</h4>
+      <div class="meta">Near the airport · 06:00–21:30</div>
+      <p>Order: mi quang — the other walkable Day 2 breakfast.</p>
+      <div class="chips"><span class="chip below">⚠️ below rule — best available near the homestay</span><span class="chip cost">30–70k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mi+Quang+Ba+Mua+Duy+Tan+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Faifo Coffee</h4>
+      <div class="meta">130 Tran Phu, Hoi An</div>
+      <p>THE iconic rooftop view over the old town — but it fails your rule. Memories Rooftop ✅ is the planned pick; Faifo is your call.</p>
+      <div class="chips"><span class="chip below">⚠️ 4.1★ — iconic view, your call</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Faifo+Coffee+Hoi+An">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Nam Danh Seafood</h4>
+      <div class="meta">139/59/38 Tran Quang Khai · 10:30–20:30 · Michelin Selected</div>
+      <p>Order: grilled oysters, tamarind crab, sweet snails. The explicit Day 5 alternative to Bé Ni 2 — cheaper and beloved by locals, but below your rule; your call. Be Man has recurring price complaints (skip).</p>
+      <div class="chips"><span class="chip below">⚠️ 4.1★ — local legend, your call</span><span class="chip cost">100–300k/pp</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nam+Danh+Seafood+Da+Nang">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>The Espresso Station / NAM House</h4>
+      <div class="meta">169/4 Tran Phu (Espresso Station) · both Da Nang</div>
+      <p>Egg coffee 55k at The Espresso Station; NAM House is the salt-coffee cult favorite. Ratings unverified — Wonderlust ✅ covers both drinks safely.</p>
+      <div class="chips">
+        <span class="chip below">⚠️ ratings unverified</span>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Espresso+Station+Da+Nang">📍 Espresso Station</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NAM+House+Cafe+Da+Nang">📍 NAM House</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="city-head">Coffee picks &amp; one optional pho</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>Salt coffee &amp; coconut coffee</h4>
+      <div class="meta">Day 6, 15:45 · 3-min walk from Han Market</div>
+      <p><b>Wonderlust</b> ✅ (4.5★/1,485; salt coffee must-try + coconut coffee) is the planned stop; <b>The Espresso Station</b> (egg coffee 55k) and <b>NAM House</b> (salt-coffee cult) are the unverified gambles. Egg coffee also appears at Memories Rooftop ✅ in Hoi An.</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wonderlust+Da+Nang+Tran+Phu">📍 Wonderlust</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Espresso+Station+Da+Nang">📍 Espresso Station</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=NAM+House+Cafe+Da+Nang">📍 NAM House</a>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Optional pho craving (no timeline slot)</h4>
+      <div class="meta">If you crave pho one morning</div>
+      <p><b>Pho 29</b>, 32 Hung Vuong — Hanoi-style, from ~06:00, 50–70k. No Da Nang pho verifiably passes your 4.5★/100+ rule; this is the best-documented central option.</p>
+      <div class="chips">
+        <span class="chip below">⚠️ below 4.5 rule — best available</span>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pho+29+Hung+Vuong+Da+Nang">📍 Pho 29</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="city-head">Ba Na Hills dining (on the mountain)</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>Beer Plaza dinner buffet + After Glow show <span class="chip note" style="font-size:11px">BEST VALUE</span></h4>
+      <div class="meta">French Village · 17:30–21:00 · cabaret 18:30–19:00 — confirm it runs that night</div>
+      <p>90+ Asian-European dishes + free Sun KraftBeer voucher; the liveliest dinner on the summit. Lunch food-court skewers from 50k earlier in the day.</p>
+      <div class="chips"><span class="chip cost">450k/adult</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Beer+Plaza+Ba+Na+Hills">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>La Côte d'Azur</h4>
+      <div class="meta">Hôtel de Nice · till ~21:00</div>
+      <p>The quieter international hotel buffet — dinner option (b).</p>
+      <div class="chips"><span class="chip cost">380k/adult</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+C%C3%B4te+d%27Azur+Ba+Na+Hills">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>La Crique <span class="chip note" style="font-size:11px">SPLURGE</span></h4>
+      <div class="meta">Mercure ground floor · 18:00–21:00 · ask about the Mercure-guest/Accor discount (~30%)</div>
+      <p>Premium international buffet with Vietnamese stations + free-flow drinks; lobster version for the full splurge.</p>
+      <div class="chips"><span class="chip cost">~700k · 998k w/ lobster</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+Crique+Ba+Na+Hills">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Kungfu Noodles</h4>
+      <div class="meta">French Village · till 20:30</div>
+      <p>Budget Chinese noodles/rice — dinner option (d).</p>
+      <div class="chips"><span class="chip cost">155–220k</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kungfu+Noodles+Ba+Na+Hills">📍 Map</a></div>
+    </div>
+    <div class="card">
+      <h4>Village street stalls + Bar La Taverne</h4>
+      <div class="meta">French Village · stalls evening · La Taverne from ~17:00 till late</div>
+      <p>Banh mi ~70k, charcoal skewers ~150k, then rooftop cocktails — dinner option (e).</p>
+      <div class="chips"><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bar+La+Taverne+Ba+Na+Hills">📍 La Taverne</a></div>
+    </div>
+    <div class="card">
+      <h4>Brasserie / Doumer / Morin / Kavkaz — lunch only</h4>
+      <div class="meta">French Village · close 15:00–17:00 (Maison du Roi 16:30)</div>
+      <p>À-la-carte lunch on arrival day: Italian (Brasserie), Vietnamese (Morin) and more — 200–350k per dish. Lunch is their moment.</p>
+      <div class="chips"><span class="chip cost">200–350k per dish</span><a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Brasserie+Ba+Na+Hills">📍 Map</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALTERNATIVES ============ -->
+<section id="alternatives">
+  <div class="sec-head">
+    <div class="kicker">Plan B</div>
+    <h2>Alternatives — if something closes, floods, or fills up</h2>
+  </div>
+  <ol class="alt-list grid">
+    <li class="card alt-card">
+      <h4>VinWonders not appealing</h4>
+      <p>→ An Bang Beach half-day + Tra Que herb village, or a Cham Islands snorkeling day trip.</p>
+      <div class="chips">
+        <span class="chip cost">Cham trip ~1,100–1,300k/pp</span>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=An+Bang+Beach+Hoi+An">📍 An Bang</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tra+Que+herb+village+Hoi+An">📍 Tra Que</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Cham+Islands+Hoi+An">📍 Cham Islands</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Dragon Bridge show cancelled (typhoon)</h4>
+      <p>→ Han River night cruise (from 120k) / Han River Bridge rotation (Sat/Sun ~23:00).</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Han+River+Bridge+Da+Nang">📍 Han River Bridge</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Marble Mountains too hot</h4>
+      <p>→ Swap to the 15:00 slot (planned flexibility — last entry ~17:00, closes 17:30), or the Museum of Cham Sculpture (07:30–17:00; 60–100k) + Han Market.</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Museum+of+Cham+Sculpture+Da+Nang">📍 Cham Museum</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Han+Market+Da+Nang">📍 Han Market</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Ba Na fog</h4>
+      <p>→ Indoor: Fantasy Park, Wax Museum (100k), Wine Cellar, an à-la-carte long lunch; retry the Golden Bridge midday.</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wax+Museum+Ba+Na+Hills">📍 Wax Museum</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Shopping day too tiring</h4>
+      <p>→ Skip Con Market; do only Han Market + Lotte Mart + a beach afternoon.</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Han+Market+Da+Nang">📍 Han Market</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Lotte+Mart+6+Nai+Nam+Da+Nang">📍 Lotte Mart</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Rainy last day</h4>
+      <p>→ Vincom Plaza indoor mall (Tran Phu) instead of the open-air markets.</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Vincom+Plaza+Da+Nang+Tran+Phu">📍 Vincom Plaza</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Morning Glory Signature full</h4>
+      <p>→ HOME Hoi An (✅ 5.0★/3,200, book ahead) or Bale Well (✅ 4.5★).</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=HOME+Hoi+An+restaurant">📍 HOME</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bale+Well+Hoi+An">📍 Bale Well</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Café closures to remember</h4>
+      <p>Rosie's (Hoi An) closed Sun · Nourish (Hoi An) closed Mon · Puna (Da Nang) Tue short hours · Ba Na After Glow show dark one weekday (confirm on arrival).</p>
+      <div class="chips">
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rosie%27s+Cafe+Hoi+An">📍 Rosie's</a>
+        <a class="mapbtn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nourish+Eatery+Hoi+An">📍 Nourish</a>
+      </div>
+    </li>
+    <li class="card alt-card">
+      <h4>Date-shift rules</h4>
+      <p>Day 1 must be Mon/Wed/Fri/Sun (Emirates DAD schedule); keep a Fri/Sat/Sun night in Da Nang for the fire show.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ HOTEL MESSAGES ============ -->
+<section id="messages">
+  <div class="sec-head">
+    <div class="kicker">Copy &amp; Send</div>
+    <h2>Hotel Messages</h2>
+    <p>Two short messages that prevent the two most likely problems: a locked door at 23:00 and a missing airport car on the last night.</p>
+  </div>
+
+  <h3 class="city-head">Message 1 — Late check-in (Airport Homestay)</h3>
+  <p class="msg-note">📤 <b>When to send:</b> right after booking the homestay (any channel — Agoda/Booking message or WhatsApp).</p>
+  <div class="msg-block">
+    <button class="copy-btn" data-target="msg1">Copy</button>
+    <pre id="msg1">Hello, my name is [YOUR NAME] and I have a booking for Wednesday 29 July 2026 (booking reference: [REF]). My flight EK370 lands at Da Nang Airport at 21:50, so I expect to arrive at the homestay around 22:45–23:00. Could you please confirm that late check-in is OK and that my room will be kept? If reception is closed at that hour, please let me know how to enter (door code, key box, or a phone number to call). Thank you very much!</pre>
+  </div>
+
+  <h3 class="city-head">Message 2 — Airport car (BlueSun Danang Beach Hotel)</h3>
+  <p class="msg-note">📤 <b>When to send:</b> 2–3 days before checkout (so roughly Day 3–4 of the trip).</p>
+  <div class="msg-block">
+    <button class="copy-btn" data-target="msg2">Copy</button>
+    <pre id="msg2">Hello, my name is [YOUR NAME], booking reference [REF], staying 1–3 August 2026. My departure flight EK371 leaves Da Nang at 23:30 on Monday 3 August, and I would like to arrive at the airport by 21:00. I understand the hotel can arrange an airport car — could you please reserve a car to pick me up at the hotel at 20:15 on 3 August? Kindly confirm whether it is complimentary or the price, and where I should meet the driver. Thank you very much!</pre>
+  </div>
+  <div class="callout">
+    <h4>⚠️ BlueSun transfer caveat</h4>
+    <p>Public sources list BlueSun's airport transfer as a <b>PAID service ~VND 300,000/vehicle</b>, running 06:00–22:00 — the traveler was told it is free, so the message politely asks the hotel to confirm. If it's paid or unavailable: Grab fallback 100–150k, request by 19:50.</p>
+  </div>
+</section>
+
+<!-- ============ BUDGET ============ -->
+<section id="budget">
+  <div class="sec-head">
+    <div class="kicker">Money</div>
+    <h2>Budget Snapshot</h2>
+    <p>For the couple (2 people). Transport is per car for BOTH of you. Hotels, flights and the already-purchased Ba Na cable car tickets are not included.</p>
+  </div>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr><th>Category</th><th>Per couple (2)</th><th>Per person</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Transport</td>
+        <td class="num">≈ 3.3–3.8M VND</td>
+        <td class="num">≈ 1.7–1.9M</td>
+        <td>All Grab legs incl. the Day 6 shopping crawl + Ba Na→Hoi An private car + airport car, per car for both</td>
+      </tr>
+      <tr>
+        <td>Tickets</td>
+        <td class="num">≈ 4.2M VND</td>
+        <td class="num">≈ 2.1M</td>
+        <td>VinWonders 650k · basket boat ~170k share · old town 120k · Marble 55–70k · wine cellar 100k · lantern boat 75k share — Ba Na cable car already purchased</td>
+      </tr>
+      <tr>
+        <td>Food</td>
+        <td class="num">≈ 2.8–4.4M VND</td>
+        <td class="num">≈ 1.4–2.2M</td>
+        <td>Local icons + Morning Glory Signature + Bếp Cuốn + Bé Ni 2 + Con Market lunch</td>
+      </tr>
+      <tr>
+        <td>Souvenirs</td>
+        <td class="num">as you like</td>
+        <td class="num">500k–1.5M typical</td>
+        <td>Coffee / dried fruit / nuts haul from Han Market + Lotte Mart</td>
+      </tr>
+      <tr class="total">
+        <td>Rough total (excl. hotels/flights/Ba Na ticket/shopping)</td>
+        <td class="num">~10–13M VND</td>
+        <td class="num">~5–6.5M (~US$190–250)</td>
+        <td>Couple total ≈ US$380–500 for the whole trip</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ TRAVEL TIPS ============ -->
+<section id="tips">
+  <div class="sec-head">
+    <div class="kicker">Practical Guide</div>
+    <h2>Travel Tips</h2>
+  </div>
+  <ul class="tips">
+    <li><b>Grab:</b> pay cash in VND small notes; Be / Xanh SM apps are 10–20% cheaper at surge.</li>
+    <li><b>Early August weather:</b> Da Nang 30–35°C with brief showers; Ba Na summit is 8–12°C cooler — pack a light jacket + raincoat.</li>
+    <li><b>Pack:</b> swimwear (beach + VinWonders water park), grippy shoes (Marble Mountains), modest clothes (pagodas), sunscreen — and leave EMPTY SPACE in your luggage for souvenirs.</li>
+    <li><b>Money rules:</b> seafood — ALWAYS agree the per-kg price + watch the weighing; basket boat tip 50–100k is normal.</li>
+    <li><b>Markets:</b> bargain 20–30% at Han/Con Market; Lotte Mart is fixed prices with sealed, flight-safe packs.</li>
+    <li><b>Connectivity:</b> eSIM before departure (~$8) or the Viettel counter at DAD arrivals.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>All photos: Wikimedia Commons (freely licensed)</p>
+    <p>Prices/schedules verified July 2026 — reconfirm before travel.</p>
+    <p class="offline-hint">Best viewed offline — save this page to your phone before the trip.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var START=new Date(2026,6,29), END=new Date(2026,7,3,23,59,59);
+  var DNAMES=['Wed 29 Jul','Thu 30 Jul','Fri 31 Jul','Sat 1 Aug','Sun 2 Aug','Mon 3 Aug'];
+  var KEYS=['21:50 land DAD · 23:00 late check-in',
+            '09:00 Grab to Ba Na · 10:00 cable car up (before noon) · 19:30 dinner',
+            '05:45 Golden Bridge · 11:15 car to Hoi An · 19:30 Morning Glory Signature',
+            '09:15 basket boat · 11:15 VinWonders · 16:30 Grab to Da Nang',
+            '09:15 Marble Mountains · 19:15 seafood · 21:00 FIRE SHOW',
+            '13:00 Con Market lunch (closes 15:00) · 20:15 airport car · 23:30 flight'];
+  var now=new Date(), tripDay=-1;
+  if(now>=START&&now<=END) tripDay=Math.floor((now-START)/864e5);
+  if(tripDay>=0){
+    var b=document.getElementById('today-banner');
+    b.hidden=false;
+    b.innerHTML='<span>📍</span><span><b>Today is Day '+(tripDay+1)+' · '+DNAMES[tripDay]+'</b><br>'+KEYS[tripDay]+'</span>';
+  }
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  function setPanel(sec,open){
+    sec.classList.toggle('open',open);
+    sec.querySelector('.panel-head').setAttribute('aria-expanded',open);
+  }
+  secs.forEach(function(sec){
+    var head=sec.querySelector('.sec-head'); if(!head) return;
+    var kick=head.querySelector('.kicker'), h2=head.querySelector('h2');
+    var isDay=kick&&/^Day \d/.test(kick.textContent);
+    var title=isDay?kick.textContent.trim():(h2?h2.textContent.trim():'Section');
+    var sub=isDay?(h2?h2.textContent.trim():''):(kick?kick.textContent.trim():'');
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='panel-head'; btn.setAttribute('aria-expanded','false');
+    btn.innerHTML='<span class="ph-text"><b></b><span></span></span><span class="chev" aria-hidden="true"></span>';
+    btn.querySelector('b').textContent=title;
+    btn.querySelector('.ph-text span').textContent=sub;
+    var body=document.createElement('div'); body.className='panel-body';
+    var inner=document.createElement('div'); inner.className='pb-inner';
+    while(sec.firstChild) inner.appendChild(sec.firstChild);
+    body.appendChild(inner); sec.appendChild(btn); sec.appendChild(body);
+    sec.classList.add('panel');
+    btn.addEventListener('click',function(){ setPanel(sec,!sec.classList.contains('open')); });
+  });
+  var defaultId=(tripDay>=0)?('day'+(tripDay+1)):'day1';
+  var defSec=document.getElementById(defaultId);
+  if(defSec&&defSec.classList.contains('panel')){
+    setPanel(defSec,true);
+    if(tripDay>=0) setTimeout(function(){ defSec.scrollIntoView({behavior:'smooth',block:'start'}); },350);
+  }
+  document.getElementById('expand-all').addEventListener('click',function(){ secs.forEach(function(s){ setPanel(s,true); }); });
+  document.getElementById('collapse-all').addEventListener('click',function(){ secs.forEach(function(s){ setPanel(s,false); }); });
+  document.querySelectorAll('nav a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href'); if(!id||id.charAt(0)!=='#') return;
+      var sec=document.querySelector(id); if(!sec) return;
+      e.preventDefault();
+      if(sec.classList.contains('panel')) setPanel(sec,true);
+      document.querySelectorAll('nav a').forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+      sec.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text=document.getElementById(btn.getAttribute('data-target')).innerText;
+      function done(){ btn.textContent='Copied ✓'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent='Copy'; btn.classList.remove('copied'); },1800); }
+      function fallback(){
+        var ta=document.createElement('textarea');
+        ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); done(); }catch(e){ btn.textContent='Select & copy manually'; }
+        document.body.removeChild(ta);
+      }
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(fallback); }
+      else fallback();
+    });
+  });
+})();
+</script>
+</body>
+</html>

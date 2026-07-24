@@ -1,0 +1,377 @@
+<agent_swarm_result>
+<summary>completed: 9</summary>
+<subagent agent_id="agent-0" item="Flights + Da Nang airport arrival: (1) Verify Emirates EK370/EK371 actual route and schedule (DXB–DAD? operating days of week, typical arrival/departure times) — the traveler quoted EK370 arriving DAD 21:50 and EK371 departing 23:30; confirm plausibility and note operating days. (2) Da Nang Airport (DAD) international terminal late-evening arrival logistics: typical immigration/baggage time around 22:00, SIM/eSIM counters open late, ATMs, Grab pickup point at international terminal (exact pickup zone instructions), taxi vs Grab fare to hotels near the airport and to city center (My Khe beach area), distance/time. Also: any hotel actually named 'Airport Homestay Da Nang' or similar very close to the terminal (search Google Maps listings) with 24h reception / late check-in feasibility." outcome="completed">**REPORT — Travel Research Specialist (Role: Flights & DAD Arrival Logistics)**
+*As-of dates noted per fact; verification done against 2025–2026 sources.*
+
+**1. Emirates EK370/EK371 — CONFIRMED PLAUSIBLE, with one critical caveat on operating days**
+
+- Route: EK370 DXB→BKK→DAD (same aircraft continues from Bangkok); EK371 DAD→BKK→DXB. Boeing 777-300ER (2-class, 428 seats). Source: FlightAware + Trip.com history, Jul 2026; Time Out Dubai, Jun 2025 launch.
+- Operating days for Da Nang: **Mon, Wed, Fri, Sun only** — the same flight numbers serve Siem Reap (SAI) on Tue/Thu/Sat instead. Confirmed by FlightAware history Jun–Jul 2026 (DAD arrivals Mon 29/6, Sun 28/6, Fri 26/6, Wed 24/6) and Trip.com EK371 history (DAD departures Mon/Wed/Fri/Sun 23:30). Source: FlightAware EK370 page, as of Jul 2026.
+- Schedule: EK370 dep DXB 09:00, BKK 18:25→20:10, **arrive DAD 21:50 scheduled** (FlightAware shows STA 21:50; emirates.com booking card showed 21:30 for one season — seasonal 20-min variation possible). EK371 **dep DAD 23:30**, arr DXB ~06:35–06:50 next day. Sources: Airpaz/Airpaz schedule Apr 2026; emirates.com DAD→DXB page Feb 2026; Time Out Dubai.
+- **Punctuality:** EK370 arrival punctuality 90%, avg 3 min late (Trip.com, Jul 2026); actual gate arrivals in June clustered 21:46–22:19, i.e., expect 21:50–22:20. EK371 departure 100% on-time, avg 11 min late (Trip.com, Jun 2026).
+- ⚠️ **Itinerary constraint:** the traveler's Day 1 (21:50 arrival) and Day 6 (23:30 departure) must BOTH fall on Mon/Wed/Fri/Sun. Day 1→Day 6 is +5 nights; valid pairs: Mon→Sat ✗, Wed→Mon ✓, Fri→Wed ✓, Sun→Fri ✓. **Day 1 = Wed, Fri, or Sun only.**
+
+**2. DAD late-evening arrival logistics (Terminal 2, international)**
+
+- Immigration + baggage: DAD is compact and efficient; realistic door-to-door 30–50 min at ~22:00 (bags typically 5–12 min at carousel; one guide cites first-timer total 45–75 min). Source: Vespa-a-Gogo DAD guide Feb 2026; Fasttrack-vietnam guide Apr 2026. Only ~1–2 international arrivals late evening, so queues are short.
+- SIM counters: Viettel/Vinaphone/MobiFone kiosks in T2 arrivals hall; **reported hours 6:00 AM–2:00 AM daily** (vietnamesim.com Da Nang guide) — open for a 22:00–23:00 arrival. Tourist SIM ~100,000–350,000 VND; passport required. Caveat: one source warns counters "follow flight schedules" and may close if last flight clears — at 22:30 arrival, buy promptly, don't linger. Safer: pre-purchase eSIM (from ~$8–11) and skip counters entirely.
+- ATMs/currency exchange: ATMs near arrivals exit (Visa/MC); exchange counters in arrivals hall, rates acceptable but city is better. Source: Fasttrack-vietnam Apr 2026; getvisavietnam.
+- Grab pickup (T2 international): dedicated GrabCar pickup lanes. Directions: exit arrivals → head to guide board → turn left toward end of the road → **Lane 1** (primary); Lane 2 as overflow. There is a physical Grab station + info desk with free WiFi outside arrivals. Source: grab.com official airport page.
+- Fares (2025–2026 sources, consistent across 4 guides):
+ - To airport-area hotels (0.5–2 km): Grab ~50,000–70,000 VND (short-hop minimum).
+ - To city center (3–5 km): Grab 60,000–100,000 VND; metered taxi 70,000–120,000 VND (13–18k VND/km).
+ - To My Khe Beach / Bluesun area (5–7 km, ~15 min): Grab/taxi ~100,000–150,000 VND.
+ - Sources: VisitDanang.travel; Joytime.vn; VietnamDiscovery Sep 2025; Klook Sep 2025; Queenbus Aug 2025.
+- Public bus: routes 1/3/4/6/12 (5,000–28,000 VND) run 05:00–21:00 — **NOT available for this arrival**; Grab is the right late-night option. Source: VisitDanang.travel.
+
+**3. Airport Homestay Đà Nẵng — CONFIRMED EXISTS**
+
+- Real property, Thi Sách Street, Hai Chau district; **~510 m from DAD terminal (≈10 min walk)**; **24-hour check-in/front desk** advertised. Agoda: location score 8.9, value 8.7, 100+ bookings, 51–524 reviews; a reviewer specifically notes it's ideal for late-night arrivals within walking distance. Sources: Agoda listing (as of Jan 2026), Airpaz hotel page. Walkable at 22:30–23:00, so no transfer needed; a Grab would be ~50k VND anyway.
+
+**UNCERTAIN (could not fully verify)**
+
+- Exact EK370/EK371 schedule for the traveler's specific 2026 dates (schedule shown is current Jun–Jul 2026 pattern; emirates.com showed a 21:30 arrival variant for some seasons — reconfirm on emirates.com at booking).
+- Whether SIM counters at T2 are still staffed after ~23:00 on any given night (hours listed 6:00–2:00 but staffing follows last flight).
+- Live Grab fare for the exact arrival time (night surge possible; estimate ±20%).
+- Bluesun Hotel exact address/pin — fare estimates assume the Vo Nguyen Giap / My Khe beach strip.</subagent>
+<subagent agent_id="agent-1" item="Mercure Danang French Village Bana Hills check-in logistics (critical): exact check-in procedure — where is the hotel reception (Ba Na Hills cable car station at the foot? Mercure lounge?), how luggage is transferred up the mountain, whether guests must buy cable car tickets and the price/discount for hotel guests, LAST cable car time going up in the evening (critical — if a guest arrives late can they still get up?), check-in/check-out times, what is open in French Village at night (restaurants, bars, streets), typical dinner options and prices inside the village, temperature difference vs Da Nang city and clothing advice, and whether hotel guests get early/private access to the Golden Bridge in the morning and at what hour." outcome="completed"># Travel Research Specialist — Report: Mercure Danang French Village Bana Hills — Check-in Logistics
+
+## Check-in procedure & reception location (CONFIRMED)
+- **Check-in happens at the DOWNHILL Front Desk at Thac Toc Tien (Toc Tien Waterfall) cable car station**, at the foot of the mountain — NOT up in the village. The downhill desk is open **8:00 AM–5:00 PM daily**; the hilltop front desk is 24-hour (hotel official site, as of Jun 2026; Traveloka listing, 2024+).
+- Grab/private car can drop guests directly at Thac Toc Tien Station (short walk upstairs from parking to the check-in lounge). Distance from Da Nang airport ≈ 20–25 km, ~45 min by car (hoiandaytrip.com, Mar 2026).
+- **Luggage:** hotel porters/bellmen handle bags from the station onto the cable car and to the hotel (ourtravelitinerary.com, Feb 2026; hoiandaytrip.com). Strong traveler advice: **bring only an overnight bag**; leave main suitcases at the previous/next hotel.
+- **Check-in 14:00–16:30; check-out 07:30–10:30; breakfast 06:30–09:30** (hotel official site, as of Jul 2025–Jun 2026). Arriving before 14:00? Go up anyway, drop bags at the main-building reception, explore the park, return at 14:00 (hoiandaytrip.com).
+
+## Cable car tickets for hotel guests (CONFIRMED)
+- Guests **must** ride the cable car (no road access) and buy discounted tickets at the downhill Front Desk, or pre-arrange with the hotel / add when booking on the hotel website.
+- **Price: "from VND 545,000/adult"** for hotel guests (Accor official page all.accor.com, as of Jul 2026). Older reviews cite 400,000 VND vs 700,000 public price (TripAdvisor); 2026 public adult ticket is now **1,000,000 VND** (hoiandaytrip.com, Jan 2026), so the guest discount is substantial.
+- Hotel guests use **private lanes — no queuing** at the cable car (hotel official site; hoiandaytrip.com).
+
+## LAST cable car up — CRITICAL (CONFIRMED)
+- **Hotel's official rule: cable car 08:00–16:30; you MUST be at the downhill Reception before 16:30.** This is stated on the hotel's own site (checked Jun 2026) and corroborated by an Accor verified guest review (Apr 2026): *"arrival is only possible before 5 PM… we missed our first night and couldn't access the hotel."*
+- **Implication for your itinerary:** arrival after ~16:00 is effectively impossible to recover. This does NOT affect Day 1 (airport hotel night), but the Day 2 transfer to Ba Na Hills must leave Da Nang by ~14:30–15:00 latest to have buffer.
+
+## What's open in French Village at night (CONFIRMED)
+- Village streets remain open and are beautifully lit — the signature perk of staying overnight; nearly empty after day-trippers leave (multiple guest reviews, 2026).
+- **3D mapping light show**, Square du Dôme: **18:50 and 19:50 daily**, weather permitting (hoiandaytrip.com, Dec 2025). Another source lists a laser show at 19:00/21:00 (stepintovietnam, May 2026) — verify times on the day.
+- **Beer Plaza / Helios Waterfall area** is the liveliest zone: outdoor food stalls, BBQ, Sun KraftBeer craft beer, live music into the evening (hoiandaytrip.com, Dec 2025).
+- **Mercure outlets:** La Crique international dinner buffet **17:30–21:00**, ~**350,000–380,000 VND/adult**, child (1–1.4 m) ~210,000–240,000 VND (hotel site + hoiandaytrip.com, 2025). L'Étable French/Vietnamese à la carte until **21:00**, 3-course set ~**450,000–650,000 VND/person** (Sun Paradise Land review, Aug 2025). **Bar La Taverne** (rooftop, cocktails, games) from ~17:00 until late. Maison du Roi (Asian), La Côte d'Azur (Mediterranean) also hotel-run.
+- Budget alternative: **Kungfu Noodles** open until **20:30**, dishes from ~135,000 VND (hoiandaytrip.com, Sep 2025). Most other village restaurants (Kavkaz, Thai Market, Brasserie, Le Petrin, Rosa) close 15:00–17:00 — dinner choices are essentially the buffets, hotel restaurants, and Beer Plaza.
+- Breakfast at La Crique if not in rate: ~215,000 VND/person (TripAdvisor review cited Aug 2025).
+
+## Golden Bridge early access (CONFIRMED)
+- **"Golden Hours at Golden Bridge" — exclusive to overnight Mercure guests.** Dedicated early cable cars Louvre Station → Bordeaux Station at **06:00–06:05, 06:30–06:35, 07:00–07:05** (hotel official experiences page, Jun 2026; stepintovietnam, May 2026). A guest arriving at the bridge entrance at 05:45 was "first on the bridge" (Accor verified review, Apr 2026). Public crowds arrive ~07:30–08:00+. Confirm schedule at the hilltop front desk the night before.
+
+## Temperature & clothing (CONFIRMED)
+- Ba Na Hills summit ≈ 1,487 m; typical range **15–22°C**; late-July (summer) roughly **20–28°C daytime but much cooler evenings/mornings** vs ~33–35°C in Da Nang city (huracars.com Dec 2025; vietnammarveltravel.com Jul 2025). Expect roughly **8–12°C cooler** than the city, plus fog/wind.
+- **Pack a light jacket/fleece** (essential at night and for the 06:00 Golden Bridge trip) + comfortable walking shoes; weather changes fast — compact raincoat useful even in July (brief afternoon showers common).
+
+## UNCERTAIN / NOT VERIFIED
+- **Evening cable car conflict:** some sources say Ba Na's night-route cable cars run to ~21:30–22:00 for "Ba Na by Night" visitors (danangtickets.com 2025; banahillstour.com 2025), which *might* allow a late ascent. The hotel's own 16:30 cutoff is the authoritative rule for check-in; treat 16:30 as hard unless the hotel confirms otherwise by email (H8488-RE@accor.com, +84 2363 799 888).
+- Exact current hotel-guest cable car fare beyond "from 545,000 VND" (child rates, round-trip vs one-way) — confirm at booking.
+- Night light-show exact times vary by season/weather.
+- No weekday closures found — Ba Na Hills operates year-round, daily (confirmed multiple 2025–2026 sources); individual rides (Alpine Coaster, mountain train) can close for weather/maintenance without notice.</subagent>
+<subagent agent_id="agent-2" item="Ba Na Hills daytime guide: current 2025–2026 entrance/cable car ticket price (adult), opening hours of the resort and cable cars, list of main attractions with any extra fees (Golden Bridge, French Village, Fantasy Park, Alpine Coaster price, Linh Ung Pagoda on Ba Na, Debay Wine Cellar, Le Jardin d'Amour gardens, wax museum fee), buffet lunch options and prices vs à-la-carte restaurants in French Village, realistic time budget per attraction, best order to visit to avoid crowds, weather/fog risk in August and what still works when foggy, and how long the cable car ride takes." outcome="completed">**Role: Travel Research Specialist — BA NA HILLS DAYTIME GUIDE (researched late July 2026)**
+
+**TICKETS (adult, non-resident)**
+- Standard round-trip cable car + entry: **950,000–1,000,000 VND** (official Sun World 2026 price list shows 1,000,000 VND non-local adult, 800,000 VND child 1–1.4m, under 1m free — sunworld.vn, Jun 2026; multiple 2025 sources show 950,000 VND, so a ~3.8% 2026 increase is plausible)
+- Cable car + lunch buffet combo: **1,250,000–1,300,000 VND** (danaticket.com & pullman-danang.com, Apr 2026)
+- Night combo (entry after 15:00 + dinner buffet): 1,050,000 VND adult (danaticket.vn, Apr 2026)
+- Ticket includes: all cable car lines, Golden Bridge, French Village, Fantasy Park (most rides), Le Jardin d'Amour, Linh Ung Pagoda, Moon Castle/Lunar Castle. Excludes: wax museum, wine cellar, Alpine Coaster, skill/prize games, 10D cinema (sunworld.vn, Jun 2026)
+
+**HOURS**
+- Resort: **8:00–22:00 daily, year-round, no weekday closures** (hoiandaytrip.com, Sep 2025; danangtickets.com, Apr 2025)
+- Day cable car ascent typically 8:00–17:00; last descent ~21:30; first car ~7:30–8:00 (banahillstour.com, Jun 2025)
+- Individual line schedules (Hoi An–Marseille, Debay–Morin, L'Indochine–Toc Tien) run in time windows and are posted on station screens daily; Suoi Mo line is backup only (vncarrentals.com, Aug 2025)
+- Weekday-closure flag: the **"After Glow" cabaret show is dark on Wednesdays** (sunworld.vn, Aug 2025). No attraction closes on a fixed weekday otherwise.
+
+**CABLE CAR RIDE**
+- 15–25 min per leg depending on line/weather; longest line 5,042 m; total ascent (2 legs) ~30–40 min incl. transfer (hoiandaytrip.com, Jan 2026; jetsetandforget.com, Apr 2025)
+
+**EXTRA-FEE ATTRACTIONS (2025–26 confirmed)**
+- Alpine Coaster: **70,000 VND/ride** in happy hours (8:30–9:30 & 16:30–17:30), **100,000 VND** mid-day; bundles 2 rides 130k–180k, 3 rides 180k–250k; kids <1.2m not allowed (hoiandaytrip.com, Jan 2026)
+- Wax Museum: **100,000 VND**, kids under 1.4m free (junglebosstours.com, 2026 price list)
+- Debay Wine Cellar: Silver 100,000 / Gold 200,000 / Platinum 300,000 VND (entry + 1 drink; under-18s non-alcoholic only) (sunworld.vn, Jan 2026)
+- Bouldering: 100,000 VND; WOW Pass skip-line: Silver 300,000 VND up to Platinum 3,000,000 VND (junglebosstours.com, 2026)
+
+**LUNCH: BUFFET vs À LA CARTE**
+- Buffet lunch standalone: **380,000 VND adult / 240,000 VND child**, valid 2026 (tourbana.vn price list valid 01/01–31/12/2026; sunworld.vn promo, Aug 2025). Served ~10:30/11:00–14:00/15:00 at Four Seasons, Arapang, Taiga, Beer Plaza (assigned); also Little Tokyo (Japanese), Bharata (Indian/halal), Rosa Hotpot
+- À-la-carte/set-menu: Doumer (garden setting), Brasserie (Italian), Kavkaz, Morin (Vietnamese); dishes roughly **200,000–350,000 VND each**; Beer Plaza food court BBQ skewers/sausages from 50,000 VND (hoiantravel.com.vn, Jan 2025; hoiandaytrip.com, Nov 2025)
+- Verdict: buffet combo saves ~50k vs buying separately and guarantees a seat 11:30–13:30 (walk-up seats not guaranteed). Foodies may prefer à la carte + food court grazing.
+
+**TIME BUDGET & CROWD-AVOIDING ORDER**
+- Golden Bridge 30–45 min → Le Jardin d'Amour 30 min → Debay Wine Cellar 30–45 min → Linh Ung Pagoda 20–30 min → funicular to French Village → lunch 60–75 min → Fantasy Park 1.5–2.5 h → Alpine Coaster 30–45 min (queue-dependent) → Lunar Castle/Eclipse Plaza 45 min. Full day = 6–8 h (junglebosstours.com, 2026)
+- Crowds peak 9:30–14:00; quietest Mon–Tue; visit bridge before 9:00 or after 15:00 (yourvietnamtravel.com, Mar 2026; jetsetandforget.com, Apr 2025)
+- **Mercure French Village guests' edge:** you sleep on the mountaintop and can walk to the Golden Bridge area before day-trippers' first cable car arrives (~8:30) and again after ~17:00 — the single best crowd-avoidance strategy (widely reported by 2025 travel blogs)
+
+**AUGUST WEATHER / FOG PLAN**
+- August is late dry season (Mar–Aug): mostly clear, but early-morning fog/mist still possible and clears by late morning; cooler up top (13–25°C) — bring a light layer (kalakalabeachclub.com, Jun 2026; odynovotours.com)
+- If foggy: Fantasy Park (indoor, 100+ games), Wax Museum, Wine Cellar, Lunar Castle, buffet all work fine; Alpine Coaster **closes in rain/fog**; return to Golden Bridge after ~12:00 for a second chance (hoiandaytrip.com, Jan 2026; yourvietnamtravel.com, Mar 2026)
+
+**UNCERTAIN / COULD NOT VERIFY**
+- Exact 2026 standard ticket (950k vs 1,000,000 VND) — sources conflict; verify on booking.sunworld.vn before purchase
+- Current Alpine Coaster price tiers for Aug 2026 (verified to Jan 2026 only)
+- Whether the 2025 post-13:00 buffet discount (340,000 VND) was renewed for 2026
+- Daily cable-car line rotation/maintenance windows on your specific date — check screens/app on the day
+- Mercure guest early-access policy to Golden Bridge — confirmed by blogs, not by Sun World official text</subagent>
+<subagent agent_id="agent-3" item="Hoi An Old Town + Night Market + food: (1) Old Town entrance ticket price 2025–2026, what it includes, hours of key sights, current status of the Japanese Covered Bridge (restoration reopened?). (2) Hoi An Night Market (Nguyen Hoang street) opening days/hours and best food stalls. (3) Lantern boat rides on Thu Bon river — price per boat, duration, hours, where to board. (4) Top 5 cafes in Hoi An where FOOD quality comes first (great brunch/cake/coffee), each with Google rating, signature items, rough prices. (5) Top 6-8 restaurants/eateries in Hoi An with high Google ratings or strong local recommendation covering: cao lau, com ga (chicken rice), banh mi (is Banh Mi Phuong still top-rated?), white rose dumplings, mi quang, and one memorable dinner splurge. Give address/area + rating + must-order dish + price level for each." outcome="completed">**REPORT — Travel Research Specialist (Hoi An: Old Town, Night Market, Food)** | Research date anchor: July 2026, using 2024–2026 sources
+
+**1. Old Town ticket & Japanese Covered Bridge**
+- Ticket: **120,000 VND/foreign adult** (children under 1m free; 1–1.4m 50,000 VND); Vietnamese 80,000 VND. [Source: privatecartransferhoian.com, Dec 2025; culturephamtravel.com, Jan 2026]
+- Includes entry to heritage zone + **5 of ~22 sights** (tear-off stubs): e.g. Japanese Bridge, Phung Hung House, Quan Thang House, assembly halls (Fujian, Cantonese, Hainan, Trieu Chau), museums, temples; also folk games/street shows 19:00–20:30 and art performances 10:15/15:15 daily. [Source: privatecartransferhoian.com, Dec 2025]
+- Ticket counters sell **8:00–20:00**; old town itself open 24/7; most ticketed sights roughly **7:30/8:00–17:30/18:00**. [Source: hoiandaytrip.com, Sep 2025 — sights hours approximated, see UNCERTAIN]
+- **Japanese Covered Bridge: REOPENED** — closed Dec 2022, full restoration (~20 billion VND), inaugurated **Aug 2–3, 2024**. Fully visitable now. [Source: vietnamnet.vn, Jul 2024; hoianheritage.net official, Jan 2025]
+
+**2. Night Market (Nguyen Hoang St)**
+- Daily **17:00–23:00** (peak 19:00–21:30); ~50–300 stalls over ~300m, across An Hoi Bridge from Old Town. **Free entry** (no Old Town ticket needed if you don't cross into heritage zone). [Sources: vietnamdrive.com Nov 2025; seniworld.com Oct 2025; hoianuniquetravel.com Jul 2026]
+- Second food-focused market: **Cong Nu Ngoc Hoa St**, 16:30–23:00. [Source: culturephamtravel.com, Dec 2025]
+- Best stalls (prices from hoianuniquetravel.com, Jul 2026): com ga 40–60k; banh mi 25–40k; mi quang 30–50k; banh xeo 30–50k; che 15–20k; banh trang nuong ("Vietnamese pizza") 15–25k. No named "famous" stalls verified — food is generic-market grade; better versions sit outside the market (below).
+
+**3. Lantern boat rides (Hoai River/Thu Bon)**
+- Official syndicate fares per boat, ~**20 min** ride: **150,000 VND (1–3 pax) / 200,000 VND (4–5 pax)**; paper lanterns ~5,000 VND each. Hours **16:00–21:30 daily**, board at kiosks on **Bach Dang St quay / near An Hoi Bridge**. Fixed prices, buy at booth, ignore hawkers. [Source: yourvietnamtravel.com, Mar 2026]
+- Note: private day/sunset cruises cost 400–600k/boat. [Source: hoiandaytrip.com, Sep 2025]
+
+**4. Top 5 cafes (food-first)**
+- **Rosie's Cafe** — 8/6 Nguyen Thi Minh Khai; 08:00–16:00, **closed Sundays**. Brunch: avocado toast, pancakes, smoothie bowls; ~100–150k/person. [Sources: yourvietnamtravel.com Mar 2026; Tripadvisor 4.8]
+- **Faifo Coffee** — 130 Tran Phu (+3 branches); 07:30–21:30. Rooftop views; egg coffee + cakes; ~65k/person. [Source: yourvietnamtravel.com, Mar 2026]
+- **Memories Rooftop Brunch & Cafe** — 30 Nguyen Thai Hoc; 06:30–22:00. Extensive brunch menu, rooftop over Old Town; slightly pricier. [Source: trilongcoffee.com, Apr 2025]
+- **Nourish Eatery** — 220a Nguyen Duy Hieu; 09:00–16:00, **closed Mondays**. Smoothie bowls, hearty breakfasts, excellent cà phê đen; ~120–180k. [Source: happyhealthynomads.com, Jan 2025]
+- **Good Eats** — 409 Cua Dai; 08:00–16:00. In-house bakery (gluten-free pastries), salted coffee (cream-cheese style); ~100–150k. [Source: happyhealthynomads.com, Jan 2025]
+
+**5. Top 8 restaurants/eateries**
+- **Com Ga Ba Buoi** — 22 Phan Chu Trinh; 10:00–14:30 & 16:00–20:00. THE com ga institution; ~40–60k/plate. [Sources: hoianuniquetravel.com Jul 2026; mstravelsolo.com]
+- **Cao Lau Thanh** — 26 Thai Phien; ~07:00–19:00 (sells out early). Local-recommended cao lau; ~35–50k. [Source: lasiestahoianresort.com, Aug 2025]
+- **Banh Mi Phuong** — 2B Phan Chu Trinh; 06:30–21:30. Google **4.3 (13k+ reviews)** — still famous post-Bourdain but **no longer #1-rated**; after a Sep 2023 salmonella closure and crowding, reviewers now rank Madam Khanh (4.6) and Phi Banh Mi (4.7, 88 Thai Phien, no queues) higher. 30–40k/sandwich. [Sources: nomadsbeyond.com Sep 2025; goodmorning-hoian.com Oct 2025]
+- **White Rose Restaurant** — 533 Hai Ba Trung; 07:30–20:00. Original family that supplies white rose dumplings citywide; ~70–100k/portion (+ fried wontons). [Source: yourvietnamtravel.com, Nov 2025]
+- **Mi Quang Ong Hai** — 6A Truong Minh Luong. Local mi quang favorite; ~35–50k/bowl. [Source: hoianuniquetravel.com, Jul 2026]
+- **Bale Well** — 45/11 Tran Hung Dao; 10:00–21:00. Set DIY meal: banh xeo + grilled pork skewers + spring rolls, no menu; ~100–150k/person. [Source: yourvietnamtravel.com, Nov 2025]
+- **Morning Glory (Ms Vy)** — 106 Nguyen Thai Hoc; 10:00–22:00. Tripadvisor 4.4; cao lau, white rose, banh xeo all solid; 150–300k/person. [Sources: Tripadvisor; yourvietnamtravel.com Nov 2025]
+- **SPLURGE: Mango Mango** — 45 Nguyen Phuc Chu, riverside opposite Old Town; 11:00–22:30. Chef Duc Tran's modern Vietnamese; mango duck salad, coconut curry prawns; **400–700k/person**; reserve for dinner. [Source: yourvietnamtravel.com, Nov 2025] (Alternative splurge: HOME Hoi An, 300–500k.)
+
+**UNCERTAIN (not fully verified)**
+- Exact Google ratings: only Banh Mi Phuong (4.3), Madam Khanh (4.6), Phi Banh Mi (4.7), Rosie's (TA 4.8), Morning Glory (TA 4.4) confirmed via cited blogs/Tripadvisor, not live Google Maps.
+- One source (blisshoian.com, Jan 2026) claims a 410,000 VND "after 5pm" old town ticket — likely a ticket+Memories-show bundle; standard ticket remains 120k VND per 5+ other 2025–2026 sources. Buy the standard ticket.
+- Individual sight opening hours within Old Town (beyond ticket-office 8:00–20:00) not confirmed per-building.
+- No named "best" night-market stalls verified — treat market food as generic; use the eateries above for quality.
+- Whether any Hoi An sights/restaurants have weekday closures: none found in 2025–2026 sources; noted exceptions are Rosie's (Sun), Nourish (Mon), Hoi An Memories Show (Tue).</subagent>
+<subagent agent_id="agent-4" item="Cam Thanh basket boat + Vinpearl River Safari Nam Hoi An: (1) Basket boat (coconut village / Bay Mau coconut forest): exact location relative to Hoi An old town, current price per boat and per person 2025–2026, duration, operating hours, walk-in vs booking, honest notes about the tourist-trap aspects and which operators are best reviewed. (2) CRITICAL: current operating status of VinWonders Nam Hoi An and its River Safari (Vinpearl River Safari Nam Hoi An) — is it open in 2025–2026? Opening days of week and hours, ticket price, what the river safari boat experience includes and duration, animal highlights, location and distance from Hoi An old town, available transport (Vinpearl shuttle bus? Grab fare estimate one-way). If it is closed or partially closed, state that clearly and definitively with sources, and suggest the best comparable alternative wildlife/nature experience near Hoi An or Da Nang." outcome="completed">**REPORT — Travel Research Specialist: Cam Thanh Basket Boat & VinWonders Nam Hoi An River Safari** (compiled July 2026, all facts checked against 2025–2026 sources)
+
+---
+
+## 1. Cam Thanh Coconut Village / Bay Mau Coconut Forest — Basket Boats
+
+- **Location**: Cam Thanh commune, ~3–5 km southeast of Hoi An Old Town (the classic "Rừng Dừa Bảy Mẫu" / Bay Mau coconut forest area along Trần Nhân Tông street). ~15 min by Grab (~80,000–100,000 VND) or a pleasant 30-min bicycle ride. [Asia Tour Advisor](https://www.asiatouradvisor.com/get-inspired/vietnam/cam-thanh-coconut-village/); [Namia River Retreat, Mar 2026](https://namiariverretreat.com/tra-que-vegetable-village-and-cam-thanh-village/)
+- **Costs (2025–2026)**:
+  - Village entrance/eco-fee: ~30,000–50,000 VND/person (mandatory, collected at village gates). [Vietnam Explore, May 2026](https://vietnamexplore.vn/en/cam-thanh-coconut-village-ticket-price/)
+  - Basket boat: ~280,000 VND per boat (2 adults + 1 child under 1 m); smaller boats ~150,000 VND. Per-person quotes run 150,000–250,000 VND if booking on the spot. [Vietnam Airlines travel guide, Jul 2026](https://www.vietnamairlines.com/cn/en/plan-book/travel/travel-guide/coconut-village-hoi-an); [Làng Dừa Xanh, Jul 2026](https://langduaxanh.com/blog/coconut-forest-basket-boat-ride-price/)
+- **Duration/hours**: ride 45–60 min; operators roughly 08:00–17:30 daily, no weekday closures. [Traveloka, 2025](https://www.traveloka.com/en-id/activities/vietnam/product/coconut-jungle-basket-boat-ride-tickets-8127488081576)
+- **Walk-in vs booking**: walk-in is fine and cheapest if you go directly to a named operator's pier (avoid roadside touts who sell "cheap" tickets that become short rides + hidden fees). Klook/GetYourGuide bundles cost more but fix the price.
+- **Tourist-trap honesty**: the mid-river "basket boat spinning show," karaoke-speaker boats, and aggressive tip demands are real — expect a 50,000–100,000 VND tip ask for spinning/photos. It's kitschy but most travelers rate it fun if you embrace it; opt out of spinning when boarding if prone to motion sickness.
+- **Best-reviewed operators**: Hạnh Coconut (Hanh Coconut — VinWonders even bundles it in their combo ticket), Làng Dừa Xanh (Green Coconut Village), and long-standing "Hoi An Basket Boat Tours" (TripAdvisor-listed). Book direct at pier or via hotel.
+
+## 2. VinWonders Nam Hoi An & River Safari — OPEN (confirmed)
+
+- **Status**: **Open and operating in 2025–2026**, including the River Safari. The official VinWonders site published updated 2026 ticket prices (page updated May 2026) and active operational notices through Jul 2026. No closure. [VinWonders official, 2026](https://vinwonders.com/en/offers/vinwonders-nam-hoi-an-ticket-prices/)
+- **Hours** (open 7 days/week, no weekday closure):
+  - Park: Mon–Fri 09:00–18:00; Sat–Sun 09:00–19:00/19:15. Last admission 18:00. [VinWonders bus guide, Jul 2026](https://vinwonders.com/en/wonderpedia/news/bus-to-vinwonders-hoi-an-guide-to-convenient-and-affordable-transportation/)
+  - River Safari boat station: 09:30–16:30 daily. [HoiAnDayTrip, Jan 2026](https://hoiandaytrip.com/vinwonders-nam-hoi-an-river-safari/)
+- **Tickets (2026 official)**: Standard 650,000 VND (≥140 cm); 450,000 VND (100–140 cm & seniors 60+); free <100 cm. After-2 PM ticket: 450,000 / 340,000 VND. Includes unlimited rides + River Safari boat. Code WONDERHOIAN5 = 5% off online.
+- **River Safari experience**: 1.4-km boat ride (~20 min standard, 24 pax/boat, audio guide EN/VI/KR/CN) past 50+ species: Bengal & white tigers, African lions, elephants, giraffes, white rhino, hippos, zebras, lemurs, gibbons, flamingos. Animal feeding 40,000 VND/portion. Upgrades: VIP boat 150,000 VND/pax (25 min, live guide, giraffe-island stop); private boat 2,500,000 VND (10 pax, 35 min, giraffe + elephant stops). Free extras: "Wild Wings" bird show (09:45 & 14:15), Parrot House (~200 birds), Happy Zoo (capybaras, alpacas).
+- **Location**: Vo Chi Cong Road, Thang An commune (old Thang Binh district), ~15–17 km / 25–35 min south of Hoi An Old Town, across Cua Dai Bridge. [HoiAn Fairy Tour](https://hoianfairytour.com/taxi-hoi-an-to-vinwonders/)
+- **Transport**:
+  - **FREE Vinpearl shuttle from Hoi An**: pickups 09:00 Renaissance Hoi An Resort → 09:10 An Bang Beach → 09:20 Hai Ba Trung St → arrives park 09:50; return 18:00. From Da Nang: 09:00 Melia Vinpearl Riverfront → 09:20/09:30 Marriott resorts → arrives 10:10; return 18:00. Fixed stops only, departs on time, seats limited — confirm via hotline 1900 6677 (press 5). [VinWonders, Jul 2026](https://vinwonders.com/en/wonderpedia/news/bus-to-vinwonders-hoi-an-guide-to-convenient-and-affordable-transportation/)
+  - **Grab one-way Hoi An Old Town → park**: est. 200,000–280,000 VND (17 km; GrabCar ~9,000 VND/km + time + toll-free route; taxi quotes from ~US$10). Caveat: return Grab at 18:00 closing can be scarce — pre-book or take the free 18:00 shuttle back.
+
+**Itinerary note**: basket boat and VinWonders pair perfectly — Cam Thanh is on the way (same side of the Thu Bon river). Do the coconut forest early morning (cooler, fewer tour groups), then Grab ~15 min onward to VinWonders, or take the 09:20 Hai Ba Trung shuttle.
+
+## UNCERTAIN (not fully verifiable)
+- Exact Grab fare (app-dynamic; estimate based on published Grab VN per-km rates and taxi quotes, Sep 2024–2026).
+- Shuttle schedule "subject to change" — must reconfirm by hotline 1900 6677 within days of visit; occasional typhoon-related ride suspensions occur (e.g., Typhoon Bualoi notice, 2025).
+- Basket boat per-boat pricing varies by operator/pier; the 280,000 VND figure is a guide price — haggling still happens on-site.
+- Individual animal sightings on the safari boat are not guaranteed.</subagent>
+<subagent agent_id="agent-5" item="Da Nang sights verification: for each give 2025–2026 hours, ticket price, time needed, and closed days if any: (1) My Khe Beach — best swimming section, conditions in August, sunrise time in August. (2) Marble Mountains (Ngu Hanh Son) — opening hours, entrance + elevator fees, main caves/pagodas, how long a visit takes, heat/dress advice. (3) Dragon Bridge fire and water show — confirm exact current schedule (which days of week, what time, duration) and best free viewing spots. (4) Son Tra Peninsula: Linh Ung Pagoda / Lady Buddha hours, Grab fare from My Khe, is a motorbike/loop worth it, any monkey/viewpoint stops. (5) Son Tra Night Market location/hours. (6) Museum of Cham Sculpture hours/ticket as a rainy-day alternative. (7) Any 1-2 extra spots genuinely worth visiting for a first-timer with limited time." outcome="completed">**REPORT — Travel Research Specialist (Da Nang Sights Verification)**
+
+**(1) My Khe Beach**
+- Free, open 24/7; lifeguards on tourist section roughly 5:00 AM–8:00 PM [Source: Kalakala Beach Club guide, as of Apr 2026].
+- Best swimming section: the main tourist-active strip along Pham Van Dong St (about 5–6 km); for quieter sand walk north or south away from main entrances. Sun-bed rental ~100,000 VND for non-hotel guests between Vo Van Kiet and Phan Tu streets [Source: hoiandaytrip.com, as of Sep 2025; dananghotelguide.com, Mar 2026].
+- August conditions: peak dry season — sunny, 30–35°C, calm sea, water 28–30°C; swim 5:30–8:30 AM or after 3:30 PM to avoid brutal midday heat. Note: jellyfish season Jun–Aug (mostly harmless; check lifeguard flags) [Source: yourvietnamtravel.com, May 2026; kalakalabeachclub.com, Apr 2026].
+- Sunrise in August 2026: ~5:28–5:32 AM; beach faces east so sunrise is directly over the sea [Source: timeanddate.com / generalblue.com, Aug 2026 tables].
+
+**(2) Marble Mountains (Ngu Hanh Son)**
+- Hours: 7:00 AM–5:30 PM daily, no closed days [Source: vietnam.travel, Jun 2026; Novotel Danang guide, May 2026].
+- Fees: Thuy Son entry 40,000 VND; Am Phu Cave separate 20,000 VND; elevator 15,000 VND per person per way (cash only; ATMs on site). Children under 6 free [Source: vncarrentals.com fee update, Oct 2025; hoiandaytrip.com, Dec 2025].
+- Main sights (all on Thuy Son, the only open mountain): Huyen Khong Cave (the highlight), Tang Chon Cave, Linh Ung Pagoda (mountain one), Tam Thai Pagoda, river/coast viewpoints. Am Phu "Hell" Cave (20–30 min) is skippable — muggy and slippery.
+- Time needed: 1.5–2.5 hours. Go at opening (7:00–8:00 AM) — August midday heat on exposed stone is severe. Modest dress (shoulders/knees covered for pagodas), grippy shoes (marble steps are slippery even dry), water, hat [Source: vietnam.travel, Jun 2026; ahoyvietnam.com, Jan 2026].
+
+**(3) Dragon Bridge Fire & Water Show — CONFIRMED**
+- Every Friday, Saturday, Sunday at 9:00 PM: ~2 min fire breathing (2 rounds × 9 bursts) then ~3 min water spray; total ~15 min including dispersal. Bridge closed to traffic ~8:45–9:25 PM [Source: Vietnam Airlines travel guide, Jun 2026; GetYourGuide, Jun 2026; hoiandaytrip.com, Oct 2025 — all consistent].
+- Best free viewing: Tran Hung Dao Street at the east bridgehead (Son Tra side, panoramic), the riverside walkway/Love Bridge (~500 m away), or a Han River cruise (from ~120,000 VND). Arrive 30–45 min early; stand upwind of the dragon's head to avoid the water spray.
+- Itinerary note: DIFF 2026 fireworks festival runs 30 May–11 Jul 2026, so a late-July/August 2026 trip is clear of show cancellations — but the show can be cancelled in typhoons (rare in Aug) [Source: vietnam.travel DIFF 2026 page, Mar 2026; hoiandaytrip.com, Oct 2025].
+
+**(4) Son Tra Peninsula / Linh Ung Pagoda / Lady Buddha**
+- Hours: grounds open ~6:30 AM–9:00 PM daily (one source says 24h; treat 6:30 AM–sunset as safe window). Entry FREE, donations welcome [Source: ahoyvietnam.com, Jan 2026; hoiandaytrip.com, Jun 2026].
+- 67 m Lady Buddha, 17 interior floors, arhat garden, coastline viewpoints; 1–1.5 hr minimum. Modest dress (free cover robes available).
+- Transport: ~8–10 km / 15–25 min from My Khe; Grab car roughly $6–8 one way (~150,000–200,000 VND) [Source: dacotours.com, Mar 2026; vietnamdrive.com, Dec 2025].
+- Motorbike loop worth it? Yes if rider is confident — coastal road past Lady Buddha continues to Ban Co Peak (chess-board viewpoint) and monkey-viewing stretches (red-shanked douc langurs, macaques — do not feed). For non-riders, Grab to pagoda + skip full loop; road is steep beyond the pagoda.
+
+**(5) Son Tra Night Market**
+- Mai Hac De & Ly Nam De Streets, at the east foot of Dragon Bridge (200 m walk). Open daily ~5:00/6:00 PM–11:00 PM/midnight (later Fri–Sun); free entry; pedestrian-only from 5:30 PM. Liveliest 7–9 PM — pairs perfectly with the 9 PM fire show [Source: Vietnam Airlines guide, Jul 2026; queenbus.com.vn, Oct 2025].
+
+**(6) Museum of Cham Sculpture (rainy-day option)**
+- 2 Thang 9 St at the Han River/Dragon Bridge west end. Hours 7:30 AM–5:00 PM daily; ticket 60,000 VND adult (one 2026 source says 100,000 VND — see UNCERTAIN). Free audio guide via museum Wi-Fi (chamaudio.com, EN/FR/VN). Allow 1–1.5 hr; mostly open-air corridors, limited A/C [Source: VinWonders guide, Jul 2026; vinpearl.com, 2025; Tripadvisor review, Jul 2025 confirms 60k].
+
+**(7) Extra picks for a first-timer (limited time)**
+- **Han Market** (Tran Phu St): local market for snacks/coffee/souvenirs, 30–45 min, free — combines with Cham Museum + riverfront walk.
+- **Han River Bridge rotation**: Sat/Sun ~11 PM–midnight — free, quirky, walkable from Son Tra Night Market [Source: Vietnam Airlines night-market guide, Jul 2026].
+
+**UNCERTAIN (not fully verified)**
+- Cham Museum ticket: 60,000 VND (multiple 2025 sources + Jul 2025 review) vs 100,000 VND (one May 2026 source) — likely a 2026 price rise to 100k; budget 100k.
+- Linh Ung Pagoda exact closing (sunset vs 9 PM vs 24h) — sources conflict.
+- Dragon Bridge show duration: sources say 10–15 min total; core fire+water ~5 min.
+- Marble Mountains opening: most sources 7:00 AM–5:30 PM; two sources cite 7:30 AM–5:00 PM (winter hours).
+- All Grab fares are estimates; check live app pricing.</subagent>
+<subagent agent_id="agent-6" item="Da Nang food + cafes (food quality first, high Google ratings or local recommendations): find and verify with Google Maps ratings: (1) 3 seafood restaurants near My Khe beach / along Vo Nguyen Giap (e.g., is Be Man or Nam Danh still top? current ratings, must-order dishes, price per person, tourist-trap warnings like live-seafood price per kg scams). (2) Best local cheap eats: mi quang, bun cha ca, banh xeo + nem lui (e.g., Ba Duong?), bun mam nem — one top spot each with rating + dish + price. (3) 3-4 cafes in Da Nang with excellent coffee AND good food (brunch/dessert), food quality first, atmosphere a bonus — current ratings, signature items, prices. (4) 1 memorable splurge dinner option in Da Nang. For every place: name, area/address hint, Google rating, must-order, price level, and opening hours if unusual." outcome="completed">**REPORT — Travel_Research_DaNang_Food | Da Nang food & cafes brief (verified July 2026 against 2025–2026 sources)**
+
+**1) Seafood near My Khe / Vo Nguyen Giap**
+
+- **Be Man (Bé Mặn)** — Lot 8–9 Vo Nguyen Giap, Man Thai. MICHELIN Selected (guide.michelin.com, Jun 2025); ₫₫₫. Must-order: steamed squid w/ ginger (Michelin's own pick), tamarind crab, beer-steamed lobster. ~200,000–600,000 VND/pp (Golden Lotus Grand guide, 2026 update; that blog also claims 4.6 Google rating — unverified). **WARNING: confirmed risk** — Tripadvisor (4.1/5, "Hai San Be Man A") has multiple reviews reporting live-seafood per-kg price switching (quoted one price, billed 2.7M VND/kg) and threats. Rule: agree the per-kg price + watch the weighing before cooking. Several copycat "Be Man" restaurants exist nearby.
+- **Nam Danh Seafood** — 139/59/38 Tran Quang Khai (alley, Son Tra). MICHELIN Selected 2025 (visitdanang.travel, 2025). Must-order: grilled oysters w/ scallion oil, tamarind crab, grilled sweet snail, fried squid w/ fish sauce. 100,000–300,000 VND/pp; 10:00–22:00 (tubudd.com, Sep 2025). Cheaper than Be Man, local favorite.
+- **Bé Ni 2** — 228 Vo Nguyen Giap, Phuoc My (right on the beach strip). MICHELIN Bib Gourmand (guide.michelin.com). **Open 24/7** — rice dishes by day, seafood at night. ₫₫. Must-order: charcoal-grilled shrimp, quail eggs + poached peanuts starters. Good late-night fallback after a beach day.
+
+**2) Local cheap eats (one top spot each)**
+
+- **Mi quang → Mi Quang 1A** — 1 Hai Phong (near Han Market). MICHELIN Selected; Google 4.0, 1,800+ reviews (cucinaluca.vn, Mar 2026). Order Mi Quang Special (pork/shrimp/chicken/egg). 40,000–50,000 VND/bowl; 06:00–21:00 daily.
+- **Bun cha ca → Bun Cha Ca 109** — 109 Nguyen Chi Thanh. MICHELIN Bib Gourmand; ~50 yrs old. 25,000–30,000 VND/bowl (visitdanang.travel, 2025); 06:00–22:00 daily. Backup: **Bun Cha Ca Hon** (113/3 Nguyen Chi Thanh, also Bib Gourmand, 06:00–20:30; special bowl to 60,000 VND).
+- **Banh xeo + nem lui → Banh Xeo Ba Duong** — K280/23 Hoang Dieu (alley). MICHELIN Selected; Google 4.3, 8,100+ reviews (cucinaluca.vn, Mar 2026). Banh xeo ~70,000 VND/4 pcs, nem lui ~35,000 VND/5 skewers; ~100,000 VND/pp total. 09:30–~21:30 daily. Note: a local food-tour guide (eatdanang.com, Sep 2025) calls Ba Duong "too touristy" and prefers **Banh Xeo Ba Thuy** (28 Le Do) — Ba Duong still the safe, Michelin-verified pick.
+- **Bun mam nem → Bun Mam Van** — 23/14 Tran Ke Xuong, Hai Chau. Tripadvisor 5.0/5; willflyforfood.net's (Dec 2025 update) top-rated bowl in the city. Bun mam nem heo quay (roast pork). 25,000–35,000 VND/bowl (Novotel guide, Dec 2025); 06:30–22:00 daily. Michelin-verified alternative: **Ba Dong** (Bib Gourmand, 145 Huynh Thuc Khang, 06:00–19:00).
+
+**3) Cafes (coffee + food, food quality first)**
+
+- **Wonderlust Bakery & Coffee** — 96 Tran Phu. Google 4.6 (~1,300 reviews, joujoutravels.com). Signature coconut coffee (hot/cold/blended); pancakes + brunch items, cakes. 3 floors, work-friendly. 07:30–23:00.
+- **NAM House Cafe** — Google 4.6 (1,300 reviews, joujoutravels.com). Peanut coffee, egg coffee w/ cocoa; retro 2-floor + garden. 06:00–23:00.
+- **Cua Ngo Cafe** — 2 locations (Tran Bach Dang; 102 Nguyen Thi Minh Khai). Google 4.7 (465 reviews). 07:00–21:30.
+- **Puna Coffee & Cake** — K25/19 Ngu Hanh Son (near My Khe side). Egg coffee in egg cups + real breakfast menu. **Unusual hours: 07:00–17:00 Wed–Mon; Tuesday 07:00–14:00 only** (willflyforfood.net) — flag for itinerary.
+- Specialty-coffee purist bonus: **XLIII Coffee** (Tripadvisor 4.8) and **SẾU / Àla / indigo** (thewaytocoffee.com guide, Jan 2026).
+
+**4) Splurge dinner**
+
+- **La Maison 1888** — InterContinental Sun Peninsula, Son Tra. **1 Michelin star 2024–2026** (hotel official site, verified Jul 2026); chef Christian Le Squer. **Dinner only, daily 18:30–21:00 (last order 21:00)**. Set menus ~5,000,000–6,000,000 VND/pp food only (2024 menu; trip.com reviewers report 2–4M VND/pp actual spend). Deposit 1,000,000 VND/guest; smart dress (no shorts); book ahead. ~20 min Grab from My Khe (~100,000–150,000 VND est.). Lighter splurge alternative: **Nén Đà Nẵng** (Michelin Green Star, ~$100–150/pp tasting, daytripsvietnam.com 2026).
+
+**UNCERTAIN / NOT VERIFIED**
+- Live Google ratings for Be Man, Nam Danh, Bé Ni 2, Bun Mam Van, and cafe review counts — sourced from third-party blogs (2024–2026), not Google Maps directly.
+- Current per-kg seafood prices (lobster/big prawns quoted ~1.2M VND/kg in a Tripadvisor review, undated).
+- Ba Duong closing time conflicts across sources (21:00 / 21:30 / 22:00).
+- La Maison 1888 2026 menu prices (5–6M VND figure is from 2024); Pierre Gagnaire is no longer involved (one trip.com review incorrectly says so).</subagent>
+<subagent agent_id="agent-7" item="Transport cost matrix 2025–2026 for this exact route chain — for EACH leg give: public bus/shuttle option (route number, price, frequency, where to board, travel time) if it exists AND is practical, vs Grab car/GrabBike estimated fare and travel time, plus honest recommendation balancing cost vs hassle: (a) DAD airport → hotels near airport (~2 km); (b) Da Nang city/airport area → Ba Na Hills cable car station (~35-40 km — any Ba Na shuttle bus from Da Nang? price/pickup points); (c) Ba Na Hills → Hoi An ancient town (~60+ km, note there is no direct public bus — Grab/private car estimate); (d) Hoi An old town → Cam Thanh coconut village; (e) Hoi An → VinWonders Nam Hoi An in Thang Binh (~35-40 km south — Vinpearl free shuttle? Grab one-way estimate); (f) Hoi An → Da Nang (public bus route LK-02 or current equivalent: price, frequency, boarding point, duration, luggage-friendliness, vs Grab ~45 min fare); (g) Da Nang My Khe beach → Marble Mountains; (h) My Khe beach → Dragon Bridge / Han river; (i) My Khe beach → DAD airport for a 20:15 pickup. Also: Grab app practical tips (payment in cash VND, card, airport surcharge), realistic VND prices not USD." outcome="completed">**TRANSPORT RESEARCHER — Da Nang / Hoi An Leg-by-Leg Cost Matrix (research date: July 2026)**
+
+**(a) DAD Airport → airport-area hotels (~2 km)**
+- No practical public bus for 2 km. Grab is the answer.
+- GrabCar ≈ 40,000–70,000 VND (5–8 min); GrabBike ≈ 25,000–40,000 VND. DAD pickup surcharge ~10,000–25,000 VND is already built into the quoted fare [Day Trips Vietnam, as of Jul 2026](https://daytripsvietnam.com/guides/vietnam-grab-prices-2026/).
+- International terminal Grab pickup: Lane 1–2 outside arrivals; connect to free airport Wi-Fi to book [Joytime, 2024–2025 guide](https://joytime.vn/en/blog/9574-danang-airport-to-city-center.html).
+- **Recommendation:** GrabCar at 22:00 arrival — trivial cost, zero hassle.
+
+**(b) Da Nang city/airport area → Ba Na Hills cable car station (~37 km, ~1 h)**
+- **Free Sun Group shuttle** (45 seats): departs Da Nang Downtown Theme Park (old Asia Park, 2 Thang 9 St) at **14:00, 17:00, 18:00**; return from Ba Na at 20:30, 21:30, 22:30. No morning service — fine for a Mercure French Village overnight (evening cable cars up run 19:00/20:00/21:00/22:00) [Hoi An Day Trip, as of Jun 2026](https://hoiandaytrip.com/ba-na-hills-free-shuttle-bus/).
+- Paid shared shuttle: ~130,000–150,000 VND/person round trip, morning pickup ~07:30–08:00 [Vietnam Travel](https://vietnamtravel.com/how-to-get-from-danang-city-to-bana-hills/); Klook shared shuttle ~US$7–8 pp.
+- GrabCar one-way ≈ 400,000–550,000 VND (fare table: 15k base + 15–18k/km [Vietnam Marvel Travel, 2025](https://vietnammarveltravel.com/grab-vs-taxi-in-hanoi/)).
+- **Recommendation:** free 14:00 shuttle if the afternoon timing suits (arrive pickup 15 min early); Grab if carrying big bags from the airport hotel (note: large luggage must go to the cable-car-station luggage service — Mercure is up top).
+
+**(c) Ba Na Hills → Hoi An ancient town (~60–65 km, ~1 h 20 min)**
+- No direct public bus — confirmed; would require shuttle back to Da Nang then LK-02 south (2.5+ h, impractical).
+- GrabCar / private car estimate: **700,000–900,000 VND** one way (distance-priced; pre-book private car via hotel for reliability on this mountain-to-coast leg).
+- **Recommendation:** private car; split cost if 2+ people.
+
+**(d) Hoi An old town → Cam Thanh coconut village (4–5 km, 10–15 min)**
+- No public bus. GrabBike ≈ 30,000–45,000 VND; GrabCar ≈ 70,000–90,000 VND.
+- Bicycle (often free from hotels, rental ~20,000–40,000 VND/day): ~20 min along Tran Nhan Tong → Cua Dai bridge [hoiandaytrip.com, 2024](https://hoiandaytrip.com/cam-thanh-coconut-village-hoi-an/).
+- Village info: open 07:00–17:00 daily, entrance ~30,000 VND [Vietnam Airlines, as of Jul 2026](https://www.vietnamairlines.com/cn/en/plan-book/travel/travel-guide/coconut-village-hoi-an).
+- **Recommendation:** GrabBike out, bicycle only in cool morning hours.
+
+**(e) Hoi An → VinWonders Nam Hoi An (~15–17 km, ~30 min) — note: closer than 35–40 km**
+- **Free VinWonders shuttle** (can't pre-book; arrive 10–15 min early): 09:00 Renaissance Hoi An → 09:10 An Bang Beach (Lac Long Quan/Hai Ba Trung) → 09:20 Hai Ba Trung/Nguyen Cong Tru (old-town edge) → park ~09:50. Return departs park 18:00 [Hoi An Day Trip, as of Nov 2025](https://hoiandaytrip.com/vinwonders-nam-hoi-an-shuttle-bus/); hotline 1900 6677 [VinWonders, 2026](https://vinwonders.com/en/wonderpedia/news/vinwonders-nam-hoi-an/).
+- Grab one-way ≈ 200,000–280,000 VND. Park hours 09:00–19:00/20:00; tickets ~600,000 VND+ adult.
+- **Recommendation:** free shuttle both ways.
+
+**(f) Hoi An → Da Nang (~28–30 km)**
+- **Bus LK-02 (now signed simply "2", FUTA-operated): 30,000–31,000 VND, every 15–30 min, ~05:00–19:00, ~60 min.** Board on Ly Thuong Kiet St (drop-off at 187 Ly Thuong Kiet/Emm Hotel; departures from opposite side near Almanity, 326 Ly Thuong Kiet). Cash to driver; 20-seat shuttles — a large suitcase is awkward but tolerated. Closest beach-side stop in Da Nang: Le Van Hien St [Nomadic Notes, as of Jul 2025](https://www.nomadicnotes.com/da-nang-hoi-an-bus/); [Good Morning Hoi An, Apr 2025](https://goodmorning-hoian.com/en/bus-danang-hoi-an/).
+- GrabCar ≈ 350,000–450,000 VND, 45–60 min door-to-door.
+- **Recommendation:** with luggage heading to Bluesun My Khe — Grab wins on door-to-door value; bus only if traveling light (then GrabBike from Le Van Hien stop, ~40k).
+
+**(g) My Khe beach → Marble Mountains (~8–9 km, 15 min)**
+- No direct beach bus; LK-02 passes nearby on Le Van Hien (~8,000–15,000 VND segment) but requires a walk/Grab to the stop.
+- GrabCar ≈ 100,000–140,000 VND; GrabBike ≈ 50,000–70,000 VND.
+- **Recommendation:** Grab — savings from bus are trivial.
+
+**(h) My Khe beach → Dragon Bridge / Han riverfront (~3 km, 8–10 min)**
+- GrabBike 25,000–40,000 VND; GrabCar 60,000–90,000 VND (per [VietnamSpot fare table, Jul 2026](https://vietnamspot.ru/en/blog/da-nang-transport): GrabBike 20–35k and GrabCar 60–90k per 5 km). Also walkable in ~35–40 min along Vo Nguyen Giap.
+
+**(i) My Khe beach → DAD airport (~6–7 km, 15–20 min) for 20:15 pickup**
+- GrabCar ≈ 100,000–150,000 VND (no airport surcharge on drop-off, only pickup). Light Sunday-evening traffic risk — request ride by 19:50.
+
+**Grab practical tips**
+- Default payment: cash VND to driver; international cards linkable in-app (Visa/MC), QR/e-wallet is local-only. Small notes appreciated — drivers often lack change for 500k notes.
+- Da Nang airport pickup surcharge ~10–25k VND, included in upfront quote [Day Trips Vietnam, 2026](https://daytripsvietnam.com/guides/vietnam-grab-prices-2026/).
+- Rival apps Be and Xanh SM (electric, fixed meter) operate in Da Nang and can be 10–20% cheaper at surge times [VietnamSpot, 2026].
+
+**UNCERTAIN / COULD NOT FULLY VERIFY**
+- Ba Na Hills **paid** shared-shuttle 2026 price (130–150k VND figure is from a 2020-dated page; Klook US$7–8 current but dynamic).
+- Exact LK-02 fare post-merger (Quang Nam merged into Da Nang July 2025; Nomadic Notes says numbering/ticketing may change; 30–31k is the last confirmed 2025 fare).
+- VinWonders free-shuttle schedule for the specific July 2026 travel dates — confirm via hotline 1900 6677, as sources note schedules vary seasonally.
+- Ba Na Hills → Hoi An Grab quote is an extrapolation from per-km rates, not a live app quote.</subagent>
+<subagent agent_id="agent-8" item="Hotels verification + image collection: (1) Verify each hotel exists and note key facts: 'Mercure Danang French Village Bana Hills' (official check-in/out times); 'Royal Riverside Hoi An Hotel &amp; Spa' or closest exact match (location relative to old town/night market, river view?); 'Bluesun' hotel on My Khe beach Da Nang — find its exact official name (BlueSun Hotel? Bluesun Danang Beach Hotel?), location on the beach strip, official check-in/out times, and whether any public source mentions a free airport shuttle/transfer; also any real hotel literally named 'Airport Homestay Da Nang' with 24h/late check-in. (2) Collect 14-18 DIRECT image file URLs that actually load (curl -I them and keep only HTTP 200): prefer upload.wikimedia.org (Wikimedia Commons) or images.unsplash.com direct URLs. Needed subjects: Golden Bridge giant hands, Ba Na Hills French Village street/castle, alpine coaster or Fantasy Park, Hoi An old town yellow street with lanterns (day), Hoi An lanterns at night, Hoi An night market, lantern boats on Thu Bon river, basket boats in coconut forest, VinWonders Nam Hoi An river safari boat or entrance, My Khe beach aerial/sand, Marble Mountains cave interior or viewpoint, Dragon Bridge breathing fire at night, Vietnamese seafood spread, cao lau or mi quang bowl, banh mi, Vietnamese coffee/egg coffee in a cafe. Return as a clean list: LABEL | URL (verified 200) | source." outcome="completed"># REPORT — Travel Research Specialist (Hotels + Images)
+
+Research date: 24 Jul 2026. All image URLs below were curl-verified HTTP 200 on 24 Jul 2026.
+
+## 1. HOTEL VERIFICATION
+
+**Mercure Danang French Village Bana Hills — CONFIRMED EXISTS (Accor hotel #8488)**
+- Check-in from 14:00; check-out until 10:30 [Source: all.accor.com, as of Jul 2026; Agoda concurs]
+- Hotel's own site adds practical windows: check-in 14:00–16:30, check-out 07:30–10:30, breakfast 06:30–09:30 [Source: mercure-danang-banahills-french-village.com, as of Jun 2026]
+- CRITICAL: accessible only by cable car; guest cable car runs 08:00–16:30 — must be at downhill reception (Thac Toc Tien station) before 16:30 or you cannot reach the hotel. Downhill front desk 08:00–17:00; hilltop desk 24h. Hotel guests get discounted cable-car tickets + private lane [same source]
+- Location: An Son, Hoa Vang; ~23 km from Da Nang airport [KAYAK, Dec 2025]
+
+**Royal Riverside Hoi An Hotel & Spa — CONFIRMED EXISTS (exact match)**
+- Address: 40 Nguyen Du, Cam Pho, Hoi An; 4-star, on Thu Bon river bank [official site royalriversidehoian.com]
+- 500 m from Ancient Town edge; ~10-min walk to old town core & night market; river-view room categories exist (e.g., "Deluxe Room, River View"); quieter location; free bicycles [Booking.com; Agoda guest reviews 2024–2025]
+- Check-in 14:00, check-out 12:00 [KAYAK Dec 2025; trivago]
+
+**"Bluesun" My Khe — CONFIRMED: official name is "BlueSun Danang Beach Hotel"**
+- Address: 230 Vo Nguyen Giap, Phuoc My, Son Tra — directly on the My Khe beachfront strip, ~250–400 m to sand [Booking.com, Oct 2025; danang-hotels.com]
+- Check-in 14:00 (until 23:59), check-out 12:00; 24h front desk [KAYAK Jan 2026; bluesun.danang-hotels.com]
+- Airport shuttle: **NOT free.** Paid shuttle on request 06:00–22:00, VND 300,000 per vehicle one-way [Expedia; Hotels.com]. No public source mentions a free airport transfer.
+- ~5–6 km / ~15 min drive from DAD; breakfast buffet VND 150,000/person, 06:30–10:00 [Ctrip; Wing On Travel, 2025]
+
+**"Airport Homestay Da Nang" — CONFIRMED EXISTS (two related listings)**
+- "Airport Homestay Đà Nẵng": Thi Sach St, Hai Chau; 510 m from DAD; Agoda explicitly lists "24-hour check-in" [Agoda, Jan 2026]
+- "Airport homestay" (3-star, Booking.com): 1.2 km from DAD, 24-hour front desk; check-in from 14:00, check-out before 12:30 [Booking.com; Skyscanner]. Ideal for the 21:50 arrival; walkable or 2-min taxi.
+
+## 2. IMAGE URLS (17 × verified HTTP 200, 24 Jul 2026; all Wikimedia Commons)
+
+- GOLDEN BRIDGE HANDS | https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Golden_Bridge_at_Ba_Na_Hills_20250718.jpg/1920px-Golden_Bridge_at_Ba_Na_Hills_20250718.jpg | Wikimedia Commons
+- BA NA FRENCH VILLAGE | https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Ba_Na_Hills_French_Village.jpg/1920px-Ba_Na_Hills_French_Village.jpg | Wikimedia Commons
+- FANTASY PARK CASTLE (Ba Na) | https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Fantasy_Park_castle_Ba_Na_Hills_golden_morning_mist_close_up_Da_Nang_Vietnam.jpg/1920px-Fantasy_Park_castle_Ba_Na_Hills_golden_morning_mist_close_up_Da_Nang_Vietnam.jpg | Wikimedia Commons
+- HOI AN YELLOW STREET + LANTERNS (DAY) ✓viewed | https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg/1920px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg | Wikimedia Commons
+- HOI AN LANTERN STREET (NIGHT) ✓viewed | https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Lanterns_in_Hoi_An_3.jpg/1920px-Lanterns_in_Hoi_An_3.jpg | Wikimedia Commons
+- HOI AN LANTERNS CLOSE-UP (alt) | https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lanterns_in_Hoi_An_5.jpg/1920px-Lanterns_in_Hoi_An_5.jpg | Wikimedia Commons
+- HOI AN NIGHT MARKET LANTERN SHOP ✓viewed | https://upload.wikimedia.org/wikipedia/commons/f/f8/The_Lantern_Shop_%28229655269%29.jpeg | Wikimedia Commons
+- LANTERN BOATS THU BON RIVER (NIGHT) ✓viewed | https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Hoi_An_-_HoiAn1441.jpg/1920px-Hoi_An_-_HoiAn1441.jpg | Wikimedia Commons
+- LANTERN BOATS (alt) | https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Boats_with_lanterns_on_the_Thu_Bon_river_IMG_3864.jpg/1920px-Boats_with_lanterns_on_the_Thu_Bon_river_IMG_3864.jpg | Wikimedia Commons
+- BASKET BOAT / CORACLE ✓viewed (Da Nang beach, not coconut forest) | https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Da-Nang_Vietnam_Coracles-02.jpg/1920px-Da-Nang_Vietnam_Coracles-02.jpg | Wikimedia Commons
+- VINWONDERS/VINPEARL NAM HOI AN (spinning coaster + castle) ✓viewed | https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Vinpearl_Nam_Hoi_An_%2849357445853%29.jpg/1920px-Vinpearl_Nam_Hoi_An_%2849357445853%29.jpg | Wikimedia Commons
+- MY KHE BEACH COASTLINE | https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/My_Khe_Beach_Danang_Coastline.jpg/1920px-My_Khe_Beach_Danang_Coastline.jpg | Wikimedia Commons
+- MARBLE MOUNTAINS HUYEN KHONG CAVE | https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sunlight_Huyen_Khong_Cave.jpg/1920px-Sunlight_Huyen_Khong_Cave.jpg | Wikimedia Commons
+- DRAGON BRIDGE AT NIGHT (illuminated; NOT fire-breathing) | https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dragon_Bridge%2C_Da_Nang_at_night_-_20230819.jpg/1920px-Dragon_Bridge%2C_Da_Nang_at_night_-_20230819.jpg | Wikimedia Commons
+- SEAFOOD (Han Market, Da Nang) | https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG/1920px-Seafood_in_Han_Market_-_Da_Nang%2C_Vietnam_-_DSC02382.JPG | Wikimedia Commons
+- CAO LAU BOWL (Hoi An, 2024) | https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cao_l%E1%BA%A7u_H%E1%BB%99i_An_%282024%29.jpg/1920px-Cao_l%E1%BA%A7u_H%E1%BB%99i_An_%282024%29.jpg | Wikimedia Commons
+- BANH MI | https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg/1920px-Special_Baguette_%28B%C3%A1nh_m%C3%AC%29_-_Banh_Mi_Ancient_Saigon_2024-12-20.jpg | Wikimedia Commons
+- EGG COFFEE (Cafe Giang) | https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Egg_Coffee_at_Cafe_Gi%E1%BA%A3ng%2C_H%C3%A0_N%E1%BB%99i%2C_Vietnam.jpg/1920px-Egg_Coffee_at_Cafe_Gi%E1%BA%A3ng%2C_H%C3%A0_N%E1%BB%99i%2C_Vietnam.jpg | Wikimedia Commons
+
+## 3. UNCERTAIN / NOT VERIFIED
+
+- No Commons photo of Dragon Bridge **actively breathing fire** found; supplied night-illumination shot instead (fire show itself is a separate schedule item for another researcher).
+- Basket-boat image is a beach coracle in Da Nang, not Cam Thanh coconut forest — no verified Commons coconut-forest shot located.
+- BlueSun: **no** free airport shuttle exists in any public source; only the paid VND 300,000 transfer (06:00–22:00) — a 23:30 arrival would need Grab instead.
+- Mercure cable-car window 08:00–16:30 is from the hotel's own site (Jun 2026); Sun World's public park hours differ — treat 16:30 last-car as the binding constraint.
+- Images not marked ✓viewed were verified HTTP 200 and matched by filename/Commons search rank but not visually inspected.
+- Unsplash was not needed; all images are Wikimedia Commons (freely licensed — attribution advisable).</subagent>
+</agent_swarm_result>
