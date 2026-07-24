@@ -267,6 +267,43 @@
   .stars { color: #c9a227; font-weight: 800; font-size: 12px; }
   .rev { font-size: 12px; color: var(--muted); }
 
+  /* HOTEL DETAIL CARDS + VOUCHERS */
+  .hotel-block {
+    border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    margin: 10px 0 0; background: #fff;
+  }
+  .hotel-block h3 { font-size: 1.02rem; margin-bottom: 4px; }
+  .hotel-block .meta { margin-bottom: 8px; }
+  .hotel-kv {
+    display: grid; grid-template-columns: 96px 1fr; gap: 4px 8px;
+    font-size: 13px; margin: 8px 0;
+  }
+  .hotel-kv dt { color: var(--muted); font-weight: 700; }
+  .hotel-kv dd { color: var(--ink); font-weight: 600; word-break: break-word; }
+  .voucher {
+    margin-top: 10px; border: 1px dashed #f0b090; border-radius: 12px;
+    background: linear-gradient(180deg, #fff8f4 0%, #fff 100%);
+    padding: 10px; overflow: hidden;
+  }
+  .voucher .vtag {
+    display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .05em;
+    text-transform: uppercase; color: #c24e1a; background: #fdeee4;
+    padding: 4px 8px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .voucher img {
+    width: 100%; max-width: 420px; margin: 0 auto; border-radius: 10px;
+    border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .voucher .vmeta {
+    font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.45;
+  }
+  .voucher .vmeta b { color: var(--ink); }
+  .codechip {
+    display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px; font-weight: 800; background: #111816; color: #f6f0e7;
+    padding: 4px 8px; border-radius: 6px; letter-spacing: .02em;
+  }
+
   .note {
     font-size: 12px; color: var(--muted); margin-top: 8px;
   }
@@ -543,6 +580,7 @@
     <p class="lead">Wake ~7:30–8:00 (Ba Na day a bit earlier). Food bar: <b>4.5★+</b> with <b>100+</b> reviews. Cable car ticket already bought. Last day = souvenir shopping.</p>
     <div class="chips">
       <span class="chip">2 people</span>
+      <span class="chip">PNR D6NW6S</span>
       <span class="chip">EK370 29 Jul 21:50</span>
       <span class="chip">EK371 3 Aug 23:30</span>
       <span class="chip">🐉 Fire Sun 2 Aug 21:00</span>
@@ -580,12 +618,90 @@
     </div>
 
     <div class="card gold" id="hotels">
-      <span class="tag g">🏨 Hotels · tap for Google Maps</span>
-      <p class="meta">Save these · open when Grab needs a pin. Also repeated on the day you go there.</p>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">📍 Night 1 · Airport Homestay Đà Nẵng</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Night 2 · Mercure French Village Ba Na</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">📍 Night 3 · Royal Riverside Hoi An</a>
-      <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">📍 Nights 4–5 · Bluesun Danang Beach</a>
+      <span class="tag g">🏨 Hotels · details + maps</span>
+      <p class="meta">Pins for Grab · booking refs when you have them · open the day you need them.</p>
+
+      <div class="hotel-block">
+        <h3>Night 1 · Airport Homestay Đà Nẵng</h3>
+        <p class="meta">29 Jul · late check-in after EK370 21:50</p>
+        <dl class="hotel-kv">
+          <dt>Stay</dt><dd>1 night · near DAD</dd>
+          <dt>Tip</dt><dd>Message reception for late arrival ~22:45–23:00</dd>
+        </dl>
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">📍 Open on Google Maps</a>
+      </div>
+
+      <div class="hotel-block" id="hotel-mercure">
+        <h3>Night 2 · Mercure French Village Ba Na</h3>
+        <p class="meta">30–31 Jul · mountain overnight · cable only access</p>
+        <dl class="hotel-kv">
+          <dt>Guest</dt><dd>CHANON JARUPAKTRANONT</dd>
+          <dt>Date</dt><dd>30 Jul 2026 · 1 night</dd>
+          <dt>Room</dt><dd>Standard · max 2 adults</dd>
+          <dt>Includes</dt><dd>Breakfast + unlimited cable car access</dd>
+          <dt>Check-in</dt><dd>From 14:00 (last cable ~16:30 — be at reception before then)</dd>
+          <dt>Check-out</dt><dd>~10:30 · breakfast ~06:30–09:30</dd>
+          <dt>Address</dt><dd>An Sơn, Ba Na, Đà Nẵng · French Village (hilltop)</dd>
+          <dt>Phone</dt><dd><a href="tel:+842363799888">+84 236 3799 888</a></dd>
+          <dt>Booked via</dt><dd>Klook package</dd>
+          <dt>Klook ref</dt><dd><span class="codechip">SFG198273</span></dd>
+          <dt>Voucher</dt><dd><span class="codechip">KLK7976366039</span></dd>
+        </dl>
+        <div class="voucher">
+          <span class="vtag">🎫 Klook voucher · show at check-in / cable</span>
+          <img src="assets/klook-mercure-banahills-voucher.png" alt="Klook voucher: Mercure Danang French Village + unlimited Ba Na Hills admission — booking SFG198273, voucher KLK7976366039" loading="lazy" />
+          <p class="vmeta">
+            <b>Mercure Danang French Village and Unlimited Admission Ba Na Hills</b><br>
+            Package: Standard Room · 1 Night · Breakfast + Unlimited Access Cable Car<br>
+            Lead: <b>CHANON JARUPAKTRANONT</b> · Date <b>30 Jul 2026</b> · 1× room (max 2 adults)<br>
+            Booking ref <span class="codechip">SFG198273</span> · Voucher <span class="codechip">KLK7976366039</span>
+          </p>
+        </div>
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Open Mercure on Maps</a>
+        <a class="btn ghost" href="#d2">📅 Jump to Day 2 plan</a>
+      </div>
+
+      <div class="hotel-block">
+        <h3>Night 3 · Royal Riverside Hoi An</h3>
+        <p class="meta">31 Jul · Old Town base</p>
+        <dl class="hotel-kv">
+          <dt>Address</dt><dd>40 Nguyễn Du, Cẩm Phô, Hội An</dd>
+          <dt>Phone</dt><dd><a href="tel:+842353666979">+84 235 3666 979</a></dd>
+        </dl>
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">📍 Open on Google Maps</a>
+      </div>
+
+      <div class="hotel-block">
+        <h3>Nights 4–5 · BlueSun Danang Beach</h3>
+        <p class="meta">1–3 Aug · My Khe beach · NOT Hoi An</p>
+        <dl class="hotel-kv">
+          <dt>Address</dt><dd>230 Võ Nguyên Giáp, Phước Mỹ, Sơn Trà, Đà Nẵng</dd>
+          <dt>Phone</dt><dd><a href="tel:+842363960000">+84 236 3960 000</a></dd>
+          <dt>Check-in</dt><dd>From 14:00 · check-out 12:00</dd>
+          <dt>BF</dt><dd>Buffet roughly 06:30–10:00 (confirm at desk)</dd>
+        </dl>
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">📍 Open on Google Maps</a>
+      </div>
+    </div>
+
+    <div class="card sea" id="flights">
+      <span class="tag">✈️ Flights · PNR</span>
+      <p class="meta">Same booking code for outbound + return. Use at check-in / airline app / kiosk.</p>
+      <div class="hotel-block">
+        <h3>Emirates · booking code</h3>
+        <dl class="hotel-kv">
+          <dt>PNR</dt><dd><span class="codechip">D6NW6S</span></dd>
+          <dt>Outbound</dt><dd><b>EK370</b> · land DAD <b>29 Jul 21:50</b> · PNR <span class="codechip">D6NW6S</span></dd>
+          <dt>Return</dt><dd><b>EK371</b> · depart DAD <b>3 Aug 23:30</b> · land home <b>4 Aug 01:10</b> · PNR <span class="codechip">D6NW6S</span></dd>
+          <dt>Pax</dt><dd>2 adults</dd>
+        </dl>
+        <div class="callout tip">
+          <b>Check-in tip:</b> airline app or kiosk → find booking with <span class="codechip">D6NW6S</span> (last name of lead passenger). Online check-in usually opens ~24–48h before each flight.
+        </div>
+        <a class="btn" target="_blank" href="https://www.emirates.com/th/english/manage-booking/">Manage booking · Emirates</a>
+        <a class="btn ghost" href="#d1">📅 Day 1 arrival</a>
+        <a class="btn ghost" href="#d6">📅 Day 6 departure</a>
+      </div>
     </div>
 
     <div class="card coral">
@@ -633,7 +749,7 @@
         <div class="day-sum">
           <div class="dlabel">Wed 29 Jul · Day 1</div>
           <h3>Land &amp; sleep</h3>
-          <p>EK370 · 21:50 · Airport Homestay Đà Nẵng</p>
+          <p>EK370 · 21:50 · PNR D6NW6S · Airport Homestay</p>
           <div class="chev"></div>
         </div>
       </summary>
@@ -641,14 +757,15 @@
         <div class="pill-row">
           <span class="pill">Wake n/a</span>
           <span class="pill">2 pax</span>
+          <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Late check-in</span>
         </div>
         <div class="slot">
           <div class="time">21:50</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Land DAD → Airport Homestay Đà Nẵng</h4>
-            <p>Immigration → bags → SIM if needed → Grab to hotel pin below.</p>
+            <h4>Land DAD · EK370 · PNR D6NW6S</h4>
+            <p>Booking code <span class="codechip">D6NW6S</span> (outbound). Immigration → bags → SIM if needed → Grab to hotel pin below.</p>
             <div class="how"><b>Grab Car (2 pax):</b> set destination <b>Airport Homestay Đà Nẵng</b>. ~15–25 min. ~80–180k VND.</div>
             <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Da+Nang+International+Airport">📍 DAD Airport</a>
             <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">🏨 Grab pin · Airport Homestay Đà Nẵng</a>
@@ -735,7 +852,7 @@
           <div class="slot-body">
             <h4>Ticket gate · your pre-bought cable ticket</h4>
             <p>Scan / show QR or paper at entrance. Ask staff: “Golden Bridge — Marseille?” They point to the correct queue. Collect a paper map if offered (or use Sun World app).</p>
-            <div class="callout tip"><b>Mercure overnight:</b> ask “Hotel guest luggage / Mercure?” — bags sometimes transferred on hotel procedure so you don’t haul suitcases on every cable line.</div>
+            <div class="callout tip"><b>Mercure overnight (Klook):</b> package includes <b>unlimited cable</b> + BF. Ref <span class="codechip">SFG198273</span> · voucher <span class="codechip">KLK7976366039</span>. Ask “Hotel guest luggage / Mercure?” — bags sometimes transferred so you don’t haul suitcases on every cable line. <a href="#hotel-mercure" style="font-weight:800">Voucher image</a></div>
           </div>
         </div>
 
@@ -792,7 +909,13 @@
           <div class="slot-body">
             <h4>French Village · Fantasy Park · go to Mercure</h4>
             <p>Indoor Fantasy Park = rain backup. Alpine coaster if open. Then check-in / shower / rest at Mercure.</p>
+            <div class="callout tip">
+              <b>Your Klook booking (show QR):</b> guest <b>CHANON JARUPAKTRANONT</b> · ref <span class="codechip">SFG198273</span> · voucher <span class="codechip">KLK7976366039</span><br>
+              Package = <b>Standard room + breakfast + unlimited cable</b> · 30 Jul 2026 · 1 night.<br>
+              <a href="#hotel-mercure" style="font-weight:800">Open full voucher image ↓ Hotels</a>
+            </div>
             <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">🏨 Go to Mercure · Google Maps</a>
+            <a class="btn ghost" href="#hotel-mercure">🎫 Voucher + booking details</a>
           </div>
         </div>
 
@@ -1174,7 +1297,7 @@
         <div class="day-sum">
           <div class="dlabel">Mon 3 Aug · Day 6</div>
           <h3>Souvenir shopping spree</h3>
-          <p>Markets · gifts · car 20:30 · EK371</p>
+          <p>Markets · gifts · car 20:30 · EK371 · PNR D6NW6S</p>
           <div class="chev"></div>
         </div>
       </summary>
@@ -1182,11 +1305,12 @@
         <div class="pill-row">
           <span class="pill">Wake 7:45–8:00</span>
           <span class="pill f">Shopping day</span>
+          <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Lobby 20:20 · car 20:30</span>
         </div>
 
         <div class="callout tip">
-          <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car → airport.
+          <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car → airport. Flight PNR <span class="codechip">D6NW6S</span> · EK371 23:30.
         </div>
 
         <div class="slot">
@@ -1268,9 +1392,10 @@
           <div class="time">20:20</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>Lobby ready</h4>
-            <p>Free car <b>20:30</b> → DAD <b>21:00</b>. Backup: Grab Car same minute.</p>
+            <h4>Lobby ready · flight PNR D6NW6S</h4>
+            <p>Free car <b>20:30</b> → DAD <b>21:00</b>. Backup: Grab Car same minute. Boarding pass: Emirates app / kiosk · PNR <span class="codechip">D6NW6S</span> · EK371.</p>
             <a class="btn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Bluesun+Danang+Beach+Hotel&destination=Da+Nang+International+Airport">🧭 Bluesun → DAD</a>
+            <a class="btn ghost" target="_blank" href="https://www.emirates.com/th/english/manage-booking/">Manage booking · D6NW6S</a>
           </div>
         </div>
 
@@ -1278,8 +1403,9 @@
           <div class="time">23:30</div>
           <div class="dotcol"><div class="dot t"></div></div>
           <div class="slot-body">
-            <h4>EK371 departs · land 4 Aug 01:10</h4>
-            <p>Souvenir haul complete. Safe flight.</p>
+            <h4>EK371 departs · PNR D6NW6S · land 4 Aug 01:10</h4>
+            <p>Return booking code <span class="codechip">D6NW6S</span> (same as outbound). Souvenir haul complete. Safe flight.</p>
+            <div class="callout tip"><b>Airport:</b> check-in / bag drop with PNR <span class="codechip">D6NW6S</span> · EK371 · DAD 23:30.</div>
           </div>
         </div>
       </div>
@@ -1327,6 +1453,7 @@
         <li>Nights 4–5: Bluesun <b>Da Nang</b></li>
         <li>🐉 Sun 2 Aug 21:00</li>
         <li>Mon 3 Aug: Han Market shopping spree</li>
+        <li>Flights PNR <b>D6NW6S</b> (outbound + return)</li>
         <li>Airport: 20:30 car · 21:00 DAD · 23:30 EK371 · home 4 Aug 01:10</li>
       </ul>
     </div>
@@ -1360,12 +1487,12 @@
         <h2>Da Nang · Hoi An · Ba Na</h2>
         <p class="lead">Six-day timeline — swipe through each day.</p>
         <div class="trip-arc">
-          <div class="arc-day"><span class="arc-n">Day 1</span><span class="arc-body">Wed 29 Jul · Land &amp; sleep<small>EK370 21:50 · Airport Homestay</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 1</span><span class="arc-body">Wed 29 Jul · Land &amp; sleep<small>EK370 21:50 · PNR D6NW6S · Airport Homestay</small></span></div>
           <div class="arc-day"><span class="arc-n">Day 2</span><span class="arc-body">Thu 30 Jul · Ba Na before noon<small>Cable · Golden Bridge · Mercure</small></span></div>
           <div class="arc-day"><span class="arc-n">Day 3</span><span class="arc-body">Fri 31 Jul · Hoi An night<small>Cable down · Old Town · Royal Riverside</small></span></div>
           <div class="arc-day"><span class="arc-n">Day 4</span><span class="arc-body">Sat 1 Aug · Boat · Safari · beach<small>Cam Thanh · VinWonders · Bluesun</small></span></div>
           <div class="arc-day"><span class="arc-n">Day 5</span><span class="arc-body">Sun 2 Aug · Marble · fire 🐉<small>My Khe · Dragon Bridge 21:00</small></span></div>
-          <div class="arc-day"><span class="arc-n">Day 6</span><span class="arc-body">Mon 3 Aug · Shop &amp; fly<small>Han Market · EK371 23:30</small></span></div>
+          <div class="arc-day"><span class="arc-n">Day 6</span><span class="arc-body">Mon 3 Aug · Shop &amp; fly<small>Han Market · EK371 23:30 · PNR D6NW6S</small></span></div>
         </div>
       </div>
     </article>
@@ -1378,7 +1505,7 @@
         <h2>Land &amp; sleep</h2>
         <p class="lead">Late arrival only — rest for Ba Na tomorrow.</p>
         <div class="ptl">
-          <div class="ptl-row"><span class="ptl-t">21:50</span><span class="ptl-a">Land DAD · EK370<small>Immigration → bags → SIM if needed</small></span></div>
+          <div class="ptl-row"><span class="ptl-t">21:50</span><span class="ptl-a">Land DAD · EK370 · PNR D6NW6S<small>Immigration → bags → SIM if needed</small></span></div>
           <div class="ptl-row"><span class="ptl-t">~22:15</span><span class="ptl-a">Grab Car → hotel<small>Airport Homestay Đà Nẵng · ~15–25 min</small></span></div>
           <div class="ptl-row sleep"><span class="ptl-t">22:30–23:30</span><span class="ptl-a">Check-in · shower · sleep<small>No city trip. Alarm 7:15 for Ba Na day.</small></span></div>
         </div>
@@ -1487,7 +1614,7 @@
           <div class="ptl-row food"><span class="ptl-t">19:00–20:00</span><span class="ptl-a">Early easy dinner near hotel<small>Keep it light · no rushing later</small></span></div>
           <div class="ptl-row"><span class="ptl-t">20:20</span><span class="ptl-a">Lobby ready<small>Car 20:30 · free hotel car or Grab</small></span></div>
           <div class="ptl-row"><span class="ptl-t">21:00</span><span class="ptl-a">DAD Airport<small>Check-in · security · lounge if time</small></span></div>
-          <div class="ptl-row sleep"><span class="ptl-t">23:30</span><span class="ptl-a">EK371 departs<small>Land home 4 Aug 01:10</small></span></div>
+          <div class="ptl-row sleep"><span class="ptl-t">23:30</span><span class="ptl-a">EK371 · PNR D6NW6S<small>Land home 4 Aug 01:10</small></span></div>
         </div>
         <span class="sleep-chip">✈ Home · 4 Aug 01:10</span>
       </div>
@@ -1504,7 +1631,7 @@
         <div class="trip-arc">
           <div class="arc-day"><span class="arc-n">Path</span><span class="arc-body">Ba Na → Hoi An → Da Nang beach<small>Grab Car for 2 · wake 7:30–8:00 most days</small></span></div>
           <div class="arc-day"><span class="arc-n">Food</span><span class="arc-body">Only 4.5★+ with real reviews<small>Phở · nem nướng · gỏi cá · egg &amp; salt coffee</small></span></div>
-          <div class="arc-day"><span class="arc-n">Lock</span><span class="arc-body">🐉 Fire Sun 2 Aug 21:00 · cable tickets ready<small>EK370 in · EK371 out</small></span></div>
+          <div class="arc-day"><span class="arc-n">Lock</span><span class="arc-body">🐉 Fire Sun 2 Aug 21:00 · cable tickets ready<small>EK370/EK371 · PNR D6NW6S</small></span></div>
         </div>
       </div>
     </article>
