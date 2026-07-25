@@ -322,7 +322,7 @@
     display: flex; flex-direction: column; align-items: center; text-align: center;
     gap: 2px; padding: 10px 6px; border-radius: 12px;
     background: #fff; border: 1px solid var(--line);
-    text-decoration: none; color: inherit; min-height: 108px;
+    text-decoration: none; color: inherit; min-height: 118px;
     transition: border-color .15s, box-shadow .15s;
   }
   a.wx-chip:active, a.wx-chip:hover {
@@ -348,48 +348,71 @@
     justify-content: center;
   }
 
-  .wx-day {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 10px 12px;
-    align-items: center;
+  .wx-panel {
     margin: 4px 0 12px;
-    padding: 12px;
+    padding: 10px;
     border-radius: 14px;
     background: linear-gradient(135deg, #eef8f6 0%, #fff 55%, #faf1d4 100%);
     border: 1px solid #d0e6e2;
   }
-  .wx-day .wx-ic { font-size: 2.1rem; line-height: 1; }
-  .wx-day .wx-main { min-width: 0; }
-  .wx-day .wx-label {
+  .wx-panel.wx-err, .wx-panel.wx-load {
+    font-size: 13px; color: var(--muted); font-weight: 600; padding: 12px;
+  }
+  .wx-panel-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    margin-bottom: 8px; padding: 0 2px;
+  }
+  .wx-panel-head .wx-title {
     font-size: 10px; font-weight: 800; letter-spacing: .05em;
-    text-transform: uppercase; color: var(--sea-d); margin-bottom: 2px;
+    text-transform: uppercase; color: var(--sea-d);
   }
-  .wx-day .wx-desc { font-size: 14px; font-weight: 700; color: var(--ink); }
-  .wx-day .wx-place { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .wx-day .wx-nums { text-align: right; }
-  .wx-day .wx-hi {
-    font-size: 1.35rem; font-weight: 800; color: var(--ink); line-height: 1.1;
+  .wx-panel-head .wx-route {
+    font-size: 11px; font-weight: 700; color: var(--muted); text-align: right;
   }
-  .wx-day .wx-lo { font-size: 12px; color: var(--muted); font-weight: 600; }
-  .wx-day .wx-rain {
+  .wx-seg {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid #dceae7;
+  }
+  .wx-seg + .wx-seg { margin-top: 8px; }
+  .wx-seg .wx-ic { font-size: 1.85rem; line-height: 1; }
+  .wx-seg .wx-main { min-width: 0; }
+  .wx-seg .wx-when {
+    font-size: 10px; font-weight: 800; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 2px;
+  }
+  .wx-seg .wx-desc { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .wx-seg .wx-place { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
+  .wx-seg .wx-nums { text-align: right; }
+  .wx-seg .wx-hi {
+    font-size: 1.2rem; font-weight: 800; color: var(--ink); line-height: 1.1;
+  }
+  .wx-seg .wx-lo { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .wx-seg .wx-rain {
     display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 800;
     color: #1a5f9e; background: #e3f0fb; padding: 3px 8px; border-radius: 999px;
   }
-  .wx-day .wx-note {
-    grid-column: 1 / -1; font-size: 12px; color: var(--muted);
-    padding-top: 2px; border-top: 1px dashed #d0e6e2; margin-top: 2px;
+  .wx-panel .wx-note {
+    font-size: 12px; color: var(--muted);
+    padding: 8px 2px 2px; margin-top: 6px;
+    border-top: 1px dashed #d0e6e2;
   }
-  .wx-day.wx-err, .wx-day.wx-load {
-    grid-template-columns: 1fr;
-    font-size: 13px; color: var(--muted); font-weight: 600;
+  .wx-chip .wx-where {
+    font-size: 10px; font-weight: 700; color: var(--coral); line-height: 1.2;
+    max-width: 100%;
   }
   .day-sum .wx-mini {
-    display: inline-flex; align-items: center; gap: 4px;
+    display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px;
     margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--sea-d);
     background: var(--soft); padding: 3px 8px; border-radius: 999px;
   }
   .day-sum .wx-mini .wx-mini-r { color: #2a6fad; font-weight: 700; }
+  .day-sum .wx-mini .wx-mini-where { color: var(--coral); font-weight: 800; }
 
   .sticky-note {
     position: sticky; top: 52px; z-index: 40;
@@ -692,8 +715,8 @@
 
     <div class="card sea" id="weather">
       <span class="tag">Daily forecast</span>
-      <h3>Weather · 29 Jul – 3 Aug</h3>
-      <p class="meta">Live Open‑Meteo · °C · rain % · tap a day to open the plan</p>
+      <h3>Weather · where you’ll be</h3>
+      <p class="meta">Live Open‑Meteo by stop · °C · rain % · tap a day for the full plan</p>
       <div class="wx-strip" id="wxStrip" aria-live="polite">
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
@@ -702,7 +725,7 @@
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
       </div>
-      <p class="note" id="wxStripNote">Ba Na mountain days run cooler and often misty vs city. Forecast updates when you open this page.</p>
+      <p class="note" id="wxStripNote">Each day uses the place you’re in that day (Ba Na mountain vs Hoi An vs Da Nang). Split days show both stops.</p>
     </div>
 
     <div class="card sea">
@@ -906,7 +929,7 @@
           <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Late check-in</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-07-29" data-wx-loc="dn" data-wx-place="Da Nang (airport / city)">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-07-29">Loading forecast…</div>
         <div class="slot">
           <div class="time">Before fly</div>
           <div class="dotcol"><div class="dot a"></div></div>
@@ -966,7 +989,7 @@
           <span class="pill f">Dinner buffet OK</span>
           <span class="pill ok">Cable ticket owned ✓</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-07-30" data-wx-loc="bana" data-wx-place="Ba Na Hills (mountain)" data-wx-note="Jacket + rain layer. Mountain often 5–8°C cooler and misty vs Da Nang city.">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-07-30">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">07:15</div>
@@ -1130,7 +1153,7 @@
           <span class="pill f">Breakfast = hotel</span>
           <span class="pill">Royal Riverside night</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-07-31" data-wx-loc="bana" data-wx-place="Ba Na morning → Hoi An night" data-wx-note="Morning on mountain (cooler/fog risk). Evening in Hoi An is warmer — still bring a light rain layer.">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-07-31">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">08:00–09:15</div>
@@ -1257,7 +1280,7 @@
           <span class="pill">Bluesun Da Nang check-in</span>
           <span class="pill w">Weekend · prebook Safari if possible</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-08-01" data-wx-loc="ha" data-wx-place="Hoi An / Cam Thanh → Da Nang beach" data-wx-note="Boat + Safari are outdoor-heavy. If heavy rain: longer Cam Thanh + early Bluesun beach.">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-08-01">Loading forecast…</div>
 
         <div class="callout tip">
           <b>Hotel note:</b> Night 4 &amp; 5 = <b>Bluesun Danang Beach Hotel</b> (Da Nang). You leave Hoi An today after activities — do not rebook Hoi An.
@@ -1375,7 +1398,7 @@
           <span class="pill w">🐉 FIRE 21:00</span>
           <span class="pill f">Phở / nem nướng / gỏi cá</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-08-02" data-wx-loc="dn" data-wx-place="Da Nang (Marble · My Khe · Dragon Bridge)" data-wx-note="Fire show is outdoors at 21:00 — light rain layer + dry bag for phones.">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-08-02">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">08:00–09:00</div>
@@ -1479,7 +1502,7 @@
           <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Lobby 20:20 · car 20:30</span>
         </div>
-        <div class="wx-day wx-load" data-wx-day="2026-08-03" data-wx-loc="dn" data-wx-place="Da Nang (Han Market · beach · airport)" data-wx-note="Shopping is mostly covered. Optional beach morning if skies clear.">Loading forecast…</div>
+        <div class="wx-panel wx-load" data-wx-date="2026-08-03">Loading forecast…</div>
 
         <div class="callout tip">
           <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car → airport. Flight PNR <span class="codechip">D6NW6S</span> · EK371 23:30.
@@ -1932,23 +1955,68 @@
     go(0);
   })();
 
-  /* Live daily weather · Open-Meteo (no API key) */
+  /* Live weather by where you’ll be · Open-Meteo (no API key) */
   (function loadWeather() {
     const START = '2026-07-29';
     const END = '2026-08-03';
-    const STRIP_DAYS = [
-      { date: '2026-07-29', label: 'Wed 29', href: '#d1', loc: 'dn' },
-      { date: '2026-07-30', label: 'Thu 30', href: '#d2', loc: 'bana' },
-      { date: '2026-07-31', label: 'Fri 31', href: '#d3', loc: 'bana' },
-      { date: '2026-08-01', label: 'Sat 1', href: '#d4', loc: 'ha' },
-      { date: '2026-08-02', label: 'Sun 2', href: '#d5', loc: 'dn' },
-      { date: '2026-08-03', label: 'Mon 3', href: '#d6', loc: 'dn' }
-    ];
     const LOCS = {
-      dn:   { lat: 16.0544, lon: 108.2022, elev: null, name: 'Da Nang' },
-      ha:   { lat: 15.8801, lon: 108.3380, elev: null, name: 'Hoi An' },
-      bana: { lat: 15.9977, lon: 107.9881, elev: 1400, name: 'Ba Na' }
+      dn:   { lat: 16.0544, lon: 108.2022, elev: null, short: 'Da Nang', name: 'Da Nang' },
+      ha:   { lat: 15.8801, lon: 108.3380, elev: null, short: 'Hoi An', name: 'Hoi An' },
+      bana: { lat: 15.9977, lon: 107.9881, elev: 1400, short: 'Ba Na', name: 'Ba Na Hills' }
     };
+    /* Segments match the trip plan: forecast for the place you’re in at that time */
+    const ITINERARY = [
+      {
+        date: '2026-07-29', label: 'Wed 29', href: '#d1',
+        route: 'Da Nang',
+        note: 'Night arrival only — city/airport weather is what matters for Grab + check-in.',
+        segments: [
+          { when: 'Night · land 21:50', loc: 'dn', place: 'Da Nang · Airport Homestay', primary: true }
+        ]
+      },
+      {
+        date: '2026-07-30', label: 'Thu 30', href: '#d2',
+        route: 'Ba Na Hills',
+        note: 'Full day on the mountain. Jacket + rain layer — often cooler and mistier than the city.',
+        segments: [
+          { when: 'All day · overnight', loc: 'bana', place: 'Ba Na Hills · cable · Golden Bridge · Mercure', primary: true }
+        ]
+      },
+      {
+        date: '2026-07-31', label: 'Fri 31', href: '#d3',
+        route: 'Ba Na → Hoi An',
+        note: 'Morning on the mountain (fog risk). After cable down you’re in warmer Hoi An for Old Town night.',
+        segments: [
+          { when: 'Morning', loc: 'bana', place: 'Ba Na Hills · Mercure BF · cable down', primary: true },
+          { when: 'Afternoon–night', loc: 'ha', place: 'Hoi An Old Town · Royal Riverside', primary: false }
+        ]
+      },
+      {
+        date: '2026-08-01', label: 'Sat 1', href: '#d4',
+        route: 'Hoi An → Da Nang',
+        note: 'Boat + Safari are outdoor-heavy in the Hoi An area. Evening moves to Bluesun beach (Da Nang).',
+        segments: [
+          { when: 'Morning–afternoon', loc: 'ha', place: 'Hoi An · Cam Thanh basket boat · Safari', primary: true },
+          { when: 'Evening', loc: 'dn', place: 'Da Nang · Bluesun Beach Hotel', primary: false }
+        ]
+      },
+      {
+        date: '2026-08-02', label: 'Sun 2', href: '#d5',
+        route: 'Da Nang',
+        note: 'All Da Nang: Marble Mountains, My Khe, Dragon Bridge fire 21:00 (outdoors — dry bag for phones).',
+        segments: [
+          { when: 'All day', loc: 'dn', place: 'Da Nang · Marble · My Khe · Dragon Bridge', primary: true }
+        ]
+      },
+      {
+        date: '2026-08-03', label: 'Mon 3', href: '#d6',
+        route: 'Da Nang',
+        note: 'Shopping / optional beach, then DAD for EK371. Covered markets help if rain picks up.',
+        segments: [
+          { when: 'Day → night fly', loc: 'dn', place: 'Da Nang · Han Market · beach · airport', primary: true }
+        ]
+      }
+    ];
 
     function wmo(code) {
       const c = Number(code);
@@ -1997,15 +2065,49 @@
       return (n == null || Number.isNaN(n)) ? '–' : Math.round(n) + '°';
     }
 
+    function getF(forecasts, locKey, date) {
+      return forecasts[locKey] && forecasts[locKey][date];
+    }
+
+    function primarySeg(day) {
+      return day.segments.find((s) => s.primary) || day.segments[0];
+    }
+
+    function segHtml(seg, f) {
+      if (!f) {
+        return '<div class="wx-seg"><div class="wx-main"><div class="wx-when">'
+          + seg.when + '</div><div class="wx-desc">Forecast n/a</div><div class="wx-place">'
+          + seg.place + '</div></div></div>';
+      }
+      const w = wmo(f.code);
+      return '<div class="wx-seg">'
+        + '<div class="wx-ic" aria-hidden="true">' + w.icon + '</div>'
+        + '<div class="wx-main">'
+        +   '<div class="wx-when">' + seg.when + ' · ' + (LOCS[seg.loc] ? LOCS[seg.loc].short : '') + '</div>'
+        +   '<div class="wx-desc">' + w.text + '</div>'
+        +   '<div class="wx-place">' + seg.place + '</div>'
+        + '</div>'
+        + '<div class="wx-nums">'
+        +   '<div class="wx-hi">' + deg(f.tmax) + ' <span style="font-size:11px;font-weight:600;color:var(--muted)">high</span></div>'
+        +   '<div class="wx-lo">' + deg(f.tmin) + ' low</div>'
+        +   '<div class="wx-rain">💧 ' + (f.rainP != null ? f.rainP + '%' : '–')
+        +     (f.rainMm != null ? ' · ~' + (Math.round(f.rainMm * 10) / 10) + ' mm' : '')
+        +   '</div>'
+        + '</div>'
+        + '</div>';
+    }
+
     function fillStrip(forecasts) {
       const strip = document.getElementById('wxStrip');
       if (!strip) return;
       strip.innerHTML = '';
-      STRIP_DAYS.forEach((day) => {
-        const f = forecasts[day.loc] && forecasts[day.loc][day.date];
+      ITINERARY.forEach((day) => {
+        const pri = primarySeg(day);
+        const f = getF(forecasts, pri.loc, day.date);
         const a = document.createElement('a');
         a.className = 'wx-chip';
         a.href = day.href;
+        a.title = day.route;
         if (!f) {
           a.classList.add('wx-skel');
           a.textContent = day.label + ' · n/a';
@@ -2017,60 +2119,75 @@
         const hot = f.tmax != null && f.tmax >= 33;
         if (wet) a.classList.add('is-rain');
         else if (hot) a.classList.add('is-hot');
+        const where = day.segments.length > 1
+          ? day.segments.map((s) => LOCS[s.loc].short).join('→')
+          : LOCS[pri.loc].short;
         a.innerHTML =
           '<span class="wx-d">' + day.label + '</span>'
+          + '<span class="wx-where">' + where + '</span>'
           + '<span class="wx-ic" aria-hidden="true">' + w.icon + '</span>'
           + '<span class="wx-t">' + deg(f.tmax) + ' / ' + deg(f.tmin) + '</span>'
           + '<span class="wx-r">💧 ' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>'
-          + '<span class="wx-s">' + w.text + (day.loc === 'bana' ? ' · mt' : '') + '</span>';
+          + '<span class="wx-s">' + w.text + '</span>';
         strip.appendChild(a);
       });
     }
 
-    function fillDayCards(forecasts) {
-      document.querySelectorAll('[data-wx-day]').forEach((el) => {
-        const date = el.getAttribute('data-wx-day');
-        const locKey = el.getAttribute('data-wx-loc') || 'dn';
-        const place = el.getAttribute('data-wx-place') || '';
-        const note = el.getAttribute('data-wx-note') || '';
-        const f = forecasts[locKey] && forecasts[locKey][date];
+    function fillDayPanels(forecasts) {
+      document.querySelectorAll('.wx-panel[data-wx-date]').forEach((el) => {
+        const date = el.getAttribute('data-wx-date');
+        const day = ITINERARY.find((d) => d.date === date);
         el.classList.remove('wx-load', 'wx-err');
-        if (!f) {
+        if (!day) {
+          el.classList.add('wx-err');
+          el.textContent = 'No itinerary weather for this day.';
+          return;
+        }
+        const any = day.segments.some((s) => getF(forecasts, s.loc, date));
+        if (!any) {
           el.classList.add('wx-err');
           el.textContent = 'Forecast not available yet for this date. Check again closer to the trip.';
           return;
         }
-        const w = wmo(f.code);
-        el.innerHTML =
-          '<div class="wx-ic" aria-hidden="true">' + w.icon + '</div>'
-          + '<div class="wx-main">'
-          +   '<div class="wx-label">Daily forecast</div>'
-          +   '<div class="wx-desc">' + w.text + '</div>'
-          +   (place ? '<div class="wx-place">' + place + '</div>' : '')
-          + '</div>'
-          + '<div class="wx-nums">'
-          +   '<div class="wx-hi">' + deg(f.tmax) + ' <span style="font-size:12px;font-weight:600;color:var(--muted)">high</span></div>'
-          +   '<div class="wx-lo">' + deg(f.tmin) + ' low</div>'
-          +   '<div class="wx-rain">💧 rain ' + (f.rainP != null ? f.rainP + '%' : '–')
-          +     (f.rainMm != null ? ' · ~' + (Math.round(f.rainMm * 10) / 10) + ' mm' : '')
-          +   '</div>'
-          + '</div>'
-          + (note ? '<div class="wx-note">' + note + '</div>' : '');
+        let html = '<div class="wx-panel-head">'
+          + '<span class="wx-title">Forecast where you’ll be</span>'
+          + '<span class="wx-route">' + day.route + '</span>'
+          + '</div>';
+        day.segments.forEach((seg) => {
+          html += segHtml(seg, getF(forecasts, seg.loc, date));
+        });
+        if (day.note) html += '<div class="wx-note">' + day.note + '</div>';
+        el.innerHTML = html;
       });
     }
 
     function fillMinis(forecasts) {
       document.querySelectorAll('[data-wx-mini]').forEach((el) => {
         const date = el.getAttribute('data-wx-mini');
-        const day = STRIP_DAYS.find((d) => d.date === date);
-        const locKey = day ? day.loc : 'dn';
-        const f = forecasts[locKey] && forecasts[locKey][date];
+        const day = ITINERARY.find((d) => d.date === date);
+        if (!day) {
+          el.textContent = '⛅ forecast…';
+          return;
+        }
+        if (day.segments.length > 1) {
+          const parts = day.segments.map((seg) => {
+            const f = getF(forecasts, seg.loc, date);
+            if (!f) return LOCS[seg.loc].short + ' n/a';
+            const w = wmo(f.code);
+            return w.icon + ' ' + LOCS[seg.loc].short + ' ' + deg(f.tmax);
+          });
+          el.innerHTML = parts.join(' · ');
+          return;
+        }
+        const pri = primarySeg(day);
+        const f = getF(forecasts, pri.loc, date);
         if (!f) {
           el.textContent = '⛅ forecast…';
           return;
         }
         const w = wmo(f.code);
-        el.innerHTML = w.icon + ' ' + deg(f.tmax) + '/' + deg(f.tmin)
+        el.innerHTML = '<span class="wx-mini-where">' + LOCS[pri.loc].short + '</span> '
+          + w.icon + ' ' + deg(f.tmax) + '/' + deg(f.tmin)
           + ' <span class="wx-mini-r">💧' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>';
       });
     }
@@ -2080,13 +2197,13 @@
       if (strip) {
         strip.innerHTML = '<div class="wx-chip wx-skel" style="grid-column:1/-1">' + msg + '</div>';
       }
-      document.querySelectorAll('[data-wx-day]').forEach((el) => {
+      document.querySelectorAll('.wx-panel[data-wx-date]').forEach((el) => {
         el.classList.remove('wx-load');
         el.classList.add('wx-err');
         el.textContent = msg;
       });
       const note = document.getElementById('wxStripNote');
-      if (note) note.textContent = 'Open with internet to load live °C + rain chance. Source: Open‑Meteo.';
+      if (note) note.textContent = 'Open with internet to load live °C + rain chance by stop. Source: Open‑Meteo.';
     }
 
     const keys = Object.keys(LOCS);
@@ -2099,11 +2216,11 @@
       const forecasts = {};
       rows.forEach((row) => { forecasts[row.key] = row.map; });
       fillStrip(forecasts);
-      fillDayCards(forecasts);
+      fillDayPanels(forecasts);
       fillMinis(forecasts);
       const note = document.getElementById('wxStripNote');
       if (note) {
-        note.textContent = 'Live from Open‑Meteo · Asia/Ho Chi Minh · Ba Na uses mountain elevation (~1,400 m). Tap a day chip to open that plan.';
+        note.textContent = 'Matched to your plan: Da Nang · Ba Na (~1,400 m) · Hoi An. Split days show each stop. Open‑Meteo · Asia/Ho Chi Minh.';
       }
     }).catch(() => {
       showError('Could not load forecast. Check connection and refresh.');
