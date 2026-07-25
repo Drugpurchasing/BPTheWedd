@@ -307,6 +307,90 @@
   .note {
     font-size: 12px; color: var(--muted); margin-top: 8px;
   }
+
+  /* WEATHER */
+  .wx-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+  @media (min-width: 520px) {
+    .wx-strip { grid-template-columns: repeat(6, 1fr); }
+  }
+  .wx-chip {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 2px; padding: 10px 6px; border-radius: 12px;
+    background: #fff; border: 1px solid var(--line);
+    text-decoration: none; color: inherit; min-height: 108px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  a.wx-chip:active, a.wx-chip:hover {
+    border-color: #9bc9c3; box-shadow: 0 4px 14px rgba(12,107,107,.1);
+  }
+  .wx-chip .wx-d {
+    font-size: 10px; font-weight: 800; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--sea-d);
+  }
+  .wx-chip .wx-ic { font-size: 1.55rem; line-height: 1.1; margin: 2px 0; }
+  .wx-chip .wx-t { font-size: 13px; font-weight: 800; color: var(--ink); }
+  .wx-chip .wx-r { font-size: 11px; font-weight: 700; color: #2a6fad; }
+  .wx-chip .wx-s { font-size: 10px; color: var(--muted); line-height: 1.25; }
+  .wx-chip.is-rain {
+    background: linear-gradient(180deg, #eef6fc 0%, #fff 70%);
+    border-color: #c5dced;
+  }
+  .wx-chip.is-hot {
+    background: linear-gradient(180deg, #fff6ec 0%, #fff 70%);
+  }
+  .wx-chip.wx-skel {
+    color: var(--muted); font-size: 12px; font-weight: 600;
+    justify-content: center;
+  }
+
+  .wx-day {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px 12px;
+    align-items: center;
+    margin: 4px 0 12px;
+    padding: 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eef8f6 0%, #fff 55%, #faf1d4 100%);
+    border: 1px solid #d0e6e2;
+  }
+  .wx-day .wx-ic { font-size: 2.1rem; line-height: 1; }
+  .wx-day .wx-main { min-width: 0; }
+  .wx-day .wx-label {
+    font-size: 10px; font-weight: 800; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--sea-d); margin-bottom: 2px;
+  }
+  .wx-day .wx-desc { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .wx-day .wx-place { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .wx-day .wx-nums { text-align: right; }
+  .wx-day .wx-hi {
+    font-size: 1.35rem; font-weight: 800; color: var(--ink); line-height: 1.1;
+  }
+  .wx-day .wx-lo { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .wx-day .wx-rain {
+    display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 800;
+    color: #1a5f9e; background: #e3f0fb; padding: 3px 8px; border-radius: 999px;
+  }
+  .wx-day .wx-note {
+    grid-column: 1 / -1; font-size: 12px; color: var(--muted);
+    padding-top: 2px; border-top: 1px dashed #d0e6e2; margin-top: 2px;
+  }
+  .wx-day.wx-err, .wx-day.wx-load {
+    grid-template-columns: 1fr;
+    font-size: 13px; color: var(--muted); font-weight: 600;
+  }
+  .day-sum .wx-mini {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--sea-d);
+    background: var(--soft); padding: 3px 8px; border-radius: 999px;
+  }
+  .day-sum .wx-mini .wx-mini-r { color: #2a6fad; font-weight: 700; }
+
   .sticky-note {
     position: sticky; top: 52px; z-index: 40;
     background: #0c6b6b; color: #fff; font-size: 12px; font-weight: 600;
@@ -606,6 +690,21 @@
       </table>
     </div>
 
+    <div class="card sea" id="weather">
+      <span class="tag">Daily forecast</span>
+      <h3>Weather · 29 Jul – 3 Aug</h3>
+      <p class="meta">Live Open‑Meteo · °C · rain % · tap a day to open the plan</p>
+      <div class="wx-strip" id="wxStrip" aria-live="polite">
+        <div class="wx-chip wx-skel">…</div>
+        <div class="wx-chip wx-skel">…</div>
+        <div class="wx-chip wx-skel">…</div>
+        <div class="wx-chip wx-skel">…</div>
+        <div class="wx-chip wx-skel">…</div>
+        <div class="wx-chip wx-skel">…</div>
+      </div>
+      <p class="note" id="wxStripNote">Ba Na mountain days run cooler and often misty vs city. Forecast updates when you open this page.</p>
+    </div>
+
     <div class="card sea">
       <span class="tag">Pace rules</span>
       <ul style="margin-left:18px;font-size:14px">
@@ -796,6 +895,7 @@
           <div class="dlabel">Wed 29 Jul · Day 1</div>
           <h3>Land &amp; sleep</h3>
           <p>EK370 · 21:50 · PNR D6NW6S · Airport Homestay</p>
+          <span class="wx-mini" data-wx-mini="2026-07-29">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -806,6 +906,7 @@
           <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Late check-in</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-07-29" data-wx-loc="dn" data-wx-place="Da Nang (airport / city)">Loading forecast…</div>
         <div class="slot">
           <div class="time">Before fly</div>
           <div class="dotcol"><div class="dot a"></div></div>
@@ -854,6 +955,7 @@
           <div class="dlabel">Thu 30 Jul · Day 2</div>
           <h3>Ba Na before noon</h3>
           <p>Walk BF · Grab · tickets ready · Mercure</p>
+          <span class="wx-mini" data-wx-mini="2026-07-30">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -864,6 +966,7 @@
           <span class="pill f">Dinner buffet OK</span>
           <span class="pill ok">Cable ticket owned ✓</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-07-30" data-wx-loc="bana" data-wx-place="Ba Na Hills (mountain)" data-wx-note="Jacket + rain layer. Mountain often 5–8°C cooler and misty vs Da Nang city.">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">07:15</div>
@@ -1017,6 +1120,7 @@
           <div class="dlabel">Fri 31 Jul · Day 3</div>
           <h3>Hotel BF · Hoi An night</h3>
           <p>Mercure breakfast · Old Town + market</p>
+          <span class="wx-mini" data-wx-mini="2026-07-31">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -1026,6 +1130,7 @@
           <span class="pill f">Breakfast = hotel</span>
           <span class="pill">Royal Riverside night</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-07-31" data-wx-loc="bana" data-wx-place="Ba Na morning → Hoi An night" data-wx-note="Morning on mountain (cooler/fog risk). Evening in Hoi An is warmer — still bring a light rain layer.">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">08:00–09:15</div>
@@ -1142,6 +1247,7 @@
           <div class="dlabel">Sat 1 Aug · Day 4</div>
           <h3>Boat · Safari · Bluesun DN</h3>
           <p>Check out HA → Da Nang beach hotel</p>
+          <span class="wx-mini" data-wx-mini="2026-08-01">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -1151,6 +1257,7 @@
           <span class="pill">Bluesun Da Nang check-in</span>
           <span class="pill w">Weekend · prebook Safari if possible</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-08-01" data-wx-loc="ha" data-wx-place="Hoi An / Cam Thanh → Da Nang beach" data-wx-note="Boat + Safari are outdoor-heavy. If heavy rain: longer Cam Thanh + early Bluesun beach.">Loading forecast…</div>
 
         <div class="callout tip">
           <b>Hotel note:</b> Night 4 &amp; 5 = <b>Bluesun Danang Beach Hotel</b> (Da Nang). You leave Hoi An today after activities — do not rebook Hoi An.
@@ -1258,6 +1365,7 @@
           <div class="dlabel">Sun 2 Aug · Day 5</div>
           <h3>Marble · beach · 🐉 fire</h3>
           <p>Dragon Bridge fire 21:00 locked</p>
+          <span class="wx-mini" data-wx-mini="2026-08-02">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -1267,6 +1375,7 @@
           <span class="pill w">🐉 FIRE 21:00</span>
           <span class="pill f">Phở / nem nướng / gỏi cá</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-08-02" data-wx-loc="dn" data-wx-place="Da Nang (Marble · My Khe · Dragon Bridge)" data-wx-note="Fire show is outdoors at 21:00 — light rain layer + dry bag for phones.">Loading forecast…</div>
 
         <div class="slot">
           <div class="time">08:00–09:00</div>
@@ -1359,6 +1468,7 @@
           <div class="dlabel">Mon 3 Aug · Day 6</div>
           <h3>Souvenir shopping spree</h3>
           <p>Markets · gifts · car 20:30 · EK371 · PNR D6NW6S</p>
+          <span class="wx-mini" data-wx-mini="2026-08-03">⛅ forecast…</span>
           <div class="chev"></div>
         </div>
       </summary>
@@ -1369,6 +1479,7 @@
           <span class="pill w">PNR D6NW6S</span>
           <span class="pill w">Lobby 20:20 · car 20:30</span>
         </div>
+        <div class="wx-day wx-load" data-wx-day="2026-08-03" data-wx-loc="dn" data-wx-place="Da Nang (Han Market · beach · airport)" data-wx-note="Shopping is mostly covered. Optional beach morning if skies clear.">Loading forecast…</div>
 
         <div class="callout tip">
           <b>Last day rule:</b> Shop first, beach optional, no new long trips after 17:00. Bags packed by 19:30. Free Bluesun car → airport. Flight PNR <span class="codechip">D6NW6S</span> · EK371 23:30.
@@ -1819,6 +1930,184 @@
 
     if (location.hash === '#present') setMode(true);
     go(0);
+  })();
+
+  /* Live daily weather · Open-Meteo (no API key) */
+  (function loadWeather() {
+    const START = '2026-07-29';
+    const END = '2026-08-03';
+    const STRIP_DAYS = [
+      { date: '2026-07-29', label: 'Wed 29', href: '#d1', loc: 'dn' },
+      { date: '2026-07-30', label: 'Thu 30', href: '#d2', loc: 'bana' },
+      { date: '2026-07-31', label: 'Fri 31', href: '#d3', loc: 'bana' },
+      { date: '2026-08-01', label: 'Sat 1', href: '#d4', loc: 'ha' },
+      { date: '2026-08-02', label: 'Sun 2', href: '#d5', loc: 'dn' },
+      { date: '2026-08-03', label: 'Mon 3', href: '#d6', loc: 'dn' }
+    ];
+    const LOCS = {
+      dn:   { lat: 16.0544, lon: 108.2022, elev: null, name: 'Da Nang' },
+      ha:   { lat: 15.8801, lon: 108.3380, elev: null, name: 'Hoi An' },
+      bana: { lat: 15.9977, lon: 107.9881, elev: 1400, name: 'Ba Na' }
+    };
+
+    function wmo(code) {
+      const c = Number(code);
+      if (c === 0) return { icon: '☀️', text: 'Clear' };
+      if (c === 1) return { icon: '🌤', text: 'Mainly clear' };
+      if (c === 2) return { icon: '⛅', text: 'Partly cloudy' };
+      if (c === 3) return { icon: '☁️', text: 'Overcast' };
+      if (c === 45 || c === 48) return { icon: '🌫', text: 'Fog / mist' };
+      if (c >= 51 && c <= 57) return { icon: '🌦', text: 'Drizzle' };
+      if (c >= 61 && c <= 67) return { icon: '🌧', text: 'Rain' };
+      if (c >= 71 && c <= 77) return { icon: '🌨', text: 'Snow / ice' };
+      if (c >= 80 && c <= 82) return { icon: '🌦', text: 'Showers' };
+      if (c >= 85 && c <= 86) return { icon: '🌨', text: 'Snow showers' };
+      if (c >= 95) return { icon: '⛈', text: 'Thunderstorm' };
+      return { icon: '🌤', text: 'Mixed' };
+    }
+
+    function urlFor(loc) {
+      let u = 'https://api.open-meteo.com/v1/forecast'
+        + '?latitude=' + loc.lat
+        + '&longitude=' + loc.lon
+        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum'
+        + '&timezone=Asia%2FHo_Chi_Minh'
+        + '&start_date=' + START
+        + '&end_date=' + END;
+      if (loc.elev != null) u += '&elevation=' + loc.elev;
+      return u;
+    }
+
+    function byDate(data) {
+      const map = {};
+      if (!data || !data.daily || !data.daily.time) return map;
+      data.daily.time.forEach((d, i) => {
+        map[d] = {
+          code: data.daily.weather_code[i],
+          tmax: data.daily.temperature_2m_max[i],
+          tmin: data.daily.temperature_2m_min[i],
+          rainP: data.daily.precipitation_probability_max[i],
+          rainMm: data.daily.precipitation_sum[i]
+        };
+      });
+      return map;
+    }
+
+    function deg(n) {
+      return (n == null || Number.isNaN(n)) ? '–' : Math.round(n) + '°';
+    }
+
+    function fillStrip(forecasts) {
+      const strip = document.getElementById('wxStrip');
+      if (!strip) return;
+      strip.innerHTML = '';
+      STRIP_DAYS.forEach((day) => {
+        const f = forecasts[day.loc] && forecasts[day.loc][day.date];
+        const a = document.createElement('a');
+        a.className = 'wx-chip';
+        a.href = day.href;
+        if (!f) {
+          a.classList.add('wx-skel');
+          a.textContent = day.label + ' · n/a';
+          strip.appendChild(a);
+          return;
+        }
+        const w = wmo(f.code);
+        const wet = (f.rainP != null && f.rainP >= 50) || (f.rainMm != null && f.rainMm >= 5);
+        const hot = f.tmax != null && f.tmax >= 33;
+        if (wet) a.classList.add('is-rain');
+        else if (hot) a.classList.add('is-hot');
+        a.innerHTML =
+          '<span class="wx-d">' + day.label + '</span>'
+          + '<span class="wx-ic" aria-hidden="true">' + w.icon + '</span>'
+          + '<span class="wx-t">' + deg(f.tmax) + ' / ' + deg(f.tmin) + '</span>'
+          + '<span class="wx-r">💧 ' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>'
+          + '<span class="wx-s">' + w.text + (day.loc === 'bana' ? ' · mt' : '') + '</span>';
+        strip.appendChild(a);
+      });
+    }
+
+    function fillDayCards(forecasts) {
+      document.querySelectorAll('[data-wx-day]').forEach((el) => {
+        const date = el.getAttribute('data-wx-day');
+        const locKey = el.getAttribute('data-wx-loc') || 'dn';
+        const place = el.getAttribute('data-wx-place') || '';
+        const note = el.getAttribute('data-wx-note') || '';
+        const f = forecasts[locKey] && forecasts[locKey][date];
+        el.classList.remove('wx-load', 'wx-err');
+        if (!f) {
+          el.classList.add('wx-err');
+          el.textContent = 'Forecast not available yet for this date. Check again closer to the trip.';
+          return;
+        }
+        const w = wmo(f.code);
+        el.innerHTML =
+          '<div class="wx-ic" aria-hidden="true">' + w.icon + '</div>'
+          + '<div class="wx-main">'
+          +   '<div class="wx-label">Daily forecast</div>'
+          +   '<div class="wx-desc">' + w.text + '</div>'
+          +   (place ? '<div class="wx-place">' + place + '</div>' : '')
+          + '</div>'
+          + '<div class="wx-nums">'
+          +   '<div class="wx-hi">' + deg(f.tmax) + ' <span style="font-size:12px;font-weight:600;color:var(--muted)">high</span></div>'
+          +   '<div class="wx-lo">' + deg(f.tmin) + ' low</div>'
+          +   '<div class="wx-rain">💧 rain ' + (f.rainP != null ? f.rainP + '%' : '–')
+          +     (f.rainMm != null ? ' · ~' + (Math.round(f.rainMm * 10) / 10) + ' mm' : '')
+          +   '</div>'
+          + '</div>'
+          + (note ? '<div class="wx-note">' + note + '</div>' : '');
+      });
+    }
+
+    function fillMinis(forecasts) {
+      document.querySelectorAll('[data-wx-mini]').forEach((el) => {
+        const date = el.getAttribute('data-wx-mini');
+        const day = STRIP_DAYS.find((d) => d.date === date);
+        const locKey = day ? day.loc : 'dn';
+        const f = forecasts[locKey] && forecasts[locKey][date];
+        if (!f) {
+          el.textContent = '⛅ forecast…';
+          return;
+        }
+        const w = wmo(f.code);
+        el.innerHTML = w.icon + ' ' + deg(f.tmax) + '/' + deg(f.tmin)
+          + ' <span class="wx-mini-r">💧' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>';
+      });
+    }
+
+    function showError(msg) {
+      const strip = document.getElementById('wxStrip');
+      if (strip) {
+        strip.innerHTML = '<div class="wx-chip wx-skel" style="grid-column:1/-1">' + msg + '</div>';
+      }
+      document.querySelectorAll('[data-wx-day]').forEach((el) => {
+        el.classList.remove('wx-load');
+        el.classList.add('wx-err');
+        el.textContent = msg;
+      });
+      const note = document.getElementById('wxStripNote');
+      if (note) note.textContent = 'Open with internet to load live °C + rain chance. Source: Open‑Meteo.';
+    }
+
+    const keys = Object.keys(LOCS);
+    Promise.all(keys.map((k) =>
+      fetch(urlFor(LOCS[k])).then((r) => {
+        if (!r.ok) throw new Error('Weather HTTP ' + r.status);
+        return r.json();
+      }).then((json) => ({ key: k, map: byDate(json) }))
+    )).then((rows) => {
+      const forecasts = {};
+      rows.forEach((row) => { forecasts[row.key] = row.map; });
+      fillStrip(forecasts);
+      fillDayCards(forecasts);
+      fillMinis(forecasts);
+      const note = document.getElementById('wxStripNote');
+      if (note) {
+        note.textContent = 'Live from Open‑Meteo · Asia/Ho Chi Minh · Ba Na uses mountain elevation (~1,400 m). Tap a day chip to open that plan.';
+      }
+    }).catch(() => {
+      showError('Could not load forecast. Check connection and refresh.');
+    });
   })();
 </script>
 </body>
