@@ -118,6 +118,113 @@
   .card.sea { background: linear-gradient(165deg, #fff 0%, var(--soft) 100%); }
   .card.coral { background: linear-gradient(165deg, #fff 0%, var(--soft-c) 100%); }
   .card.gold { background: linear-gradient(165deg, #fff 0%, var(--soft-g) 100%); }
+
+  /* Collapsible home cards (hotels / flights / must-eat) */
+  details.fold.card {
+    padding: 0;
+    overflow: hidden;
+  }
+  details.fold > summary.fold-sum {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px;
+    display: block;
+  }
+  details.fold > summary.fold-sum::-webkit-details-marker { display: none; }
+  details.fold > summary.fold-sum .tag { margin-bottom: 6px; }
+  details.fold > summary.fold-sum .meta { margin: 0 0 0; }
+  details.fold > summary.fold-sum .fold-chev {
+    display: block; margin-top: 8px;
+    font-size: 11px; font-weight: 700; color: var(--coral);
+  }
+  details.fold:not([open]) > summary.fold-sum .fold-chev::after { content: "Tap to open"; }
+  details.fold[open] > summary.fold-sum .fold-chev::after { content: "Tap to close"; }
+  details.fold[open] { border-color: #c5ddd8; }
+  details.fold.card.gold[open] { border-color: #e0d09a; }
+  details.fold.card.coral[open] { border-color: #e8c4a8; }
+  details.fold.card.sea[open] { border-color: #c5ddd8; }
+  .fold-body {
+    padding: 0 14px 14px;
+    border-top: 1px solid var(--line);
+  }
+  details.fold > summary.fold-sum:active { background: rgba(0,0,0,.02); }
+
+  /* Boarding pass · enlarge / scan */
+  .bp-grid {
+    display: grid; gap: 12px; margin-top: 10px;
+  }
+  .bp-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: #fff; padding: 12px; overflow: hidden;
+  }
+  .bp-card h4 {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 1rem; margin-bottom: 4px;
+  }
+  .bp-card .bp-meta {
+    font-size: 12.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.45;
+  }
+  .bp-zoom {
+    display: block; width: 100%; padding: 0; border: 0;
+    background: #fff; border-radius: 12px; cursor: zoom-in;
+    border: 1.5px solid var(--line); overflow: hidden;
+    text-align: left; font: inherit; color: inherit;
+  }
+  .bp-zoom:active { transform: scale(.99); }
+  .bp-zoom img {
+    width: 100%; height: auto; display: block;
+    background: #fff; object-fit: contain;
+  }
+  .bp-zoom .bp-hint {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 10px 12px; font-size: 12px; font-weight: 800;
+    color: var(--sea-d); background: var(--soft);
+    border-top: 1px solid var(--line);
+  }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 300;
+    display: none; flex-direction: column;
+    background: rgba(8, 12, 14, .94);
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-bar {
+    flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 10px 12px; color: #fff;
+  }
+  .lightbox-bar .lb-title {
+    font-size: 13px; font-weight: 700; line-height: 1.3;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .lightbox-bar button {
+    min-height: 44px; min-width: 44px; border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.12); color: #fff;
+    font-family: inherit; font-size: 14px; font-weight: 800;
+    cursor: pointer; padding: 8px 12px;
+  }
+  .lightbox-stage {
+    flex: 1 1 auto; min-height: 0;
+    overflow: auto; -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y pinch-zoom;
+    background: #fff;
+    margin: 0 10px 12px; border-radius: 14px;
+    display: flex; justify-content: center; align-items: flex-start;
+  }
+  .lightbox-stage img {
+    width: 100%; max-width: 900px; height: auto;
+    display: block; background: #fff;
+    /* keep barcode crisp when scaled */
+    image-rendering: -webkit-optimize-contrast;
+  }
+  .lightbox-hint {
+    flex: 0 0 auto; text-align: center;
+    font-size: 11px; color: rgba(255,255,255,.7);
+    padding: 0 14px 12px;
+  }
+  body.lb-open { overflow: hidden; }
+
   .tag {
     display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .05em;
     text-transform: uppercase; color: var(--sea-d); background: var(--soft);
@@ -739,108 +846,153 @@
       </ul>
     </div>
 
-    <div class="card gold" id="hotels">
-      <span class="tag g">🏨 Hotels · details + maps</span>
-      <p class="meta">Pins for Grab · booking refs when you have them · open the day you need them.</p>
-
-      <div class="hotel-block">
-        <h3>Night 1 · Airport Homestay Đà Nẵng</h3>
-        <p class="meta">29 Jul · late check-in after EK370 21:50</p>
-        <dl class="hotel-kv">
-          <dt>Stay</dt><dd>1 night · near DAD</dd>
-          <dt>Tip</dt><dd>Message reception for late arrival ~22:45–23:00</dd>
-        </dl>
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">📍 Open on Google Maps</a>
-      </div>
-
-      <div class="hotel-block" id="hotel-mercure">
-        <h3>Night 2 · Mercure French Village Ba Na</h3>
-        <p class="meta">30–31 Jul · mountain overnight · cable only access</p>
-        <dl class="hotel-kv">
-          <dt>Guest</dt><dd>CHANON JARUPAKTRANONT</dd>
-          <dt>Date</dt><dd>30 Jul 2026 · 1 night</dd>
-          <dt>Room</dt><dd>Standard · max 2 adults</dd>
-          <dt>Includes</dt><dd>Breakfast + unlimited cable car access</dd>
-          <dt>Check-in</dt><dd>From 14:00 (last cable ~16:30 — be at reception before then)</dd>
-          <dt>Check-out</dt><dd>~10:30 · breakfast ~06:30–09:30</dd>
-          <dt>Address</dt><dd>An Sơn, Ba Na, Đà Nẵng · French Village (hilltop)</dd>
-          <dt>Phone</dt><dd><a href="tel:+842363799888">+84 236 3799 888</a></dd>
-          <dt>Booked via</dt><dd>Klook package</dd>
-          <dt>Klook ref</dt><dd><span class="codechip">SFG198273</span></dd>
-          <dt>Voucher</dt><dd><span class="codechip">KLK7976366039</span></dd>
-        </dl>
-        <div class="voucher">
-          <span class="vtag">🎫 Klook voucher · show at check-in / cable</span>
-          <img src="assets/klook-mercure-banahills-voucher.png" alt="Klook voucher: Mercure Danang French Village + unlimited Ba Na Hills admission — booking SFG198273, voucher KLK7976366039" loading="lazy" />
-          <p class="vmeta">
-            <b>Mercure Danang French Village and Unlimited Admission Ba Na Hills</b><br>
-            Package: Standard Room · 1 Night · Breakfast + Unlimited Access Cable Car<br>
-            Lead: <b>CHANON JARUPAKTRANONT</b> · Date <b>30 Jul 2026</b> · 1× room (max 2 adults)<br>
-            Booking ref <span class="codechip">SFG198273</span> · Voucher <span class="codechip">KLK7976366039</span>
-          </p>
+    <details class="fold card gold" id="hotels">
+      <summary class="fold-sum">
+        <span class="tag g">🏨 Hotels · details + maps</span>
+        <p class="meta">Pins for Grab · booking refs when you have them · open the day you need them.</p>
+        <span class="fold-chev" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <div class="hotel-block">
+          <h3>Night 1 · Airport Homestay Đà Nẵng</h3>
+          <p class="meta">29 Jul · late check-in after EK370 21:50</p>
+          <dl class="hotel-kv">
+            <dt>Stay</dt><dd>1 night · near DAD</dd>
+            <dt>Tip</dt><dd>Message reception for late arrival ~22:45–23:00</dd>
+          </dl>
+          <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Airport+Homestay+%C4%90%C3%A0+N%E1%BA%B5ng">📍 Open on Google Maps</a>
         </div>
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Open Mercure on Maps</a>
-        <a class="btn ghost" href="#d2">📅 Jump to Day 2 plan</a>
-      </div>
 
-      <div class="hotel-block">
-        <h3>Night 3 · Royal Riverside Hoi An</h3>
-        <p class="meta">31 Jul · Old Town base</p>
-        <dl class="hotel-kv">
-          <dt>Address</dt><dd>40 Nguyễn Du, Cẩm Phô, Hội An</dd>
-          <dt>Phone</dt><dd><a href="tel:+842353666979">+84 235 3666 979</a></dd>
-        </dl>
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">📍 Open on Google Maps</a>
-      </div>
-
-      <div class="hotel-block">
-        <h3>Nights 4–5 · BlueSun Danang Beach</h3>
-        <p class="meta">1–3 Aug · My Khe beach · NOT Hoi An</p>
-        <dl class="hotel-kv">
-          <dt>Address</dt><dd>230 Võ Nguyên Giáp, Phước Mỹ, Sơn Trà, Đà Nẵng</dd>
-          <dt>Phone</dt><dd><a href="tel:+842363960000">+84 236 3960 000</a></dd>
-          <dt>Check-in</dt><dd>From 14:00 · check-out 12:00</dd>
-          <dt>BF</dt><dd>Buffet roughly 06:30–10:00 (confirm at desk)</dd>
-        </dl>
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">📍 Open on Google Maps</a>
-      </div>
-    </div>
-
-    <div class="card sea" id="flights">
-      <span class="tag">✈️ Flights · PNR · car park</span>
-      <p class="meta">Same booking code for outbound + return. Park the car at BKK before you fly; pick it up after landing home.</p>
-      <div class="hotel-block">
-        <h3>Emirates · booking code</h3>
-        <dl class="hotel-kv">
-          <dt>PNR</dt><dd><span class="codechip">D6NW6S</span></dd>
-          <dt>Outbound</dt><dd><b>EK370</b> · land DAD <b>29 Jul 21:50</b> · PNR <span class="codechip">D6NW6S</span></dd>
-          <dt>Return</dt><dd><b>EK371</b> · depart DAD <b>3 Aug 23:30</b> · land home <b>4 Aug 01:10</b> · PNR <span class="codechip">D6NW6S</span></dd>
-          <dt>Pax</dt><dd>2 adults</dd>
-        </dl>
-        <div class="callout tip">
-          <b>Check-in tip:</b> airline app or kiosk → find booking with <span class="codechip">D6NW6S</span> (last name of lead passenger). Online check-in usually opens ~24–48h before each flight.
+        <div class="hotel-block" id="hotel-mercure">
+          <h3>Night 2 · Mercure French Village Ba Na</h3>
+          <p class="meta">30–31 Jul · mountain overnight · cable only access</p>
+          <dl class="hotel-kv">
+            <dt>Guest</dt><dd>CHANON JARUPAKTRANONT</dd>
+            <dt>Date</dt><dd>30 Jul 2026 · 1 night</dd>
+            <dt>Room</dt><dd>Standard · max 2 adults</dd>
+            <dt>Includes</dt><dd>Breakfast + unlimited cable car access</dd>
+            <dt>Check-in</dt><dd>From 14:00 (last cable ~16:30 — be at reception before then)</dd>
+            <dt>Check-out</dt><dd>~10:30 · breakfast ~06:30–09:30</dd>
+            <dt>Address</dt><dd>An Sơn, Ba Na, Đà Nẵng · French Village (hilltop)</dd>
+            <dt>Phone</dt><dd><a href="tel:+842363799888">+84 236 3799 888</a></dd>
+            <dt>Booked via</dt><dd>Klook package</dd>
+            <dt>Klook ref</dt><dd><span class="codechip">SFG198273</span></dd>
+            <dt>Voucher</dt><dd><span class="codechip">KLK7976366039</span></dd>
+          </dl>
+          <div class="voucher">
+            <span class="vtag">🎫 Klook voucher · show at check-in / cable</span>
+            <img src="assets/klook-mercure-banahills-voucher.png" alt="Klook voucher: Mercure Danang French Village + unlimited Ba Na Hills admission — booking SFG198273, voucher KLK7976366039" loading="lazy" />
+            <p class="vmeta">
+              <b>Mercure Danang French Village and Unlimited Admission Ba Na Hills</b><br>
+              Package: Standard Room · 1 Night · Breakfast + Unlimited Access Cable Car<br>
+              Lead: <b>CHANON JARUPAKTRANONT</b> · Date <b>30 Jul 2026</b> · 1× room (max 2 adults)<br>
+              Booking ref <span class="codechip">SFG198273</span> · Voucher <span class="codechip">KLK7976366039</span>
+            </p>
+          </div>
+          <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mercure+Danang+French+Village+Bana+Hills">📍 Open Mercure on Maps</a>
+          <a class="btn ghost" href="#d2">📅 Jump to Day 2 plan</a>
         </div>
-        <a class="btn" target="_blank" href="https://www.emirates.com/th/english/manage-booking/">Manage booking · Emirates</a>
-        <a class="btn" href="#prearrival">🛂 Pre-arrival QR · DAD</a>
-        <a class="btn ghost" href="#d1">📅 Day 1 arrival</a>
-        <a class="btn ghost" href="#d6">📅 Day 6 departure</a>
-      </div>
-      <div class="hotel-block" id="carpark-bkk">
-        <h3>🚗 Park car before flight · Suvarnabhumi S7</h3>
-        <p class="meta">Leave the car here before outbound · collect after EK371 lands home ~4 Aug 01:10</p>
-        <dl class="hotel-kv">
-          <dt>Name</dt><dd>ที่จอดรถสุวรรณภูมิ S7 (BKK car park S7)</dd>
-          <dt>Area</dt><dd>หมู่ที่ 15 ซอยกิ่งแก้ว 45 · ราชาเทวะ · บางพลี · สมุทรปราการ 10260</dd>
-          <dt>When</dt><dd>Before departure to Da Nang (29 Jul) · multi-day park while you’re away</dd>
-          <dt>Return</dt><dd>After landing BKK ~4 Aug 01:10 · navigate back to this pin</dd>
-        </dl>
-        <div class="callout tip">
-          <b>Do before terminal:</b> open Maps pin → park → photo of floor / bay / row → note ticket time. Keep parking ticket with passports. Shuttle / walk rules depend on S7 operator — follow signs to passenger terminal for EK check-in.
+
+        <div class="hotel-block">
+          <h3>Night 3 · Royal Riverside Hoi An</h3>
+          <p class="meta">31 Jul · Old Town base</p>
+          <dl class="hotel-kv">
+            <dt>Address</dt><dd>40 Nguyễn Du, Cẩm Phô, Hội An</dd>
+            <dt>Phone</dt><dd><a href="tel:+842353666979">+84 235 3666 979</a></dd>
+          </dl>
+          <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Royal+Riverside+Hoi+An+Hotel+%26+Spa">📍 Open on Google Maps</a>
         </div>
-        <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/633GWDJyaqXN1YW1A?g_st=il">📍 Open car park pin · Google Maps</a>
-        <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%88%E0%B8%AD%E0%B8%94%E0%B8%A3%E0%B8%96%E0%B8%AA%E0%B8%B8%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4+S7">🧭 Navigate to S7 car park</a>
+
+        <div class="hotel-block">
+          <h3>Nights 4–5 · BlueSun Danang Beach</h3>
+          <p class="meta">1–3 Aug · My Khe beach · NOT Hoi An</p>
+          <dl class="hotel-kv">
+            <dt>Address</dt><dd>230 Võ Nguyên Giáp, Phước Mỹ, Sơn Trà, Đà Nẵng</dd>
+            <dt>Phone</dt><dd><a href="tel:+842363960000">+84 236 3960 000</a></dd>
+            <dt>Check-in</dt><dd>From 14:00 · check-out 12:00</dd>
+            <dt>BF</dt><dd>Buffet roughly 06:30–10:00 (confirm at desk)</dd>
+          </dl>
+          <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bluesun+Danang+Beach+Hotel">📍 Open on Google Maps</a>
+        </div>
       </div>
-    </div>
+    </details>
+
+    <details class="fold card sea" id="flights">
+      <summary class="fold-sum">
+        <span class="tag">✈️ Flights · PNR · car park</span>
+        <p class="meta">PNR D6NW6S · EK370 boarding passes (tap to enlarge/scan) · park at BKK S7 · pick up after landing home.</p>
+        <span class="fold-chev" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <div class="hotel-block">
+          <h3>Emirates · booking code</h3>
+          <dl class="hotel-kv">
+            <dt>PNR</dt><dd><span class="codechip">D6NW6S</span></dd>
+            <dt>Outbound</dt><dd><b>EK370</b> · land DAD <b>29 Jul 21:50</b> · PNR <span class="codechip">D6NW6S</span></dd>
+            <dt>Return</dt><dd><b>EK371</b> · depart DAD <b>3 Aug 23:30</b> · land home <b>4 Aug 01:10</b> · PNR <span class="codechip">D6NW6S</span></dd>
+            <dt>Pax</dt><dd>2 adults</dd>
+          </dl>
+          <div class="callout tip">
+            <b>Check-in tip:</b> airline app or kiosk → find booking with <span class="codechip">D6NW6S</span> (last name of lead passenger). Online check-in usually opens ~24–48h before each flight.
+          </div>
+          <a class="btn" target="_blank" href="https://www.emirates.com/th/english/manage-booking/">Manage booking · Emirates</a>
+          <a class="btn" href="#boarding">🎫 Boarding passes · enlarge</a>
+          <a class="btn" href="#prearrival">🛂 Pre-arrival QR · DAD</a>
+          <a class="btn ghost" href="#d1">📅 Day 1 arrival</a>
+          <a class="btn ghost" href="#d6">📅 Day 6 departure</a>
+        </div>
+
+        <div class="hotel-block" id="boarding">
+          <h3>🎫 Boarding passes · EK370 outbound</h3>
+          <p class="meta">BKK → DAD · Wed 29 Jul · PNR <span class="codechip">D6NW6S</span> · Economy · Group 4. Tap a pass to full-screen enlarge for barcode scan.</p>
+          <div class="callout tip">
+            <b>Scan tip:</b> tap pass → full white screen → pinch-zoom barcode · keep brightness high · use PDF offline if needed.
+          </div>
+          <div class="bp-grid">
+            <div class="bp-card">
+              <h4>Chanon Jarupaktranont</h4>
+              <p class="bp-meta">
+                SEQ <b>546</b> · Seat <b>29H</b> · Ticket <span class="codechip">1767414572674</span><br>
+                Depart BKK <b>20:10</b> · Land DAD <b>21:50</b> · Drop bags by 18:40 · Boarding 19:10
+              </p>
+              <button type="button" class="bp-zoom" data-bp-src="assets/boarding-pass-01.png" data-bp-title="Chanon · EK370 · Seat 29H · SEQ 546" aria-label="Enlarge Chanon boarding pass for barcode scan">
+                <img src="assets/boarding-pass-01.png" alt="Emirates boarding pass: Chanon Jarupaktranont, EK370 BKK to DAD, seat 29H, booking D6NW6S" loading="lazy" decoding="async" />
+                <span class="bp-hint">🔍 Tap to enlarge · easy barcode scan</span>
+              </button>
+            </div>
+            <div class="bp-card">
+              <h4>Arpapat Siriwarin</h4>
+              <p class="bp-meta">
+                SEQ <b>547</b> · Seat <b>29J</b> · Ticket <span class="codechip">1767414572675</span><br>
+                Depart BKK <b>20:10</b> · Land DAD <b>21:50</b> · Drop bags by 18:40 · Boarding 19:10
+              </p>
+              <button type="button" class="bp-zoom" data-bp-src="assets/boarding-pass-02.png" data-bp-title="Arpapat · EK370 · Seat 29J · SEQ 547" aria-label="Enlarge Arpapat boarding pass for barcode scan">
+                <img src="assets/boarding-pass-02.png" alt="Emirates boarding pass: Arpapat Siriwarin, EK370 BKK to DAD, seat 29J, booking D6NW6S" loading="lazy" decoding="async" />
+                <span class="bp-hint">🔍 Tap to enlarge · easy barcode scan</span>
+              </button>
+            </div>
+          </div>
+          <a class="btn" target="_blank" rel="noopener" href="assets/boarding-pass.pdf">📄 Open boarding pass PDF</a>
+          <a class="btn ghost" download href="assets/boarding-pass.pdf">⬇ Download PDF offline</a>
+        </div>
+
+        <div class="hotel-block" id="carpark-bkk">
+          <h3>🚗 Park car before flight · Suvarnabhumi S7</h3>
+          <p class="meta">Leave the car here before outbound · collect after EK371 lands home ~4 Aug 01:10</p>
+          <dl class="hotel-kv">
+            <dt>Name</dt><dd>ที่จอดรถสุวรรณภูมิ S7 (BKK car park S7)</dd>
+            <dt>Area</dt><dd>หมู่ที่ 15 ซอยกิ่งแก้ว 45 · ราชาเทวะ · บางพลี · สมุทรปราการ 10260</dd>
+            <dt>When</dt><dd>Before departure to Da Nang (29 Jul) · multi-day park while you’re away</dd>
+            <dt>Return</dt><dd>After landing BKK ~4 Aug 01:10 · navigate back to this pin</dd>
+          </dl>
+          <div class="callout tip">
+            <b>Do before terminal:</b> open Maps pin → park → photo of floor / bay / row → note ticket time. Keep parking ticket with passports. Shuttle / walk rules depend on S7 operator — follow signs to passenger terminal for EK check-in.
+          </div>
+          <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/633GWDJyaqXN1YW1A?g_st=il">📍 Open car park pin · Google Maps</a>
+          <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%88%E0%B8%AD%E0%B8%94%E0%B8%A3%E0%B8%96%E0%B8%AA%E0%B8%B8%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4+S7">🧭 Navigate to S7 car park</a>
+        </div>
+      </div>
+    </details>
 
     <div class="card" id="esim">
       <span class="tag ok">📶 eSIM · 2 tickets</span>
@@ -909,37 +1061,42 @@
       </div>
     </div>
 
-    <div class="card coral">
-      <span class="tag c">Must-eat list</span>
-      <p class="meta">Only places we flag meet the spirit of <b>4.5★+ · 100+ reviews</b>. Always re-check Google Maps the same day (ratings move).</p>
-      <div class="food-item">
-        <h3>🍜 Phở</h3>
-        <p><b>Phở Nhà</b> / high-rated “Phở” near your pin — open Maps, filter 4.5★+, 100+ reviews, recent photos.</p>
-        <p class="stars">Target ≥4.5 · 100+ reviews</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+4.5+Da+Nang">Search Phở 4.5★ DN</a>
+    <details class="fold card coral" id="musteat">
+      <summary class="fold-sum">
+        <span class="tag c">Must-eat list</span>
+        <p class="meta">Only places we flag meet the spirit of <b>4.5★+ · 100+ reviews</b>. Always re-check Google Maps the same day (ratings move).</p>
+        <span class="fold-chev" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <div class="food-item">
+          <h3>🍜 Phở</h3>
+          <p><b>Phở Nhà</b> / high-rated “Phở” near your pin — open Maps, filter 4.5★+, 100+ reviews, recent photos.</p>
+          <p class="stars">Target ≥4.5 · 100+ reviews</p>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=pho+4.5+Da+Nang">Search Phở 4.5★ DN</a>
+        </div>
+        <div class="food-item">
+          <h3>🍢 Nem nướng (Nam nueng)</h3>
+          <p>Grilled pork skewers + rice paper. Search “nem nướng Đà Nẵng” — pick 4.5★+ with 100+ reviews near you.</p>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">Search Nem nướng</a>
+        </div>
+        <div class="food-item">
+          <h3>🐟 Gỏi cá trích (Nam Ô herring salad)</h3>
+          <p>Da Nang specialty. Best known zone: <b>Nam Ô</b> / city spots serving “gỏi cá trích / gỏi cá Nam Ô”. Verify ★ and review count before sitting.</p>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Nam+O+Da+Nang">Search Gỏi cá trích</a>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang+4.5">Search Gỏi cá Nam Ô</a>
+        </div>
+        <div class="food-item">
+          <h3>☕ Egg coffee · Salt coffee</h3>
+          <p><b>Cà phê trứng</b> (egg) + <b>cà phê muối</b> (salt). Many beach cafés serve both. Pick 4.5★+ drink spots with food photos you like.</p>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+Da+Nang">Egg coffee</a>
+          <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+muoi+Da+Nang">Salt coffee</a>
+        </div>
+        <div class="food-item">
+          <h3>Also strong (still check 4.5★ / 100+)</h3>
+          <p><b>Mì Quảng</b>, <b>bánh xèo</b>, Hoi An <b>cao lầu + white rose</b>, beach seafood. Use Maps sort by rating + review volume.</p>
+        </div>
       </div>
-      <div class="food-item">
-        <h3>🍢 Nem nướng (Nam nueng)</h3>
-        <p>Grilled pork skewers + rice paper. Search “nem nướng Đà Nẵng” — pick 4.5★+ with 100+ reviews near you.</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=nem+nuong+Da+Nang">Search Nem nướng</a>
-      </div>
-      <div class="food-item">
-        <h3>🐟 Gỏi cá trích (Nam Ô herring salad)</h3>
-        <p>Da Nang specialty. Best known zone: <b>Nam Ô</b> / city spots serving “gỏi cá trích / gỏi cá Nam Ô”. Verify ★ and review count before sitting.</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+trich+Nam+O+Da+Nang">Search Gỏi cá trích</a>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=goi+ca+Nam+O+Da+Nang+4.5">Search Gỏi cá Nam Ô</a>
-      </div>
-      <div class="food-item">
-        <h3>☕ Egg coffee · Salt coffee</h3>
-        <p><b>Cà phê trứng</b> (egg) + <b>cà phê muối</b> (salt). Many beach cafés serve both. Pick 4.5★+ drink spots with food photos you like.</p>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+trung+Da+Nang">Egg coffee</a>
-        <a class="btn ghost" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ca+phe+muoi+Da+Nang">Salt coffee</a>
-      </div>
-      <div class="food-item">
-        <h3>Also strong (still check 4.5★ / 100+)</h3>
-        <p><b>Mì Quảng</b>, <b>bánh xèo</b>, Hoi An <b>cao lầu + white rose</b>, beach seafood. Use Maps sort by rating + review volume.</p>
-      </div>
-    </div>
+    </details>
   </section>
 
   <!-- DAYS -->
@@ -971,8 +1128,9 @@
           <div class="time">Before fly</div>
           <div class="dotcol"><div class="dot a"></div></div>
           <div class="slot-body">
-            <h4>Park car · BKK Suvarnabhumi S7</h4>
-            <p>Park at <b>ที่จอดรถสุวรรณภูมิ S7</b> before going into the terminal for outbound. Keep ticket + photo of bay. Car stays here until you land home ~4 Aug 01:10.</p>
+            <h4>Park car · boarding pass ready · BKK</h4>
+            <p>Park at <b>ที่จอดรถสุวรรณภูมิ S7</b> before terminal. Keep ticket + photo of bay. Have boarding passes ready (Chanon <b>29H</b> · Arpapat <b>29J</b> · drop bags by <b>18:40</b> · boarding <b>19:10</b> · Group 4).</p>
+            <a class="btn" href="#boarding">🎫 Boarding passes · enlarge / scan</a>
             <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/633GWDJyaqXN1YW1A?g_st=il">📍 Open car park pin</a>
             <a class="btn ghost" href="#carpark-bkk">🚗 Full parking notes</a>
           </div>
@@ -1691,6 +1849,7 @@
         <li>🐉 Sun 2 Aug 21:00</li>
         <li>Mon 3 Aug: Han Market shopping spree</li>
         <li>Flights PNR <b>D6NW6S</b> (outbound + return)</li>
+        <li>Boarding EK370: seats <b>29H</b> + <b>29J</b> · <a href="#boarding">enlarge / scan</a></li>
         <li>eSIM: Viettel 5G · booking <b>26KK282680352</b> · 2 tickets · <a href="#esim">QR section</a></li>
         <li>Pre-arrival DAD: QR + PDF · border gate Da Nang Airport · <a href="#prearrival">pre-arrival section</a></li>
         <li>Car park before flight: <b>BKK S7</b> · <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/633GWDJyaqXN1YW1A?g_st=il">Maps pin</a> · pick up after land home</li>
@@ -1713,6 +1872,18 @@
   <a href="#d5"><span class="ic">🐉</span>Fire</a>
   <a href="#d6"><span class="ic">🛍</span>Shop</a>
 </nav>
+
+<!-- Boarding pass full-screen lightbox (scan-friendly white stage) -->
+<div class="lightbox" id="bpLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="bpLbTitle" hidden>
+  <div class="lightbox-bar">
+    <div class="lb-title" id="bpLbTitle">Boarding pass</div>
+    <button type="button" id="bpLbClose" aria-label="Close boarding pass">Close ✕</button>
+  </div>
+  <div class="lightbox-stage" id="bpLbStage">
+    <img id="bpLbImg" src="" alt="" />
+  </div>
+  <p class="lightbox-hint">Pinch to zoom · scroll to pan · white background for barcode scan · brightness up</p>
+</div>
 
 <!-- PRESENTATION DECK — day-by-day timeline -->
 <div class="deck" id="deck" hidden aria-hidden="true" role="region" aria-label="Trip day timeline presentation">
@@ -1895,16 +2066,66 @@
     const h = location.hash.replace('#', '');
     if (!h) return;
     const el = document.getElementById(h);
-    if (el && el.tagName === 'DETAILS') {
+    if (!el) return;
+    // Open any ancestor <details> so nested targets (Mercure, car park) are visible
+    let p = el;
+    while (p) {
+      if (p.tagName === 'DETAILS') p.open = true;
+      p = p.parentElement;
+    }
+    if (el.tagName === 'DETAILS' && el.classList.contains('day')) {
       document.querySelectorAll('details.day').forEach(d => { if (d !== el) d.open = false; });
       el.open = true;
-      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-    } else if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   }
   window.addEventListener('hashchange', openHash);
   window.addEventListener('DOMContentLoaded', openHash);
+
+  (function boardingLightbox() {
+    const lb = document.getElementById('bpLightbox');
+    const img = document.getElementById('bpLbImg');
+    const title = document.getElementById('bpLbTitle');
+    const stage = document.getElementById('bpLbStage');
+    const closeBtn = document.getElementById('bpLbClose');
+    if (!lb || !img || !closeBtn) return;
+
+    function openBp(src, label) {
+      img.src = src;
+      img.alt = label || 'Boarding pass full screen';
+      title.textContent = label || 'Boarding pass';
+      lb.hidden = false;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-open');
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
+      closeBtn.focus();
+    }
+    function closeBp() {
+      lb.classList.remove('open');
+      lb.hidden = true;
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-open');
+      img.removeAttribute('src');
+    }
+
+    document.querySelectorAll('.bp-zoom').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openBp(btn.getAttribute('data-bp-src'), btn.getAttribute('data-bp-title') || '');
+      });
+    });
+    closeBtn.addEventListener('click', closeBp);
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) closeBp();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lb.classList.contains('open')) {
+        e.preventDefault();
+        closeBp();
+      }
+    });
+  })();
 
   (function presentMode() {
     const body = document.body;
