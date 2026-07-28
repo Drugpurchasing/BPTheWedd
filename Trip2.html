@@ -520,6 +520,19 @@
   }
   .day-sum .wx-mini .wx-mini-r { color: #2a6fad; font-weight: 700; }
   .day-sum .wx-mini .wx-mini-where { color: var(--coral); font-weight: 800; }
+  .wx-keybox {
+    margin-top: 10px; padding: 12px; border-radius: 12px;
+    background: #fff; border: 1px solid var(--line);
+  }
+  .wx-keyrow {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .wx-keyrow input {
+    flex: 1 1 180px; min-height: 44px; border-radius: 10px;
+    border: 1.5px solid var(--line); padding: 10px 12px;
+    font-family: inherit; font-size: 14px; background: #fffcf7; color: var(--ink);
+  }
+  .wx-keyrow input:focus { outline: 2px solid var(--sea); outline-offset: 1px; }
 
   .sticky-note {
     position: sticky; top: 52px; z-index: 40;
@@ -821,9 +834,9 @@
     </div>
 
     <div class="card sea" id="weather">
-      <span class="tag">Daily forecast</span>
+      <span class="tag">Daily forecast · AccuWeather</span>
       <h3>Weather · where you’ll be</h3>
-      <p class="meta">Live Open‑Meteo by stop · °C · rain % · tap a day for the full plan</p>
+      <p class="meta">Live AccuWeather by stop · °C · rain % · tap a day for the full plan · open AccuWeather for full detail</p>
       <div class="wx-strip" id="wxStrip" aria-live="polite">
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
@@ -832,7 +845,21 @@
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
       </div>
-      <p class="note" id="wxStripNote">Each day uses the place you’re in that day (Ba Na mountain vs Hoi An vs Da Nang). Split days show both stops.</p>
+      <p class="note" id="wxStripNote">Each day uses the AccuWeather station for that stop (Ba Na · Hoi An · Da Nang). Split days show both stops.</p>
+      <div class="wx-keybox" id="wxKeyBox" hidden>
+        <p class="note" style="margin:0 0 8px">AccuWeather API key unlocks live °C + rain on this page (saved only on this device). Free trial: <a target="_blank" rel="noopener" href="https://developer.accuweather.com/">developer.accuweather.com</a></p>
+        <div class="wx-keyrow">
+          <input type="password" id="wxKeyInput" autocomplete="off" spellcheck="false" placeholder="Paste AccuWeather API key" aria-label="AccuWeather API key" />
+          <button type="button" class="btn sm" id="wxKeySave" style="margin:0;min-width:auto">Save &amp; load</button>
+        </div>
+        <p class="note" id="wxKeyStatus" style="margin-top:6px"></p>
+      </div>
+      <button type="button" class="btn ghost" id="wxKeyToggle" style="margin-top:8px">🔑 AccuWeather API key</button>
+      <div class="btns" id="wxAwLinks" style="margin-top:6px">
+        <a class="btn sm ghost" target="_blank" rel="noopener" href="https://www.accuweather.com/en/vn/da-nang/352954/daily-weather-forecast/352954">AccuWeather · Da Nang</a>
+        <a class="btn sm ghost" target="_blank" rel="noopener" href="https://www.accuweather.com/en/vn/hoi-an/355711/daily-weather-forecast/355711">AccuWeather · Hoi An</a>
+        <a class="btn sm ghost" target="_blank" rel="noopener" href="https://www.accuweather.com/en/vn/ba-na/432398/daily-weather-forecast/432398">AccuWeather · Ba Na</a>
+      </div>
     </div>
 
     <div class="card sea">
@@ -994,72 +1021,82 @@
       </div>
     </details>
 
-    <div class="card" id="esim">
-      <span class="tag ok">📶 eSIM · 2 tickets</span>
-      <p class="meta">Viettel 5G data · 5GB/day · 6 days from 29 Jul 2026 · one eSIM per phone. Install with Wi‑Fi before landing or right after immigration.</p>
-      <div class="hotel-block">
-        <h3>Vietnam Data 5G eSIM · Viettel</h3>
-        <dl class="hotel-kv">
-          <dt>Plan</dt><dd>5GB per day · 6 days · Viettel native network</dd>
-          <dt>Start</dt><dd>2026-07-29 (Day 1 land)</dd>
-          <dt>Name</dt><dd>Chanon, Jarupaktranonth</dd>
-          <dt>Booking</dt><dd><span class="codechip">26KK282680352</span></dd>
-          <dt>Tickets</dt><dd>Ticket 1 + Ticket 2 (same booking · 2 phones)</dd>
-        </dl>
-        <div class="callout tip">
-          <b>Install:</b> Settings → Cellular / Mobile Data → Add eSIM → scan QR (Ticket 1 on phone A, Ticket 2 on phone B). Prefer Wi‑Fi. Turn on <b>Data Roaming</b> for the eSIM line after install. Keep Thai SIM for OTP if needed; use Viettel eSIM as mobile data.
+    <details class="fold card" id="esim">
+      <summary class="fold-sum">
+        <span class="tag ok">📶 eSIM · 2 tickets</span>
+        <p class="meta">Viettel 5G data · 5GB/day · 6 days from 29 Jul 2026 · one eSIM per phone. Install with Wi‑Fi before landing or right after immigration.</p>
+        <span class="fold-chev" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <div class="hotel-block">
+          <h3>Vietnam Data 5G eSIM · Viettel</h3>
+          <dl class="hotel-kv">
+            <dt>Plan</dt><dd>5GB per day · 6 days · Viettel native network</dd>
+            <dt>Start</dt><dd>2026-07-29 (Day 1 land)</dd>
+            <dt>Name</dt><dd>Chanon, Jarupaktranonth</dd>
+            <dt>Booking</dt><dd><span class="codechip">26KK282680352</span></dd>
+            <dt>Tickets</dt><dd>Ticket 1 + Ticket 2 (same booking · 2 phones)</dd>
+          </dl>
+          <div class="callout tip">
+            <b>Install:</b> Settings → Cellular / Mobile Data → Add eSIM → scan QR (Ticket 1 on phone A, Ticket 2 on phone B). Prefer Wi‑Fi. Turn on <b>Data Roaming</b> for the eSIM line after install. Keep Thai SIM for OTP if needed; use Viettel eSIM as mobile data.
+          </div>
+          <div class="voucher">
+            <span class="vtag">🎫 KKday eSIM vouchers · Ticket 1 + 2 (QR + LPA)</span>
+            <img src="assets/esim-vietnam-viettel-tickets.png" alt="Vietnam Viettel 5G eSIM tickets 1 and 2 — booking 26KK282680352, 5GB/day, 6 days from 2026-07-29" loading="lazy" />
+            <p class="vmeta">
+              <b>Ticket 1 LPA</b> (scan QR above preferred)<br>
+              <span class="codechip" style="display:inline-block;max-width:100%;white-space:normal;word-break:break-all;line-height:1.4;margin-top:4px">LPA:1$viettelvietnam.validspereachdpplus.com$20260324063705-4YDMNZ-XZ671FJO77SZZ1SY0N470D42Q7UVULMDLK-E6JG7ZP</span>
+            </p>
+            <p class="vmeta">
+              <b>Ticket 2 LPA</b><br>
+              <span class="codechip" style="display:inline-block;max-width:100%;white-space:normal;word-break:break-all;line-height:1.4;margin-top:4px">LPA:1$viettelvietnam.validspereachdpplus.com$20260324063656-A79DCZMV6MGB2UF31-N69VIFGMNZSPIU95DPDP9A7QS9-GQF0</span>
+            </p>
+          </div>
+          <a class="btn ghost" href="#d1">📅 Day 1 · activate on arrival</a>
         </div>
-        <div class="voucher">
-          <span class="vtag">🎫 KKday eSIM vouchers · Ticket 1 + 2 (QR + LPA)</span>
-          <img src="assets/esim-vietnam-viettel-tickets.png" alt="Vietnam Viettel 5G eSIM tickets 1 and 2 — booking 26KK282680352, 5GB/day, 6 days from 2026-07-29" loading="lazy" />
-          <p class="vmeta">
-            <b>Ticket 1 LPA</b> (scan QR above preferred)<br>
-            <span class="codechip" style="display:inline-block;max-width:100%;white-space:normal;word-break:break-all;line-height:1.4;margin-top:4px">LPA:1$viettelvietnam.validspereachdpplus.com$20260324063705-4YDMNZ-XZ671FJO77SZZ1SY0N470D42Q7UVULMDLK-E6JG7ZP</span>
-          </p>
-          <p class="vmeta">
-            <b>Ticket 2 LPA</b><br>
-            <span class="codechip" style="display:inline-block;max-width:100%;white-space:normal;word-break:break-all;line-height:1.4;margin-top:4px">LPA:1$viettelvietnam.validspereachdpplus.com$20260324063656-A79DCZMV6MGB2UF31-N69VIFGMNZSPIU95DPDP9A7QS9-GQF0</span>
-          </p>
-        </div>
-        <a class="btn ghost" href="#d1">📅 Day 1 · activate on arrival</a>
       </div>
-    </div>
+    </details>
 
-    <div class="card" id="prearrival">
-      <span class="tag ok">🛂 Pre-arrival · DAD immigration</span>
-      <p class="meta">Vietnam pre-arrival declaration for <b>Da Nang International Airport</b> · show QR / PDF at immigration after EK370 lands 29 Jul 21:50. Both passengers already listed.</p>
-      <div class="hotel-block">
-        <h3>Pre-arrival Information · Border Gate DAD</h3>
-        <dl class="hotel-kv">
-          <dt>Border gate</dt><dd>Da Nang International Airport</dd>
-          <dt>Arrival</dt><dd><b>29 Jul 2026</b> · flight <b>EK0370</b> (EK370)</dd>
-          <dt>Departure VN</dt><dd><b>3 Aug 2026</b></dd>
-          <dt>Mode</dt><dd>Air · purpose: Travel</dd>
-          <dt>Visa</dt><dd>Bilateral exemption (both pax)</dd>
-          <dt>Stay ref</dt><dd>An Sơn, Ba Na, Đà Nẵng · French Village (hilltop)</dd>
-        </dl>
-        <div class="callout tip">
-          <b>At DAD:</b> after landing → immigration → open this QR (or PDF) on your phone · keep passports ready. Then bags → turn on Viettel eSIM → Grab to Airport Homestay.
+    <details class="fold card" id="prearrival">
+      <summary class="fold-sum">
+        <span class="tag ok">🛂 Pre-arrival · DAD immigration</span>
+        <p class="meta">Vietnam pre-arrival declaration for <b>Da Nang International Airport</b> · show QR / PDF at immigration after EK370 lands 29 Jul 21:50. Both passengers already listed.</p>
+        <span class="fold-chev" aria-hidden="true"></span>
+      </summary>
+      <div class="fold-body">
+        <div class="hotel-block">
+          <h3>Pre-arrival Information · Border Gate DAD</h3>
+          <dl class="hotel-kv">
+            <dt>Border gate</dt><dd>Da Nang International Airport</dd>
+            <dt>Arrival</dt><dd><b>29 Jul 2026</b> · flight <b>EK0370</b> (EK370)</dd>
+            <dt>Departure VN</dt><dd><b>3 Aug 2026</b></dd>
+            <dt>Mode</dt><dd>Air · purpose: Travel</dd>
+            <dt>Visa</dt><dd>Bilateral exemption (both pax)</dd>
+            <dt>Stay ref</dt><dd>An Sơn, Ba Na, Đà Nẵng · French Village (hilltop)</dd>
+          </dl>
+          <div class="callout tip">
+            <b>At DAD:</b> after landing → immigration → open this QR (or PDF) on your phone · keep passports ready. Then bags → turn on Viettel eSIM → Grab to Airport Homestay.
+          </div>
+          <div class="voucher">
+            <span class="vtag">📱 Pre-arrival QR · scan / show at immigration</span>
+            <img src="assets/prearrival_qr.png" alt="Vietnam pre-arrival QR code for Da Nang International Airport — 29 Jul 2026 arrival" loading="lazy" style="max-width:min(280px,100%);margin:0 auto;display:block;background:#fff;padding:12px;border-radius:12px" />
+            <p class="vmeta">
+              <b>Lead passenger</b><br>
+              JARUPAKTRANONT CHANON · Male · DOB 29/09/1995 · TH · Passport <span class="codechip">AD0522684</span> exp 23/12/2032<br>
+              <span style="font-size:12px;opacity:.85">bungsss10@gmail.com · +66 853979141</span>
+            </p>
+            <p class="vmeta">
+              <b>Passenger 1</b><br>
+              SIRIWARIN ARPAPAT · Female · DOB 08/01/1995 · TH · Passport <span class="codechip">AD0522678</span> exp 23/12/2032<br>
+              <span style="font-size:12px;opacity:.85">arpapat.mp@gmail.com · +66 803937729</span>
+            </p>
+          </div>
+          <a class="btn" target="_blank" rel="noopener" href="assets/Pre-arrival-Information.pdf">📄 Open Pre-arrival PDF</a>
+          <a class="btn ghost" download href="assets/Pre-arrival-Information.pdf">⬇ Download PDF offline</a>
+          <a class="btn ghost" href="#d1">📅 Day 1 · land DAD</a>
         </div>
-        <div class="voucher">
-          <span class="vtag">📱 Pre-arrival QR · scan / show at immigration</span>
-          <img src="assets/prearrival_qr.png" alt="Vietnam pre-arrival QR code for Da Nang International Airport — 29 Jul 2026 arrival" loading="lazy" style="max-width:min(280px,100%);margin:0 auto;display:block;background:#fff;padding:12px;border-radius:12px" />
-          <p class="vmeta">
-            <b>Lead passenger</b><br>
-            JARUPAKTRANONT CHANON · Male · DOB 29/09/1995 · TH · Passport <span class="codechip">AD0522684</span> exp 23/12/2032<br>
-            <span style="font-size:12px;opacity:.85">bungsss10@gmail.com · +66 853979141</span>
-          </p>
-          <p class="vmeta">
-            <b>Passenger 1</b><br>
-            SIRIWARIN ARPAPAT · Female · DOB 08/01/1995 · TH · Passport <span class="codechip">AD0522678</span> exp 23/12/2032<br>
-            <span style="font-size:12px;opacity:.85">arpapat.mp@gmail.com · +66 803937729</span>
-          </p>
-        </div>
-        <a class="btn" target="_blank" rel="noopener" href="assets/Pre-arrival-Information.pdf">📄 Open Pre-arrival PDF</a>
-        <a class="btn ghost" download href="assets/Pre-arrival-Information.pdf">⬇ Download PDF offline</a>
-        <a class="btn ghost" href="#d1">📅 Day 1 · land DAD</a>
       </div>
-    </div>
+    </details>
 
     <details class="fold card coral" id="musteat">
       <summary class="fold-sum">
@@ -2218,14 +2255,22 @@
     go(0);
   })();
 
-  /* Live weather by where you’ll be · Open-Meteo (no API key) */
+  /* Live weather by where you’ll be · AccuWeather */
   (function loadWeather() {
-    const START = '2026-07-29';
-    const END = '2026-08-03';
+    const KEY_STORE = 'accuweather_api_key';
     const LOCS = {
-      dn:   { lat: 16.0544, lon: 108.2022, elev: null, short: 'Da Nang', name: 'Da Nang' },
-      ha:   { lat: 15.8801, lon: 108.3380, elev: null, short: 'Hoi An', name: 'Hoi An' },
-      bana: { lat: 15.9977, lon: 107.9881, elev: 1400, short: 'Ba Na', name: 'Ba Na Hills' }
+      dn: {
+        key: '352954', short: 'Da Nang', name: 'Da Nang',
+        page: 'https://www.accuweather.com/en/vn/da-nang/352954/daily-weather-forecast/352954'
+      },
+      ha: {
+        key: '355711', short: 'Hoi An', name: 'Hoi An',
+        page: 'https://www.accuweather.com/en/vn/hoi-an/355711/daily-weather-forecast/355711'
+      },
+      bana: {
+        key: '432398', short: 'Ba Na', name: 'Ba Na Hills',
+        page: 'https://www.accuweather.com/en/vn/ba-na/432398/daily-weather-forecast/432398'
+      }
     };
     /* Segments match the trip plan: forecast for the place you’re in at that time */
     const ITINERARY = [
@@ -2281,44 +2326,49 @@
       }
     ];
 
-    function wmo(code) {
-      const c = Number(code);
-      if (c === 0) return { icon: '☀️', text: 'Clear' };
-      if (c === 1) return { icon: '🌤', text: 'Mainly clear' };
-      if (c === 2) return { icon: '⛅', text: 'Partly cloudy' };
-      if (c === 3) return { icon: '☁️', text: 'Overcast' };
-      if (c === 45 || c === 48) return { icon: '🌫', text: 'Fog / mist' };
-      if (c >= 51 && c <= 57) return { icon: '🌦', text: 'Drizzle' };
-      if (c >= 61 && c <= 67) return { icon: '🌧', text: 'Rain' };
-      if (c >= 71 && c <= 77) return { icon: '🌨', text: 'Snow / ice' };
-      if (c >= 80 && c <= 82) return { icon: '🌦', text: 'Showers' };
-      if (c >= 85 && c <= 86) return { icon: '🌨', text: 'Snow showers' };
-      if (c >= 95) return { icon: '⛈', text: 'Thunderstorm' };
-      return { icon: '🌤', text: 'Mixed' };
+    function getApiKey() {
+      try { return (localStorage.getItem(KEY_STORE) || '').trim(); } catch (e) { return ''; }
+    }
+    function setApiKey(k) {
+      try {
+        if (k) localStorage.setItem(KEY_STORE, k);
+        else localStorage.removeItem(KEY_STORE);
+      } catch (e) { /* private mode */ }
     }
 
-    function urlFor(loc) {
-      let u = 'https://api.open-meteo.com/v1/forecast'
-        + '?latitude=' + loc.lat
-        + '&longitude=' + loc.lon
-        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum'
-        + '&timezone=Asia%2FHo_Chi_Minh'
-        + '&start_date=' + START
-        + '&end_date=' + END;
-      if (loc.elev != null) u += '&elevation=' + loc.elev;
-      return u;
+    /* AccuWeather icon numbers → emoji + short label */
+    function accuWx(icon, phrase) {
+      const n = Number(icon);
+      const text = (phrase && String(phrase).trim()) || 'Forecast';
+      if ([1, 2, 3, 4, 5, 30, 33, 34].indexOf(n) >= 0) return { icon: '☀️', text: text };
+      if ([6, 7, 8, 35, 36, 37, 38].indexOf(n) >= 0) return { icon: '⛅', text: text };
+      if (n === 11) return { icon: '🌫', text: text };
+      if ([12, 13, 14, 18, 39, 40].indexOf(n) >= 0) return { icon: '🌧', text: text };
+      if ([15, 16, 17, 41, 42].indexOf(n) >= 0) return { icon: '⛈', text: text };
+      if ([19, 20, 21, 22, 23, 24, 25, 26, 29, 43, 44].indexOf(n) >= 0) return { icon: '🌨', text: text };
+      if (n === 31 || n === 32) return { icon: '💨', text: text };
+      return { icon: '🌤', text: text };
     }
 
-    function byDate(data) {
+    function byDateAccu(data) {
       const map = {};
-      if (!data || !data.daily || !data.daily.time) return map;
-      data.daily.time.forEach((d, i) => {
-        map[d] = {
-          code: data.daily.weather_code[i],
-          tmax: data.daily.temperature_2m_max[i],
-          tmin: data.daily.temperature_2m_min[i],
-          rainP: data.daily.precipitation_probability_max[i],
-          rainMm: data.daily.precipitation_sum[i]
+      const list = Array.isArray(data) ? data : (data && data.DailyForecasts) || [];
+      list.forEach((d) => {
+        const date = String(d.Date || '').slice(0, 10);
+        if (!date) return;
+        const day = d.Day || {};
+        const temp = d.Temperature || {};
+        map[date] = {
+          icon: day.Icon,
+          phrase: day.IconPhrase || day.ShortPhrase || '',
+          tmax: temp.Maximum && temp.Maximum.Value,
+          tmin: temp.Minimum && temp.Minimum.Value,
+          rainP: day.PrecipitationProbability != null
+            ? day.PrecipitationProbability
+            : (d.Day && d.Day.RainProbability),
+          rainMm: day.TotalLiquid && day.TotalLiquid.Value != null
+            ? day.TotalLiquid.Value
+            : (day.Rain && day.Rain.Value)
         };
       });
       return map;
@@ -2338,17 +2388,19 @@
 
     function segHtml(seg, f) {
       if (!f) {
+        const page = LOCS[seg.loc] ? LOCS[seg.loc].page : '#';
         return '<div class="wx-seg"><div class="wx-main"><div class="wx-when">'
-          + seg.when + '</div><div class="wx-desc">Forecast n/a</div><div class="wx-place">'
-          + seg.place + '</div></div></div>';
+          + seg.when + '</div><div class="wx-desc">Open AccuWeather</div><div class="wx-place">'
+          + seg.place + ' · <a target="_blank" rel="noopener" href="' + page + '">full forecast</a>'
+          + '</div></div></div>';
       }
-      const w = wmo(f.code);
+      const w = accuWx(f.icon, f.phrase);
       return '<div class="wx-seg">'
         + '<div class="wx-ic" aria-hidden="true">' + w.icon + '</div>'
         + '<div class="wx-main">'
         +   '<div class="wx-when">' + seg.when + ' · ' + (LOCS[seg.loc] ? LOCS[seg.loc].short : '') + '</div>'
         +   '<div class="wx-desc">' + w.text + '</div>'
-        +   '<div class="wx-place">' + seg.place + '</div>'
+        +   '<div class="wx-place">' + seg.place + ' · AccuWeather</div>'
         + '</div>'
         + '<div class="wx-nums">'
         +   '<div class="wx-hi">' + deg(f.tmax) + ' <span style="font-size:11px;font-weight:600;color:var(--muted)">high</span></div>'
@@ -2360,7 +2412,7 @@
         + '</div>';
     }
 
-    function fillStrip(forecasts) {
+    function fillStrip(forecasts, mode) {
       const strip = document.getElementById('wxStrip');
       if (!strip) return;
       strip.innerHTML = '';
@@ -2369,22 +2421,33 @@
         const f = getF(forecasts, pri.loc, day.date);
         const a = document.createElement('a');
         a.className = 'wx-chip';
-        a.href = day.href;
-        a.title = day.route;
+        a.title = day.route + ' · AccuWeather';
+        const where = day.segments.length > 1
+          ? day.segments.map((s) => LOCS[s.loc].short).join('→')
+          : LOCS[pri.loc].short;
+
         if (!f) {
+          /* Link straight to AccuWeather for the primary stop that day */
+          a.href = LOCS[pri.loc].page;
+          a.target = '_blank';
+          a.rel = 'noopener';
           a.classList.add('wx-skel');
-          a.textContent = day.label + ' · n/a';
+          a.innerHTML =
+            '<span class="wx-d">' + day.label + '</span>'
+            + '<span class="wx-where">' + where + '</span>'
+            + '<span class="wx-ic" aria-hidden="true">⛅</span>'
+            + '<span class="wx-t">AccuWeather</span>'
+            + '<span class="wx-s">Tap to open</span>';
           strip.appendChild(a);
           return;
         }
-        const w = wmo(f.code);
+
+        a.href = day.href;
+        const w = accuWx(f.icon, f.phrase);
         const wet = (f.rainP != null && f.rainP >= 50) || (f.rainMm != null && f.rainMm >= 5);
         const hot = f.tmax != null && f.tmax >= 33;
         if (wet) a.classList.add('is-rain');
         else if (hot) a.classList.add('is-hot');
-        const where = day.segments.length > 1
-          ? day.segments.map((s) => LOCS[s.loc].short).join('→')
-          : LOCS[pri.loc].short;
         a.innerHTML =
           '<span class="wx-d">' + day.label + '</span>'
           + '<span class="wx-where">' + where + '</span>'
@@ -2394,6 +2457,7 @@
           + '<span class="wx-s">' + w.text + '</span>';
         strip.appendChild(a);
       });
+      void mode;
     }
 
     function fillDayPanels(forecasts) {
@@ -2407,18 +2471,16 @@
           return;
         }
         const any = day.segments.some((s) => getF(forecasts, s.loc, date));
-        if (!any) {
-          el.classList.add('wx-err');
-          el.textContent = 'Forecast not available yet for this date. Check again closer to the trip.';
-          return;
-        }
         let html = '<div class="wx-panel-head">'
-          + '<span class="wx-title">Forecast where you’ll be</span>'
+          + '<span class="wx-title">AccuWeather · where you’ll be</span>'
           + '<span class="wx-route">' + day.route + '</span>'
           + '</div>';
         day.segments.forEach((seg) => {
           html += segHtml(seg, getF(forecasts, seg.loc, date));
         });
+        if (!any) {
+          html += '<div class="wx-note">Live AccuWeather numbers need an API key (button under Daily forecast), or open AccuWeather links above.</div>';
+        }
         if (day.note) html += '<div class="wx-note">' + day.note + '</div>';
         el.innerHTML = html;
       });
@@ -2429,14 +2491,14 @@
         const date = el.getAttribute('data-wx-mini');
         const day = ITINERARY.find((d) => d.date === date);
         if (!day) {
-          el.textContent = '⛅ forecast…';
+          el.textContent = '⛅ AccuWeather…';
           return;
         }
         if (day.segments.length > 1) {
           const parts = day.segments.map((seg) => {
             const f = getF(forecasts, seg.loc, date);
-            if (!f) return LOCS[seg.loc].short + ' n/a';
-            const w = wmo(f.code);
+            if (!f) return LOCS[seg.loc].short + ' · AW';
+            const w = accuWx(f.icon, f.phrase);
             return w.icon + ' ' + LOCS[seg.loc].short + ' ' + deg(f.tmax);
           });
           el.innerHTML = parts.join(' · ');
@@ -2445,49 +2507,135 @@
         const pri = primarySeg(day);
         const f = getF(forecasts, pri.loc, date);
         if (!f) {
-          el.textContent = '⛅ forecast…';
+          el.textContent = '⛅ ' + LOCS[pri.loc].short + ' · AccuWeather';
           return;
         }
-        const w = wmo(f.code);
+        const w = accuWx(f.icon, f.phrase);
         el.innerHTML = '<span class="wx-mini-where">' + LOCS[pri.loc].short + '</span> '
           + w.icon + ' ' + deg(f.tmax) + '/' + deg(f.tmin)
           + ' <span class="wx-mini-r">💧' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>';
       });
     }
 
-    function showError(msg) {
-      const strip = document.getElementById('wxStrip');
-      if (strip) {
-        strip.innerHTML = '<div class="wx-chip wx-skel" style="grid-column:1/-1">' + msg + '</div>';
-      }
-      document.querySelectorAll('.wx-panel[data-wx-date]').forEach((el) => {
-        el.classList.remove('wx-load');
-        el.classList.add('wx-err');
-        el.textContent = msg;
-      });
+    function setNote(text) {
       const note = document.getElementById('wxStripNote');
-      if (note) note.textContent = 'Open with internet to load live °C + rain chance by stop. Source: Open‑Meteo.';
+      if (note) note.textContent = text;
     }
 
-    const keys = Object.keys(LOCS);
-    Promise.all(keys.map((k) =>
-      fetch(urlFor(LOCS[k])).then((r) => {
-        if (!r.ok) throw new Error('Weather HTTP ' + r.status);
-        return r.json();
-      }).then((json) => ({ key: k, map: byDate(json) }))
-    )).then((rows) => {
-      const forecasts = {};
-      rows.forEach((row) => { forecasts[row.key] = row.map; });
-      fillStrip(forecasts);
-      fillDayPanels(forecasts);
-      fillMinis(forecasts);
-      const note = document.getElementById('wxStripNote');
-      if (note) {
-        note.textContent = 'Matched to your plan: Da Nang · Ba Na (~1,400 m) · Hoi An. Split days show each stop. Open‑Meteo · Asia/Ho Chi Minh.';
+    function setStatus(text) {
+      const el = document.getElementById('wxKeyStatus');
+      if (el) el.textContent = text || '';
+    }
+
+    async function fetchAccuLoc(loc, apikey) {
+      /* Prefer 10-day so Mon 3 Aug is covered; fall back to 5-day on free tiers */
+      const ranges = ['10day', '5day'];
+      let lastErr = null;
+      for (let i = 0; i < ranges.length; i++) {
+        const range = ranges[i];
+        const url = 'https://dataservice.accuweather.com/forecasts/v1/daily/'
+          + range + '/' + encodeURIComponent(loc.key)
+          + '?apikey=' + encodeURIComponent(apikey)
+          + '&metric=true&details=true&language=en-us';
+        try {
+          const r = await fetch(url);
+          if (r.status === 401 || r.status === 403) {
+            const err = new Error('Invalid AccuWeather API key');
+            err.code = 'AUTH';
+            throw err;
+          }
+          if (r.status === 503 || r.status === 400) {
+            lastErr = new Error('AccuWeather ' + range + ' HTTP ' + r.status);
+            continue;
+          }
+          if (!r.ok) {
+            lastErr = new Error('AccuWeather HTTP ' + r.status);
+            continue;
+          }
+          const json = await r.json();
+          return byDateAccu(json);
+        } catch (e) {
+          if (e && e.code === 'AUTH') throw e;
+          lastErr = e;
+        }
       }
-    }).catch(() => {
-      showError('Could not load forecast. Check connection and refresh.');
-    });
+      throw lastErr || new Error('AccuWeather fetch failed');
+    }
+
+    async function loadAll() {
+      const apikey = getApiKey();
+      if (!apikey) {
+        fillStrip({}, 'links');
+        fillDayPanels({});
+        fillMinis({});
+        setNote('Add your AccuWeather API key below for live °C + rain, or tap a chip / city button to open AccuWeather.');
+        setStatus('No key saved yet on this device.');
+        return;
+      }
+      setStatus('Loading AccuWeather…');
+      try {
+        const keys = Object.keys(LOCS);
+        const rows = await Promise.all(keys.map(async (k) => {
+          const map = await fetchAccuLoc(LOCS[k], apikey);
+          return { key: k, map: map };
+        }));
+        const forecasts = {};
+        rows.forEach((row) => { forecasts[row.key] = row.map; });
+        fillStrip(forecasts, 'live');
+        fillDayPanels(forecasts);
+        fillMinis(forecasts);
+        setNote('AccuWeather · Da Nang (352954) · Ba Na (432398) · Hoi An (355711). Split days show each stop. Metric °C.');
+        setStatus('Loaded from AccuWeather.');
+      } catch (e) {
+        fillStrip({}, 'links');
+        fillDayPanels({});
+        fillMinis({});
+        const msg = (e && e.message) ? e.message : 'Could not load AccuWeather';
+        setNote(msg + ' · Use city buttons or fix API key.');
+        setStatus(msg);
+        document.querySelectorAll('.wx-panel[data-wx-date]').forEach((el) => {
+          if (!el.querySelector('.wx-seg')) {
+            el.classList.remove('wx-load');
+            el.classList.add('wx-err');
+            el.textContent = msg + ' · open AccuWeather links in Daily forecast.';
+          }
+        });
+      }
+    }
+
+    /* Key UI */
+    const box = document.getElementById('wxKeyBox');
+    const toggle = document.getElementById('wxKeyToggle');
+    const input = document.getElementById('wxKeyInput');
+    const saveBtn = document.getElementById('wxKeySave');
+    if (toggle && box) {
+      toggle.addEventListener('click', () => {
+        const open = box.hasAttribute('hidden');
+        if (open) box.removeAttribute('hidden');
+        else box.setAttribute('hidden', '');
+        if (open && input) {
+          input.value = getApiKey();
+          input.focus();
+        }
+      });
+    }
+    if (saveBtn && input) {
+      saveBtn.addEventListener('click', () => {
+        const k = input.value.trim();
+        setApiKey(k);
+        if (!k) setStatus('Key cleared.');
+        loadAll();
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          saveBtn.click();
+        }
+      });
+    }
+    if (getApiKey() && input) input.value = getApiKey();
+
+    loadAll();
   })();
 </script>
 </body>
