@@ -823,7 +823,7 @@
     <div class="card sea" id="weather">
       <span class="tag">Daily forecast</span>
       <h3>Weather · where you’ll be</h3>
-      <p class="meta">Live free forecast by stop · no API key · °C · rain % · tap a day for the full plan</p>
+      <p class="meta">Live MET Norway forecast by stop · free · no API key · °C · rain · tap a day for the full plan</p>
       <div class="wx-strip" id="wxStrip" aria-live="polite">
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
@@ -832,7 +832,7 @@
         <div class="wx-chip wx-skel">…</div>
         <div class="wx-chip wx-skel">…</div>
       </div>
-      <p class="note" id="wxStripNote">Each day uses the place you’re in that day (Ba Na mountain vs Hoi An vs Da Nang). Split days show both stops. Source: Open‑Meteo.</p>
+      <p class="note" id="wxStripNote">Each day uses the place you’re in that day (Ba Na mountain vs Hoi An vs Da Nang). Split days show both stops. Source: MET Norway (yr.no / api.met.no) · free.</p>
     </div>
 
     <div class="card sea">
@@ -2228,14 +2228,12 @@
     go(0);
   })();
 
-  /* Live weather by where you’ll be · Open-Meteo (free, no API key) */
+  /* Live weather by where you’ll be · MET Norway (api.met.no) — free, no API key */
   (function loadWeather() {
-    const START = '2026-07-29';
-    const END = '2026-08-03';
     const LOCS = {
-      dn:   { lat: 16.0544, lon: 108.2022, elev: null, short: 'Da Nang', name: 'Da Nang' },
-      ha:   { lat: 15.8801, lon: 108.3380, elev: null, short: 'Hoi An', name: 'Hoi An' },
-      bana: { lat: 15.9977, lon: 107.9881, elev: 1400, short: 'Ba Na', name: 'Ba Na Hills' }
+      dn:   { lat: 16.0544, lon: 108.2022, short: 'Da Nang', name: 'Da Nang' },
+      ha:   { lat: 15.8801, lon: 108.3380, short: 'Hoi An', name: 'Hoi An' },
+      bana: { lat: 15.9977, lon: 107.9881, short: 'Ba Na', name: 'Ba Na Hills' }
     };
     /* Segments match the trip plan: forecast for the place you’re in at that time */
     const ITINERARY = [
@@ -2291,44 +2289,113 @@
       }
     ];
 
-    function wmo(code) {
-      const c = Number(code);
-      if (c === 0) return { icon: '☀️', text: 'Clear' };
-      if (c === 1) return { icon: '🌤', text: 'Mainly clear' };
-      if (c === 2) return { icon: '⛅', text: 'Partly cloudy' };
-      if (c === 3) return { icon: '☁️', text: 'Overcast' };
-      if (c === 45 || c === 48) return { icon: '🌫', text: 'Fog / mist' };
-      if (c >= 51 && c <= 57) return { icon: '🌦', text: 'Drizzle' };
-      if (c >= 61 && c <= 67) return { icon: '🌧', text: 'Rain' };
-      if (c >= 71 && c <= 77) return { icon: '🌨', text: 'Snow / ice' };
-      if (c >= 80 && c <= 82) return { icon: '🌦', text: 'Showers' };
-      if (c >= 85 && c <= 86) return { icon: '🌨', text: 'Snow showers' };
-      if (c >= 95) return { icon: '⛈', text: 'Thunderstorm' };
-      return { icon: '🌤', text: 'Mixed' };
+    /* MET Norway symbol_code (strip _day/_night/_polartwilight) */
+    function metWx(symbol) {
+      const s = String(symbol || '').toLowerCase().replace(/_(day|night|polartwilight)$/i, '');
+      if (s === 'clearsky' || s === 'fair') return { icon: '☀️', text: 'Clear / fair', wet: false, rank: 1 };
+      if (s === 'partlycloudy') return { icon: '⛅', text: 'Partly cloudy', wet: false, rank: 2 };
+      if (s === 'cloudy') return { icon: '☁️', text: 'Cloudy', wet: false, rank: 3 };
+      if (s === 'fog') return { icon: '🌫', text: 'Fog', wet: false, rank: 4 };
+      if (s.indexOf('thunder') >= 0) return { icon: '⛈', text: 'Thunderstorm', wet: true, rank: 10 };
+      if (s.indexOf('heavyrain') >= 0 || s.indexOf('heavysleet') >= 0) return { icon: '🌧', text: 'Heavy rain', wet: true, rank: 9 };
+      if (s.indexOf('lightrain') >= 0) return { icon: '🌦', text: 'Light rain', wet: true, rank: 7 };
+      if (s.indexOf('rainshowers') >= 0 || s.indexOf('showers') >= 0) return { icon: '🌦', text: 'Showers', wet: true, rank: 8 };
+      if (s.indexOf('rain') >= 0 || s.indexOf('sleet') >= 0) return { icon: '🌧', text: 'Rain', wet: true, rank: 8 };
+      if (s.indexOf('snow') >= 0) return { icon: '🌨', text: 'Snow', wet: true, rank: 8 };
+      return { icon: '🌤', text: s ? s.replace(/_/g, ' ') : 'Mixed', wet: false, rank: 2 };
     }
 
     function urlFor(loc) {
-      let u = 'https://api.open-meteo.com/v1/forecast'
-        + '?latitude=' + loc.lat
-        + '&longitude=' + loc.lon
-        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum'
-        + '&timezone=Asia%2FHo_Chi_Minh'
-        + '&start_date=' + START
-        + '&end_date=' + END;
-      if (loc.elev != null) u += '&elevation=' + loc.elev;
-      return u;
+      return 'https://api.met.no/weatherapi/locationforecast/2.0/compact'
+        + '?lat=' + loc.lat
+        + '&lon=' + loc.lon;
     }
 
+    /* Aggregate hourly MET series → daily high/low/rain for Asia/Ho_Chi_Minh (UTC+7) */
     function byDate(data) {
       const map = {};
-      if (!data || !data.daily || !data.daily.time) return map;
-      data.daily.time.forEach((d, i) => {
-        map[d] = {
-          code: data.daily.weather_code[i],
-          tmax: data.daily.temperature_2m_max[i],
-          tmin: data.daily.temperature_2m_min[i],
-          rainP: data.daily.precipitation_probability_max[i],
-          rainMm: data.daily.precipitation_sum[i]
+      const series = data && data.properties && data.properties.timeseries;
+      if (!series || !series.length) return map;
+
+      const buckets = {};
+      series.forEach((pt) => {
+        const t = new Date(pt.time);
+        if (Number.isNaN(t.getTime())) return;
+        /* Vietnam local calendar day */
+        const localMs = t.getTime() + 7 * 3600 * 1000;
+        const d = new Date(localMs);
+        const key = d.getUTCFullYear() + '-'
+          + String(d.getUTCMonth() + 1).padStart(2, '0') + '-'
+          + String(d.getUTCDate()).padStart(2, '0');
+        if (!buckets[key]) buckets[key] = [];
+        buckets[key].push(pt);
+      });
+
+      Object.keys(buckets).forEach((date) => {
+        const pts = buckets[date];
+        let tmax = null;
+        let tmin = null;
+        let rainMm = 0;
+        let wetHours = 0;
+        let hourCount = 0;
+        let bestSym = null;
+        let bestRank = -1;
+        const used = { one: false, six: false };
+
+        pts.forEach((pt) => {
+          const inst = pt.data && pt.data.instant && pt.data.instant.details;
+          const n1 = pt.data && pt.data.next_1_hours;
+          const n6 = pt.data && pt.data.next_6_hours;
+          if (inst && inst.air_temperature != null) {
+            const t = Number(inst.air_temperature);
+            if (tmax == null || t > tmax) tmax = t;
+            if (tmin == null || t < tmin) tmin = t;
+          }
+          /* Prefer 1h precip steps when present (first ~48h); else 6h */
+          let precip = null;
+          let sym = null;
+          if (n1 && n1.details && n1.details.precipitation_amount != null) {
+            precip = Number(n1.details.precipitation_amount);
+            used.one = true;
+            if (n1.summary && n1.summary.symbol_code) sym = n1.summary.symbol_code;
+            hourCount += 1;
+            if (precip > 0.05) wetHours += 1;
+          } else if (n6 && n6.details && n6.details.precipitation_amount != null) {
+            precip = Number(n6.details.precipitation_amount);
+            used.six = true;
+            if (n6.summary && n6.summary.symbol_code) sym = n6.summary.symbol_code;
+            hourCount += 6;
+            if (precip > 0.2) wetHours += 3;
+          } else if (n1 && n1.summary && n1.summary.symbol_code) {
+            sym = n1.summary.symbol_code;
+          } else if (n6 && n6.summary && n6.summary.symbol_code) {
+            sym = n6.summary.symbol_code;
+          }
+          if (precip != null && !Number.isNaN(precip)) rainMm += precip;
+          if (sym) {
+            const w = metWx(sym);
+            if (w.rank > bestRank) {
+              bestRank = w.rank;
+              bestSym = sym;
+            }
+          }
+        });
+
+        /* Avoid double-counting if both 1h and 6h somehow mixed badly — rare */
+        if (used.one && used.six) {
+          /* keep as-is; MET usually switches from 1h to 6h later in the series */
+        }
+
+        const rainP = hourCount > 0
+          ? Math.min(100, Math.round((wetHours / hourCount) * 100))
+          : (rainMm > 1 ? 60 : rainMm > 0.1 ? 30 : 10);
+
+        map[date] = {
+          symbol: bestSym,
+          tmax: tmax,
+          tmin: tmin,
+          rainP: rainP,
+          rainMm: Math.round(rainMm * 10) / 10
         };
       });
       return map;
@@ -2346,13 +2413,17 @@
       return day.segments.find((s) => s.primary) || day.segments[0];
     }
 
+    function wxOf(f) {
+      return metWx(f && f.symbol);
+    }
+
     function segHtml(seg, f) {
       if (!f) {
         return '<div class="wx-seg"><div class="wx-main"><div class="wx-when">'
           + seg.when + '</div><div class="wx-desc">Forecast n/a</div><div class="wx-place">'
           + seg.place + '</div></div></div>';
       }
-      const w = wmo(f.code);
+      const w = wxOf(f);
       return '<div class="wx-seg">'
         + '<div class="wx-ic" aria-hidden="true">' + w.icon + '</div>'
         + '<div class="wx-main">'
@@ -2364,7 +2435,7 @@
         +   '<div class="wx-hi">' + deg(f.tmax) + ' <span style="font-size:11px;font-weight:600;color:var(--muted)">high</span></div>'
         +   '<div class="wx-lo">' + deg(f.tmin) + ' low</div>'
         +   '<div class="wx-rain">💧 ' + (f.rainP != null ? f.rainP + '%' : '–')
-        +     (f.rainMm != null ? ' · ~' + (Math.round(f.rainMm * 10) / 10) + ' mm' : '')
+        +     (f.rainMm != null ? ' · ~' + f.rainMm + ' mm' : '')
         +   '</div>'
         + '</div>'
         + '</div>';
@@ -2387,8 +2458,8 @@
           strip.appendChild(a);
           return;
         }
-        const w = wmo(f.code);
-        const wet = (f.rainP != null && f.rainP >= 50) || (f.rainMm != null && f.rainMm >= 5);
+        const w = wxOf(f);
+        const wet = (f.rainP != null && f.rainP >= 50) || (f.rainMm != null && f.rainMm >= 5) || w.wet;
         const hot = f.tmax != null && f.tmax >= 33;
         if (wet) a.classList.add('is-rain');
         else if (hot) a.classList.add('is-hot');
@@ -2446,7 +2517,7 @@
           const parts = day.segments.map((seg) => {
             const f = getF(forecasts, seg.loc, date);
             if (!f) return LOCS[seg.loc].short + ' n/a';
-            const w = wmo(f.code);
+            const w = wxOf(f);
             return w.icon + ' ' + LOCS[seg.loc].short + ' ' + deg(f.tmax);
           });
           el.innerHTML = parts.join(' · ');
@@ -2458,7 +2529,7 @@
           el.textContent = '⛅ forecast…';
           return;
         }
-        const w = wmo(f.code);
+        const w = wxOf(f);
         el.innerHTML = '<span class="wx-mini-where">' + LOCS[pri.loc].short + '</span> '
           + w.icon + ' ' + deg(f.tmax) + '/' + deg(f.tmin)
           + ' <span class="wx-mini-r">💧' + (f.rainP != null ? f.rainP + '%' : '–') + '</span>';
@@ -2476,12 +2547,17 @@
         el.textContent = msg;
       });
       const note = document.getElementById('wxStripNote');
-      if (note) note.textContent = 'Open with internet to load live °C + rain by stop. Free source: Open‑Meteo (no API key).';
+      if (note) note.textContent = 'Open with internet to load live °C + rain by stop. Free source: MET Norway (api.met.no) · no API key.';
     }
 
     const keys = Object.keys(LOCS);
     Promise.all(keys.map((k) =>
-      fetch(urlFor(LOCS[k])).then((r) => {
+      fetch(urlFor(LOCS[k]), {
+        headers: {
+          /* MET Norway asks for an identifying User-Agent on API clients */
+          'Accept': 'application/json'
+        }
+      }).then((r) => {
         if (!r.ok) throw new Error('Weather HTTP ' + r.status);
         return r.json();
       }).then((json) => ({ key: k, map: byDate(json) }))
@@ -2493,7 +2569,7 @@
       fillMinis(forecasts);
       const note = document.getElementById('wxStripNote');
       if (note) {
-        note.textContent = 'Matched to your plan: Da Nang · Ba Na (~1,400 m) · Hoi An. Split days show each stop. Open‑Meteo · free · no API key · Asia/Ho Chi Minh.';
+        note.textContent = 'Matched to your plan: Da Nang · Ba Na · Hoi An. Split days show each stop. MET Norway (yr.no) · free · no API key · Asia/Ho Chi Minh.';
       }
     }).catch(() => {
       showError('Could not load forecast. Check connection and refresh.');
