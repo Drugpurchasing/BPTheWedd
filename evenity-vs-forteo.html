@@ -7,399 +7,644 @@
   <meta name="description" content="Side-by-side comparison of Evenity (romosozumab) and Forteo (teriparatide): mechanism, dosing, duration, warnings, and who each fits best." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #14201c;
-      --muted: #4a5c55;
-      --paper: #f3f7f5;
-      --evenity: #0b7a6e;
-      --evenity-deep: #065f56;
-      --evenity-soft: #d8f0eb;
-      --forteo: #c45c26;
-      --forteo-deep: #9a4018;
-      --forteo-soft: #fce8da;
-      --line: rgba(20, 32, 28, 0.1);
-      --warn: #8a3b12;
-      --radius: 4px;
-      --max: 1080px;
-      --font-display: "Fraunces", Georgia, serif;
-      --font-body: "DM Sans", system-ui, sans-serif;
+      --ink: #101816;
+      --ink-soft: #2a3833;
+      --muted: #5c6e67;
+      --fog: #e7efeb;
+      --white: #fbfdfc;
+      --evenity: #067a6c;
+      --evenity-deep: #045348;
+      --evenity-glow: rgba(6, 122, 108, 0.22);
+      --forteo: #d4632a;
+      --forteo-deep: #a44516;
+      --forteo-glow: rgba(212, 99, 42, 0.2);
+      --line: rgba(16, 24, 22, 0.09);
+      --warn: #9a3f10;
+      --max: 1120px;
+      --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+      --font-body: "Manrope", system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: var(--font-body);
       color: var(--ink);
-      background:
-        radial-gradient(ellipse 90% 60% at 10% -10%, rgba(11, 122, 110, 0.14), transparent 55%),
-        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(196, 92, 38, 0.12), transparent 50%),
-        linear-gradient(180deg, #eef5f2 0%, var(--paper) 35%, #e8f0ec 100%);
-      line-height: 1.5;
+      background: var(--fog);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
+    /* Atmospheric field */
+    .atmosphere {
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath fill='%2314201c' d='M40 8c2 8 8 14 16 16-8 2-14 8-16 16-2-8-8-14-16-16 8-2 14-8 16-16zm0 40c1 4 4 7 8 8-4 1-7 4-8 8-1-4-4-7-8-8 4-1 7-4 8-8z'/%3E%3C/svg%3E");
       z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 55% at 8% 12%, var(--evenity-glow), transparent 60%),
+        radial-gradient(ellipse 65% 50% at 92% 8%, var(--forteo-glow), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(6, 122, 108, 0.08), transparent 60%),
+        linear-gradient(165deg, #f4faf7 0%, #eaf2ee 45%, #f6f1ec 100%);
+    }
+
+    .atmosphere__mesh {
+      position: absolute;
+      inset: -10% -5%;
+      opacity: 0.45;
+      background-image:
+        linear-gradient(rgba(16, 24, 22, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 24, 22, 0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 75%);
+      animation: meshDrift 28s linear infinite;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(64px);
+      will-change: transform;
+    }
+
+    .orb--a {
+      width: min(42vw, 420px);
+      height: min(42vw, 420px);
+      top: -8%;
+      left: -6%;
+      background: rgba(6, 122, 108, 0.28);
+      animation: floatA 16s var(--ease) infinite alternate;
+    }
+
+    .orb--b {
+      width: min(38vw, 380px);
+      height: min(38vw, 380px);
+      top: 4%;
+      right: -8%;
+      background: rgba(212, 99, 42, 0.24);
+      animation: floatB 18s var(--ease) infinite alternate;
     }
 
     .wrap {
       position: relative;
       z-index: 1;
-      width: min(100% - 2rem, var(--max));
+      width: min(100% - 2.5rem, var(--max));
       margin-inline: auto;
     }
 
-    /* Hero: one composition */
+    /* —— Hero —— */
     .hero {
-      min-height: min(100svh, 820px);
+      position: relative;
+      min-height: 100svh;
       display: grid;
       align-content: center;
-      padding: 3.5rem 0 2.5rem;
-      gap: 1.75rem;
+      padding: 4rem 0 3rem;
+      gap: 2.25rem;
     }
 
-    .hero-brands {
+    .hero__visual {
+      position: absolute;
+      inset: 8% 0 auto;
+      height: min(58vh, 520px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      animation: fadeIn 1.2s var(--ease) 0.15s forwards;
+    }
+
+    .hero__visual svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .brand-stage {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: end;
-      gap: 1rem;
+      gap: clamp(0.75rem, 3vw, 2rem);
     }
 
     .brand {
       opacity: 0;
-      transform: translateY(18px);
-      animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transform: translateY(28px) scale(0.98);
+      animation: rise 1s var(--ease) forwards;
     }
 
-    .brand--evenity { animation-delay: 0.1s; text-align: left; }
-    .brand--forteo { animation-delay: 0.28s; text-align: right; }
+    .brand--e { animation-delay: 0.12s; }
+    .brand--f { animation-delay: 0.28s; text-align: right; }
 
-    .brand-name {
+    .brand__name {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 8vw, 4.6rem);
-      font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+      font-size: clamp(2.8rem, 9.5vw, 5.6rem);
+      font-weight: 800;
+      line-height: 0.88;
+      letter-spacing: -0.045em;
       margin: 0;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .brand--evenity .brand-name { color: var(--evenity-deep); }
-    .brand--forteo .brand-name { color: var(--forteo-deep); }
+    .brand--e .brand__name {
+      background-image: linear-gradient(135deg, var(--evenity-deep) 10%, var(--evenity) 55%, #1aa892 100%);
+    }
 
-    .brand-generic {
-      margin: 0.4rem 0 0;
-      font-size: 0.95rem;
+    .brand--f .brand__name {
+      background-image: linear-gradient(135deg, var(--forteo-deep) 10%, var(--forteo) 55%, #e8894a 100%);
+    }
+
+    .brand__meta {
+      margin: 0.65rem 0 0;
+      font-size: 0.92rem;
+      font-weight: 600;
       color: var(--muted);
-      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .brand__tag {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      opacity: 0.7;
     }
 
     .vs {
       font-family: var(--font-display);
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      font-weight: 600;
+      font-weight: 700;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
       color: var(--muted);
-      padding-bottom: 0.85rem;
+      padding-bottom: 1.1rem;
       opacity: 0;
-      animation: fade 0.6s ease 0.35s forwards;
+      animation: fadeIn 0.7s ease 0.4s forwards;
+      position: relative;
     }
 
-    .hero-copy {
-      max-width: 36rem;
-      margin: 0 auto;
+    .vs::before,
+    .vs::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, transparent, var(--line), transparent);
+      transform: translateX(-50%);
+    }
+
+    .vs::before { bottom: calc(100% + 4px); }
+    .vs::after { top: calc(100% - 8px); height: 40px; }
+
+    .hero__copy {
+      max-width: 34rem;
+      margin-inline: auto;
       text-align: center;
       opacity: 0;
-      transform: translateY(12px);
-      animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+      transform: translateY(16px);
+      animation: rise 0.9s var(--ease) 0.45s forwards;
     }
 
-    .hero-copy h2 {
+    .hero__copy h1 {
       font-family: var(--font-display);
-      font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+      font-size: clamp(1.45rem, 3.4vw, 2rem);
       font-weight: 600;
-      margin: 0 0 0.55rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin: 0 0 0.65rem;
+      color: var(--ink);
     }
 
-    .hero-copy p {
+    .hero__copy p {
       margin: 0;
       color: var(--muted);
       font-size: 1.05rem;
+      font-weight: 500;
     }
 
-    .hero-cta {
+    .hero__actions {
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fade 0.7s ease 0.55s forwards;
+      animation: fadeIn 0.8s ease 0.65s forwards;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.75rem 1.2rem;
-      border-radius: 999px;
+      gap: 0.5rem;
+      padding: 0.85rem 1.35rem;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+      border: 1px solid transparent;
+      transition: transform 0.25s var(--ease), background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
 
-    .btn-primary {
+    .btn--solid {
       background: var(--ink);
-      color: #fff;
+      color: var(--white);
     }
 
-    .btn-primary:hover { background: #0c1613; }
+    .btn--solid:hover { background: #1c2a25; }
 
-    .btn-ghost {
-      background: transparent;
+    .btn--line {
+      background: rgba(251, 253, 252, 0.55);
       color: var(--ink);
-      border: 1px solid var(--line);
+      border-color: var(--line);
+      backdrop-filter: blur(10px);
     }
 
-    .btn-ghost:hover { background: rgba(255,255,255,0.55); }
+    .btn--line:hover {
+      background: rgba(251, 253, 252, 0.9);
+      border-color: rgba(16, 24, 22, 0.18);
+    }
 
-    /* Comparison */
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* —— Compare —— */
     .section {
-      padding: 1.5rem 0 4rem;
+      padding: 1rem 0 5rem;
     }
 
-    .section-label {
-      font-size: 0.78rem;
+    .section__eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section__eyebrow::before,
+    .section__eyebrow::after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .compare {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .compare__head {
+      display: grid;
+      grid-template-columns: 9rem 1fr 1fr;
+      gap: 0.55rem;
+      position: sticky;
+      top: 0;
+      z-index: 6;
+      padding: 0.75rem 0;
+      background: linear-gradient(180deg, rgba(231, 239, 235, 0.92) 40%, rgba(231, 239, 235, 0.7));
+      backdrop-filter: blur(12px);
+    }
+
+    .compare__head-col {
+      padding: 0.9rem 1.15rem;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .compare__head-col span {
+      display: block;
+      margin-top: 0.15rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    .compare__head-col--e {
+      color: var(--evenity-deep);
+      background: linear-gradient(135deg, rgba(6, 122, 108, 0.1), rgba(251, 253, 252, 0.5));
+      border-bottom: 2px solid var(--evenity);
+    }
+
+    .compare__head-col--f {
+      color: var(--forteo-deep);
+      background: linear-gradient(135deg, rgba(212, 99, 42, 0.1), rgba(251, 253, 252, 0.5));
+      border-bottom: 2px solid var(--forteo);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 9rem 1fr 1fr;
+      gap: 0.55rem;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+
+    .row.is-in { opacity: 1; transform: none; }
+
+    .row__key {
+      display: flex;
+      align-items: center;
+      padding: 0.35rem 0.25rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      margin: 0 0 1rem;
-      text-align: center;
-    }
-
-    .compare-head {
-      display: grid;
-      grid-template-columns: 8.5rem 1fr 1fr;
-      gap: 0.75rem;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      padding: 0.85rem 0;
-      background: linear-gradient(180deg, rgba(238, 245, 242, 0.96), rgba(243, 247, 245, 0.92));
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .compare-head .col-label {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    .compare-head .col-label span {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
-
-    .col-evenity .col-label { color: var(--evenity-deep); }
-    .col-forteo .col-label { color: var(--forteo-deep); }
-
-    .row {
-      display: grid;
-      grid-template-columns: 8.5rem 1fr 1fr;
-      gap: 0.75rem;
-      padding: 1.15rem 0;
-      border-bottom: 1px solid var(--line);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .row.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .row-key {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 0.35rem;
     }
 
     .cell {
-      padding: 0.85rem 1rem;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.45);
+      position: relative;
+      padding: 1.05rem 1.15rem;
+      background: rgba(251, 253, 252, 0.62);
+      border: 1px solid transparent;
+      backdrop-filter: blur(8px);
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease);
     }
 
-    .cell--evenity {
-      border-left: 3px solid var(--evenity);
-      background: linear-gradient(135deg, rgba(216, 240, 235, 0.65), rgba(255,255,255,0.4));
+    .row:hover .cell {
+      background: rgba(251, 253, 252, 0.92);
+      transform: translateY(-1px);
     }
 
-    .cell--forteo {
-      border-left: 3px solid var(--forteo);
-      background: linear-gradient(135deg, rgba(252, 232, 218, 0.7), rgba(255,255,255,0.4));
+    .cell--e {
+      border-color: rgba(6, 122, 108, 0.12);
+      box-shadow: inset 3px 0 0 var(--evenity);
     }
 
-    .cell strong {
+    .cell--f {
+      border-color: rgba(212, 99, 42, 0.12);
+      box-shadow: inset 3px 0 0 var(--forteo);
+    }
+
+    .cell__title {
       display: block;
-      font-size: 1.02rem;
-      font-weight: 650;
-      margin-bottom: 0.2rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      color: var(--ink);
     }
 
-    .cell p {
+    .cell--warn .cell__title { color: var(--warn); }
+
+    .cell__body {
       margin: 0;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--muted);
+      line-height: 1.5;
     }
-
-    .cell.warn strong { color: var(--warn); }
 
     .shared {
-      margin-top: 2rem;
-      padding: 1.35rem 1.5rem;
+      margin-top: 1.75rem;
+      padding: 1.6rem 1.75rem;
       text-align: center;
       background:
-        linear-gradient(135deg, rgba(11, 122, 110, 0.08), rgba(196, 92, 38, 0.08));
+        linear-gradient(120deg, rgba(6, 122, 108, 0.08), rgba(212, 99, 42, 0.07));
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
 
-    .shared h3 {
+    .shared.is-in { opacity: 1; transform: none; }
+
+    .shared h2 {
       font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin: 0 0 0.35rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.4rem;
     }
 
     .shared p {
-      margin: 0;
+      margin: 0 auto;
+      max-width: 40rem;
       color: var(--muted);
+      font-weight: 500;
       font-size: 0.95rem;
     }
 
-    /* Who fits */
+    /* —— Fit —— */
     .fit {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 2.5rem;
+      gap: 0.75rem;
+      margin-top: 3.5rem;
     }
 
-    .fit-block {
-      padding: 1.5rem 1.35rem;
-      border-radius: var(--radius);
+    .fit__panel {
+      position: relative;
+      padding: 1.85rem 1.6rem;
+      overflow: hidden;
+      background: rgba(251, 253, 252, 0.7);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
     }
 
-    .fit-block--evenity {
-      background: linear-gradient(160deg, var(--evenity-soft), #fff);
-      border-top: 3px solid var(--evenity);
+    .fit__panel.is-in { opacity: 1; transform: none; }
+
+    .fit__panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
     }
 
-    .fit-block--forteo {
-      background: linear-gradient(160deg, var(--forteo-soft), #fff);
-      border-top: 3px solid var(--forteo);
+    .fit__panel--e::before { background: linear-gradient(90deg, var(--evenity-deep), var(--evenity)); }
+    .fit__panel--f::before { background: linear-gradient(90deg, var(--forteo-deep), var(--forteo)); }
+
+    .fit__panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      filter: blur(40px);
+      right: -40px;
+      bottom: -50px;
+      opacity: 0.35;
+      pointer-events: none;
     }
 
-    .fit-block h3 {
+    .fit__panel--e::after { background: var(--evenity); }
+    .fit__panel--f::after { background: var(--forteo); }
+
+    .fit__panel h2 {
+      position: relative;
       font-family: var(--font-display);
-      font-size: 1.35rem;
-      margin: 0 0 0.75rem;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin: 0 0 1rem;
     }
 
-    .fit-block--evenity h3 { color: var(--evenity-deep); }
-    .fit-block--forteo h3 { color: var(--forteo-deep); }
+    .fit__panel--e h2 { color: var(--evenity-deep); }
+    .fit__panel--f h2 { color: var(--forteo-deep); }
 
-    .fit-block ul {
+    .fit__panel ul {
+      position: relative;
       margin: 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
+      padding: 0;
+      list-style: none;
     }
 
-    .fit-block li { margin-bottom: 0.4rem; }
+    .fit__panel li {
+      position: relative;
+      padding: 0.45rem 0 0.45rem 1.25rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--line);
+    }
 
-    .note {
-      margin-top: 2.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--line);
-      font-size: 0.82rem;
-      color: var(--muted);
+    .fit__panel li:last-child { border-bottom: 0; }
+
+    .fit__panel li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.95rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .fit__panel--e li::before { background: var(--evenity); }
+    .fit__panel--f li::before { background: var(--forteo); }
+
+    .disclaimer {
+      margin-top: 2.75rem;
       text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-inline: auto;
+      line-height: 1.55;
     }
 
     footer {
-      padding: 1.5rem 0 2.5rem;
+      position: relative;
+      z-index: 1;
+      padding: 0 0 2.75rem;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
       color: var(--muted);
+      letter-spacing: 0.02em;
     }
 
     @keyframes rise {
       to { opacity: 1; transform: none; }
     }
 
-    @keyframes fade {
+    @keyframes fadeIn {
       to { opacity: 1; }
     }
 
-    @media (max-width: 760px) {
-      .hero { min-height: auto; padding-top: 2.5rem; }
-      .hero-brands { grid-template-columns: 1fr; gap: 0.35rem; text-align: center; }
-      .brand--evenity, .brand--forteo { text-align: center; }
-      .vs { padding: 0.35rem 0; }
+    @keyframes floatA {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(40px, 50px) scale(1.08); }
+    }
 
-      .compare-head,
-      .row {
+    @keyframes floatB {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(-35px, 40px) scale(1.1); }
+    }
+
+    @keyframes meshDrift {
+      from { transform: translateY(0); }
+      to { transform: translateY(32px); }
+    }
+
+    @media (max-width: 800px) {
+      .wrap { width: min(100% - 1.5rem, var(--max)); }
+
+      .hero {
+        min-height: auto;
+        padding: 3rem 0 2rem;
+        gap: 1.75rem;
+      }
+
+      .hero__visual {
+        inset: 0 0 auto;
+        height: 280px;
+        opacity: 0.55;
+      }
+
+      .brand-stage {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        text-align: center;
+        gap: 0.15rem;
       }
 
-      .compare-head {
-        position: static;
-        display: none;
+      .brand--f { text-align: center; }
+
+      .vs {
+        padding: 0.5rem 0;
       }
 
-      .row-key {
-        margin-bottom: 0.15rem;
+      .vs::before, .vs::after { display: none; }
+
+      .compare__head { display: none; }
+
+      .row,
+      .compare__head {
+        grid-template-columns: 1fr;
+      }
+
+      .row__key {
+        padding: 0.85rem 0 0.15rem;
       }
 
       .cell::before {
         content: attr(data-drug);
         display: block;
-        font-size: 0.72rem;
+        margin-bottom: 0.3rem;
+        font-size: 0.68rem;
         font-weight: 700;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 0.25rem;
-        opacity: 0.7;
+        opacity: 0.65;
       }
 
-      .cell--evenity::before { color: var(--evenity-deep); }
-      .cell--forteo::before { color: var(--forteo-deep); }
+      .cell--e::before { color: var(--evenity-deep); }
+      .cell--f::before { color: var(--forteo-deep); }
 
       .fit { grid-template-columns: 1fr; }
     }
@@ -409,204 +654,250 @@
         animation: none !important;
         transition: none !important;
       }
-      .brand, .hero-copy, .hero-cta, .vs, .row {
-        opacity: 1;
-        transform: none;
+      .brand, .hero__copy, .hero__actions, .vs, .hero__visual,
+      .row, .shared, .fit__panel {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
 </head>
 <body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__mesh"></div>
+    <div class="orb orb--a"></div>
+    <div class="orb orb--b"></div>
+  </div>
+
   <header class="hero wrap">
-    <div class="hero-brands" aria-label="Drug comparison title">
-      <div class="brand brand--evenity">
-        <p class="brand-name">Evenity</p>
-        <p class="brand-generic">romosozumab</p>
-      </div>
-      <div class="vs" aria-hidden="true">vs</div>
-      <div class="brand brand--forteo">
-        <p class="brand-name">Forteo</p>
-        <p class="brand-generic">teriparatide</p>
-      </div>
+    <div class="hero__visual" aria-hidden="true">
+      <svg viewBox="0 0 1120 520" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="boneL" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#067a6c" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#067a6c" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="boneR" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4632a" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#d4632a" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="spine" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stop-color="#101816" stop-opacity="0.08"/>
+            <stop offset="50%" stop-color="#101816" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#101816" stop-opacity="0.06"/>
+          </linearGradient>
+        </defs>
+        <!-- Abstract dual bone structure -->
+        <path d="M180 80 C260 40 320 120 300 200 C280 280 200 300 160 260 C110 210 110 130 180 80Z" fill="url(#boneL)"/>
+        <path d="M940 80 C860 40 800 120 820 200 C840 280 920 300 960 260 C1010 210 1010 130 940 80Z" fill="url(#boneR)"/>
+        <ellipse cx="560" cy="250" rx="28" ry="150" fill="url(#spine)"/>
+        <ellipse cx="560" cy="120" rx="48" ry="22" fill="#101816" fill-opacity="0.1"/>
+        <ellipse cx="560" cy="170" rx="52" ry="24" fill="#101816" fill-opacity="0.12"/>
+        <ellipse cx="560" cy="220" rx="54" ry="24" fill="#101816" fill-opacity="0.14"/>
+        <ellipse cx="560" cy="270" rx="52" ry="24" fill="#101816" fill-opacity="0.12"/>
+        <ellipse cx="560" cy="320" rx="48" ry="22" fill="#101816" fill-opacity="0.1"/>
+        <ellipse cx="560" cy="370" rx="42" ry="20" fill="#101816" fill-opacity="0.08"/>
+        <path d="M200 380 C320 340 400 420 560 400 C720 380 800 320 920 360" stroke="#101816" stroke-opacity="0.08" stroke-width="2" stroke-dasharray="6 10"/>
+      </svg>
     </div>
 
-    <div class="hero-copy">
-      <h2>Two anabolic paths to stronger bone</h2>
-      <p>A clear side-by-side of mechanism, dosing, duration, and safety for high–fracture-risk osteoporosis.</p>
-    </div>
+    <div class="hero__content">
+      <div class="brand-stage" aria-label="Evenity versus Forteo">
+        <div class="brand brand--e">
+          <p class="brand__name">Evenity</p>
+          <p class="brand__meta">romosozumab</p>
+          <span class="brand__tag">Dual-action builder</span>
+        </div>
+        <div class="vs" aria-hidden="true">vs</div>
+        <div class="brand brand--f">
+          <p class="brand__name">Forteo</p>
+          <p class="brand__meta">teriparatide</p>
+          <span class="brand__tag">Anabolic builder</span>
+        </div>
+      </div>
 
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#compare">Compare side by side</a>
-      <a class="btn btn-ghost" href="#who">Who each fits</a>
+      <div class="hero__copy">
+        <h1>Two anabolic paths to stronger bone</h1>
+        <p>Mechanism, dosing, duration, and safety — clear enough to compare at a glance.</p>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#compare">
+          Compare side by side
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--line" href="#who">Who each fits</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="section wrap" id="compare" aria-labelledby="compare-heading">
-      <p class="section-label" id="compare-heading">At a glance</p>
+    <section class="section wrap" id="compare">
+      <p class="section__eyebrow">At a glance</p>
 
-      <div class="compare-head" aria-hidden="true">
-        <div></div>
-        <div class="col-evenity"><p class="col-label">Evenity<span>romosozumab</span></p></div>
-        <div class="col-forteo"><p class="col-label">Forteo<span>teriparatide</span></p></div>
+      <div class="compare">
+        <div class="compare__head" aria-hidden="true">
+          <div></div>
+          <div class="compare__head-col compare__head-col--e">Evenity<span>romosozumab</span></div>
+          <div class="compare__head-col compare__head-col--f">Forteo<span>teriparatide</span></div>
+        </div>
+
+        <article class="row">
+          <div class="row__key">Mechanism</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Sclerostin inhibitor</span>
+            <p class="cell__body">Builds bone and reduces resorption — dual action in one therapy.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">PTH analog</span>
+            <p class="cell__body">Stimulates new bone formation via preferential osteoblast activity.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Type</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Monoclonal antibody</span>
+            <p class="cell__body">Humanized IgG2 antibody targeting sclerostin.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Recombinant PTH 1–34</span>
+            <p class="cell__body">Parathyroid hormone fragment, recombinant.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">How given</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Monthly clinic injection</span>
+            <p class="cell__body">210 mg as two subcutaneous shots by a healthcare provider.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Daily self-injection</span>
+            <p class="cell__body">20 mcg via prefilled pen — taken at home each day.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Duration</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">12 months only</span>
+            <p class="cell__body">Fixed course, then transition to antiresorptive therapy.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Up to 24 months</span>
+            <p class="cell__body">Lifetime maximum for teriparatide treatment.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Efficacy</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Faster hip BMD gains</span>
+            <p class="cell__body">STRUCTURE: larger total-hip BMD increase vs teriparatide at 12 months.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Proven fracture reduction</span>
+            <p class="cell__body">Longer track record with strong vertebral and nonvertebral data.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Best for</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Very high fracture risk</span>
+            <p class="cell__body">Recent fractures; need for rapid BMD lift, especially at the hip.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Severe osteoporosis</span>
+            <p class="cell__body">Multiple fractures; broader labeled use including men.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Warning</div>
+          <div class="cell cell--e cell--warn" data-drug="Evenity">
+            <span class="cell__title">Cardiovascular risk</span>
+            <p class="cell__body">Avoid if recent heart attack or stroke within the past year.</p>
+          </div>
+          <div class="cell cell--f cell--warn" data-drug="Forteo">
+            <span class="cell__title">Osteosarcoma caution</span>
+            <p class="cell__body">Avoid with Paget’s, unexplained ALP rise, or prior skeletal radiation.</p>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__key">Afterward</div>
+          <div class="cell cell--e" data-drug="Evenity">
+            <span class="cell__title">Antiresorptive next</span>
+            <p class="cell__body">Bisphosphonate or denosumab to lock in densitometric gains.</p>
+          </div>
+          <div class="cell cell--f" data-drug="Forteo">
+            <span class="cell__title">Antiresorptive next</span>
+            <p class="cell__body">Same principle — gains fade without follow-on therapy.</p>
+          </div>
+        </article>
       </div>
 
-      <div class="row">
-        <div class="row-key">Mechanism</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Sclerostin inhibitor</strong>
-          <p>Builds bone and reduces resorption — dual action.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>PTH analog</strong>
-          <p>Stimulates new bone formation via osteoblast preference.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Type</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Monoclonal antibody</strong>
-          <p>Humanized IgG2 sclerostin inhibitor.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Recombinant PTH 1–34</strong>
-          <p>Parathyroid hormone fragment.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">How given</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Monthly clinic injection</strong>
-          <p>210 mg as two subcutaneous shots by a healthcare provider.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Daily self-injection</strong>
-          <p>20 mcg via prefilled pen at home.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Duration</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>12 months only</strong>
-          <p>Fixed course — then switch to antiresorptive care.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Up to 24 months</strong>
-          <p>Lifetime maximum for teriparatide treatment.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Efficacy note</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Faster hip BMD gains</strong>
-          <p>STRUCTURE: larger total-hip BMD increase vs teriparatide at 12 months.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Proven fracture reduction</strong>
-          <p>Longer track record; strong vertebral and nonvertebral data.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Best for</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Very high fracture risk</strong>
-          <p>Recent fractures; need rapid BMD lift, especially at hip.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Severe osteoporosis</strong>
-          <p>Multiple fractures; men and women; steroid-induced options.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Key warning</div>
-        <div class="cell cell--evenity warn" data-drug="Evenity">
-          <strong>Cardiovascular risk</strong>
-          <p>Avoid if recent heart attack or stroke within the past year.</p>
-        </div>
-        <div class="cell cell--forteo warn" data-drug="Forteo">
-          <strong>Osteosarcoma caution</strong>
-          <p>Avoid with Paget’s disease, unexplained ALP rise, or prior skeletal radiation.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-key">Afterward</div>
-        <div class="cell cell--evenity" data-drug="Evenity">
-          <strong>Antiresorptive next</strong>
-          <p>Bisphosphonate or denosumab to lock in gains.</p>
-        </div>
-        <div class="cell cell--forteo" data-drug="Forteo">
-          <strong>Antiresorptive next</strong>
-          <p>Same principle — gains fade without follow-on therapy.</p>
-        </div>
-      </div>
-
-      <div class="shared">
-        <h3>Both are anabolic therapies</h3>
-        <p>Used for postmenopausal osteoporosis / high fracture risk when antiresorptives alone are not enough — and both require a planned transition to bone-preserving therapy.</p>
+      <div class="shared reveal">
+        <h2>Both are anabolic therapies</h2>
+        <p>Used when fracture risk is high and antiresorptives alone are not enough — each needs a planned handoff to bone-preserving therapy.</p>
       </div>
     </section>
 
-    <section class="section wrap" id="who" aria-labelledby="who-heading">
-      <p class="section-label" id="who-heading">Choosing between them</p>
+    <section class="section wrap" id="who">
+      <p class="section__eyebrow">Choosing between them</p>
       <div class="fit">
-        <article class="fit-block fit-block--evenity">
-          <h3>Lean Evenity when…</h3>
+        <article class="fit__panel fit__panel--e reveal">
+          <h2>Lean Evenity when…</h2>
           <ul>
-            <li>Rapid BMD increase (especially hip) is the priority</li>
+            <li>Rapid BMD increase — especially hip — is the priority</li>
             <li>Monthly clinic visits are acceptable</li>
-            <li>No recent MI or stroke</li>
-            <li>A 12-month anabolic burst fits the plan</li>
+            <li>No recent myocardial infarction or stroke</li>
+            <li>A 12-month anabolic burst fits the care plan</li>
           </ul>
         </article>
-        <article class="fit-block fit-block--forteo">
-          <h3>Lean Forteo when…</h3>
+        <article class="fit__panel fit__panel--f reveal">
+          <h2>Lean Forteo when…</h2>
           <ul>
             <li>Daily self-injection is manageable</li>
-            <li>Cardiovascular risk limits Evenity</li>
+            <li>Cardiovascular risk limits Evenity use</li>
             <li>Treatment may need up to 24 months</li>
-            <li>Broader labeled populations (e.g., men, glucocorticoid-related)</li>
+            <li>Broader populations (e.g. men, glucocorticoid-related)</li>
           </ul>
         </article>
       </div>
 
-      <p class="note">
-        Educational comparison only — not medical advice. Decisions belong with the treating clinician using full prescribing information and the patient’s fracture, CV, and oncology history.
+      <p class="disclaimer">
+        Educational comparison only — not medical advice. Treatment decisions belong with the clinician using full prescribing information and the patient’s fracture, cardiovascular, and oncology history.
       </p>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">Evenity® (romosozumab) · Forteo® (teriparatide) · Comparison overview</div>
+    <div class="wrap">Evenity® (romosozumab) · Forteo® (teriparatide)</div>
   </footer>
 
   <script>
     (function () {
-      const rows = document.querySelectorAll(".row");
+      const nodes = document.querySelectorAll(".row, .reveal");
       if (!("IntersectionObserver" in window)) {
-        rows.forEach((r) => r.classList.add("is-visible"));
+        nodes.forEach((n) => n.classList.add("is-in"));
         return;
       }
       const io = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
-            }
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
           });
         },
-        { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+        { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
       );
-      rows.forEach((r, i) => {
-        r.style.transitionDelay = `${Math.min(i * 0.04, 0.28)}s`;
-        io.observe(r);
+      nodes.forEach((n, i) => {
+        n.style.transitionDelay = `${Math.min(i * 0.035, 0.3)}s`;
+        io.observe(n);
       });
     })();
   </script>
